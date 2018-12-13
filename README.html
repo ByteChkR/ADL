@@ -1057,6 +1057,7 @@ body .markdown-body
 .codehilite .gc{color:#999;background-color:#EAF2F5}
 </style><title>README</title></head><body><article class="markdown-body"><h1 id="adladvanced-debug-logging">ADL(Advanced Debug Logging)<a class="headerlink" href="#adladvanced-debug-logging" title="Permanent link"></a></h1>
 <hr />
+<p><br><br></p>
 <h1 id="table-of-content">Table of Content<a class="headerlink" href="#table-of-content" title="Permanent link"></a></h1>
 <ul>
 <li><a href="#intro">Intro</a></li>
@@ -1141,8 +1142,10 @@ body .markdown-body
 <li>Best Practices</li>
 </ul>
 <hr />
-<hr />
+<p><br><br></p>
 <h1 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link"></a></h1>
+<hr />
+<p><br><br></p>
 <h1 id="documentation-adldebug">Documentation ADL.Debug<a class="headerlink" href="#documentation-adldebug" title="Permanent link"></a></h1>
 <p>ADL.Debug is the main class in ADL. This is the class you will use the most. It does not need Instanciation because the whole ADL project is designed to be static.</p>
 <hr />
@@ -1185,6 +1188,7 @@ prefixes[3] = 8
 <p>Generic Version of Debug.Log. Saves some time writing with enums instead of integers.</p>
 <p>This is a bit slower, but especially useful if you have a lot of flags.</p>
 <hr />
+<p><br><br></p>
 <h1 id="documentation-adllogstream">Documentation ADL.LogStream<a class="headerlink" href="#documentation-adllogstream" title="Permanent link"></a></h1>
 <p>The LogStream class contains the underlying stream and all the extra informations about masks and other flags.</p>
 <h2 id="standard-settings">Standard Settings<a class="headerlink" href="#standard-settings" title="Permanent link"></a></h2>
@@ -1232,6 +1236,7 @@ If no Settings are specified the LogStream will have the Standard Settings</p>
 <p>Creates a LogStream based on any kind of Stream.
 If no Settings are specified the LogStream will have the Standard Settings</p>
 <hr />
+<p><br><br></p>
 <h1 id="documentation-adlbitmask">Documentation ADL.BitMask<a class="headerlink" href="#documentation-adlbitmask" title="Permanent link"></a></h1>
 <p>BitMask is a optional class that is not nessecary to be used. It tries to simplify the usage of Masks even more.
 Default Mask is Nothing</p>
@@ -1254,6 +1259,7 @@ Default Mask is Nothing</p>
 <h2 id="hasflagint-flags-matchtype-matchtype">HasFlag(int flags, MatchType matchType)<a class="headerlink" href="#hasflagint-flags-matchtype-matchtype" title="Permanent link"></a></h2>
 <p>Returns tre when the mask satisfies the specified flags</p>
 <hr />
+<p><br><br></p>
 <h1 id="documentation-adlbitmask-generic-t">Documentation ADL.BitMask Generic T<a class="headerlink" href="#documentation-adlbitmask-generic-t" title="Permanent link"></a></h1>
 <p>BitMask is a optional class that is not nessecary to be used. It tries to simplify the usage of Masks even more.
 Default Mask is Nothing</p>
@@ -1279,6 +1285,7 @@ Default Mask is Nothing</p>
 <h2 id="hasflagt-flags-matchtype-matchtype">HasFlag(T flags, MatchType matchType)<a class="headerlink" href="#hasflagt-flags-matchtype-matchtype" title="Permanent link"></a></h2>
 <p>Returns tre when the mask satisfies the specified flags</p>
 <hr />
+<p><br><br></p>
 <h1 id="documentation-adlutils">Documentation ADL.Utils<a class="headerlink" href="#documentation-adlutils" title="Permanent link"></a></h1>
 <p>Utils contains all the little helper functions that do not make sense to include it just in one class.</p>
 <hr />
@@ -1309,6 +1316,7 @@ Default Mask is Nothing</p>
 <h2 id="removeflagsint-mask-int-flags">RemoveFlags(int mask , int flags)<a class="headerlink" href="#removeflagsint-mask-int-flags" title="Permanent link"></a></h2>
 <p>Removes all flags from the mask.</p>
 <hr />
+<p><br><br></p>
 <h1 id="documentation-adlmaskcombinetype">Documentation ADL.MaskCombineType<a class="headerlink" href="#documentation-adlmaskcombinetype" title="Permanent link"></a></h1>
 <p>This enum has 2 values</p>
 <div class="codehilite"><pre>    BIT_OR = 0 &lt;-- Add everything that both tables have
@@ -1317,6 +1325,7 @@ Default Mask is Nothing</p>
 
 
 <hr />
+<p><br><br></p>
 <h1 id="documentation-adlmatchtype">Documentation ADL.MatchType<a class="headerlink" href="#documentation-adlmatchtype" title="Permanent link"></a></h1>
 <p>This enum has 2 values</p>
 <div class="codehilite"><pre>    MATCH_ALL = 0 &lt;-- If there is one of the specified flags set to false, return false
@@ -1324,20 +1333,26 @@ Default Mask is Nothing</p>
 </pre></div>
 
 
+<hr />
+<p><br><br></p>
 <h1 id="documentation-adlunitydebugcomponent">Documentation ADL.Unity.DebugComponent<a class="headerlink" href="#documentation-adlunitydebugcomponent" title="Permanent link"></a></h1>
 <p>MonoBehaviour that needs to be in the Hierarchy once and only once.
 For more information about the properties of the Component look at the Tooltips in the Unity Editor</p>
 <hr />
+<p><br><br></p>
 <h1 id="documentation-adlunitylogstreamparams">Documentation ADL.Unity.LogStreamParams<a class="headerlink" href="#documentation-adlunitylogstreamparams" title="Permanent link"></a></h1>
 <p>Serializable Class that contains all the settings for creating a log stream from file.</p>
 <hr />
+<p><br><br></p>
 <h1 id="documentation-adlunityunitytextwriter">Documentation ADL.Unity.UnityTextWriter<a class="headerlink" href="#documentation-adlunityunitytextwriter" title="Permanent link"></a></h1>
 <p>Inherits from StreamWriter and uses the Unity.Debug.Log.
 Its Possible to have warning and error messages if specified in ADL.Unity.DebugComponent.</p>
 <hr />
+<p><br><br></p>
 <h1 id="documentation-adlunityenumflagsattributedrawer">Documentation ADL.Unity.EnumFlagsAttributeDrawer<a class="headerlink" href="#documentation-adlunityenumflagsattributedrawer" title="Permanent link"></a></h1>
 <p>Draws a Custom Bitmask Editor in the Unity Editor Inspector</p>
 <hr />
+<p><br><br></p>
 <h1 id="documentation-adlunitydebugeditorwindow">Documentation ADL.Unity.DebugEditorWindow<a class="headerlink" href="#documentation-adlunitydebugeditorwindow" title="Permanent link"></a></h1>
 <p>Uses OnInspectorGUI to Set the specified DebugLevel Names.</p>
 <hr /></article></body></html>

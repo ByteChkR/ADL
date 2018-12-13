@@ -1,5 +1,6 @@
 # ADL(Advanced Debug Logging)
 ___
+<br><br>
 # Table of Content
 - [Intro](#intro)
 ___
@@ -59,9 +60,10 @@ ___
 - Best Practices
 
 ___
-___
+<br><br>
 # Intro
-
+___
+<br><br>
 # Documentation ADL.Debug 
 
 ADL.Debug is the main class in ADL. This is the class you will use the most. It does not need Instanciation because the whole ADL project is designed to be static.
@@ -125,7 +127,7 @@ Generic Version of Debug.Log. Saves some time writing with enums instead of inte
 This is a bit slower, but especially useful if you have a lot of flags.
 ___
 
-
+<br><br>
 # Documentation ADL.LogStream
 The LogStream class contains the underlying stream and all the extra informations about masks and other flags.
 
@@ -183,7 +185,7 @@ Creates a LogStream based on any kind of Stream.
 If no Settings are specified the LogStream will have the Standard Settings
 ___
 
-
+<br><br>
 # Documentation ADL.BitMask
 BitMask is a optional class that is not nessecary to be used. It tries to simplify the usage of Masks even more.
 Default Mask is Nothing
@@ -212,7 +214,7 @@ ___
 Returns tre when the mask satisfies the specified flags
 ___
 
-
+<br><br>
 # Documentation ADL.BitMask Generic T
 BitMask is a optional class that is not nessecary to be used. It tries to simplify the usage of Masks even more.
 Default Mask is Nothing
@@ -246,7 +248,7 @@ ___
 Returns tre when the mask satisfies the specified flags
 ___
 
-
+<br><br>
 # Documentation ADL.Utils
 Utils contains all the little helper functions that do not make sense to include it just in one class.
 
@@ -288,39 +290,41 @@ ___
 Removes all flags from the mask.
 ___
 
-
+<br><br>
 # Documentation ADL.MaskCombineType
 This enum has 2 values
 
 		BIT_OR = 0 <-- Add everything that both tables have
 		BIT_AND = 1 <-- Add flags represented by both tables
 ___
-
+<br><br>
 # Documentation ADL.MatchType
 This enum has 2 values
 
 		MATCH_ALL = 0 <-- If there is one of the specified flags set to false, return false
 		MATCH_ONE = 1 <-- If there is one of the specified flags set to true, return true
-
+___
+<br><br>
 # Documentation ADL.Unity.DebugComponent
 MonoBehaviour that needs to be in the Hierarchy once and only once.
 For more information about the properties of the Component look at the Tooltips in the Unity Editor
 ___
-
+<br><br>
 # Documentation ADL.Unity.LogStreamParams
 Serializable Class that contains all the settings for creating a log stream from file.
 
 ___
+<br><br>
 # Documentation ADL.Unity.UnityTextWriter
 Inherits from StreamWriter and uses the Unity.Debug.Log.
 Its Possible to have warning and error messages if specified in ADL.Unity.DebugComponent.
 
 ___
-
+<br><br>
 # Documentation ADL.Unity.EnumFlagsAttributeDrawer
 Draws a Custom Bitmask Editor in the Unity Editor Inspector
 ___
-
+<br><br>
 # Documentation ADL.Unity.DebugEditorWindow
 Uses OnInspectorGUI to Set the specified DebugLevel Names.
 ___
