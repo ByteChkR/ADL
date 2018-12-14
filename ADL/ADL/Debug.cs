@@ -160,7 +160,7 @@ namespace ADL
                 {
                     if (_prefixes.ContainsKey(flags[i]))
                     {
-                        _stringBuilder.Insert(0, flags[i]);
+                        _stringBuilder.Insert(0, _prefixes[flags[i]]);
                     }
                     else //If still not in prefix lookup table, better have a prefix than having just plain text.
                     {

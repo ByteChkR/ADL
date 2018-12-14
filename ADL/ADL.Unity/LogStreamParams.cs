@@ -11,7 +11,6 @@ namespace ADL.Unity
         public string FilePath = "log.log";
         [Tooltip("How should the System treat the Mask?")]
         public MatchType MatchType = MatchType.MATCH_ALL;
-        bool mA { get { return MatchType == MatchType.MATCH_ALL; } }
         [Tooltip("Adds Timestamps([hh:mm:ss]) to the Logs")]
         public bool SetTimeStamp = false;
         [Tooltip("If used as a file, it will append instead of delete")]
@@ -25,7 +24,7 @@ namespace ADL.Unity
         /// <returns></returns>
         public LogStream ToLogStream()
         {
-            return LogStream.CreateLogStreamFromFile(FilePath, Mask, mA, SetTimeStamp, AppendIfExists);
+            return LogStream.CreateLogStreamFromFile(FilePath, Mask, MatchType, SetTimeStamp, AppendIfExists);
         }
 
         /// <summary>
@@ -35,7 +34,7 @@ namespace ADL.Unity
         /// <returns></returns>
         public LogStream ToLogStream(System.IO.TextWriter stream)
         {
-            return LogStream.CreateLogStreamFromStream(stream, Mask, mA, SetTimeStamp);
+            return LogStream.CreateLogStreamFromStream(stream, Mask, MatchType, SetTimeStamp);
 
         }
     }

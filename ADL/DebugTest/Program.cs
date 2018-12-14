@@ -23,14 +23,36 @@ namespace DebugTest
             GENERICTEST = 32
         }
 
+        public static void SetUpCustomConsole()
+        {
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(new System.IO.MemoryStream());
+
+
+            System.Diagnostics.Process cmd = new System.Diagnostics.Process();
+            cmd.StartInfo.FileName = "CustomCMD.exe";
+            cmd.StartInfo.RedirectStandardInput = true;
+            cmd.StartInfo.RedirectStandardOutput = true;
+            cmd.StartInfo.CreateNoWindow = false;
+            cmd.StartInfo.UseShellExecute = false;
+
+            cmd.Start();
+
+            ADL.LogStream ls = ADL.LogStream.CreateLogStreamFromStream(cmd.StandardInput);
+            ADL.Debug.AddOutputStream(ls);
+            ADL.Debug.Log(-1, "Test");
+        }
+
         static void Main(string[] args)
         {
-
             
-
+            
+            
+            
             ADL.Debug.SetAllPrefixes(new string[] { "[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[GENERIC]" });
 
-            ADL.LogStream ResultLog = ADL.LogStream.CreateLogStreamFromFile("benchmark.log", 0, true, true, true);
+            //SetUpCustomConsole();
+
+            ADL.LogStream ResultLog = ADL.LogStream.CreateLogStreamFromFile("benchmark.log", 0, ADL.MatchType.MATCH_ALL, true, true);
 
             ADL.Debug.AddOutputStream(ResultLog);
 
@@ -44,7 +66,7 @@ namespace DebugTest
 
             ADL.Debug.RemoveAllOutputStreams();
 
-            ResultLog = ADL.LogStream.CreateLogStreamFromFile("benchmark.log", 0, true,  true, true);
+            ResultLog = ADL.LogStream.CreateLogStreamFromFile("benchmark.log", 0, ADL.MatchType.MATCH_ALL,  true, true);
 
             ADL.Debug.AddOutputStream(ResultLog);
 
@@ -69,7 +91,7 @@ namespace DebugTest
             ADL.LogStream logStream = ADL.LogStream.CreateLogStreamFromFile(
                 "log" + ADL.Debug.ListeningStreams + ".log", // The file
                 Mask, //The Mask
-                true, //If true = MatchAll if false = MatchOne
+                ADL.MatchType.MATCH_ALL,
                 true,//Timestamp?
                 false);//If file exists, should the log just append?
 
@@ -103,7 +125,7 @@ namespace DebugTest
             ADL.LogStream logStream = ADL.LogStream.CreateLogStreamFromStream(
                 Console.Out, // The stream
                 Mask, //The Mask
-                true, //If true = MatchAll if false = MatchOne
+                ADL.MatchType.MATCH_ALL,
                 true); //Timestamp?
             ADL.Debug.AddOutputStream(logStream);
 
