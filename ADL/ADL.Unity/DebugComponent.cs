@@ -30,7 +30,14 @@ namespace ADL.Unity
             Debug.SetAllPrefixes(DebugLevel);
             foreach (LogStreamParams lsp in Streams)
             {
-                Debug.AddOutputStream(lsp.ToLogStream());
+                LogStream ls = lsp.ToLogStream();
+                Debug.AddOutputStream(ls);
+                if (lsp.CreateCustomConsole)
+                {
+                    //CreateConsole(ls); Currently not working due to referencing problems with my compiled code(using System.Windows.Forms)
+                    //Apparently Unity Editor dll loading capabilities were never meant to load system resources.(The error is that the windows forms code is not able to find System.Runtime.Interopservices.Marshal.ReadInt16)
+                    //Probably dumb mistake by me. Otherwise i manage to poke some super old 16 bit code that is not supported on my 64bit machine.
+                }
             }
             if (UseConsole)
             {
@@ -47,9 +54,17 @@ namespace ADL.Unity
 
         void SetUpConsole()
         {
+
             UnityTextWriter utw = new UnityTextWriter(ConsoleWarningMask, ConsoleErrorMask);
-            Debug.AddOutputStream(ConsoleParams.ToLogStream(utw));
+            Debug.AddOutputStream(ConsoleParams.ToUnityConsoleLogStream(utw));
         }
+
+
+        void CreateConsole(LogStream ls)
+        {
+            CustomCMD.CMDUtils.CreateCustomConsoleNoReturn(ls.TextStream);
+        }
+
 
 
     }

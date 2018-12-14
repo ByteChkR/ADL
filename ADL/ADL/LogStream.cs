@@ -16,20 +16,25 @@ namespace ADL
         private bool _setTimeStamp = false;
         private bool _streamClosed = false;
 
+        private Stream _str = null;
+        public Stream TextStream { get { return _str; } }
+
         /// <summary>
         /// Base Constructor. For file streams or similar
         /// </summary>
         /// <param name="stream"></param>
-        public LogStream(Stream stream) : this(new StreamWriter(stream)) { }
-
-        /// <summary>
-        /// Base Constructor. For streams that have a TextWriter already(e.x.: Console.Out)
-        /// </summary>
-        /// <param name="stream"></param>
-        public LogStream(TextWriter stream)
+        public LogStream(Stream stream)
         {
-            _stream = stream;
+            _str = stream;
+            _stream = new StreamWriter(stream);
+
         }
+
+        public LogStream(TextWriter textReader)
+        {
+            _stream = textReader;
+        }
+
 
         /// <summary>
         /// Flushes the stream and frees its resources
@@ -121,7 +126,8 @@ namespace ADL
         /// <returns></returns>
         public static LogStream CreateLogStreamFromFile(string path, int mask = -1, MatchType matchType = MatchType.MATCH_ALL, bool setTimestamp = false, bool appendIfExists = false)
         {
-            LogStream ret = new LogStream(new System.IO.StreamWriter(path, appendIfExists));
+            Stream s = new FileStream(path, appendIfExists? FileMode.Append: FileMode.Create);
+            LogStream ret = new LogStream(s);
             ret.SetMask(mask);
             ret.SetMatchingMode(matchType);
             ret.SetTimeStampUsage(setTimestamp);
@@ -146,23 +152,6 @@ namespace ADL
             return ret;
         }
 
-        /// <summary>
-        /// Wrapper function that makes the creation and setting up a log stream a no brainer
-        /// </summary>
-        /// <param name="stream">textwriter</param>
-        /// <param name="mask">debug level mask</param>
-        /// <param name="matchType">should the log only fire if all the flags are in the mask</param>
-        /// <param name="minimumWriteAmount">amount of characters requires to issue another Stream.Write call</param>
-        /// <param name="setTimestamp">Put fancy timestamp infront of each line</param>
-        /// <returns></returns>
-        public static LogStream CreateLogStreamFromStream(System.IO.TextWriter stream, int mask = -1, MatchType matchType = MatchType.MATCH_ALL, bool setTimestamp = false)
-        {
-            LogStream ret = new LogStream(stream);
-            ret.SetMask(mask);
-            ret.SetMatchingMode(matchType);
-            ret.SetTimeStampUsage(setTimestamp);
-            return ret;
-        }
 
         #endregion
 

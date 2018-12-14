@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{91132B0F-9DFB-4B0A-A30C-A47A1C94764A}</ProjectGuid>
+    <ProjectGuid>{7E8C8892-86A6-46AF-AC32-BC632613B288}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ADL.Unity</RootNamespace>
-    <AssemblyName>ADL.Unity</AssemblyName>
+    <RootNamespace>ADL.CustomCMD</RootNamespace>
+    <AssemblyName>ADL.CustomCMD</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,12 +23,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
@@ -38,42 +41,52 @@
     <Reference Include="System.Core">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Xml.Linq">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Data">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Xml">
+    <Reference Include="System.Drawing">
       <Private>True</Private>
     </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>D:\UnityHub\2018.2.17f1\Editor\Data\Managed\UnityEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>D:\UnityHub\2018.2.17f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DebugComponent.cs" />
-    <Compile Include="DebugEditorWindow.cs" />
-    <Compile Include="EnumFlagsAttribute.cs" />
-    <Compile Include="EnumFlagsAttributeDrawer.cs" />
-    <Compile Include="LogStreamParams.cs" />
+    <Compile Include="CustomCMDForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomCMDForm.Designer.cs">
+      <DependentUpon>CustomCMDForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CMDUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnityTextWriter.cs" />
+    <EmbeddedResource Include="CustomCMDForm.resx">
+      <DependentUpon>CustomCMDForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ADL\ADL.csproj">
       <Project>{a6217f9e-bb25-4acc-8c90-209d3af80dc4}</Project>
       <Name>ADL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CustomCMD\ADL.CustomCMD.csproj">
-      <Project>{7e8c8892-86a6-46af-ac32-bc632613b288}</Project>
-      <Name>ADL.CustomCMD</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

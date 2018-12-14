@@ -39,6 +39,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -59,6 +60,10 @@
     <ProjectReference Include="..\ADL\ADL.csproj">
       <Project>{a6217f9e-bb25-4acc-8c90-209d3af80dc4}</Project>
       <Name>ADL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomCMD\ADL.CustomCMD.csproj">
+      <Project>{7e8c8892-86a6-46af-ac32-bc632613b288}</Project>
+      <Name>ADL.CustomCMD</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

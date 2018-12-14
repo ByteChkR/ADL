@@ -17,13 +17,19 @@ namespace ADL.Unity
         public bool AppendIfExists = false;
         [Tooltip("The Mask. The levels you want to ..Spectate..")]
         [EnumFlagsAttribute] public int Mask = -1;
+        public bool CreateCustomConsole = false;
 
         /// <summary>
-        /// Creates a LogStream from file
+        /// Creates a LogStream. If CreateCustomConsole = true then its not initialized with filname.
+        /// Instead its initialized with a PipeStream to support the Custrom Console Window.
         /// </summary>
         /// <returns></returns>
         public LogStream ToLogStream()
         {
+            if (CreateCustomConsole)
+            {
+                return LogStream.CreateLogStreamFromStream(new PipeStream(), Mask, MatchType, SetTimeStamp);
+            }
             return LogStream.CreateLogStreamFromFile(FilePath, Mask, MatchType, SetTimeStamp, AppendIfExists);
         }
 
@@ -32,10 +38,18 @@ namespace ADL.Unity
         /// </summary>
         /// <param name="stream"></param>
         /// <returns></returns>
-        public LogStream ToLogStream(System.IO.TextWriter stream)
+        public LogStream ToLogStream(System.IO.Stream stream)
         {
             return LogStream.CreateLogStreamFromStream(stream, Mask, MatchType, SetTimeStamp);
+        }
 
+        public LogStream ToUnityConsoleLogStream(UnityTextWriter utw)
+        {
+            LogStream ls = new LogStream(utw);
+            ls.SetMask(Mask);
+            ls.SetMatchingMode(MatchType);
+            ls.SetTimeStampUsage(SetTimeStamp);
+            return ls;
         }
     }
 }

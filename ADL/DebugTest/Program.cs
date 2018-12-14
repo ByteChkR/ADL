@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using ADL.Unity;
-
-
 namespace DebugTest
 {
     /// <summary>
@@ -23,24 +21,10 @@ namespace DebugTest
             GENERICTEST = 32
         }
 
-        public static void SetUpCustomConsole()
-        {
-            System.IO.StreamWriter sw = new System.IO.StreamWriter(new System.IO.MemoryStream());
 
 
-            System.Diagnostics.Process cmd = new System.Diagnostics.Process();
-            cmd.StartInfo.FileName = "CustomCMD.exe";
-            cmd.StartInfo.RedirectStandardInput = true;
-            cmd.StartInfo.RedirectStandardOutput = true;
-            cmd.StartInfo.CreateNoWindow = false;
-            cmd.StartInfo.UseShellExecute = false;
 
-            cmd.Start();
-
-            ADL.LogStream ls = ADL.LogStream.CreateLogStreamFromStream(cmd.StandardInput);
-            ADL.Debug.AddOutputStream(ls);
-            ADL.Debug.Log(-1, "Test");
-        }
+ 
 
         static void Main(string[] args)
         {
@@ -50,8 +34,6 @@ namespace DebugTest
             
             ADL.Debug.SetAllPrefixes(new string[] { "[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[GENERIC]" });
 
-            //SetUpCustomConsole();
-
             ADL.LogStream ResultLog = ADL.LogStream.CreateLogStreamFromFile("benchmark.log", 0, ADL.MatchType.MATCH_ALL, true, true);
 
             ADL.Debug.AddOutputStream(ResultLog);
@@ -59,7 +41,7 @@ namespace DebugTest
             for (int SampleSize = 0; SampleSize < 15; SampleSize++)
             {
 
-                SetUpConsole(131072, 4096);
+                //SetUpConsole(131072, 4096);
 
 
             }
@@ -70,10 +52,10 @@ namespace DebugTest
 
             ADL.Debug.AddOutputStream(ResultLog);
 
-            for (int SampleSize = 0; SampleSize < 15; SampleSize++)
+            for (int SampleSize = 0; SampleSize < 2; SampleSize++)
             {
 
-                SetUpLogFile(131072, 4096);
+                SetUpCustomConsole(131072, 128);
             }
 
             ADL.Debug.RemoveAllOutputStreams();
@@ -119,11 +101,46 @@ namespace DebugTest
             //ADL.Debug.RemoveOutputStream(logStream);
         }
 
+        static void SetUpCustomConsole(int WriteSize, int TestAmount)
+        {
+            ADL.PipeStream ps = new ADL.PipeStream();
+            int Mask = ADL.Utils.CombineMasks(); //WIldcard will receive all messages
+            ADL.LogStream logStream = ADL.LogStream.CreateLogStreamFromStream(
+                ps, // The file
+                Mask, //The Mask
+                ADL.MatchType.MATCH_ALL,
+                true);//Timestamp?
+
+            ADL.Debug.AddOutputStream(logStream);
+
+            System.Windows.Forms.Form cmd = ADL.CustomCMD.CMDUtils.CreateCustomConsole(ps);
+
+            //Testing:
+            Random rnd = new Random((int)DateTime.Now.Ticks);
+
+
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+            for (int i = 0; i < TestAmount; i++)
+            {
+                int r = rnd.Next(1, 64);
+                ADL.Debug.Log(r, "File Log Test nr. " + i);
+            }
+
+            sw.Stop();
+
+
+            ADL.Debug.Log(-1, "Time for " + TestAmount + " Logs @ " + ADL.Debug.ListeningStreams + " File Stream(" + WriteSize + ") + Random " + "Ticks(Millis): " + sw.ElapsedTicks + "(" + sw.ElapsedMilliseconds + ")");
+
+            
+            //ADL.Debug.RemoveOutputStream(logStream);
+        }
+
         static void SetUpConsole(int WriteSize, int TestAmount)
         {
             int Mask = ADL.Utils.CombineMasks(); //WIldcard will receive all messages
             ADL.LogStream logStream = ADL.LogStream.CreateLogStreamFromStream(
-                Console.Out, // The stream
+                Console.OpenStandardOutput(), // The stream
                 Mask, //The Mask
                 ADL.MatchType.MATCH_ALL,
                 true); //Timestamp?
