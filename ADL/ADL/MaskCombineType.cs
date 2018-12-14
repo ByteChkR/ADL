@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace ADL
+﻿namespace ADL
 {
     /// <summary>
     /// Specifies the way the program should combine masks

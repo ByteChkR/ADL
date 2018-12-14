@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using UnityEngine;
-using System.IO;
-using System.Diagnostics;
+
 namespace ADL.Unity
 {
     public sealed class DebugComponent : MonoBehaviour

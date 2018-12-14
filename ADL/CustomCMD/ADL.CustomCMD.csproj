@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="CMDUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RichTextBoxExtentions.cs" />
     <EmbeddedResource Include="CustomCMDForm.resx">
       <DependentUpon>CustomCMDForm.cs</DependentUpon>
     </EmbeddedResource>

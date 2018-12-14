@@ -113,7 +113,12 @@ namespace DebugTest
 
             ADL.Debug.AddOutputStream(logStream);
 
-            System.Windows.Forms.Form cmd = ADL.CustomCMD.CMDUtils.CreateCustomConsole(ps);
+            Dictionary<string, System.Drawing.Color> colorCoding = new Dictionary<string, System.Drawing.Color>()
+            {
+                {"[Error]", System.Drawing.Color.Red }
+            };
+
+            System.Windows.Forms.Form cmd = ADL.CustomCMD.CMDUtils.CreateCustomConsole(ps, colorCoding, 14);
 
             //Testing:
             Random rnd = new Random((int)DateTime.Now.Ticks);
