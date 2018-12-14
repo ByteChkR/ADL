@@ -1,4 +1,4 @@
 # ADL(Advanced Debug Logging)
 ___
 
-[Documentation]()
+## Documentation can be found under html_docs/html/index.php
