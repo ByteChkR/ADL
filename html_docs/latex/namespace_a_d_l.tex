@@ -1,0 +1,72 @@
+\hypertarget{namespace_a_d_l}{}\section{A\+DL Namespace Reference}
+\label{namespace_a_d_l}\index{A\+DL@{A\+DL}}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\end{DoxyCompactItemize}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_a_d_l_1_1_bit_mask}{Bit\+Mask}}
+\begin{DoxyCompactList}\small\item\em Little Helper class to have less of a hassle with masks in int form \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_a_d_l_1_1_debug}{Debug}}
+\begin{DoxyCompactList}\small\item\em Main \mbox{\hyperlink{class_a_d_l_1_1_debug}{Debug}} Class. No instanciation needed. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}}
+\begin{DoxyCompactList}\small\item\em Log Stream class, use this when you want to add a new stream to the debug system. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream}{Pipe\+Stream}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream}{Pipe\+Stream}} is a thread-\/safe read/write data stream for use between two threads in a single-\/producer/single-\/consumer type problem. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_a_d_l_1_1_utils}{Utils}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_a_d_l_a887d1db091d273083278875e32842128}{Mask\+Combine\+Type}} \{ \mbox{\hyperlink{namespace_a_d_l_a887d1db091d273083278875e32842128a377da01fa3eaa9e9d6a69a2fa415fe7b}{Mask\+Combine\+Type.\+B\+I\+T\+\_\+\+OR}} = 0, 
+\mbox{\hyperlink{namespace_a_d_l_a887d1db091d273083278875e32842128a4bece6f4e59c0e3f185e3003dfd37b1d}{Mask\+Combine\+Type.\+B\+I\+T\+\_\+\+A\+ND}} = 1
+ \}
+\begin{DoxyCompactList}\small\item\em Specifies the way the program should combine masks \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05}{Match\+Type}} \+: int \{ \mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05a627c7991c5d0265194247e92fcf120b0}{Match\+Type.\+M\+A\+T\+C\+H\+\_\+\+A\+LL}} = 0, 
+\mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05ae732aeff37126a99228f0e497f1beb04}{Match\+Type.\+M\+A\+T\+C\+H\+\_\+\+O\+NE}} = 1
+ \}
+\begin{DoxyCompactList}\small\item\em Specifies how the Log\+Stream Masks react to flags. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespace_a_d_l_a887d1db091d273083278875e32842128}\label{namespace_a_d_l_a887d1db091d273083278875e32842128}} 
+\index{A\+DL@{A\+DL}!Mask\+Combine\+Type@{Mask\+Combine\+Type}}
+\index{Mask\+Combine\+Type@{Mask\+Combine\+Type}!A\+DL@{A\+DL}}
+\subsubsection{\texorpdfstring{Mask\+Combine\+Type}{MaskCombineType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_a_d_l_a887d1db091d273083278875e32842128}{A\+D\+L.\+Mask\+Combine\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Specifies the way the program should combine masks 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+I\+T\+\_\+\+OR@{B\+I\+T\+\_\+\+OR}!A\+DL@{A\+DL}}\index{A\+DL@{A\+DL}!B\+I\+T\+\_\+\+OR@{B\+I\+T\+\_\+\+OR}}}\mbox{\Hypertarget{namespace_a_d_l_a887d1db091d273083278875e32842128a377da01fa3eaa9e9d6a69a2fa415fe7b}\label{namespace_a_d_l_a887d1db091d273083278875e32842128a377da01fa3eaa9e9d6a69a2fa415fe7b}} 
+B\+I\+T\+\_\+\+OR&Add everything that both \char`\"{}tables\char`\"{} have \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+I\+T\+\_\+\+A\+ND@{B\+I\+T\+\_\+\+A\+ND}!A\+DL@{A\+DL}}\index{A\+DL@{A\+DL}!B\+I\+T\+\_\+\+A\+ND@{B\+I\+T\+\_\+\+A\+ND}}}\mbox{\Hypertarget{namespace_a_d_l_a887d1db091d273083278875e32842128a4bece6f4e59c0e3f185e3003dfd37b1d}\label{namespace_a_d_l_a887d1db091d273083278875e32842128a4bece6f4e59c0e3f185e3003dfd37b1d}} 
+B\+I\+T\+\_\+\+A\+ND&Add only flags that is represented in both tables \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_a_d_l_af6334296dbae0383a652317263f0bc05}\label{namespace_a_d_l_af6334296dbae0383a652317263f0bc05}} 
+\index{A\+DL@{A\+DL}!Match\+Type@{Match\+Type}}
+\index{Match\+Type@{Match\+Type}!A\+DL@{A\+DL}}
+\subsubsection{\texorpdfstring{Match\+Type}{MatchType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05}{A\+D\+L.\+Match\+Type}} \+: int\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Specifies how the \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} Masks react to flags. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+A\+T\+C\+H\+\_\+\+A\+LL@{M\+A\+T\+C\+H\+\_\+\+A\+LL}!A\+DL@{A\+DL}}\index{A\+DL@{A\+DL}!M\+A\+T\+C\+H\+\_\+\+A\+LL@{M\+A\+T\+C\+H\+\_\+\+A\+LL}}}\mbox{\Hypertarget{namespace_a_d_l_af6334296dbae0383a652317263f0bc05a627c7991c5d0265194247e92fcf120b0}\label{namespace_a_d_l_af6334296dbae0383a652317263f0bc05a627c7991c5d0265194247e92fcf120b0}} 
+M\+A\+T\+C\+H\+\_\+\+A\+LL&If one flag is not in the logstream mask, return false \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+A\+T\+C\+H\+\_\+\+O\+NE@{M\+A\+T\+C\+H\+\_\+\+O\+NE}!A\+DL@{A\+DL}}\index{A\+DL@{A\+DL}!M\+A\+T\+C\+H\+\_\+\+O\+NE@{M\+A\+T\+C\+H\+\_\+\+O\+NE}}}\mbox{\Hypertarget{namespace_a_d_l_af6334296dbae0383a652317263f0bc05ae732aeff37126a99228f0e497f1beb04}\label{namespace_a_d_l_af6334296dbae0383a652317263f0bc05ae732aeff37126a99228f0e497f1beb04}} 
+M\+A\+T\+C\+H\+\_\+\+O\+NE&If there is at least one flag in the mask \\
+\hline
+
+\end{DoxyEnumFields}

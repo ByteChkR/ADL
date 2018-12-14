@@ -1,0 +1,227 @@
+\hypertarget{class_a_d_l_1_1_log_stream}{}\section{A\+D\+L.\+Log\+Stream Class Reference}
+\label{class_a_d_l_1_1_log_stream}\index{A\+D\+L.\+Log\+Stream@{A\+D\+L.\+Log\+Stream}}
+
+
+Log Stream class, use this when you want to add a new stream to the debug system.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_d_l_1_1_log_stream_a1f2e350b81d2c832024547590d918782}{Log\+Stream}} (Stream stream)
+\begin{DoxyCompactList}\small\item\em Base Constructor. For file streams or similar \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_a_d_l_1_1_log_stream_a7fa87cb8c69e1c56bfdbd1d09093bb49}{Log\+Stream}} (Text\+Writer text\+Reader)
+\begin{DoxyCompactList}\small\item\em Constructor with just the Text Writer. leaving out assigning the actual stream. Used in the unity component(\+Unity\+Text\+Writer has no base stream). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_d_l_1_1_log_stream_afd62c8127a7d8573621ac0c565ed62ac}{Close\+Stream}} ()
+\begin{DoxyCompactList}\small\item\em Flushes the stream and frees its resources \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_d_l_1_1_log_stream_af66833a158ebb7d8e079810bb2b8f50e}{Set\+Matching\+Mode}} (\mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05}{Match\+Type}} match\+Type)
+\begin{DoxyCompactList}\small\item\em Sets the Matching Mode between Match\+All and Match\+One \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a7a1a25f0247d4ebfeb5a4d6e37fe4e3a}{Set\+Mask}} (int new\+Mask)
+\begin{DoxyCompactList}\small\item\em Sets the level mask of the log stream. Set to -\/1 to get every level \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a533f3bae752ab3ee1c3f1aaac23a7d05}{Set\+Time\+Stamp\+Usage}} (bool use\+Time\+Stamps)
+\begin{DoxyCompactList}\small\item\em Displays the time when the message was logged. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a1a48afe31b32086d51dbc51df68a4648}{Is\+Contained\+In\+Mask}} (int mask)
+\begin{DoxyCompactList}\small\item\em Wrapper to Leave out mask ID in the parameters \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a66b291a45dd593bf5b390eb82602b7ab}{Log}} (int mask, string message)
+\begin{DoxyCompactList}\small\item\em Logs a Message(Note\+: Prefixes already applied.) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a5369ad1bfec52a786117832f74454054}{Create\+Log\+Stream\+From\+File}} (string path, int mask=-\/1, \mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05}{Match\+Type}} match\+Type=\mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05a627c7991c5d0265194247e92fcf120b0}{Match\+Type.\+M\+A\+T\+C\+H\+\_\+\+A\+LL}}, bool set\+Timestamp=false, bool append\+If\+Exists=false)
+\begin{DoxyCompactList}\small\item\em Wrapper function that makes the creation and setting up a log stream a no brainer \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a2bdd5573b2877b6b1d93d336b8592489}{Create\+Log\+Stream\+From\+Stream}} (System.\+I\+O.\+Stream stream, int mask=-\/1, \mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05}{Match\+Type}} match\+Type=\mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05a627c7991c5d0265194247e92fcf120b0}{Match\+Type.\+M\+A\+T\+C\+H\+\_\+\+A\+LL}}, bool set\+Timestamp=false)
+\begin{DoxyCompactList}\small\item\em Wrapper function that makes the creation and setting up a log stream a no brainer \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a65680991404e699fcafd4bc729504fc3}\label{class_a_d_l_1_1_log_stream_a65680991404e699fcafd4bc729504fc3}} 
+Stream {\bfseries Text\+Stream}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Log Stream class, use this when you want to add a new stream to the debug system. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a1f2e350b81d2c832024547590d918782}\label{class_a_d_l_1_1_log_stream_a1f2e350b81d2c832024547590d918782}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Log\+Stream@{Log\+Stream}}
+\index{Log\+Stream@{Log\+Stream}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Log\+Stream()}{LogStream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily A\+D\+L.\+Log\+Stream.\+Log\+Stream (\begin{DoxyParamCaption}\item[{Stream}]{stream }\end{DoxyParamCaption})}
+
+
+
+Base Constructor. For file streams or similar 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a7fa87cb8c69e1c56bfdbd1d09093bb49}\label{class_a_d_l_1_1_log_stream_a7fa87cb8c69e1c56bfdbd1d09093bb49}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Log\+Stream@{Log\+Stream}}
+\index{Log\+Stream@{Log\+Stream}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Log\+Stream()}{LogStream()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily A\+D\+L.\+Log\+Stream.\+Log\+Stream (\begin{DoxyParamCaption}\item[{Text\+Writer}]{text\+Reader }\end{DoxyParamCaption})}
+
+
+
+Constructor with just the Text Writer. leaving out assigning the actual stream. Used in the unity component(\+Unity\+Text\+Writer has no base stream). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text\+Reader} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_afd62c8127a7d8573621ac0c565ed62ac}\label{class_a_d_l_1_1_log_stream_afd62c8127a7d8573621ac0c565ed62ac}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Close\+Stream@{Close\+Stream}}
+\index{Close\+Stream@{Close\+Stream}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Close\+Stream()}{CloseStream()}}
+{\footnotesize\ttfamily void A\+D\+L.\+Log\+Stream.\+Close\+Stream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Flushes the stream and frees its resources 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a5369ad1bfec52a786117832f74454054}\label{class_a_d_l_1_1_log_stream_a5369ad1bfec52a786117832f74454054}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Create\+Log\+Stream\+From\+File@{Create\+Log\+Stream\+From\+File}}
+\index{Create\+Log\+Stream\+From\+File@{Create\+Log\+Stream\+From\+File}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Create\+Log\+Stream\+From\+File()}{CreateLogStreamFromFile()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} A\+D\+L.\+Log\+Stream.\+Create\+Log\+Stream\+From\+File (\begin{DoxyParamCaption}\item[{string}]{path,  }\item[{int}]{mask = {\ttfamily -\/1},  }\item[{\mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05}{Match\+Type}}}]{match\+Type = {\ttfamily \mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05a627c7991c5d0265194247e92fcf120b0}{Match\+Type.\+M\+A\+T\+C\+H\+\_\+\+A\+LL}}},  }\item[{bool}]{set\+Timestamp = {\ttfamily false},  }\item[{bool}]{append\+If\+Exists = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Wrapper function that makes the creation and setting up a log stream a no brainer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & filepath\\
+\hline
+{\em mask} & debug level mask\\
+\hline
+{\em match\+Type} & should the log only fire if all the flags are in the mask\\
+\hline
+{\em minimum\+Write\+Amount} & amount of characters requires to issue another Stream.\+Write call\\
+\hline
+{\em set\+Timestamp} & Put fancy timestamp infront of each line\\
+\hline
+{\em append\+If\+Exists} & If the log you are trying to open is already existing append to it\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a2bdd5573b2877b6b1d93d336b8592489}\label{class_a_d_l_1_1_log_stream_a2bdd5573b2877b6b1d93d336b8592489}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Create\+Log\+Stream\+From\+Stream@{Create\+Log\+Stream\+From\+Stream}}
+\index{Create\+Log\+Stream\+From\+Stream@{Create\+Log\+Stream\+From\+Stream}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Create\+Log\+Stream\+From\+Stream()}{CreateLogStreamFromStream()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} A\+D\+L.\+Log\+Stream.\+Create\+Log\+Stream\+From\+Stream (\begin{DoxyParamCaption}\item[{System.\+I\+O.\+Stream}]{stream,  }\item[{int}]{mask = {\ttfamily -\/1},  }\item[{\mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05}{Match\+Type}}}]{match\+Type = {\ttfamily \mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05a627c7991c5d0265194247e92fcf120b0}{Match\+Type.\+M\+A\+T\+C\+H\+\_\+\+A\+LL}}},  }\item[{bool}]{set\+Timestamp = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Wrapper function that makes the creation and setting up a log stream a no brainer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & stream\\
+\hline
+{\em mask} & debug level mask\\
+\hline
+{\em match\+Type} & should the log only fire if all the flags are in the mask\\
+\hline
+{\em minimum\+Write\+Amount} & amount of characters requires to issue another Stream.\+Write call\\
+\hline
+{\em set\+Timestamp} & Put fancy timestamp infront of each line\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a1a48afe31b32086d51dbc51df68a4648}\label{class_a_d_l_1_1_log_stream_a1a48afe31b32086d51dbc51df68a4648}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Is\+Contained\+In\+Mask@{Is\+Contained\+In\+Mask}}
+\index{Is\+Contained\+In\+Mask@{Is\+Contained\+In\+Mask}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Is\+Contained\+In\+Mask()}{IsContainedInMask()}}
+{\footnotesize\ttfamily bool A\+D\+L.\+Log\+Stream.\+Is\+Contained\+In\+Mask (\begin{DoxyParamCaption}\item[{int}]{mask }\end{DoxyParamCaption})}
+
+
+
+Wrapper to Leave out mask ID in the parameters 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a66b291a45dd593bf5b390eb82602b7ab}\label{class_a_d_l_1_1_log_stream_a66b291a45dd593bf5b390eb82602b7ab}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Log@{Log}}
+\index{Log@{Log}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Log()}{Log()}}
+{\footnotesize\ttfamily void A\+D\+L.\+Log\+Stream.\+Log (\begin{DoxyParamCaption}\item[{int}]{mask,  }\item[{string}]{message }\end{DoxyParamCaption})}
+
+
+
+Logs a Message(Note\+: Prefixes already applied.) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a7a1a25f0247d4ebfeb5a4d6e37fe4e3a}\label{class_a_d_l_1_1_log_stream_a7a1a25f0247d4ebfeb5a4d6e37fe4e3a}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Set\+Mask@{Set\+Mask}}
+\index{Set\+Mask@{Set\+Mask}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Set\+Mask()}{SetMask()}}
+{\footnotesize\ttfamily void A\+D\+L.\+Log\+Stream.\+Set\+Mask (\begin{DoxyParamCaption}\item[{int}]{new\+Mask }\end{DoxyParamCaption})}
+
+
+
+Sets the level mask of the log stream. Set to -\/1 to get every level 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Mask} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_af66833a158ebb7d8e079810bb2b8f50e}\label{class_a_d_l_1_1_log_stream_af66833a158ebb7d8e079810bb2b8f50e}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Set\+Matching\+Mode@{Set\+Matching\+Mode}}
+\index{Set\+Matching\+Mode@{Set\+Matching\+Mode}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Set\+Matching\+Mode()}{SetMatchingMode()}}
+{\footnotesize\ttfamily void A\+D\+L.\+Log\+Stream.\+Set\+Matching\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05}{Match\+Type}}}]{match\+Type }\end{DoxyParamCaption})}
+
+
+
+Sets the Matching Mode between Match\+All and Match\+One 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Match\+All} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a533f3bae752ab3ee1c3f1aaac23a7d05}\label{class_a_d_l_1_1_log_stream_a533f3bae752ab3ee1c3f1aaac23a7d05}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Set\+Time\+Stamp\+Usage@{Set\+Time\+Stamp\+Usage}}
+\index{Set\+Time\+Stamp\+Usage@{Set\+Time\+Stamp\+Usage}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Set\+Time\+Stamp\+Usage()}{SetTimeStampUsage()}}
+{\footnotesize\ttfamily void A\+D\+L.\+Log\+Stream.\+Set\+Time\+Stamp\+Usage (\begin{DoxyParamCaption}\item[{bool}]{use\+Time\+Stamps }\end{DoxyParamCaption})}
+
+
+
+Displays the time when the message was logged. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em use\+Time\+Stamps} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Tim/\+Documents/\+A\+D\+L/\+A\+D\+L/\+A\+D\+L/Log\+Stream.\+cs\end{DoxyCompactItemize}

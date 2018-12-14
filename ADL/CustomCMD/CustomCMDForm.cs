@@ -15,6 +15,14 @@ namespace ADL.CustomCMD
         bool _hasColorCoding;
         Color baseFontColor;
 
+        /// <summary>
+        /// Creates a new CustomCMD.
+        /// </summary>
+        /// <param name="ps"></param>
+        /// <param name="Background"></param>
+        /// <param name="BaseFontColor"></param>
+        /// <param name="fontSize"></param>
+        /// <param name="colorCoding"></param>
         public CustomCMDForm(PipeStream ps, Color Background, Color BaseFontColor, float fontSize, Dictionary<string, Color> colorCoding = null)
         {
             InitializeComponent();
@@ -36,7 +44,27 @@ namespace ADL.CustomCMD
             timer1.Start();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        Color GetColorFromLine(string line)
+        {
+            Color ret =  baseFontColor;
+
+            if (_hasColorCoding)
+            {
+                string[] s = line.Split(']');
+                foreach (string tag in s)
+                {
+
+                    if (colorCoding.ContainsKey(tag + ']'))
+                    {
+                        ret = colorCoding[tag + ']'];
+                        break;
+                    }
+                }
+            }
+            return ret;
+        }
+
+        void RefreshTextBox()
         {
             string test = "";
             Color logColor;
@@ -52,21 +80,7 @@ namespace ADL.CustomCMD
                 {
                     test = logs[i];
 
-                    logColor = baseFontColor;
-
-                    if (_hasColorCoding)
-                    {
-                        string[] s = test.Split(']');
-                        foreach (string tag in s)
-                        {
-
-                            if (colorCoding.ContainsKey(tag + ']'))
-                            {
-                                logColor = colorCoding[tag + ']'];
-                                break;
-                            }
-                        }
-                    }
+                    logColor = GetColorFromLine(test);
 
                     if (test.Length + richTextBox1.Text.Length > richTextBox1.MaxLength && richTextBox1.Text.Length >= 4096)
                     {
@@ -83,6 +97,11 @@ namespace ADL.CustomCMD
                 Application.Exit();
             }
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            RefreshTextBox();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)

@@ -1,0 +1,208 @@
+\hypertarget{class_a_d_l_1_1_utils}{}\section{A\+D\+L.\+Utils Class Reference}
+\label{class_a_d_l_1_1_utils}\index{A\+D\+L.\+Utils@{A\+D\+L.\+Utils}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_a_d_l_1_1_utils_ac921cfeea8d73d9ac4298802e2594504}{Int\+Pow}} (int basis, int exp)
+\begin{DoxyCompactList}\small\item\em Computes basis by the power of exp \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_a_d_l_1_1_utils_a7f8a756ce7c6c8d4cfe7126ef534e151}{Num\+To\+Time\+Format}} (int time)
+\begin{DoxyCompactList}\small\item\em Makes 1-\/9 =$>$ 01-\/09 \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_a_d_l_1_1_utils_a79e826c30b25ade59b2bdd5f4b71dc1b}{Is\+Contained\+In\+Mask}} (int mask, int flag, bool Match\+All)
+\begin{DoxyCompactList}\small\item\em Returns true if the specified flag is also set in the mask \end{DoxyCompactList}\item 
+static List$<$ int $>$ \mbox{\hyperlink{class_a_d_l_1_1_utils_afdadf33d3a7626d82a239f750d12f076}{Get\+Unique\+Flags\+Set}} (int flag)
+\begin{DoxyCompactList}\small\item\em Splits up parameter flag into Unique Flags(power of 2 numbers) \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_a_d_l_1_1_utils_a126953fb363a954a2e9a761700604ecf}{Is\+Unique\+Flag}} (int flag)
+\begin{DoxyCompactList}\small\item\em Checks if the specified flag is unique(e.\+g. a power of 2 number) \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_a_d_l_1_1_utils_a75c77c4689775aca5a14e1e046e289fc}{Combine\+Masks}} (\mbox{\hyperlink{namespace_a_d_l_a887d1db091d273083278875e32842128}{Mask\+Combine\+Type}} combine\+Type=\mbox{\hyperlink{namespace_a_d_l_a887d1db091d273083278875e32842128a377da01fa3eaa9e9d6a69a2fa415fe7b}{Mask\+Combine\+Type.\+B\+I\+T\+\_\+\+OR}}, params int\mbox{[}$\,$\mbox{]} masks)
+\begin{DoxyCompactList}\small\item\em Combines the specified masks together \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_a_d_l_1_1_utils_ac01ab97bc36cb231f4f06cadce9b2aa5}{Remove\+Flags}} (int mask, int flags)
+\begin{DoxyCompactList}\small\item\em Removes the specified flags from the mask \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_a_d_l_1_1_utils_af62716f1f25f794bbd3212966610baed}{Combine\+Masks$<$ T $>$}} (params T\mbox{[}$\,$\mbox{]} masks)
+\begin{DoxyCompactList}\small\item\em Generic Version. T is your Enum. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_a_d_l_1_1_utils_a93a1013d16031cf968a4383b56f4b24f}{Time\+Stamp}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Current Time Stamp based on Date\+Time.\+Now \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_utils_a75c77c4689775aca5a14e1e046e289fc}\label{class_a_d_l_1_1_utils_a75c77c4689775aca5a14e1e046e289fc}} 
+\index{A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}!Combine\+Masks@{Combine\+Masks}}
+\index{Combine\+Masks@{Combine\+Masks}!A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}}
+\subsubsection{\texorpdfstring{Combine\+Masks()}{CombineMasks()}}
+{\footnotesize\ttfamily static int A\+D\+L.\+Utils.\+Combine\+Masks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_a_d_l_a887d1db091d273083278875e32842128}{Mask\+Combine\+Type}}}]{combine\+Type = {\ttfamily \mbox{\hyperlink{namespace_a_d_l_a887d1db091d273083278875e32842128a377da01fa3eaa9e9d6a69a2fa415fe7b}{Mask\+Combine\+Type.\+B\+I\+T\+\_\+\+OR}}},  }\item[{params int \mbox{[}$\,$\mbox{]}}]{masks }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Combines the specified masks together 
+
+
+\begin{DoxyParams}{Parameters}
+{\em masks} & the array of masks. S\+H\+O\+U\+LD BE P\+O\+W\+ER OF 2 N\+U\+M\+B\+E\+RS\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_d_l_1_1_utils_af62716f1f25f794bbd3212966610baed}\label{class_a_d_l_1_1_utils_af62716f1f25f794bbd3212966610baed}} 
+\index{A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}!Combine\+Masks$<$ T $>$@{Combine\+Masks$<$ T $>$}}
+\index{Combine\+Masks$<$ T $>$@{Combine\+Masks$<$ T $>$}!A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}}
+\subsubsection{\texorpdfstring{Combine\+Masks$<$ T $>$()}{CombineMasks< T >()}}
+{\footnotesize\ttfamily static int \mbox{\hyperlink{class_a_d_l_1_1_utils_a75c77c4689775aca5a14e1e046e289fc}{A\+D\+L.\+Utils.\+Combine\+Masks}}$<$ T $>$ (\begin{DoxyParamCaption}\item[{params T \mbox{[}$\,$\mbox{]}}]{masks }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Generic Version. T is your Enum. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Enum\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em masks} & Enum\+Values\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em struct}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_a_d_l_1_1_utils_afdadf33d3a7626d82a239f750d12f076}\label{class_a_d_l_1_1_utils_afdadf33d3a7626d82a239f750d12f076}} 
+\index{A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}!Get\+Unique\+Flags\+Set@{Get\+Unique\+Flags\+Set}}
+\index{Get\+Unique\+Flags\+Set@{Get\+Unique\+Flags\+Set}!A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}}
+\subsubsection{\texorpdfstring{Get\+Unique\+Flags\+Set()}{GetUniqueFlagsSet()}}
+{\footnotesize\ttfamily static List$<$int$>$ A\+D\+L.\+Utils.\+Get\+Unique\+Flags\+Set (\begin{DoxyParamCaption}\item[{int}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Splits up parameter flag into Unique Flags(power of 2 numbers) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & the flag you want to split\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_d_l_1_1_utils_ac921cfeea8d73d9ac4298802e2594504}\label{class_a_d_l_1_1_utils_ac921cfeea8d73d9ac4298802e2594504}} 
+\index{A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}!Int\+Pow@{Int\+Pow}}
+\index{Int\+Pow@{Int\+Pow}!A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}}
+\subsubsection{\texorpdfstring{Int\+Pow()}{IntPow()}}
+{\footnotesize\ttfamily static int A\+D\+L.\+Utils.\+Int\+Pow (\begin{DoxyParamCaption}\item[{int}]{basis,  }\item[{int}]{exp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Computes basis by the power of exp 
+
+
+\begin{DoxyParams}{Parameters}
+{\em basis} & \\
+\hline
+{\em exp} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_d_l_1_1_utils_a79e826c30b25ade59b2bdd5f4b71dc1b}\label{class_a_d_l_1_1_utils_a79e826c30b25ade59b2bdd5f4b71dc1b}} 
+\index{A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}!Is\+Contained\+In\+Mask@{Is\+Contained\+In\+Mask}}
+\index{Is\+Contained\+In\+Mask@{Is\+Contained\+In\+Mask}!A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}}
+\subsubsection{\texorpdfstring{Is\+Contained\+In\+Mask()}{IsContainedInMask()}}
+{\footnotesize\ttfamily static bool A\+D\+L.\+Utils.\+Is\+Contained\+In\+Mask (\begin{DoxyParamCaption}\item[{int}]{mask,  }\item[{int}]{flag,  }\item[{bool}]{Match\+All }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if the specified flag is also set in the mask 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & the mask\\
+\hline
+{\em flag} & the flag\\
+\hline
+{\em Match\+All} & if false, it will return true if A\+NY flag is set on both sides.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_d_l_1_1_utils_a126953fb363a954a2e9a761700604ecf}\label{class_a_d_l_1_1_utils_a126953fb363a954a2e9a761700604ecf}} 
+\index{A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}!Is\+Unique\+Flag@{Is\+Unique\+Flag}}
+\index{Is\+Unique\+Flag@{Is\+Unique\+Flag}!A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}}
+\subsubsection{\texorpdfstring{Is\+Unique\+Flag()}{IsUniqueFlag()}}
+{\footnotesize\ttfamily static bool A\+D\+L.\+Utils.\+Is\+Unique\+Flag (\begin{DoxyParamCaption}\item[{int}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks if the specified flag is unique(e.\+g. a power of 2 number) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_d_l_1_1_utils_a7f8a756ce7c6c8d4cfe7126ef534e151}\label{class_a_d_l_1_1_utils_a7f8a756ce7c6c8d4cfe7126ef534e151}} 
+\index{A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}!Num\+To\+Time\+Format@{Num\+To\+Time\+Format}}
+\index{Num\+To\+Time\+Format@{Num\+To\+Time\+Format}!A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}}
+\subsubsection{\texorpdfstring{Num\+To\+Time\+Format()}{NumToTimeFormat()}}
+{\footnotesize\ttfamily static string A\+D\+L.\+Utils.\+Num\+To\+Time\+Format (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Makes 1-\/9 =$>$ 01-\/09 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & S\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_d_l_1_1_utils_ac01ab97bc36cb231f4f06cadce9b2aa5}\label{class_a_d_l_1_1_utils_ac01ab97bc36cb231f4f06cadce9b2aa5}} 
+\index{A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}!Remove\+Flags@{Remove\+Flags}}
+\index{Remove\+Flags@{Remove\+Flags}!A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}}
+\subsubsection{\texorpdfstring{Remove\+Flags()}{RemoveFlags()}}
+{\footnotesize\ttfamily static int A\+D\+L.\+Utils.\+Remove\+Flags (\begin{DoxyParamCaption}\item[{int}]{mask,  }\item[{int}]{flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Removes the specified flags from the mask 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & \\
+\hline
+{\em flags} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_utils_a93a1013d16031cf968a4383b56f4b24f}\label{class_a_d_l_1_1_utils_a93a1013d16031cf968a4383b56f4b24f}} 
+\index{A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}!Time\+Stamp@{Time\+Stamp}}
+\index{Time\+Stamp@{Time\+Stamp}!A\+D\+L\+::\+Utils@{A\+D\+L\+::\+Utils}}
+\subsubsection{\texorpdfstring{Time\+Stamp}{TimeStamp}}
+{\footnotesize\ttfamily string A\+D\+L.\+Utils.\+Time\+Stamp\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+
+
+Current Time Stamp based on Date\+Time.\+Now 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Tim/\+Documents/\+A\+D\+L/\+A\+D\+L/\+A\+D\+L/Utils.\+cs\end{DoxyCompactItemize}

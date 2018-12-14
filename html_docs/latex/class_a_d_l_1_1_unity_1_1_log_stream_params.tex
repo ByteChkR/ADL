@@ -1,0 +1,72 @@
+\hypertarget{class_a_d_l_1_1_unity_1_1_log_stream_params}{}\section{A\+D\+L.\+Unity.\+Log\+Stream\+Params Class Reference}
+\label{class_a_d_l_1_1_unity_1_1_log_stream_params}\index{A\+D\+L.\+Unity.\+Log\+Stream\+Params@{A\+D\+L.\+Unity.\+Log\+Stream\+Params}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} \mbox{\hyperlink{class_a_d_l_1_1_unity_1_1_log_stream_params_a511976146d776a6e618baf1e47c99f34}{To\+Log\+Stream}} ()
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}}. If Create\+Custom\+Console = true then its not initialized with filname. Instead its initialized with a \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream}{Pipe\+Stream}} to support the Custrom Console Window. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} \mbox{\hyperlink{class_a_d_l_1_1_unity_1_1_log_stream_params_a8cd3548465c20596918ee37292bed704}{To\+Log\+Stream}} (System.\+I\+O.\+Stream stream)
+\begin{DoxyCompactList}\small\item\em Creates a Log Stream from specified stream. Discards some of the information in this object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_log_stream_params_a4ddd973dcdb2303a0a00487e5f97d2fd}\label{class_a_d_l_1_1_unity_1_1_log_stream_params_a4ddd973dcdb2303a0a00487e5f97d2fd}} 
+\mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} {\bfseries To\+Unity\+Console\+Log\+Stream} (\mbox{\hyperlink{class_a_d_l_1_1_unity_1_1_unity_text_writer}{Unity\+Text\+Writer}} utw)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_log_stream_params_a2ed1ac249e30afe029534a0e0cd83acd}\label{class_a_d_l_1_1_unity_1_1_log_stream_params_a2ed1ac249e30afe029534a0e0cd83acd}} 
+string {\bfseries File\+Path} = \char`\"{}log.\+log\char`\"{}
+\item 
+\mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_log_stream_params_a0294891b93285cae2f2f44c667685c24}\label{class_a_d_l_1_1_unity_1_1_log_stream_params_a0294891b93285cae2f2f44c667685c24}} 
+\mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05}{Match\+Type}} {\bfseries Match\+Type} = \mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05a627c7991c5d0265194247e92fcf120b0}{Match\+Type.\+M\+A\+T\+C\+H\+\_\+\+A\+LL}}
+\item 
+\mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_log_stream_params_ad27da98d363d1b2de2c2acef2aa2ba99}\label{class_a_d_l_1_1_unity_1_1_log_stream_params_ad27da98d363d1b2de2c2acef2aa2ba99}} 
+bool {\bfseries Set\+Time\+Stamp} = false
+\item 
+\mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_log_stream_params_ab10680435c136de2248cf8a7fbad1a21}\label{class_a_d_l_1_1_unity_1_1_log_stream_params_ab10680435c136de2248cf8a7fbad1a21}} 
+bool {\bfseries Append\+If\+Exists} = false
+\item 
+\mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_log_stream_params_a4ca708b4f6265d958253b4aa6c88ae9f}\label{class_a_d_l_1_1_unity_1_1_log_stream_params_a4ca708b4f6265d958253b4aa6c88ae9f}} 
+int {\bfseries Mask} = -\/1
+\item 
+\mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_log_stream_params_a0a044c493acf72de9c5ee1e35575bc13}\label{class_a_d_l_1_1_unity_1_1_log_stream_params_a0a044c493acf72de9c5ee1e35575bc13}} 
+bool {\bfseries Create\+Custom\+Console} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_log_stream_params_a511976146d776a6e618baf1e47c99f34}\label{class_a_d_l_1_1_unity_1_1_log_stream_params_a511976146d776a6e618baf1e47c99f34}} 
+\index{A\+D\+L\+::\+Unity\+::\+Log\+Stream\+Params@{A\+D\+L\+::\+Unity\+::\+Log\+Stream\+Params}!To\+Log\+Stream@{To\+Log\+Stream}}
+\index{To\+Log\+Stream@{To\+Log\+Stream}!A\+D\+L\+::\+Unity\+::\+Log\+Stream\+Params@{A\+D\+L\+::\+Unity\+::\+Log\+Stream\+Params}}
+\subsubsection{\texorpdfstring{To\+Log\+Stream()}{ToLogStream()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} A\+D\+L.\+Unity.\+Log\+Stream\+Params.\+To\+Log\+Stream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}}. If Create\+Custom\+Console = true then its not initialized with filname. Instead its initialized with a \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream}{Pipe\+Stream}} to support the Custrom Console Window. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_log_stream_params_a8cd3548465c20596918ee37292bed704}\label{class_a_d_l_1_1_unity_1_1_log_stream_params_a8cd3548465c20596918ee37292bed704}} 
+\index{A\+D\+L\+::\+Unity\+::\+Log\+Stream\+Params@{A\+D\+L\+::\+Unity\+::\+Log\+Stream\+Params}!To\+Log\+Stream@{To\+Log\+Stream}}
+\index{To\+Log\+Stream@{To\+Log\+Stream}!A\+D\+L\+::\+Unity\+::\+Log\+Stream\+Params@{A\+D\+L\+::\+Unity\+::\+Log\+Stream\+Params}}
+\subsubsection{\texorpdfstring{To\+Log\+Stream()}{ToLogStream()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} A\+D\+L.\+Unity.\+Log\+Stream\+Params.\+To\+Log\+Stream (\begin{DoxyParamCaption}\item[{System.\+I\+O.\+Stream}]{stream }\end{DoxyParamCaption})}
+
+
+
+Creates a Log Stream from specified stream. Discards some of the information in this object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Tim/\+Documents/\+A\+D\+L/\+A\+D\+L/\+A\+D\+L.\+Unity/Log\+Stream\+Params.\+cs\end{DoxyCompactItemize}

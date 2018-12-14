@@ -1,0 +1,237 @@
+\hypertarget{class_a_d_l_1_1_pipe_stream}{}\section{A\+D\+L.\+Pipe\+Stream Class Reference}
+\label{class_a_d_l_1_1_pipe_stream}\index{A\+D\+L.\+Pipe\+Stream@{A\+D\+L.\+Pipe\+Stream}}
+
+
+\mbox{\hyperlink{class_a_d_l_1_1_pipe_stream}{Pipe\+Stream}} is a thread-\/safe read/write data stream for use between two threads in a single-\/producer/single-\/consumer type problem.  
+
+
+Inheritance diagram for A\+D\+L.\+Pipe\+Stream\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_d_l_1_1_pipe_stream}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+new void \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a430dca29f0cd1ff4a27fc7bcafbe7a8f}{Dispose}} ()
+\item 
+override void \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_aef56d04b8d784d6606ed348971eb29f3}{Flush}} ()
+\item 
+override long \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ae34adb2842a65053e2e13dcb15fe65e5}{Seek}} (long offset, Seek\+Origin origin)
+\item 
+override void \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a66a10533676de87061ae89c0ab2c62c5}{Set\+Length}} (long value)
+\item 
+\mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_ada829c0b71d6896e2bb3cd5d37ccba34}\label{class_a_d_l_1_1_pipe_stream_ada829c0b71d6896e2bb3cd5d37ccba34}} 
+override int {\bfseries Read} (byte\mbox{[}$\,$\mbox{]} buffer, int offset, int count)
+\item 
+override void \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a5f8e6e0a0b7070fc2e5320d2007eadd1}{Write}} (byte\mbox{[}$\,$\mbox{]} buffer, int offset, int count)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const long \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a497552b08f4c042b6a9d2c6be350181e}{KB}} = 1024
+\begin{DoxyCompactList}\small\item\em Number of bytes in a kilobyte \end{DoxyCompactList}\item 
+const long \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ad4a04360b3d017567a0fd48defd434d0}{MB}} = \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a497552b08f4c042b6a9d2c6be350181e}{KB}} $\ast$ 1024
+\begin{DoxyCompactList}\small\item\em Number of bytes in a megabyte \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+long \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a250f42c7da667f60487068e27c3d67d0}{Max\+Buffer\+Length}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the maximum number of bytes to store in the buffer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_af05e530e849bfee481290e8139f27379}{Block\+Last\+Read\+Buffer}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets a value indicating whether to block last read method before the buffer is empty. When true, Read() will block until it can fill the passed in buffer and count. When false, Read() will not block, returning all the available buffer data. \end{DoxyCompactList}\item 
+override bool \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a194eae1c5b19a0999a5d12bcef00efd9}{Can\+Read}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+override bool \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ad891fa332a41aeb44026c5a89ddc36e8}{Can\+Seek}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+override bool \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a24b173b85db2cb2c76c8688086e6aebb}{Can\+Write}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+override long \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a4c9f83e98008f203c5535ad730ca0614}{Length}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_ae0cdcae01baf4b9cab2e947e1e38e284}\label{class_a_d_l_1_1_pipe_stream_ae0cdcae01baf4b9cab2e947e1e38e284}} 
+override long {\bfseries Position}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_a_d_l_1_1_pipe_stream}{Pipe\+Stream}} is a thread-\/safe read/write data stream for use between two threads in a single-\/producer/single-\/consumer type problem. 
+
+$<$version$>$2014/12/15 1.\+2$<$/version$>$ 
+
+2006/10/13 1.\+0 -\/ initial version.
+
+Update on 2008/10/9 1.\+1 -\/ uses Monitor instead of Manual Reset events for more elegant synchronicity.
+
+Update on 2014/12/15 1.\+2 -\/ bugfix for read method not using offset -\/ thanks Jörgen Sigvardsson, replace Not\+Implemented\+Exceptions with Not\+Supported\+Exception
+
+$<$license$>$ Copyright (c) 2006 James Kolpack (james dot kolpack at google mail)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \char`\"{}\+Software\char`\"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+T\+HE S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED \char`\"{}\+A\+S I\+S\char`\"{}, W\+I\+T\+H\+O\+UT W\+A\+R\+R\+A\+N\+TY OF A\+NY K\+I\+ND, E\+X\+P\+R\+E\+SS OR I\+M\+P\+L\+I\+ED, I\+N\+C\+L\+U\+D\+I\+NG B\+UT N\+OT L\+I\+M\+I\+T\+ED TO T\+HE W\+A\+R\+R\+A\+N\+T\+I\+ES OF M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY, F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE A\+ND N\+O\+N\+I\+N\+F\+R\+I\+N\+G\+E\+M\+E\+NT. IN NO E\+V\+E\+NT S\+H\+A\+LL T\+HE A\+U\+T\+H\+O\+RS OR C\+O\+P\+Y\+R\+I\+G\+HT H\+O\+L\+D\+E\+RS BE L\+I\+A\+B\+LE F\+OR A\+NY C\+L\+A\+IM, D\+A\+M\+A\+G\+ES OR O\+T\+H\+ER L\+I\+A\+B\+I\+L\+I\+TY, W\+H\+E\+T\+H\+ER IN AN A\+C\+T\+I\+ON OF C\+O\+N\+T\+R\+A\+CT, T\+O\+RT OR O\+T\+H\+E\+R\+W\+I\+SE, A\+R\+I\+S\+I\+NG F\+R\+OM, O\+UT OF OR IN C\+O\+N\+N\+E\+C\+T\+I\+ON W\+I\+TH T\+HE S\+O\+F\+T\+W\+A\+RE OR T\+HE U\+SE OR O\+T\+H\+ER D\+E\+A\+L\+I\+N\+GS IN T\+HE S\+O\+F\+T\+W\+A\+RE. $<$/license$>$ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a430dca29f0cd1ff4a27fc7bcafbe7a8f}\label{class_a_d_l_1_1_pipe_stream_a430dca29f0cd1ff4a27fc7bcafbe7a8f}} 
+\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
+\subsubsection{\texorpdfstring{Dispose()}{Dispose()}}
+{\footnotesize\ttfamily new void A\+D\+L.\+Pipe\+Stream.\+Dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+summary$>$ When overridden in a derived class, clears all buffers for this stream and causes any buffered data to be written to the underlying device. /summary$>$
+
+exception cref=\char`\"{}\+T\+:\+System.\+I\+O.\+I\+O\+Exception\char`\"{}$>$An I/O error occurs. 
+
+$<$filterpriority$>$2$<$/filterpriority$>$ \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_aef56d04b8d784d6606ed348971eb29f3}\label{class_a_d_l_1_1_pipe_stream_aef56d04b8d784d6606ed348971eb29f3}} 
+\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Flush@{Flush}}
+\index{Flush@{Flush}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
+\subsubsection{\texorpdfstring{Flush()}{Flush()}}
+{\footnotesize\ttfamily override void A\+D\+L.\+Pipe\+Stream.\+Flush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+summary$>$ When overridden in a derived class, sets the position within the current stream. /summary$>$ returns$>$ The new position within the current stream. /returns$>$ param name=\char`\"{}offset\char`\"{}$>$A byte offset relative to the origin parameter. 
+
+param name=\char`\"{}origin\char`\"{}$>$A value of type \mbox{\hyperlink{}{T\+:\+System.\+I\+O.\+Seek\+Origin}} indicating the reference point used to obtain the new position. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+I\+O.\+I\+O\+Exception\char`\"{}$>$An I/O error occurs. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+Not\+Supported\+Exception\char`\"{}$>$The stream does not support seeking, such as if the stream is constructed from a pipe or console output. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+Object\+Disposed\+Exception\char`\"{}$>$Methods were called after the stream was closed. 
+
+$<$filterpriority$>$1$<$/filterpriority$>$ \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_ae34adb2842a65053e2e13dcb15fe65e5}\label{class_a_d_l_1_1_pipe_stream_ae34adb2842a65053e2e13dcb15fe65e5}} 
+\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Seek@{Seek}}
+\index{Seek@{Seek}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
+\subsubsection{\texorpdfstring{Seek()}{Seek()}}
+{\footnotesize\ttfamily override long A\+D\+L.\+Pipe\+Stream.\+Seek (\begin{DoxyParamCaption}\item[{long}]{offset,  }\item[{Seek\+Origin}]{origin }\end{DoxyParamCaption})}
+
+summary$>$ When overridden in a derived class, sets the length of the current stream. /summary$>$ param name=\char`\"{}value\char`\"{}$>$The desired length of the current stream in bytes. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+Not\+Supported\+Exception\char`\"{}$>$The stream does not support both writing and seeking, such as if the stream is constructed from a pipe or console output. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+I\+O.\+I\+O\+Exception\char`\"{}$>$An I/O error occurs. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+Object\+Disposed\+Exception\char`\"{}$>$Methods were called after the stream was closed. 
+
+$<$filterpriority$>$2$<$/filterpriority$>$ \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a66a10533676de87061ae89c0ab2c62c5}\label{class_a_d_l_1_1_pipe_stream_a66a10533676de87061ae89c0ab2c62c5}} 
+\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Set\+Length@{Set\+Length}}
+\index{Set\+Length@{Set\+Length}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
+\subsubsection{\texorpdfstring{Set\+Length()}{SetLength()}}
+{\footnotesize\ttfamily override void A\+D\+L.\+Pipe\+Stream.\+Set\+Length (\begin{DoxyParamCaption}\item[{long}]{value }\end{DoxyParamCaption})}
+
+summary$>$ When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read. /summary$>$ returns$>$ The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached. /returns$>$ param name=\char`\"{}offset\char`\"{}$>$The zero-\/based byte offset in buffer at which to begin storing the data read from the current stream. 
+
+param name=\char`\"{}count\char`\"{}$>$The maximum number of bytes to be read from the current stream. 
+
+param name=\char`\"{}buffer\char`\"{}$>$An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count -\/ 1) replaced by the bytes read from the current source. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+Argument\+Exception\char`\"{}$>$The sum of offset and count is larger than the buffer length. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+Object\+Disposed\+Exception\char`\"{}$>$Methods were called after the stream was closed. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+Not\+Supported\+Exception\char`\"{}$>$The stream does not support reading. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+Argument\+Null\+Exception\char`\"{}$>$buffer is null. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+I\+O.\+I\+O\+Exception\char`\"{}$>$An I/O error occurs. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+Argument\+Out\+Of\+Range\+Exception\char`\"{}$>$offset or count is negative. 
+
+$<$filterpriority$>$1$<$/filterpriority$>$ \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a5f8e6e0a0b7070fc2e5320d2007eadd1}\label{class_a_d_l_1_1_pipe_stream_a5f8e6e0a0b7070fc2e5320d2007eadd1}} 
+\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Write@{Write}}
+\index{Write@{Write}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
+\subsubsection{\texorpdfstring{Write()}{Write()}}
+{\footnotesize\ttfamily override void A\+D\+L.\+Pipe\+Stream.\+Write (\begin{DoxyParamCaption}\item[{byte \mbox{[}$\,$\mbox{]}}]{buffer,  }\item[{int}]{offset,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+summary$>$ When overridden in a derived class, gets a value indicating whether the current stream supports reading. /summary$>$ returns$>$ true if the stream supports reading; otherwise, false. /returns$>$ filterpriority$>$1$<$/filterpriority$>$ 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a497552b08f4c042b6a9d2c6be350181e}\label{class_a_d_l_1_1_pipe_stream_a497552b08f4c042b6a9d2c6be350181e}} 
+\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!KB@{KB}}
+\index{KB@{KB}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
+\subsubsection{\texorpdfstring{KB}{KB}}
+{\footnotesize\ttfamily const long A\+D\+L.\+Pipe\+Stream.\+KB = 1024}
+
+
+
+Number of bytes in a kilobyte 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_ad4a04360b3d017567a0fd48defd434d0}\label{class_a_d_l_1_1_pipe_stream_ad4a04360b3d017567a0fd48defd434d0}} 
+\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!MB@{MB}}
+\index{MB@{MB}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
+\subsubsection{\texorpdfstring{MB}{MB}}
+{\footnotesize\ttfamily const long A\+D\+L.\+Pipe\+Stream.\+MB = \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a497552b08f4c042b6a9d2c6be350181e}{KB}} $\ast$ 1024}
+
+
+
+Number of bytes in a megabyte 
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_af05e530e849bfee481290e8139f27379}\label{class_a_d_l_1_1_pipe_stream_af05e530e849bfee481290e8139f27379}} 
+\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Block\+Last\+Read\+Buffer@{Block\+Last\+Read\+Buffer}}
+\index{Block\+Last\+Read\+Buffer@{Block\+Last\+Read\+Buffer}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
+\subsubsection{\texorpdfstring{Block\+Last\+Read\+Buffer}{BlockLastReadBuffer}}
+{\footnotesize\ttfamily bool A\+D\+L.\+Pipe\+Stream.\+Block\+Last\+Read\+Buffer\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets a value indicating whether to block last read method before the buffer is empty. When true, Read() will block until it can fill the passed in buffer and count. When false, Read() will not block, returning all the available buffer data. 
+
+Setting to true will remove the possibility of ending a stream reader prematurely. 
+
+{\ttfamily true} if block last read method before the buffer is empty; otherwise, {\ttfamily false}. 
+
+summary$>$ Performs application-\/defined tasks associated with freeing, releasing, or resetting unmanaged resources. /summary$>$ filterpriority$>$2$<$/filterpriority$>$ \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a194eae1c5b19a0999a5d12bcef00efd9}\label{class_a_d_l_1_1_pipe_stream_a194eae1c5b19a0999a5d12bcef00efd9}} 
+\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Can\+Read@{Can\+Read}}
+\index{Can\+Read@{Can\+Read}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
+\subsubsection{\texorpdfstring{Can\+Read}{CanRead}}
+{\footnotesize\ttfamily override bool A\+D\+L.\+Pipe\+Stream.\+Can\+Read\hspace{0.3cm}{\ttfamily [get]}}
+
+summary$>$ When overridden in a derived class, gets a value indicating whether the current stream supports seeking. /summary$>$ returns$>$ true if the stream supports seeking; otherwise, false. /returns$>$ filterpriority$>$1$<$/filterpriority$>$ \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_ad891fa332a41aeb44026c5a89ddc36e8}\label{class_a_d_l_1_1_pipe_stream_ad891fa332a41aeb44026c5a89ddc36e8}} 
+\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Can\+Seek@{Can\+Seek}}
+\index{Can\+Seek@{Can\+Seek}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
+\subsubsection{\texorpdfstring{Can\+Seek}{CanSeek}}
+{\footnotesize\ttfamily override bool A\+D\+L.\+Pipe\+Stream.\+Can\+Seek\hspace{0.3cm}{\ttfamily [get]}}
+
+summary$>$ When overridden in a derived class, gets a value indicating whether the current stream supports writing. /summary$>$ returns$>$ true if the stream supports writing; otherwise, false. /returns$>$ filterpriority$>$1$<$/filterpriority$>$ \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a24b173b85db2cb2c76c8688086e6aebb}\label{class_a_d_l_1_1_pipe_stream_a24b173b85db2cb2c76c8688086e6aebb}} 
+\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Can\+Write@{Can\+Write}}
+\index{Can\+Write@{Can\+Write}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
+\subsubsection{\texorpdfstring{Can\+Write}{CanWrite}}
+{\footnotesize\ttfamily override bool A\+D\+L.\+Pipe\+Stream.\+Can\+Write\hspace{0.3cm}{\ttfamily [get]}}
+
+summary$>$ When overridden in a derived class, gets the length in bytes of the stream. /summary$>$ returns$>$ A long value representing the length of the stream in bytes. /returns$>$
+
+exception cref=\char`\"{}\+T\+:\+System.\+Not\+Supported\+Exception\char`\"{}$>$A class derived from Stream does not support seeking. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+Object\+Disposed\+Exception\char`\"{}$>$Methods were called after the stream was closed. 
+
+$<$filterpriority$>$1$<$/filterpriority$>$ \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a4c9f83e98008f203c5535ad730ca0614}\label{class_a_d_l_1_1_pipe_stream_a4c9f83e98008f203c5535ad730ca0614}} 
+\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Length@{Length}}
+\index{Length@{Length}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
+\subsubsection{\texorpdfstring{Length}{Length}}
+{\footnotesize\ttfamily override long A\+D\+L.\+Pipe\+Stream.\+Length\hspace{0.3cm}{\ttfamily [get]}}
+
+summary$>$ When overridden in a derived class, gets or sets the position within the current stream. /summary$>$ returns$>$ The current position within the stream. /returns$>$ exception cref=\char`\"{}\+T\+:\+System.\+I\+O.\+I\+O\+Exception\char`\"{}$>$An I/O error occurs. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+Not\+Supported\+Exception\char`\"{}$>$The stream does not support seeking. 
+
+exception cref=\char`\"{}\+T\+:\+System.\+Object\+Disposed\+Exception\char`\"{}$>$Methods were called after the stream was closed. 
+
+$<$filterpriority$>$1$<$/filterpriority$>$ \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a250f42c7da667f60487068e27c3d67d0}\label{class_a_d_l_1_1_pipe_stream_a250f42c7da667f60487068e27c3d67d0}} 
+\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Max\+Buffer\+Length@{Max\+Buffer\+Length}}
+\index{Max\+Buffer\+Length@{Max\+Buffer\+Length}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
+\subsubsection{\texorpdfstring{Max\+Buffer\+Length}{MaxBufferLength}}
+{\footnotesize\ttfamily long A\+D\+L.\+Pipe\+Stream.\+Max\+Buffer\+Length\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the maximum number of bytes to store in the buffer. 
+
+The length of the max buffer.
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Tim/\+Documents/\+A\+D\+L/\+A\+D\+L/\+A\+D\+L/Pipe\+Stream.\+cs\end{DoxyCompactItemize}

@@ -15,6 +15,7 @@ namespace ADL
         private bool _streamClosed = false;
 
         private Stream _str = null;
+
         public Stream TextStream { get { return _str; } }
 
         /// <summary>
@@ -28,6 +29,11 @@ namespace ADL
 
         }
 
+        /// <summary>
+        /// Constructor with just the Text Writer. leaving out assigning the actual stream.
+        /// Used in the unity component(UnityTextWriter has no base stream).
+        /// </summary>
+        /// <param name="textReader"></param>
         public LogStream(TextWriter textReader)
         {
             _stream = textReader;

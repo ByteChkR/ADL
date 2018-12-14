@@ -1,0 +1,199 @@
+\hypertarget{class_a_d_l_1_1_debug}{}\section{A\+D\+L.\+Debug Class Reference}
+\label{class_a_d_l_1_1_debug}\index{A\+D\+L.\+Debug@{A\+D\+L.\+Debug}}
+
+
+Main \mbox{\hyperlink{class_a_d_l_1_1_debug}{Debug}} Class. No instanciation needed.  
+
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_a_d_l_1_1_debug_a86b5d2f65724ee112ee9c911f9ce46ae}{Add\+Output\+Stream}} (\mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} stream)
+\begin{DoxyCompactList}\small\item\em Adds another stream to the debug logs. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_a_d_l_1_1_debug_a72625a03910e11ca410548f07ecf8e32}{Remove\+Output\+Stream}} (\mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} stream, bool Close\+Stream=true)
+\begin{DoxyCompactList}\small\item\em Removes the specified Stream. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_a_d_l_1_1_debug_adae2e77eb29191dc812b8875bd1ebd57}{Remove\+All\+Output\+Streams}} (bool Close\+Stream=true)
+\begin{DoxyCompactList}\small\item\em Removes all output streams from the list. Everything gets written to file. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_a_d_l_1_1_debug_abec71a3a9db52f919e4ba93b6b9842e2}{Add\+Prefix\+For\+Mask}} (int mask, string prefix)
+\begin{DoxyCompactList}\small\item\em Adds a prefix for the specified level \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_a_d_l_1_1_debug_a779aa6ed8a563666beeea29b73058a99}{Remove\+Prefix\+For\+Mask}} (int mask)
+\begin{DoxyCompactList}\small\item\em Removes Prefix from prefix lookup table \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_a_d_l_1_1_debug_a55a298962d5f05d55c5b3b045e7f6fe7}{Remove\+All\+Prefixes}} ()
+\begin{DoxyCompactList}\small\item\em Clears all Prefixes \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_a_d_l_1_1_debug_aeee052b6bc6759222ce6ed32dd9763a1}{Set\+All\+Prefixes}} (params string\mbox{[}$\,$\mbox{]} prefixes)
+\begin{DoxyCompactList}\small\item\em Sets all Prefixes from the list from low to high. You can not specify the level, because it will fill the prefixes by power of 2. So prefixes\mbox{[}0\mbox{]} = level1 and prefixes\mbox{[}2\mbox{]} = level4 and so on \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_a_d_l_1_1_debug_a169452dbed965a360a23e112ed9956c3}{Log}} (int mask, string message)
+\begin{DoxyCompactList}\small\item\em Fire Log Messsage with desired level(flag) and message \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_a_d_l_1_1_debug_a4162ccb62b2facbc5ab9f981abe6fa3e}{Log$<$ T $>$}} (T level, string message)
+\begin{DoxyCompactList}\small\item\em Generic Version. T is your Enum \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_a_d_l_1_1_debug_aaa46716e2c6ca9520b6b132efdb0abd2}{Listening\+Streams}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The number of Streams that \mbox{\hyperlink{namespace_a_d_l}{A\+DL}} writes to \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Main \mbox{\hyperlink{class_a_d_l_1_1_debug}{Debug}} Class. No instanciation needed. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_a86b5d2f65724ee112ee9c911f9ce46ae}\label{class_a_d_l_1_1_debug_a86b5d2f65724ee112ee9c911f9ce46ae}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Add\+Output\+Stream@{Add\+Output\+Stream}}
+\index{Add\+Output\+Stream@{Add\+Output\+Stream}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{Add\+Output\+Stream()}{AddOutputStream()}}
+{\footnotesize\ttfamily static void A\+D\+L.\+Debug.\+Add\+Output\+Stream (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}}}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Adds another stream to the debug logs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & The stream you want to add\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_abec71a3a9db52f919e4ba93b6b9842e2}\label{class_a_d_l_1_1_debug_abec71a3a9db52f919e4ba93b6b9842e2}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Add\+Prefix\+For\+Mask@{Add\+Prefix\+For\+Mask}}
+\index{Add\+Prefix\+For\+Mask@{Add\+Prefix\+For\+Mask}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{Add\+Prefix\+For\+Mask()}{AddPrefixForMask()}}
+{\footnotesize\ttfamily static void A\+D\+L.\+Debug.\+Add\+Prefix\+For\+Mask (\begin{DoxyParamCaption}\item[{int}]{mask,  }\item[{string}]{prefix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Adds a prefix for the specified level 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & flag combination\\
+\hline
+{\em prefix} & desired prefix\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_a169452dbed965a360a23e112ed9956c3}\label{class_a_d_l_1_1_debug_a169452dbed965a360a23e112ed9956c3}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Log@{Log}}
+\index{Log@{Log}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{Log()}{Log()}}
+{\footnotesize\ttfamily static void A\+D\+L.\+Debug.\+Log (\begin{DoxyParamCaption}\item[{int}]{mask,  }\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Fire Log Messsage with desired level(flag) and message 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & the flag\\
+\hline
+{\em message} & the message\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_a4162ccb62b2facbc5ab9f981abe6fa3e}\label{class_a_d_l_1_1_debug_a4162ccb62b2facbc5ab9f981abe6fa3e}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Log$<$ T $>$@{Log$<$ T $>$}}
+\index{Log$<$ T $>$@{Log$<$ T $>$}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{Log$<$ T $>$()}{Log< T >()}}
+{\footnotesize\ttfamily static void \mbox{\hyperlink{class_a_d_l_1_1_debug_a169452dbed965a360a23e112ed9956c3}{A\+D\+L.\+Debug.\+Log}}$<$ T $>$ (\begin{DoxyParamCaption}\item[{T}]{level,  }\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Generic Version. T is your Enum 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Enum\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em level} & Enum Mask\\
+\hline
+{\em message} & Message\\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em struct}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_adae2e77eb29191dc812b8875bd1ebd57}\label{class_a_d_l_1_1_debug_adae2e77eb29191dc812b8875bd1ebd57}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Remove\+All\+Output\+Streams@{Remove\+All\+Output\+Streams}}
+\index{Remove\+All\+Output\+Streams@{Remove\+All\+Output\+Streams}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{Remove\+All\+Output\+Streams()}{RemoveAllOutputStreams()}}
+{\footnotesize\ttfamily static void A\+D\+L.\+Debug.\+Remove\+All\+Output\+Streams (\begin{DoxyParamCaption}\item[{bool}]{Close\+Stream = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Removes all output streams from the list. Everything gets written to file. 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_a55a298962d5f05d55c5b3b045e7f6fe7}\label{class_a_d_l_1_1_debug_a55a298962d5f05d55c5b3b045e7f6fe7}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Remove\+All\+Prefixes@{Remove\+All\+Prefixes}}
+\index{Remove\+All\+Prefixes@{Remove\+All\+Prefixes}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{Remove\+All\+Prefixes()}{RemoveAllPrefixes()}}
+{\footnotesize\ttfamily static void A\+D\+L.\+Debug.\+Remove\+All\+Prefixes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Clears all Prefixes 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_a72625a03910e11ca410548f07ecf8e32}\label{class_a_d_l_1_1_debug_a72625a03910e11ca410548f07ecf8e32}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Remove\+Output\+Stream@{Remove\+Output\+Stream}}
+\index{Remove\+Output\+Stream@{Remove\+Output\+Stream}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{Remove\+Output\+Stream()}{RemoveOutputStream()}}
+{\footnotesize\ttfamily static void A\+D\+L.\+Debug.\+Remove\+Output\+Stream (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}}}]{stream,  }\item[{bool}]{Close\+Stream = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Removes the specified Stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & The stream you want to remove\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_a779aa6ed8a563666beeea29b73058a99}\label{class_a_d_l_1_1_debug_a779aa6ed8a563666beeea29b73058a99}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Remove\+Prefix\+For\+Mask@{Remove\+Prefix\+For\+Mask}}
+\index{Remove\+Prefix\+For\+Mask@{Remove\+Prefix\+For\+Mask}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{Remove\+Prefix\+For\+Mask()}{RemovePrefixForMask()}}
+{\footnotesize\ttfamily static void A\+D\+L.\+Debug.\+Remove\+Prefix\+For\+Mask (\begin{DoxyParamCaption}\item[{int}]{mask }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Removes Prefix from prefix lookup table 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_aeee052b6bc6759222ce6ed32dd9763a1}\label{class_a_d_l_1_1_debug_aeee052b6bc6759222ce6ed32dd9763a1}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Set\+All\+Prefixes@{Set\+All\+Prefixes}}
+\index{Set\+All\+Prefixes@{Set\+All\+Prefixes}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{Set\+All\+Prefixes()}{SetAllPrefixes()}}
+{\footnotesize\ttfamily static void A\+D\+L.\+Debug.\+Set\+All\+Prefixes (\begin{DoxyParamCaption}\item[{params string \mbox{[}$\,$\mbox{]}}]{prefixes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets all Prefixes from the list from low to high. You can not specify the level, because it will fill the prefixes by power of 2. So prefixes\mbox{[}0\mbox{]} = level1 and prefixes\mbox{[}2\mbox{]} = level4 and so on 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prefixes} & List of prefixes\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_aaa46716e2c6ca9520b6b132efdb0abd2}\label{class_a_d_l_1_1_debug_aaa46716e2c6ca9520b6b132efdb0abd2}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Listening\+Streams@{Listening\+Streams}}
+\index{Listening\+Streams@{Listening\+Streams}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{Listening\+Streams}{ListeningStreams}}
+{\footnotesize\ttfamily int A\+D\+L.\+Debug.\+Listening\+Streams\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+
+
+The number of Streams that \mbox{\hyperlink{namespace_a_d_l}{A\+DL}} writes to 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Tim/\+Documents/\+A\+D\+L/\+A\+D\+L/\+A\+D\+L/Debug.\+cs\end{DoxyCompactItemize}
