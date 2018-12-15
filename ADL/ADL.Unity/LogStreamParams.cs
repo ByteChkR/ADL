@@ -42,13 +42,6 @@ namespace ADL.Unity
             return LogStream.CreateLogStreamFromStream(stream, Mask, MatchType, SetTimeStamp);
         }
 
-        public LogStream ToUnityConsoleLogStream(UnityTextWriter utw)
-        {
-            LogStream ls = new LogStream(utw);
-            ls.SetMask(Mask);
-            ls.SetMatchingMode(MatchType);
-            ls.SetTimeStampUsage(SetTimeStamp);
-            return ls;
-        }
+        
     }
 }

@@ -9,12 +9,10 @@ namespace ADL
     /// <summary>
     /// PipeStream is a thread-safe read/write data stream for use between two threads in a 
     /// single-producer/single-consumer type problem.
-    /// </summary>
-    /// <version>2014/12/15 1.2</version>
-    /// <remarks>2006/10/13 1.0 - initial version.</remarks>
-    /// <remarks>Update on 2008/10/9 1.1 - uses Monitor instead of Manual Reset events for more elegant synchronicity.</remarks>
-    /// <remarks>Update on 2014/12/15 1.2 - bugfix for read method not using offset - thanks Jörgen Sigvardsson, replace NotImplementedExceptions with NotSupportedException</remarks>
-    /// <license>
+    /// Version: 2014/12/15 1.2
+    /// Initial Version 2006/10/13 1.0 - initial version.
+    /// Update on 2008/10/9 1.1 - uses Monitor instead of Manual Reset events for more elegant synchronicity.
+    /// Update on 2014/12/15 1.2 - bugfix for read method not using offset - thanks Jörgen Sigvardsson, replace NotImplementedExceptions with NotSupportedException
     ///	Copyright (c) 2006 James Kolpack (james dot kolpack at google mail)
     ///	
     ///	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
@@ -32,7 +30,8 @@ namespace ADL
     ///	LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT 
     ///	OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
     ///	OTHER DEALINGS IN THE SOFTWARE.
-    /// </license>
+    /// </summary>
+
     public class PipeStream : Stream
     {
         #region Private members
@@ -40,8 +39,8 @@ namespace ADL
         /// <summary>
         /// Queue of bytes provides the datastructure for transmitting from an
         /// input stream to an output stream.
+        /// Possible more effecient ways to accomplish this.
         /// </summary>
-        /// <remarks>Possible more effecient ways to accomplish this.</remarks>
         private readonly Queue<byte> mBuffer = new Queue<byte>();
 
         /// <summary>
@@ -82,7 +81,6 @@ namespace ADL
         /// <summary>
         /// Gets or sets the maximum number of bytes to store in the buffer.
         /// </summary>
-        /// <value>The length of the max buffer.</value>
         public long MaxBufferLength
         {
             get { return mMaxBufferLength; }
@@ -93,13 +91,8 @@ namespace ADL
         /// Gets or sets a value indicating whether to block last read method before the buffer is empty.
         /// When true, Read() will block until it can fill the passed in buffer and count.
         /// When false, Read() will not block, returning all the available buffer data.
-        /// </summary>
-        /// <remarks>
         /// Setting to true will remove the possibility of ending a stream reader prematurely.
-        /// </remarks>
-        /// <value>
-        /// 	<c>true</c> if block last read method before the buffer is empty; otherwise, <c>false</c>.
-        /// </value>
+        /// </summary>
         public bool BlockLastReadBuffer
         {
             get { return mBlockLastRead; }
@@ -121,7 +114,6 @@ namespace ADL
         ///<summary>
         ///Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         ///</summary>
-        ///<filterpriority>2</filterpriority>
         public new void Dispose()
         {
             // clear the internal buffer
@@ -131,8 +123,6 @@ namespace ADL
         ///<summary>
         ///When overridden in a derived class, clears all buffers for this stream and causes any buffered data to be written to the underlying device.
         ///</summary>
-        ///
-        ///<exception cref="T:System.IO.IOException">An I/O error occurs. </exception><filterpriority>2</filterpriority>
         public override void Flush()
         {
             mFlushed = true;
@@ -148,9 +138,6 @@ namespace ADL
         ///</returns>
         ///<param name="offset">A byte offset relative to the origin parameter. </param>
         ///<param name="origin">A value of type <see cref="T:System.IO.SeekOrigin"></see> indicating the reference point used to obtain the new position. </param>
-        ///<exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-        ///<exception cref="T:System.NotSupportedException">The stream does not support seeking, such as if the stream is constructed from a pipe or console output. </exception>
-        ///<exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception><filterpriority>1</filterpriority>
         public override long Seek(long offset, SeekOrigin origin)
         {
             throw new NotSupportedException();
@@ -160,10 +147,7 @@ namespace ADL
         ///When overridden in a derived class, sets the length of the current stream.
         ///</summary>
         ///<param name="value">The desired length of the current stream in bytes. </param>
-        ///<exception cref="T:System.NotSupportedException">The stream does not support both writing and seeking, such as if the stream is constructed from a pipe or console output. </exception>
-        ///<exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-        ///<exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception><filterpriority>2</filterpriority>
-        public override void SetLength(long value)
+         public override void SetLength(long value)
         {
             throw new NotSupportedException();
         }
@@ -178,12 +162,6 @@ namespace ADL
         ///<param name="offset">The zero-based byte offset in buffer at which to begin storing the data read from the current stream. </param>
         ///<param name="count">The maximum number of bytes to be read from the current stream. </param>
         ///<param name="buffer">An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count - 1) replaced by the bytes read from the current source. </param>
-        ///<exception cref="T:System.ArgumentException">The sum of offset and count is larger than the buffer length. </exception>
-        ///<exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
-        ///<exception cref="T:System.NotSupportedException">The stream does not support reading. </exception>
-        ///<exception cref="T:System.ArgumentNullException">buffer is null. </exception>
-        ///<exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-        ///<exception cref="T:System.ArgumentOutOfRangeException">offset or count is negative. </exception><filterpriority>1</filterpriority>
         public override int Read(byte[] buffer, int offset, int count)
         {
             if (offset != 0)
@@ -235,12 +213,6 @@ namespace ADL
         ///<param name="offset">The zero-based byte offset in buffer at which to begin copying bytes to the current stream. </param>
         ///<param name="count">The number of bytes to be written to the current stream. </param>
         ///<param name="buffer">An array of bytes. This method copies count bytes from buffer to the current stream. </param>
-        ///<exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-        ///<exception cref="T:System.NotSupportedException">The stream does not support writing. </exception>
-        ///<exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
-        ///<exception cref="T:System.ArgumentNullException">buffer is null. </exception>
-        ///<exception cref="T:System.ArgumentException">The sum of offset and count is greater than the buffer length. </exception>
-        ///<exception cref="T:System.ArgumentOutOfRangeException">offset or count is negative. </exception><filterpriority>1</filterpriority>
         public override void Write(byte[] buffer, int offset, int count)
         {
             if (buffer == null)
@@ -276,7 +248,6 @@ namespace ADL
         ///<returns>
         ///true if the stream supports reading; otherwise, false.
         ///</returns>
-        ///<filterpriority>1</filterpriority>
         public override bool CanRead
         {
             get { return true; }
@@ -288,7 +259,6 @@ namespace ADL
         ///<returns>
         ///true if the stream supports seeking; otherwise, false.
         ///</returns>
-        ///<filterpriority>1</filterpriority>
         public override bool CanSeek
         {
             get { return false; }
@@ -300,7 +270,6 @@ namespace ADL
         ///<returns>
         ///true if the stream supports writing; otherwise, false.
         ///</returns>
-        ///<filterpriority>1</filterpriority>
         public override bool CanWrite
         {
             get { return true; }
@@ -312,9 +281,6 @@ namespace ADL
         ///<returns>
         ///A long value representing the length of the stream in bytes.
         ///</returns>
-        ///
-        ///<exception cref="T:System.NotSupportedException">A class derived from Stream does not support seeking. </exception>
-        ///<exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception><filterpriority>1</filterpriority>
         public override long Length
         {
             get { return mBuffer.Count; }
@@ -326,9 +292,6 @@ namespace ADL
         ///<returns>
         ///The current position within the stream.
         ///</returns>
-        ///<exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-        ///<exception cref="T:System.NotSupportedException">The stream does not support seeking. </exception>
-        ///<exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception><filterpriority>1</filterpriority>
         public override long Position
         {
             get { return 0; }

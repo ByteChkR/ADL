@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Advanced Debugging: Member List</title>
+<title>Advanced Debug Logging: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Advanced Debugging
+   <div id="projectname">Advanced Debug Logging
    </div>
   </td>
  </tr>
@@ -72,16 +72,21 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a86b5d2f65724ee112ee9c911f9ce46ae">AddOutputStream</a>(LogStream stream)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#abec71a3a9db52f919e4ba93b6b9842e2">AddPrefixForMask</a>(int mask, string prefix)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#aaa46716e2c6ca9520b6b132efdb0abd2">ListeningStreams</a></td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#ae158a8228eacba82054cb7b340153fe9">_prefixes</a></td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a5d5f16baa54da2aef4115a02a7253d40">_steams</a></td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a8f063e98d96cd91379b5f63969124877">_stringBuilder</a></td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a86b5d2f65724ee112ee9c911f9ce46ae">AddOutputStream</a>(LogStream stream)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#abec71a3a9db52f919e4ba93b6b9842e2">AddPrefixForMask</a>(int mask, string prefix)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#ab0b0f7207f13fd82d9c37a3b6a564e1c">GetMaskPrefix</a>(int mask)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a2fe51aa97328f57e590d03a93d774b80">GetPrefixMask</a>(string prefix, out int mask)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a169452dbed965a360a23e112ed9956c3">Log</a>(int mask, string message)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a4162ccb62b2facbc5ab9f981abe6fa3e">Log&lt; T &gt;</a>(T level, string message)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#adae2e77eb29191dc812b8875bd1ebd57">RemoveAllOutputStreams</a>(bool CloseStream=true)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a55a298962d5f05d55c5b3b045e7f6fe7">RemoveAllPrefixes</a>()</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a72625a03910e11ca410548f07ecf8e32">RemoveOutputStream</a>(LogStream stream, bool CloseStream=true)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a779aa6ed8a563666beeea29b73058a99">RemovePrefixForMask</a>(int mask)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#aeee052b6bc6759222ce6ed32dd9763a1">SetAllPrefixes</a>(params string[] prefixes)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a5a63093ff8ac05237224edcce57396c4">LogStreamCount</a></td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#adae2e77eb29191dc812b8875bd1ebd57">RemoveAllOutputStreams</a>(bool CloseStream=true)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a55a298962d5f05d55c5b3b045e7f6fe7">RemoveAllPrefixes</a>()</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a72625a03910e11ca410548f07ecf8e32">RemoveOutputStream</a>(LogStream stream, bool CloseStream=true)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#a779aa6ed8a563666beeea29b73058a99">RemovePrefixForMask</a>(int mask)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html#aeee052b6bc6759222ce6ed32dd9763a1">SetAllPrefixes</a>(params string[] prefixes)</td><td class="entry"><a class="el" href="class_a_d_l_1_1_debug.html">ADL.Debug</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

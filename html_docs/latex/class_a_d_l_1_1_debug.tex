@@ -25,12 +25,25 @@ static void \mbox{\hyperlink{class_a_d_l_1_1_debug_aeee052b6bc6759222ce6ed32dd97
 static void \mbox{\hyperlink{class_a_d_l_1_1_debug_a169452dbed965a360a23e112ed9956c3}{Log}} (int mask, string message)
 \begin{DoxyCompactList}\small\item\em Fire Log Messsage with desired level(flag) and message \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{class_a_d_l_1_1_debug_a4162ccb62b2facbc5ab9f981abe6fa3e}{Log$<$ T $>$}} (T level, string message)
-\begin{DoxyCompactList}\small\item\em Generic Version. T is your Enum \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generic Version. T is your Enum \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_a_d_l_1_1_debug_a2fe51aa97328f57e590d03a93d774b80}{Get\+Prefix\+Mask}} (string prefix, out int mask)
+\begin{DoxyCompactList}\small\item\em Gets the Mask of the Specified Prefix \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_a_d_l_1_1_debug_ab0b0f7207f13fd82d9c37a3b6a564e1c}{Get\+Mask\+Prefix}} (int mask)
+\begin{DoxyCompactList}\small\item\em Returns the concatenated string of all the Prefixes that are fallin in that mask. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-static int \mbox{\hyperlink{class_a_d_l_1_1_debug_aaa46716e2c6ca9520b6b132efdb0abd2}{Listening\+Streams}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+static int \mbox{\hyperlink{class_a_d_l_1_1_debug_a5a63093ff8ac05237224edcce57396c4}{Log\+Stream\+Count}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \begin{DoxyCompactList}\small\item\em The number of Streams that \mbox{\hyperlink{namespace_a_d_l}{A\+DL}} writes to \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static System.\+Text.\+String\+Builder \mbox{\hyperlink{class_a_d_l_1_1_debug_a8f063e98d96cd91379b5f63969124877}{\+\_\+string\+Builder}} = new System.\+Text.\+String\+Builder()
+\begin{DoxyCompactList}\small\item\em String Builder to assemble the log \end{DoxyCompactList}\item 
+static List$<$ \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} $>$ \mbox{\hyperlink{class_a_d_l_1_1_debug_a5d5f16baa54da2aef4115a02a7253d40}{\+\_\+steams}} = new List$<$\mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}}$>$()
+\begin{DoxyCompactList}\small\item\em List of Log\+Streams that are active \end{DoxyCompactList}\item 
+static Dictionary$<$ int, string $>$ \mbox{\hyperlink{class_a_d_l_1_1_debug_ae158a8228eacba82054cb7b340153fe9}{\+\_\+prefixes}} = new Dictionary$<$int, string$>$()
+\begin{DoxyCompactList}\small\item\em Dictionary of Prefixes for the corresponding Masks \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -71,6 +84,44 @@ Adds a prefix for the specified level
 {\em prefix} & desired prefix\\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_ab0b0f7207f13fd82d9c37a3b6a564e1c}\label{class_a_d_l_1_1_debug_ab0b0f7207f13fd82d9c37a3b6a564e1c}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Get\+Mask\+Prefix@{Get\+Mask\+Prefix}}
+\index{Get\+Mask\+Prefix@{Get\+Mask\+Prefix}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{Get\+Mask\+Prefix()}{GetMaskPrefix()}}
+{\footnotesize\ttfamily static string A\+D\+L.\+Debug.\+Get\+Mask\+Prefix (\begin{DoxyParamCaption}\item[{int}]{mask }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns the concatenated string of all the Prefixes that are fallin in that mask. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mask} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+All Prefixes for specified mask
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_a2fe51aa97328f57e590d03a93d774b80}\label{class_a_d_l_1_1_debug_a2fe51aa97328f57e590d03a93d774b80}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Get\+Prefix\+Mask@{Get\+Prefix\+Mask}}
+\index{Get\+Prefix\+Mask@{Get\+Prefix\+Mask}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{Get\+Prefix\+Mask()}{GetPrefixMask()}}
+{\footnotesize\ttfamily static bool A\+D\+L.\+Debug.\+Get\+Prefix\+Mask (\begin{DoxyParamCaption}\item[{string}]{prefix,  }\item[{out int}]{mask }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the Mask of the Specified Prefix 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prefix} & Prefix\\
+\hline
+{\em mask} & Mask returned by the function\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if mask is found in Dictionary
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_a_d_l_1_1_debug_a169452dbed965a360a23e112ed9956c3}\label{class_a_d_l_1_1_debug_a169452dbed965a360a23e112ed9956c3}} 
 \index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Log@{Log}}
 \index{Log@{Log}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
@@ -181,12 +232,45 @@ Sets all Prefixes from the list from low to high. You can not specify the level,
 \end{DoxyParams}
 
 
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_ae158a8228eacba82054cb7b340153fe9}\label{class_a_d_l_1_1_debug_ae158a8228eacba82054cb7b340153fe9}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!\+\_\+prefixes@{\+\_\+prefixes}}
+\index{\+\_\+prefixes@{\+\_\+prefixes}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{\+\_\+prefixes}{\_prefixes}}
+{\footnotesize\ttfamily Dictionary$<$int, string$>$ A\+D\+L.\+Debug.\+\_\+prefixes = new Dictionary$<$int, string$>$()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Dictionary of Prefixes for the corresponding Masks 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_a5d5f16baa54da2aef4115a02a7253d40}\label{class_a_d_l_1_1_debug_a5d5f16baa54da2aef4115a02a7253d40}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!\+\_\+steams@{\+\_\+steams}}
+\index{\+\_\+steams@{\+\_\+steams}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{\+\_\+steams}{\_steams}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}}$>$ A\+D\+L.\+Debug.\+\_\+steams = new List$<$\mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}}$>$()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+List of Log\+Streams that are active 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_a8f063e98d96cd91379b5f63969124877}\label{class_a_d_l_1_1_debug_a8f063e98d96cd91379b5f63969124877}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!\+\_\+string\+Builder@{\+\_\+string\+Builder}}
+\index{\+\_\+string\+Builder@{\+\_\+string\+Builder}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{\+\_\+string\+Builder}{\_stringBuilder}}
+{\footnotesize\ttfamily System.\+Text.\+String\+Builder A\+D\+L.\+Debug.\+\_\+string\+Builder = new System.\+Text.\+String\+Builder()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+String Builder to assemble the log 
+
+
+
 \subsection{Property Documentation}
-\mbox{\Hypertarget{class_a_d_l_1_1_debug_aaa46716e2c6ca9520b6b132efdb0abd2}\label{class_a_d_l_1_1_debug_aaa46716e2c6ca9520b6b132efdb0abd2}} 
-\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Listening\+Streams@{Listening\+Streams}}
-\index{Listening\+Streams@{Listening\+Streams}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
-\subsubsection{\texorpdfstring{Listening\+Streams}{ListeningStreams}}
-{\footnotesize\ttfamily int A\+D\+L.\+Debug.\+Listening\+Streams\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+\mbox{\Hypertarget{class_a_d_l_1_1_debug_a5a63093ff8ac05237224edcce57396c4}\label{class_a_d_l_1_1_debug_a5a63093ff8ac05237224edcce57396c4}} 
+\index{A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}!Log\+Stream\+Count@{Log\+Stream\+Count}}
+\index{Log\+Stream\+Count@{Log\+Stream\+Count}!A\+D\+L\+::\+Debug@{A\+D\+L\+::\+Debug}}
+\subsubsection{\texorpdfstring{Log\+Stream\+Count}{LogStreamCount}}
+{\footnotesize\ttfamily int A\+D\+L.\+Debug.\+Log\+Stream\+Count\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
 
 
 

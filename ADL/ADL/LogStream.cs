@@ -1,5 +1,5 @@
 ﻿using System.IO;
-
+using System;
 namespace ADL
 {
     /// <summary>
@@ -7,21 +7,93 @@ namespace ADL
     /// </summary>
     public sealed class LogStream
     {
-
+        /// <summary>
+        /// The Text Writer ADL uses to write logs
+        /// </summary>
         private TextWriter _stream;
+        /// <summary>
+        /// The Mask
+        /// </summary>
         private int _mask = -1;
+        /// <summary>
+        /// The Mask that determines wether this stream will receive a log message
+        /// </summary>
+        public int Mask {
+            get
+            {
+                return _mask;
+            }
+            set
+            {
+                _mask = value;
+            }
+        }
+
+        /// <summary>
+        /// The Flag that adl uses
+        /// </summary>
         private bool _matchAllFlags = true;
+        /// <summary>
+        /// The Matchtype that is determining what Checking algorithms to use
+        /// </summary>
+        public MatchType MatchType
+        {
+            get
+            {
+                return _matchAllFlags ? MatchType.MATCH_ALL : MatchType.MATCH_ONE;
+            }
+            set
+            {
+                _matchAllFlags = value == MatchType.MATCH_ALL;
+            }
+        }
+        /// <summary>
+        /// Flag for timestamps that adl uses
+        /// </summary>
         private bool _setTimeStamp = false;
+        /// <summary>
+        /// Set this to true to Prepend a Timestamp in front of each logging message.
+        /// </summary>
+        public bool PrependTimeStamp
+        {
+            get
+            {
+                return _setTimeStamp;
+            }
+            set
+            {
+                _setTimeStamp = value;
+            }
+        }
+        /// <summary>
+        /// Flag that is preventing ADL to crash when the stream is closed.
+        /// </summary>
         private bool _streamClosed = false;
+        /// <summary>
+        /// If this is true the Underlying Stream is closed and the Whole Object was destroyed.
+        /// </summary>
+        public bool IsStreamClosed
+        {
+            get
+            {
+                return _streamClosed;
+            }
+        }
 
-        private Stream _str = null;
+        /// <summary>
+        /// Underlying stream
+        /// </summary>
+        private readonly Stream _str = null;
 
+        /// <summary>
+        /// The Unterlying stream.
+        /// </summary>
         public Stream TextStream { get { return _str; } }
 
         /// <summary>
         /// Base Constructor. For file streams or similar
         /// </summary>
-        /// <param name="stream"></param>
+        /// <param name="stream">Stream you want to create the Log on</param>
         public LogStream(Stream stream)
         {
             _str = stream;
@@ -33,7 +105,7 @@ namespace ADL
         /// Constructor with just the Text Writer. leaving out assigning the actual stream.
         /// Used in the unity component(UnityTextWriter has no base stream).
         /// </summary>
-        /// <param name="textReader"></param>
+        /// <param name="textReader">Text reader you want to create the Log on</param>
         public LogStream(TextWriter textReader)
         {
             _stream = textReader;
@@ -53,6 +125,7 @@ namespace ADL
 
         #region Options
 
+        [Obsolete("Old Function. Please use the properties", false)]
         /// <summary>
         /// Sets the Matching Mode between MatchAll and MatchOne
         /// </summary>
@@ -62,6 +135,7 @@ namespace ADL
             _matchAllFlags = matchType == MatchType.MATCH_ALL;
         }
 
+        [Obsolete("Old Function. Please use the properties", false)]
         /// <summary>
         /// Sets the level mask of the log stream. Set to -1 to get every level
         /// </summary>
@@ -71,7 +145,7 @@ namespace ADL
             _mask = newMask;
         }
 
-
+        [Obsolete("Old Function. Please use the properties", false)]
         /// <summary>
         /// Displays the time when the message was logged.
         /// </summary>
@@ -86,17 +160,18 @@ namespace ADL
         /// <summary>
         /// Wrapper to Leave out mask ID in the parameters
         /// </summary>
-        /// <param name="mask"></param>
-        /// <returns></returns>
-        public bool IsContainedInMask(int mask)
+        /// <param name="flag"></param>
+        /// <returns>If the flag is contained in the Mask</returns>
+        public bool IsContainedInMask(int flag)
         {
-            return Utils.IsContainedInMask(_mask, mask, _matchAllFlags);
+            return BitMask.IsContainedInMask(_mask, flag, _matchAllFlags);
         }
 
         /// <summary>
-        /// Logs a Message(Note: Prefixes already applied.)
+        /// Logs a Message on this LogStream(bypassing tags and masks)
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="mask">Mask to send trough the Stream(for the unity Text Reader)</param>
+        /// <param name="message">Message you want to send.</param>
         public void Log(int mask, string message)
         {
             if (_streamClosed) return;
@@ -127,14 +202,16 @@ namespace ADL
         /// <param name="minimumWriteAmount">amount of characters requires to issue another Stream.Write call</param>
         /// <param name="setTimestamp">Put fancy timestamp infront of each line</param>
         /// <param name="appendIfExists">If the log you are trying to open is already existing append to it</param>
-        /// <returns></returns>
+        /// <returns>The Created LogStream</returns>
         public static LogStream CreateLogStreamFromFile(string path, int mask = -1, MatchType matchType = MatchType.MATCH_ALL, bool setTimestamp = false, bool appendIfExists = false)
         {
             Stream s = new FileStream(path, appendIfExists? FileMode.Append: FileMode.Create);
-            LogStream ret = new LogStream(s);
-            ret.SetMask(mask);
-            ret.SetMatchingMode(matchType);
-            ret.SetTimeStampUsage(setTimestamp);
+            LogStream ret = new LogStream(s)
+            {
+                Mask = mask,
+                MatchType = matchType,
+                PrependTimeStamp = setTimestamp
+            };
             return ret;
         }
 
@@ -146,13 +223,15 @@ namespace ADL
         /// <param name="matchType">should the log only fire if all the flags are in the mask</param>
         /// <param name="minimumWriteAmount">amount of characters requires to issue another Stream.Write call</param>
         /// <param name="setTimestamp">Put fancy timestamp infront of each line</param>
-        /// <returns></returns>
+        /// <returns>The Created LogStream</returns>
         public static LogStream CreateLogStreamFromStream(System.IO.Stream stream, int mask = -1, MatchType matchType = MatchType.MATCH_ALL, bool setTimestamp = false)
         {
-            LogStream ret = new LogStream(stream);
-            ret.SetMask(mask);
-            ret.SetMatchingMode(matchType);
-            ret.SetTimeStampUsage(setTimestamp);
+            LogStream ret = new LogStream(stream)
+            {
+                Mask = mask,
+                MatchType = matchType,
+                PrependTimeStamp = setTimestamp
+            };
             return ret;
         }
 

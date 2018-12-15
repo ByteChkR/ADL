@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Advanced Debugging: ADL.Debug Class Reference</title>
+<title>Advanced Debug Logging: ADL.Debug Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Advanced Debugging
+   <div id="projectname">Advanced Debug Logging
    </div>
   </td>
  </tr>
@@ -68,6 +68,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_a_d_l_1_1_debug-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ADL.Debug Class Reference</div>  </div>
@@ -106,12 +107,30 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a4162ccb62b2facbc5ab9f981abe6fa3e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#a4162ccb62b2facbc5ab9f981abe6fa3e">Log&lt; T &gt;</a> (T level, string message)</td></tr>
 <tr class="memdesc:a4162ccb62b2facbc5ab9f981abe6fa3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic Version. T is your Enum  <a href="#a4162ccb62b2facbc5ab9f981abe6fa3e">More...</a><br /></td></tr>
 <tr class="separator:a4162ccb62b2facbc5ab9f981abe6fa3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fe51aa97328f57e590d03a93d774b80"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#a2fe51aa97328f57e590d03a93d774b80">GetPrefixMask</a> (string prefix, out int mask)</td></tr>
+<tr class="memdesc:a2fe51aa97328f57e590d03a93d774b80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the Mask of the Specified Prefix  <a href="#a2fe51aa97328f57e590d03a93d774b80">More...</a><br /></td></tr>
+<tr class="separator:a2fe51aa97328f57e590d03a93d774b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0b0f7207f13fd82d9c37a3b6a564e1c"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#ab0b0f7207f13fd82d9c37a3b6a564e1c">GetMaskPrefix</a> (int mask)</td></tr>
+<tr class="memdesc:ab0b0f7207f13fd82d9c37a3b6a564e1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the concatenated string of all the Prefixes that are fallin in that mask.  <a href="#ab0b0f7207f13fd82d9c37a3b6a564e1c">More...</a><br /></td></tr>
+<tr class="separator:ab0b0f7207f13fd82d9c37a3b6a564e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:aaa46716e2c6ca9520b6b132efdb0abd2"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#aaa46716e2c6ca9520b6b132efdb0abd2">ListeningStreams</a><code> [get]</code></td></tr>
-<tr class="memdesc:aaa46716e2c6ca9520b6b132efdb0abd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of Streams that <a class="el" href="namespace_a_d_l.html">ADL</a> writes to  <a href="#aaa46716e2c6ca9520b6b132efdb0abd2">More...</a><br /></td></tr>
-<tr class="separator:aaa46716e2c6ca9520b6b132efdb0abd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a63093ff8ac05237224edcce57396c4"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#a5a63093ff8ac05237224edcce57396c4">LogStreamCount</a><code> [get]</code></td></tr>
+<tr class="memdesc:a5a63093ff8ac05237224edcce57396c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of Streams that <a class="el" href="namespace_a_d_l.html">ADL</a> writes to  <a href="#a5a63093ff8ac05237224edcce57396c4">More...</a><br /></td></tr>
+<tr class="separator:a5a63093ff8ac05237224edcce57396c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a8f063e98d96cd91379b5f63969124877"><td class="memItemLeft" align="right" valign="top">static System.Text.StringBuilder&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#a8f063e98d96cd91379b5f63969124877">_stringBuilder</a> = new System.Text.StringBuilder()</td></tr>
+<tr class="memdesc:a8f063e98d96cd91379b5f63969124877"><td class="mdescLeft">&#160;</td><td class="mdescRight">String Builder to assemble the log  <a href="#a8f063e98d96cd91379b5f63969124877">More...</a><br /></td></tr>
+<tr class="separator:a8f063e98d96cd91379b5f63969124877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5f16baa54da2aef4115a02a7253d40"><td class="memItemLeft" align="right" valign="top">static List&lt; <a class="el" href="class_a_d_l_1_1_log_stream.html">LogStream</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#a5d5f16baa54da2aef4115a02a7253d40">_steams</a> = new List&lt;<a class="el" href="class_a_d_l_1_1_log_stream.html">LogStream</a>&gt;()</td></tr>
+<tr class="memdesc:a5d5f16baa54da2aef4115a02a7253d40"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of LogStreams that are active  <a href="#a5d5f16baa54da2aef4115a02a7253d40">More...</a><br /></td></tr>
+<tr class="separator:a5d5f16baa54da2aef4115a02a7253d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae158a8228eacba82054cb7b340153fe9"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; int, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#ae158a8228eacba82054cb7b340153fe9">_prefixes</a> = new Dictionary&lt;int, string&gt;()</td></tr>
+<tr class="memdesc:ae158a8228eacba82054cb7b340153fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dictionary of Prefixes for the corresponding Masks  <a href="#ae158a8228eacba82054cb7b340153fe9">More...</a><br /></td></tr>
+<tr class="separator:ae158a8228eacba82054cb7b340153fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main <a class="el" href="class_a_d_l_1_1_debug.html" title="Main Debug Class. No instanciation needed. ">Debug</a> Class. No instanciation needed. </p>
@@ -192,6 +211,87 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ab0b0f7207f13fd82d9c37a3b6a564e1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0b0f7207f13fd82d9c37a3b6a564e1c">&#9670;&nbsp;</a></span>GetMaskPrefix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string ADL.Debug.GetMaskPrefix </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mask</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the concatenated string of all the Prefixes that are fallin in that mask. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mask</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>All Prefixes for specified mask</dd></dl>
+
+</div>
+</div>
+<a id="a2fe51aa97328f57e590d03a93d774b80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fe51aa97328f57e590d03a93d774b80">&#9670;&nbsp;</a></span>GetPrefixMask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool ADL.Debug.GetPrefixMask </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>prefix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out int&#160;</td>
+          <td class="paramname"><em>mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the Mask of the Specified Prefix </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prefix</td><td>Prefix</td></tr>
+    <tr><td class="paramname">mask</td><td>Mask returned by the function</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if mask is found in Dictionary</dd></dl>
 
 </div>
 </div>
@@ -466,9 +566,9 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Property Documentation</h2>
-<a id="aaa46716e2c6ca9520b6b132efdb0abd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa46716e2c6ca9520b6b132efdb0abd2">&#9670;&nbsp;</a></span>ListeningStreams</h2>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae158a8228eacba82054cb7b340153fe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae158a8228eacba82054cb7b340153fe9">&#9670;&nbsp;</a></span>_prefixes</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -477,7 +577,80 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int ADL.Debug.ListeningStreams</td>
+          <td class="memname">Dictionary&lt;int, string&gt; ADL.Debug._prefixes = new Dictionary&lt;int, string&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dictionary of Prefixes for the corresponding Masks </p>
+
+</div>
+</div>
+<a id="a5d5f16baa54da2aef4115a02a7253d40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d5f16baa54da2aef4115a02a7253d40">&#9670;&nbsp;</a></span>_steams</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_a_d_l_1_1_log_stream.html">LogStream</a>&gt; ADL.Debug._steams = new List&lt;<a class="el" href="class_a_d_l_1_1_log_stream.html">LogStream</a>&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>List of LogStreams that are active </p>
+
+</div>
+</div>
+<a id="a8f063e98d96cd91379b5f63969124877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f063e98d96cd91379b5f63969124877">&#9670;&nbsp;</a></span>_stringBuilder</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">System.Text.StringBuilder ADL.Debug._stringBuilder = new System.Text.StringBuilder()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>String Builder to assemble the log </p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a5a63093ff8ac05237224edcce57396c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a63093ff8ac05237224edcce57396c4">&#9670;&nbsp;</a></span>LogStreamCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL.Debug.LogStreamCount</td>
         </tr>
       </table>
   </td>

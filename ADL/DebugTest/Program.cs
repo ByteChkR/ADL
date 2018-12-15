@@ -69,9 +69,9 @@ namespace DebugTest
 
         static void SetUpLogFile(int WriteSize, int TestAmount)
         {
-            int Mask = ADL.Utils.CombineMasks(); //WIldcard will receive all messages
+            int Mask = ADL.BitMask.CombineMasks(); //WIldcard will receive all messages
             ADL.LogStream logStream = ADL.LogStream.CreateLogStreamFromFile(
-                "log" + ADL.Debug.ListeningStreams + ".log", // The file
+                "log" + ADL.Debug.LogStreamCount + ".log", // The file
                 Mask, //The Mask
                 ADL.MatchType.MATCH_ALL,
                 true,//Timestamp?
@@ -95,7 +95,7 @@ namespace DebugTest
             sw.Stop();
 
 
-            ADL.Debug.Log(-1, "Time for " + TestAmount + " Logs @ "+ADL.Debug.ListeningStreams+" File Stream(" + WriteSize + ") + Random " + "Ticks(Millis): " + sw.ElapsedTicks + "(" + sw.ElapsedMilliseconds + ")");
+            ADL.Debug.Log(-1, "Time for " + TestAmount + " Logs @ "+ADL.Debug.LogStreamCount+" File Stream(" + WriteSize + ") + Random " + "Ticks(Millis): " + sw.ElapsedTicks + "(" + sw.ElapsedMilliseconds + ")");
 
 
             //ADL.Debug.RemoveOutputStream(logStream);
@@ -104,7 +104,7 @@ namespace DebugTest
         static void SetUpCustomConsole(int WriteSize, int TestAmount)
         {
             ADL.PipeStream ps = new ADL.PipeStream();
-            int Mask = ADL.Utils.CombineMasks(); //WIldcard will receive all messages
+            int Mask = ADL.BitMask.CombineMasks(); //WIldcard will receive all messages
             ADL.LogStream logStream = ADL.LogStream.CreateLogStreamFromStream(
                 ps, // The file
                 Mask, //The Mask
@@ -135,7 +135,7 @@ namespace DebugTest
             sw.Stop();
 
 
-            ADL.Debug.Log(-1, "Time for " + TestAmount + " Logs @ " + ADL.Debug.ListeningStreams + " File Stream(" + WriteSize + ") + Random " + "Ticks(Millis): " + sw.ElapsedTicks + "(" + sw.ElapsedMilliseconds + ")");
+            ADL.Debug.Log(-1, "Time for " + TestAmount + " Logs @ " + ADL.Debug.LogStreamCount + " File Stream(" + WriteSize + ") + Random " + "Ticks(Millis): " + sw.ElapsedTicks + "(" + sw.ElapsedMilliseconds + ")");
 
             
             //ADL.Debug.RemoveOutputStream(logStream);
@@ -143,7 +143,7 @@ namespace DebugTest
 
         static void SetUpConsole(int WriteSize, int TestAmount)
         {
-            int Mask = ADL.Utils.CombineMasks(); //WIldcard will receive all messages
+            int Mask = ADL.BitMask.CombineMasks(); //WIldcard will receive all messages
             ADL.LogStream logStream = ADL.LogStream.CreateLogStreamFromStream(
                 Console.OpenStandardOutput(), // The stream
                 Mask, //The Mask
@@ -167,7 +167,7 @@ namespace DebugTest
             sw.Stop();
 
 
-            ADL.Debug.Log(-1, "Time for " + TestAmount + " Logs @ " + ADL.Debug.ListeningStreams + " Console Stream(" + WriteSize + ") + Random " + "Ticks(Millis): " + sw.ElapsedTicks + "(" + sw.ElapsedMilliseconds + ")");
+            ADL.Debug.Log(-1, "Time for " + TestAmount + " Logs @ " + ADL.Debug.LogStreamCount + " Console Stream(" + WriteSize + ") + Random " + "Ticks(Millis): " + sw.ElapsedTicks + "(" + sw.ElapsedMilliseconds + ")");
 
             //ADL.Debug.RemoveOutputStream(logStream);
 

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['kb',['KB',['../class_a_d_l_1_1_pipe_stream.html#a497552b08f4c042b6a9d2c6be350181e',1,'ADL::PipeStream']]]
+  ['basefontcolor',['baseFontColor',['../class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a6c9c3fb863ccacd91e8d86cffb248595',1,'ADL::CustomCMD::CustomCMDForm']]],
+  ['buffer',['buffer',['../class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a82d384fccb5754b9151b8b71343df72c',1,'ADL::Unity::UnityTextWriter']]]
 ];

@@ -1,5 +1,10 @@
 \hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils}{}\section{A\+D\+L.\+Custom\+C\+M\+D.\+C\+M\+D\+Utils Class Reference}
 \label{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils}\index{A\+D\+L.\+Custom\+C\+M\+D.\+C\+M\+D\+Utils@{A\+D\+L.\+Custom\+C\+M\+D.\+C\+M\+D\+Utils}}
+
+
+\mbox{\hyperlink{class_a_d_l_1_1_utils}{Utils}} to Create and Use Custom\+C\+M\+Ds  
+
+
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -11,13 +16,45 @@ static void \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_ad1ced
 \begin{DoxyCompactList}\small\item\em Creates a Custom Console but without returning it. This function can be called without having to reference System.\+Windows.\+Forms. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_a7700a2c5505d3160e33b70fdde89639b}{Create\+Custom\+Console\+No\+Return}} (System.\+I\+O.\+Stream ps, float Font\+Size=8.\+25f, Dictionary$<$ string, System.\+Drawing.\+Color $>$ color\+Coding=null)
 \begin{DoxyCompactList}\small\item\em Creates a Custom Console but without returning it. This function can be called without having to reference System.\+Windows.\+Forms. This Function is a Wrapper. See Other Overloads for more options. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_acbeeed9b5a8118efb0c6cac62b360bc8}{Create\+Custom\+Console}} (Form ps)
+\begin{DoxyCompactList}\small\item\em Creates the console on a different thread. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_a9c23ebff134d2a647fb4e4a5b9bc826b}{Init\+Win\+Forms}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the System.\+Windows.\+Forms System. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_a146849b04a89ae31e86ae3fe959e98f5}{\+\_\+\+Win\+Forms\+Flags\+Initialized}} = false
+\begin{DoxyCompactList}\small\item\em Flag to Call Init\+Win\+Forms once \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_a_d_l_1_1_utils}{Utils}} to Create and Use Custom\+C\+M\+Ds 
+
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_acbeeed9b5a8118efb0c6cac62b360bc8}\label{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_acbeeed9b5a8118efb0c6cac62b360bc8}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils}!Create\+Custom\+Console@{Create\+Custom\+Console}}
+\index{Create\+Custom\+Console@{Create\+Custom\+Console}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils}}
+\subsubsection{\texorpdfstring{Create\+Custom\+Console()}{CreateCustomConsole()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily static void A\+D\+L.\+Custom\+C\+M\+D.\+C\+M\+D\+Utils.\+Create\+Custom\+Console (\begin{DoxyParamCaption}\item[{Form}]{ps }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Creates the console on a different thread. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ps} & the Form to start on a different Thread.\\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_aef482d360188b9439a20d62f170d7718}\label{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_aef482d360188b9439a20d62f170d7718}} 
 \index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils}!Create\+Custom\+Console@{Create\+Custom\+Console}}
 \index{Create\+Custom\+Console@{Create\+Custom\+Console}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils}}
-\subsubsection{\texorpdfstring{Create\+Custom\+Console()}{CreateCustomConsole()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\subsubsection{\texorpdfstring{Create\+Custom\+Console()}{CreateCustomConsole()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily static Form A\+D\+L.\+Custom\+C\+M\+D.\+C\+M\+D\+Utils.\+Create\+Custom\+Console (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_a_d_l_1_1_pipe_stream}{Pipe\+Stream}}}]{ps,  }\item[{Dictionary$<$ string, System.\+Drawing.\+Color $>$}]{color\+Coding = {\ttfamily null},  }\item[{float}]{Font\+Size = {\ttfamily 8.25f} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
@@ -34,12 +71,12 @@ Creates a Custom Console on the Supplied \mbox{\hyperlink{class_a_d_l_1_1_pipe_s
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+The Created Console
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_ad2f353a5936cfefbece698ad2c7c315b}\label{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_ad2f353a5936cfefbece698ad2c7c315b}} 
 \index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils}!Create\+Custom\+Console@{Create\+Custom\+Console}}
 \index{Create\+Custom\+Console@{Create\+Custom\+Console}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils}}
-\subsubsection{\texorpdfstring{Create\+Custom\+Console()}{CreateCustomConsole()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\subsubsection{\texorpdfstring{Create\+Custom\+Console()}{CreateCustomConsole()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily static Form A\+D\+L.\+Custom\+C\+M\+D.\+C\+M\+D\+Utils.\+Create\+Custom\+Console (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_a_d_l_1_1_pipe_stream}{Pipe\+Stream}}}]{ps,  }\item[{System.\+Drawing.\+Color}]{Background,  }\item[{System.\+Drawing.\+Color}]{Font\+Color,  }\item[{float}]{Font\+Size = {\ttfamily 8.25f},  }\item[{Dictionary$<$ string, System.\+Drawing.\+Color $>$}]{color\+Coding = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
@@ -48,7 +85,7 @@ Creates a Custom Console on the Supplied \mbox{\hyperlink{class_a_d_l_1_1_pipe_s
 
 
 \begin{DoxyParams}{Parameters}
-{\em ps} & \\
+{\em ps} & Pipe Stream\\
 \hline
 {\em Background} & Background Color\\
 \hline
@@ -56,11 +93,11 @@ Creates a Custom Console on the Supplied \mbox{\hyperlink{class_a_d_l_1_1_pipe_s
 \hline
 {\em Font\+Size} & Font Size\\
 \hline
-{\em color\+Coding} & \\
+{\em color\+Coding} & Color Coding for the Tags\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+Reference to the Created Console.(Not Thread Save)
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_ad1ced26069f98da85bfa1e5dd451e539}\label{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_ad1ced26069f98da85bfa1e5dd451e539}} 
 \index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils}!Create\+Custom\+Console\+No\+Return@{Create\+Custom\+Console\+No\+Return}}
@@ -74,15 +111,15 @@ Creates a Custom Console but without returning it. This function can be called w
 
 
 \begin{DoxyParams}{Parameters}
-{\em ps} & \\
+{\em ps} & Pipe Stream\\
 \hline
-{\em Background} & \\
+{\em Background} & Background Color\\
 \hline
-{\em Font\+Color} & \\
+{\em Font\+Color} & Font Color\\
 \hline
-{\em Font\+Size} & \\
+{\em Font\+Size} & Font Size\\
 \hline
-{\em color\+Coding} & \\
+{\em color\+Coding} & Color Coding for the Tags\\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_a7700a2c5505d3160e33b70fdde89639b}\label{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_a7700a2c5505d3160e33b70fdde89639b}} 
@@ -97,13 +134,36 @@ Creates a Custom Console but without returning it. This function can be called w
 
 
 \begin{DoxyParams}{Parameters}
-{\em ps} & \\
+{\em ps} & Pipe Stream\\
 \hline
-{\em Font\+Size} & \\
+{\em Font\+Size} & Font Size\\
 \hline
-{\em color\+Coding} & \\
+{\em color\+Coding} & Color Coding for the Tags\\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_a9c23ebff134d2a647fb4e4a5b9bc826b}\label{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_a9c23ebff134d2a647fb4e4a5b9bc826b}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils}!Init\+Win\+Forms@{Init\+Win\+Forms}}
+\index{Init\+Win\+Forms@{Init\+Win\+Forms}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils}}
+\subsubsection{\texorpdfstring{Init\+Win\+Forms()}{InitWinForms()}}
+{\footnotesize\ttfamily static void A\+D\+L.\+Custom\+C\+M\+D.\+C\+M\+D\+Utils.\+Init\+Win\+Forms (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Initializes the System.\+Windows.\+Forms System. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_a146849b04a89ae31e86ae3fe959e98f5}\label{class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils_a146849b04a89ae31e86ae3fe959e98f5}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils}!\+\_\+\+Win\+Forms\+Flags\+Initialized@{\+\_\+\+Win\+Forms\+Flags\+Initialized}}
+\index{\+\_\+\+Win\+Forms\+Flags\+Initialized@{\+\_\+\+Win\+Forms\+Flags\+Initialized}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+C\+M\+D\+Utils}}
+\subsubsection{\texorpdfstring{\+\_\+\+Win\+Forms\+Flags\+Initialized}{\_WinFormsFlagsInitialized}}
+{\footnotesize\ttfamily bool A\+D\+L.\+Custom\+C\+M\+D.\+C\+M\+D\+Utils.\+\_\+\+Win\+Forms\+Flags\+Initialized = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Flag to Call Init\+Win\+Forms once 
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

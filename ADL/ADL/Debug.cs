@@ -8,13 +8,22 @@ namespace ADL
     /// </summary>
     public static class Debug
     {
+        /// <summary>
+        /// String Builder to assemble the log
+        /// </summary>
         private static System.Text.StringBuilder _stringBuilder = new System.Text.StringBuilder();
+        /// <summary>
+        /// List of LogStreams that are active
+        /// </summary>
         private static List<LogStream> _steams = new List<LogStream>();
+        /// <summary>
+        /// Dictionary of Prefixes for the corresponding Masks
+        /// </summary>
         private static Dictionary<int, string> _prefixes = new Dictionary<int, string>();
         /// <summary>
         /// The number of Streams that ADL writes to
         /// </summary>
-        public static int ListeningStreams { get { return _steams.Count; } }
+        public static int LogStreamCount { get { return _steams.Count; } }
 
 
 
@@ -120,7 +129,7 @@ namespace ADL
             {
                 if (adls.IsContainedInMask(mask))
                 {
-                    adls.Log(mask, GetPrefix(mask) + message);
+                    adls.Log(mask, GetMaskPrefix(mask) + message);
                 }
             }
         }
@@ -137,11 +146,33 @@ namespace ADL
         }
 
         /// <summary>
+        /// Gets the Mask of the Specified Prefix
+        /// </summary>
+        /// <param name="prefix">Prefix</param>
+        /// <param name="mask">Mask returned by the function</param>
+        /// <returns>True if mask is found in Dictionary</returns>
+        public static bool GetPrefixMask(string prefix, out int mask)
+        {
+            mask = 0;
+            if (_prefixes.ContainsValue(prefix)){
+                foreach (KeyValuePair<int, string> kvp in _prefixes)
+                {
+                    if(prefix == kvp.Value)
+                    {
+                        mask = kvp.Key;
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Returns the concatenated string of all the Prefixes that are fallin in that mask.
         /// </summary>
         /// <param name="mask"></param>
-        /// <returns></returns>
-        private static string GetPrefix(int mask)
+        /// <returns>All Prefixes for specified mask</returns>
+        public static string GetMaskPrefix(int mask)
         {
             if (mask == -1) return "[GLOBAL]";
             _stringBuilder.Length = 0;
@@ -153,7 +184,7 @@ namespace ADL
             }
             else //We have no Prefix specified for this particular level
             {
-                List<int> flags = Utils.GetUniqueFlagsSet(mask); //Lets try to split all the flags into unique ones
+                List<int> flags = BitMask.GetUniqueMasksSet(mask); //Lets try to split all the flags into unique ones
                 for (int i = 0; i < flags.Count; i++) //And then we apply the prefixes.
                 {
                     if (_prefixes.ContainsKey(flags[i]))

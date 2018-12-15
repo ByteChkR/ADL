@@ -7,22 +7,37 @@ using System.Windows.Forms;
 namespace ADL.CustomCMD
 {
 
-
+    /// <summary>
+    /// Form to Display the Content of a LogStream.
+    /// Color coding supported.
+    /// </summary>
     public partial class CustomCMDForm : Form
     {
+        /// <summary>
+        /// The Tags and their corresponding colors
+        /// </summary>
         Dictionary<string, Color> colorCoding = null;
+        /// <summary>
+        /// The Stream reader thats is used to fill the textbox
+        /// </summary>
         StreamReader tr;
+        /// <summary>
+        /// Flag to check if running the color coding algorithm is useful
+        /// </summary>
         bool _hasColorCoding;
+        /// <summary>
+        /// Basis color. If no colorcoding or tag is not found
+        /// </summary>
         Color baseFontColor;
 
         /// <summary>
         /// Creates a new CustomCMD.
         /// </summary>
-        /// <param name="ps"></param>
-        /// <param name="Background"></param>
-        /// <param name="BaseFontColor"></param>
-        /// <param name="fontSize"></param>
-        /// <param name="colorCoding"></param>
+        /// <param name="ps">Pipe Stream to read from</param>
+        /// <param name="Background">Background Color</param>
+        /// <param name="BaseFontColor">Base Font Color. Acts as fallback if no color coding or tag not found</param>
+        /// <param name="fontSize">font size of the logs</param>
+        /// <param name="colorCoding">colorcoding</param>
         public CustomCMDForm(PipeStream ps, Color Background, Color BaseFontColor, float fontSize, Dictionary<string, Color> colorCoding = null)
         {
             InitializeComponent();
@@ -38,12 +53,22 @@ namespace ADL.CustomCMD
             richTextBox1.Font = new Font(richTextBox1.Font.FontFamily, fontSize);
         }
 
+        /// <summary>
+        /// Gets called when the form is fully initialized.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
             Show();
             timer1.Start();
         }
 
+        /// <summary>
+        /// Filters the Tags and returns the right color
+        /// </summary>
+        /// <param name="line">entire log line</param>
+        /// <returns></returns>
         Color GetColorFromLine(string line)
         {
             Color ret =  baseFontColor;
@@ -64,6 +89,9 @@ namespace ADL.CustomCMD
             return ret;
         }
 
+        /// <summary>
+        /// Refreshes text box with content from the log stream.
+        /// </summary>
         void RefreshTextBox()
         {
             string test = "";
@@ -99,12 +127,23 @@ namespace ADL.CustomCMD
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+
+        /// <summary>
+        /// Timer thats periodically refreshes the textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             RefreshTextBox();
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Makes the textbox scroll down when text changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
         {
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.ScrollToCaret();

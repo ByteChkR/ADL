@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Advanced Debugging: ADL.Unity.UnityTextWriter Class Reference</title>
+<title>Advanced Debug Logging: ADL.Unity.UnityTextWriter Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Advanced Debugging
+   <div id="projectname">Advanced Debug Logging
    </div>
   </td>
  </tr>
@@ -69,6 +69,7 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_a_d_l_1_1_unity_1_1_unity_text_writer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ADL.Unity.UnityTextWriter Class Reference</div>  </div>
@@ -86,7 +87,7 @@ Inheritance diagram for ADL.Unity.UnityTextWriter:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad037515e513a7f4c94d4cb2caf58b422"><td class="memItemLeft" align="right" valign="top"><a id="ad037515e513a7f4c94d4cb2caf58b422"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>UnityTextWriter</b> (int WarnMask, int ErrorMask)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>UnityTextWriter</b> (int WarnMask, int <a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a150a993a52f0ede7a6f8ba04728b4bfe">ErrorMask</a>)</td></tr>
 <tr class="separator:ad037515e513a7f4c94d4cb2caf58b422"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad62666e8a12f473f34780dbfdbc71975"><td class="memItemLeft" align="right" valign="top"><a id="ad62666e8a12f473f34780dbfdbc71975"></a>
 override void&#160;</td><td class="memItemRight" valign="bottom"><b>Flush</b> ()</td></tr>
@@ -115,6 +116,18 @@ Properties</h2></td></tr>
 <tr class="memitem:ae188dacb6a045f6f314480f0fbd18ccc"><td class="memItemLeft" align="right" valign="top"><a id="ae188dacb6a045f6f314480f0fbd18ccc"></a>
 override Encoding&#160;</td><td class="memItemRight" valign="bottom"><b>Encoding</b><code> [get]</code></td></tr>
 <tr class="separator:ae188dacb6a045f6f314480f0fbd18ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a82d384fccb5754b9151b8b71343df72c"><td class="memItemLeft" align="right" valign="top">StringBuilder&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a82d384fccb5754b9151b8b71343df72c">buffer</a> = new StringBuilder()</td></tr>
+<tr class="memdesc:a82d384fccb5754b9151b8b71343df72c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Buffer of the TextWriter  <a href="#a82d384fccb5754b9151b8b71343df72c">More...</a><br /></td></tr>
+<tr class="separator:a82d384fccb5754b9151b8b71343df72c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a150a993a52f0ede7a6f8ba04728b4bfe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a150a993a52f0ede7a6f8ba04728b4bfe">ErrorMask</a></td></tr>
+<tr class="memdesc:a150a993a52f0ede7a6f8ba04728b4bfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Masks  <a href="#a150a993a52f0ede7a6f8ba04728b4bfe">More...</a><br /></td></tr>
+<tr class="separator:a150a993a52f0ede7a6f8ba04728b4bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae07fed312fdf4cc4e305d9f6ba9159a5"><td class="memItemLeft" align="right" valign="top"><a id="ae07fed312fdf4cc4e305d9f6ba9159a5"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>WarnMask</b></td></tr>
+<tr class="separator:ae07fed312fdf4cc4e305d9f6ba9159a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a12b1bcfd083d9e771330d95d1857e569"></a>
@@ -155,6 +168,54 @@ override Encoding&#160;</td><td class="memItemRight" valign="bottom"><b>Encoding
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a82d384fccb5754b9151b8b71343df72c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82d384fccb5754b9151b8b71343df72c">&#9670;&nbsp;</a></span>buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StringBuilder ADL.Unity.UnityTextWriter.buffer = new StringBuilder()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The Buffer of the TextWriter </p>
+
+</div>
+</div>
+<a id="a150a993a52f0ede7a6f8ba04728b4bfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a150a993a52f0ede7a6f8ba04728b4bfe">&#9670;&nbsp;</a></span>ErrorMask</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL.Unity.UnityTextWriter.ErrorMask</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The Masks </p>
+
+</div>
+</div>
 <a id="a5d9cf1373da2cf300bf88f11f8ec078a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5d9cf1373da2cf300bf88f11f8ec078a">&#9670;&nbsp;</a></span>FlushType</h2>
 

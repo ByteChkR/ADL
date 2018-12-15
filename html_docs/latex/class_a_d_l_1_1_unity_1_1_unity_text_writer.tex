@@ -10,7 +10,7 @@ Inheritance diagram for A\+D\+L.\+Unity.\+Unity\+Text\+Writer\+:\begin{figure}[H
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_unity_text_writer_ad037515e513a7f4c94d4cb2caf58b422}\label{class_a_d_l_1_1_unity_1_1_unity_text_writer_ad037515e513a7f4c94d4cb2caf58b422}} 
-{\bfseries Unity\+Text\+Writer} (int Warn\+Mask, int Error\+Mask)
+{\bfseries Unity\+Text\+Writer} (int Warn\+Mask, int \mbox{\hyperlink{class_a_d_l_1_1_unity_1_1_unity_text_writer_a150a993a52f0ede7a6f8ba04728b4bfe}{Error\+Mask}})
 \item 
 \mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_unity_text_writer_ad62666e8a12f473f34780dbfdbc71975}\label{class_a_d_l_1_1_unity_1_1_unity_text_writer_ad62666e8a12f473f34780dbfdbc71975}} 
 override void {\bfseries Flush} ()
@@ -37,6 +37,16 @@ int \mbox{\hyperlink{class_a_d_l_1_1_unity_1_1_unity_text_writer_a5d9cf1373da2cf
 \mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_unity_text_writer_ae188dacb6a045f6f314480f0fbd18ccc}\label{class_a_d_l_1_1_unity_1_1_unity_text_writer_ae188dacb6a045f6f314480f0fbd18ccc}} 
 override Encoding {\bfseries Encoding}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+String\+Builder \mbox{\hyperlink{class_a_d_l_1_1_unity_1_1_unity_text_writer_a82d384fccb5754b9151b8b71343df72c}{buffer}} = new String\+Builder()
+\begin{DoxyCompactList}\small\item\em The Buffer of the Text\+Writer \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_d_l_1_1_unity_1_1_unity_text_writer_a150a993a52f0ede7a6f8ba04728b4bfe}{Error\+Mask}}
+\begin{DoxyCompactList}\small\item\em The Masks \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_unity_text_writer_ae07fed312fdf4cc4e305d9f6ba9159a5}\label{class_a_d_l_1_1_unity_1_1_unity_text_writer_ae07fed312fdf4cc4e305d9f6ba9159a5}} 
+int {\bfseries Warn\+Mask}
+\end{DoxyCompactItemize}
 
 
 \subsection{Member Function Documentation}
@@ -60,6 +70,26 @@ Uses arg0 as Flush Type(actually pretty hacked)
 
 
 \subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_unity_text_writer_a82d384fccb5754b9151b8b71343df72c}\label{class_a_d_l_1_1_unity_1_1_unity_text_writer_a82d384fccb5754b9151b8b71343df72c}} 
+\index{A\+D\+L\+::\+Unity\+::\+Unity\+Text\+Writer@{A\+D\+L\+::\+Unity\+::\+Unity\+Text\+Writer}!buffer@{buffer}}
+\index{buffer@{buffer}!A\+D\+L\+::\+Unity\+::\+Unity\+Text\+Writer@{A\+D\+L\+::\+Unity\+::\+Unity\+Text\+Writer}}
+\subsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily String\+Builder A\+D\+L.\+Unity.\+Unity\+Text\+Writer.\+buffer = new String\+Builder()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Buffer of the Text\+Writer 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_unity_text_writer_a150a993a52f0ede7a6f8ba04728b4bfe}\label{class_a_d_l_1_1_unity_1_1_unity_text_writer_a150a993a52f0ede7a6f8ba04728b4bfe}} 
+\index{A\+D\+L\+::\+Unity\+::\+Unity\+Text\+Writer@{A\+D\+L\+::\+Unity\+::\+Unity\+Text\+Writer}!Error\+Mask@{Error\+Mask}}
+\index{Error\+Mask@{Error\+Mask}!A\+D\+L\+::\+Unity\+::\+Unity\+Text\+Writer@{A\+D\+L\+::\+Unity\+::\+Unity\+Text\+Writer}}
+\subsubsection{\texorpdfstring{Error\+Mask}{ErrorMask}}
+{\footnotesize\ttfamily int A\+D\+L.\+Unity.\+Unity\+Text\+Writer.\+Error\+Mask\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Masks 
+
 \mbox{\Hypertarget{class_a_d_l_1_1_unity_1_1_unity_text_writer_a5d9cf1373da2cf300bf88f11f8ec078a}\label{class_a_d_l_1_1_unity_1_1_unity_text_writer_a5d9cf1373da2cf300bf88f11f8ec078a}} 
 \index{A\+D\+L\+::\+Unity\+::\+Unity\+Text\+Writer@{A\+D\+L\+::\+Unity\+::\+Unity\+Text\+Writer}!Flush\+Type@{Flush\+Type}}
 \index{Flush\+Type@{Flush\+Type}!A\+D\+L\+::\+Unity\+::\+Unity\+Text\+Writer@{A\+D\+L\+::\+Unity\+::\+Unity\+Text\+Writer}}

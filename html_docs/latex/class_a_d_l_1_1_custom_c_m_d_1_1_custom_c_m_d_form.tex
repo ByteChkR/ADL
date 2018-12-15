@@ -1,5 +1,10 @@
 \hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form}{}\section{A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form Class Reference}
 \label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form}\index{A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form@{A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form}}
+
+
+Form to Display the Content of a \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}}. Color coding supported.  
+
+
 Inheritance diagram for A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,13 +14,52 @@ Inheritance diagram for A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form\+:\beg
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a949c39b280cf0d3fe4490c8731078bad}{Custom\+C\+M\+D\+Form}} (\mbox{\hyperlink{class_a_d_l_1_1_pipe_stream}{Pipe\+Stream}} ps, Color Background, Color Base\+Font\+Color, float font\+Size, Dictionary$<$ string, Color $>$ color\+Coding=null)
+\mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a949c39b280cf0d3fe4490c8731078bad}{Custom\+C\+M\+D\+Form}} (\mbox{\hyperlink{class_a_d_l_1_1_pipe_stream}{Pipe\+Stream}} ps, Color Background, Color Base\+Font\+Color, float font\+Size, Dictionary$<$ string, Color $>$ \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a705b940da9cebdc776afa008f2fe9bd7}{color\+Coding}}=null)
 \begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{namespace_a_d_l_1_1_custom_c_m_d}{Custom\+C\+MD}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 override void \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a17d8b37ecf0237238b3f2f988a4ec700}{Dispose}} (bool disposing)
 \begin{DoxyCompactList}\small\item\em Clean up any resources being used. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a62b5a9eb917413e8195182107598101c}{Form1\+\_\+\+Load}} (object sender, Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Gets called when the form is fully initialized. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a56aa8bfb57e4b8efd06ed59d20917665}{Get\+Color\+From\+Line}} (string line)
+\begin{DoxyCompactList}\small\item\em Filters the Tags and returns the right color \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a81dfe3dc03b1651dd3590f951914f6a8}{Refresh\+Text\+Box}} ()
+\begin{DoxyCompactList}\small\item\em Refreshes text box with content from the log stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a9afd93546e1a02adc1b48040a244ae79}{Timer1\+\_\+\+Tick}} (object sender, Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Timer thats periodically refreshes the textbox \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a041972edde1f897d5c72122eeaee4bb0}{Rich\+Text\+Box1\+\_\+\+Text\+Changed}} (object sender, Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Makes the textbox scroll down when text changed \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_afd8906303127f25f0767d62a7126d958}{Initialize\+Component}} ()
+\begin{DoxyCompactList}\small\item\em Required method for Designer support -\/ do not modify the contents of this method with the code editor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Dictionary$<$ string, Color $>$ \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a705b940da9cebdc776afa008f2fe9bd7}{color\+Coding}} = null
+\begin{DoxyCompactList}\small\item\em The Tags and their corresponding colors \end{DoxyCompactList}\item 
+Stream\+Reader \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_ab41ba63fa3294b392164af4868c326c3}{tr}}
+\begin{DoxyCompactList}\small\item\em The Stream reader thats is used to fill the textbox \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a55c77dfaef33d120690074e8625d72fc}{\+\_\+has\+Color\+Coding}}
+\begin{DoxyCompactList}\small\item\em Flag to check if running the color coding algorithm is useful \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a6c9c3fb863ccacd91e8d86cffb248595}{base\+Font\+Color}}
+\begin{DoxyCompactList}\small\item\em Basis color. If no colorcoding or tag is not found \end{DoxyCompactList}\item 
+System.\+Component\+Model.\+I\+Container \mbox{\hyperlink{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a9e6d11d5b23133dffd23871d74bb4978}{components}} = null
+\begin{DoxyCompactList}\small\item\em Required designer variable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a02018c332e924c21cff4afdeb9a9b3a5}\label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a02018c332e924c21cff4afdeb9a9b3a5}} 
+System.\+Windows.\+Forms.\+Rich\+Text\+Box {\bfseries rich\+Text\+Box1}
+\item 
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a59bb91294217ae85f9376390b5c47fee}\label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a59bb91294217ae85f9376390b5c47fee}} 
+System.\+Windows.\+Forms.\+Timer {\bfseries timer1}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Form to Display the Content of a \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}}. Color coding supported. 
+
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -31,15 +75,15 @@ Creates a new \mbox{\hyperlink{namespace_a_d_l_1_1_custom_c_m_d}{Custom\+C\+MD}}
 
 
 \begin{DoxyParams}{Parameters}
-{\em ps} & \\
+{\em ps} & Pipe Stream to read from\\
 \hline
-{\em Background} & \\
+{\em Background} & Background Color\\
 \hline
-{\em Base\+Font\+Color} & \\
+{\em Base\+Font\+Color} & Base Font Color. Acts as fallback if no color coding or tag not found\\
 \hline
-{\em font\+Size} & \\
+{\em font\+Size} & font size of the logs\\
 \hline
-{\em color\+Coding} & \\
+{\em color\+Coding} & colorcoding\\
 \hline
 \end{DoxyParams}
 
@@ -60,6 +104,148 @@ Clean up any resources being used.
 {\em disposing} & true if managed resources should be disposed; otherwise, false.\\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a62b5a9eb917413e8195182107598101c}\label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a62b5a9eb917413e8195182107598101c}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}!Form1\+\_\+\+Load@{Form1\+\_\+\+Load}}
+\index{Form1\+\_\+\+Load@{Form1\+\_\+\+Load}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}}
+\subsubsection{\texorpdfstring{Form1\+\_\+\+Load()}{Form1\_Load()}}
+{\footnotesize\ttfamily void A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form.\+Form1\+\_\+\+Load (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gets called when the form is fully initialized. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & \\
+\hline
+{\em e} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a56aa8bfb57e4b8efd06ed59d20917665}\label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a56aa8bfb57e4b8efd06ed59d20917665}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}!Get\+Color\+From\+Line@{Get\+Color\+From\+Line}}
+\index{Get\+Color\+From\+Line@{Get\+Color\+From\+Line}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}}
+\subsubsection{\texorpdfstring{Get\+Color\+From\+Line()}{GetColorFromLine()}}
+{\footnotesize\ttfamily Color A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form.\+Get\+Color\+From\+Line (\begin{DoxyParamCaption}\item[{string}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Filters the Tags and returns the right color 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & entire log line\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_afd8906303127f25f0767d62a7126d958}\label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_afd8906303127f25f0767d62a7126d958}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}!Initialize\+Component@{Initialize\+Component}}
+\index{Initialize\+Component@{Initialize\+Component}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}}
+\subsubsection{\texorpdfstring{Initialize\+Component()}{InitializeComponent()}}
+{\footnotesize\ttfamily void A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form.\+Initialize\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Required method for Designer support -\/ do not modify the contents of this method with the code editor. 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a81dfe3dc03b1651dd3590f951914f6a8}\label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a81dfe3dc03b1651dd3590f951914f6a8}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}!Refresh\+Text\+Box@{Refresh\+Text\+Box}}
+\index{Refresh\+Text\+Box@{Refresh\+Text\+Box}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}}
+\subsubsection{\texorpdfstring{Refresh\+Text\+Box()}{RefreshTextBox()}}
+{\footnotesize\ttfamily void A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form.\+Refresh\+Text\+Box (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Refreshes text box with content from the log stream. 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a041972edde1f897d5c72122eeaee4bb0}\label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a041972edde1f897d5c72122eeaee4bb0}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}!Rich\+Text\+Box1\+\_\+\+Text\+Changed@{Rich\+Text\+Box1\+\_\+\+Text\+Changed}}
+\index{Rich\+Text\+Box1\+\_\+\+Text\+Changed@{Rich\+Text\+Box1\+\_\+\+Text\+Changed}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}}
+\subsubsection{\texorpdfstring{Rich\+Text\+Box1\+\_\+\+Text\+Changed()}{RichTextBox1\_TextChanged()}}
+{\footnotesize\ttfamily void A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form.\+Rich\+Text\+Box1\+\_\+\+Text\+Changed (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Makes the textbox scroll down when text changed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & \\
+\hline
+{\em e} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a9afd93546e1a02adc1b48040a244ae79}\label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a9afd93546e1a02adc1b48040a244ae79}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}!Timer1\+\_\+\+Tick@{Timer1\+\_\+\+Tick}}
+\index{Timer1\+\_\+\+Tick@{Timer1\+\_\+\+Tick}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}}
+\subsubsection{\texorpdfstring{Timer1\+\_\+\+Tick()}{Timer1\_Tick()}}
+{\footnotesize\ttfamily void A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form.\+Timer1\+\_\+\+Tick (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Event\+Args}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Timer thats periodically refreshes the textbox 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & \\
+\hline
+{\em e} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a55c77dfaef33d120690074e8625d72fc}\label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a55c77dfaef33d120690074e8625d72fc}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}!\+\_\+has\+Color\+Coding@{\+\_\+has\+Color\+Coding}}
+\index{\+\_\+has\+Color\+Coding@{\+\_\+has\+Color\+Coding}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}}
+\subsubsection{\texorpdfstring{\+\_\+has\+Color\+Coding}{\_hasColorCoding}}
+{\footnotesize\ttfamily bool A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form.\+\_\+has\+Color\+Coding\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flag to check if running the color coding algorithm is useful 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a6c9c3fb863ccacd91e8d86cffb248595}\label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a6c9c3fb863ccacd91e8d86cffb248595}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}!base\+Font\+Color@{base\+Font\+Color}}
+\index{base\+Font\+Color@{base\+Font\+Color}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}}
+\subsubsection{\texorpdfstring{base\+Font\+Color}{baseFontColor}}
+{\footnotesize\ttfamily Color A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form.\+base\+Font\+Color\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Basis color. If no colorcoding or tag is not found 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a705b940da9cebdc776afa008f2fe9bd7}\label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a705b940da9cebdc776afa008f2fe9bd7}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}!color\+Coding@{color\+Coding}}
+\index{color\+Coding@{color\+Coding}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}}
+\subsubsection{\texorpdfstring{color\+Coding}{colorCoding}}
+{\footnotesize\ttfamily Dictionary$<$string, Color$>$ A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form.\+color\+Coding = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Tags and their corresponding colors 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a9e6d11d5b23133dffd23871d74bb4978}\label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_a9e6d11d5b23133dffd23871d74bb4978}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}!components@{components}}
+\index{components@{components}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}}
+\subsubsection{\texorpdfstring{components}{components}}
+{\footnotesize\ttfamily System.\+Component\+Model.\+I\+Container A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form.\+components = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Required designer variable. 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_ab41ba63fa3294b392164af4868c326c3}\label{class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form_ab41ba63fa3294b392164af4868c326c3}} 
+\index{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}!tr@{tr}}
+\index{tr@{tr}!A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form@{A\+D\+L\+::\+Custom\+C\+M\+D\+::\+Custom\+C\+M\+D\+Form}}
+\subsubsection{\texorpdfstring{tr}{tr}}
+{\footnotesize\ttfamily Stream\+Reader A\+D\+L.\+Custom\+C\+M\+D.\+Custom\+C\+M\+D\+Form.\+tr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Stream reader thats is used to fill the textbox 
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

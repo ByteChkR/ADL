@@ -20,10 +20,10 @@ void \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a7a1a25f0247d4ebfeb5a4d6e37fe4e
 \begin{DoxyCompactList}\small\item\em Sets the level mask of the log stream. Set to -\/1 to get every level \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a533f3bae752ab3ee1c3f1aaac23a7d05}{Set\+Time\+Stamp\+Usage}} (bool use\+Time\+Stamps)
 \begin{DoxyCompactList}\small\item\em Displays the time when the message was logged. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a1a48afe31b32086d51dbc51df68a4648}{Is\+Contained\+In\+Mask}} (int mask)
+bool \mbox{\hyperlink{class_a_d_l_1_1_log_stream_af0d0bf45e8803e9d5185660374f7eb96}{Is\+Contained\+In\+Mask}} (int flag)
 \begin{DoxyCompactList}\small\item\em Wrapper to Leave out mask ID in the parameters \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a66b291a45dd593bf5b390eb82602b7ab}{Log}} (int mask, string message)
-\begin{DoxyCompactList}\small\item\em Logs a Message(Note\+: Prefixes already applied.) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Logs a Message on this Log\+Stream(bypassing tags and masks) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -34,9 +34,31 @@ static \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}} \mbox{\hyperli
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a65680991404e699fcafd4bc729504fc3}\label{class_a_d_l_1_1_log_stream_a65680991404e699fcafd4bc729504fc3}} 
-Stream {\bfseries Text\+Stream}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\end{DoxyCompactItemize}
+int \mbox{\hyperlink{class_a_d_l_1_1_log_stream_af23693ee745713d880e582484abdcee4}{Mask}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The Mask that determines wether this stream will receive a log message \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05}{Match\+Type}} \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a25e7b0c79959a4c51d2bcfa072d1737e}{Match\+Type}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The Matchtype that is determining what Checking algorithms to use \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a9d77af7e36ed281e83c500dfd28edfcd}{Prepend\+Time\+Stamp}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Set this to true to Prepend a Timestamp in front of each logging message. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_d_l_1_1_log_stream_aafc38c086b8e9211cfc46cf1f86dd18f}{Is\+Stream\+Closed}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em If this is true the Underlying Stream is closed and the Whole Object was destroyed. \end{DoxyCompactList}\item 
+Stream \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a65680991404e699fcafd4bc729504fc3}{Text\+Stream}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The Unterlying stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Text\+Writer \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a9655793b8d2cace20afc1242f6d431e0}{\+\_\+stream}}
+\begin{DoxyCompactList}\small\item\em The Text Writer \mbox{\hyperlink{namespace_a_d_l}{A\+DL}} uses to write logs \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a3d8bed5f5dbdebc350a831ea9eca999d}{\+\_\+mask}} = -\/1
+\begin{DoxyCompactList}\small\item\em The Mask \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a93dd10abf1a54aa066e94bb2c675da36}{\+\_\+match\+All\+Flags}} = true
+\begin{DoxyCompactList}\small\item\em The Flag that adl uses \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_d_l_1_1_log_stream_ac5385a0fa83955ccf5debf4a3e4f5b4c}{\+\_\+set\+Time\+Stamp}} = false
+\begin{DoxyCompactList}\small\item\em Flag for timestamps that adl uses \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a753bb1ba574078533b1a020a44800ccb}{\+\_\+stream\+Closed}} = false
+\begin{DoxyCompactList}\small\item\em Flag that is preventing \mbox{\hyperlink{namespace_a_d_l}{A\+DL}} to crash when the stream is closed. \end{DoxyCompactList}\item 
+readonly Stream \mbox{\hyperlink{class_a_d_l_1_1_log_stream_a005371df709890708a1bc2cdac48fa0d}{\+\_\+str}} = null
+\begin{DoxyCompactList}\small\item\em Underlying stream \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -57,7 +79,7 @@ Base Constructor. For file streams or similar
 
 
 \begin{DoxyParams}{Parameters}
-{\em stream} & \\
+{\em stream} & Stream you want to create the Log on\\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a7fa87cb8c69e1c56bfdbd1d09093bb49}\label{class_a_d_l_1_1_log_stream_a7fa87cb8c69e1c56bfdbd1d09093bb49}} 
@@ -72,7 +94,7 @@ Constructor with just the Text Writer. leaving out assigning the actual stream. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em text\+Reader} & \\
+{\em text\+Reader} & Text reader you want to create the Log on\\
 \hline
 \end{DoxyParams}
 
@@ -114,7 +136,7 @@ Wrapper function that makes the creation and setting up a log stream a no braine
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+The Created \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}}
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a2bdd5573b2877b6b1d93d336b8592489}\label{class_a_d_l_1_1_log_stream_a2bdd5573b2877b6b1d93d336b8592489}} 
 \index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Create\+Log\+Stream\+From\+Stream@{Create\+Log\+Stream\+From\+Stream}}
@@ -140,13 +162,13 @@ Wrapper function that makes the creation and setting up a log stream a no braine
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+The Created \mbox{\hyperlink{class_a_d_l_1_1_log_stream}{Log\+Stream}}
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a1a48afe31b32086d51dbc51df68a4648}\label{class_a_d_l_1_1_log_stream_a1a48afe31b32086d51dbc51df68a4648}} 
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_af0d0bf45e8803e9d5185660374f7eb96}\label{class_a_d_l_1_1_log_stream_af0d0bf45e8803e9d5185660374f7eb96}} 
 \index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Is\+Contained\+In\+Mask@{Is\+Contained\+In\+Mask}}
 \index{Is\+Contained\+In\+Mask@{Is\+Contained\+In\+Mask}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
 \subsubsection{\texorpdfstring{Is\+Contained\+In\+Mask()}{IsContainedInMask()}}
-{\footnotesize\ttfamily bool A\+D\+L.\+Log\+Stream.\+Is\+Contained\+In\+Mask (\begin{DoxyParamCaption}\item[{int}]{mask }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool A\+D\+L.\+Log\+Stream.\+Is\+Contained\+In\+Mask (\begin{DoxyParamCaption}\item[{int}]{flag }\end{DoxyParamCaption})}
 
 
 
@@ -154,11 +176,11 @@ Wrapper to Leave out mask ID in the parameters
 
 
 \begin{DoxyParams}{Parameters}
-{\em mask} & \\
+{\em flag} & \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+If the flag is contained in the Mask
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a66b291a45dd593bf5b390eb82602b7ab}\label{class_a_d_l_1_1_log_stream_a66b291a45dd593bf5b390eb82602b7ab}} 
 \index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Log@{Log}}
@@ -168,11 +190,13 @@ Wrapper to Leave out mask ID in the parameters
 
 
 
-Logs a Message(Note\+: Prefixes already applied.) 
+Logs a Message on this Log\+Stream(bypassing tags and masks) 
 
 
 \begin{DoxyParams}{Parameters}
-{\em message} & \\
+{\em mask} & Mask to send trough the Stream(for the unity Text Reader)\\
+\hline
+{\em message} & Message you want to send.\\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a7a1a25f0247d4ebfeb5a4d6e37fe4e3a}\label{class_a_d_l_1_1_log_stream_a7a1a25f0247d4ebfeb5a4d6e37fe4e3a}} 
@@ -220,6 +244,122 @@ Displays the time when the message was logged.
 {\em use\+Time\+Stamps} & \\
 \hline
 \end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a3d8bed5f5dbdebc350a831ea9eca999d}\label{class_a_d_l_1_1_log_stream_a3d8bed5f5dbdebc350a831ea9eca999d}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!\+\_\+mask@{\+\_\+mask}}
+\index{\+\_\+mask@{\+\_\+mask}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{\+\_\+mask}{\_mask}}
+{\footnotesize\ttfamily int A\+D\+L.\+Log\+Stream.\+\_\+mask = -\/1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Mask 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a93dd10abf1a54aa066e94bb2c675da36}\label{class_a_d_l_1_1_log_stream_a93dd10abf1a54aa066e94bb2c675da36}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!\+\_\+match\+All\+Flags@{\+\_\+match\+All\+Flags}}
+\index{\+\_\+match\+All\+Flags@{\+\_\+match\+All\+Flags}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{\+\_\+match\+All\+Flags}{\_matchAllFlags}}
+{\footnotesize\ttfamily bool A\+D\+L.\+Log\+Stream.\+\_\+match\+All\+Flags = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Flag that adl uses 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_ac5385a0fa83955ccf5debf4a3e4f5b4c}\label{class_a_d_l_1_1_log_stream_ac5385a0fa83955ccf5debf4a3e4f5b4c}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!\+\_\+set\+Time\+Stamp@{\+\_\+set\+Time\+Stamp}}
+\index{\+\_\+set\+Time\+Stamp@{\+\_\+set\+Time\+Stamp}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{\+\_\+set\+Time\+Stamp}{\_setTimeStamp}}
+{\footnotesize\ttfamily bool A\+D\+L.\+Log\+Stream.\+\_\+set\+Time\+Stamp = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flag for timestamps that adl uses 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a005371df709890708a1bc2cdac48fa0d}\label{class_a_d_l_1_1_log_stream_a005371df709890708a1bc2cdac48fa0d}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!\+\_\+str@{\+\_\+str}}
+\index{\+\_\+str@{\+\_\+str}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{\+\_\+str}{\_str}}
+{\footnotesize\ttfamily readonly Stream A\+D\+L.\+Log\+Stream.\+\_\+str = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Underlying stream 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a9655793b8d2cace20afc1242f6d431e0}\label{class_a_d_l_1_1_log_stream_a9655793b8d2cace20afc1242f6d431e0}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!\+\_\+stream@{\+\_\+stream}}
+\index{\+\_\+stream@{\+\_\+stream}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{\+\_\+stream}{\_stream}}
+{\footnotesize\ttfamily Text\+Writer A\+D\+L.\+Log\+Stream.\+\_\+stream\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Text Writer \mbox{\hyperlink{namespace_a_d_l}{A\+DL}} uses to write logs 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a753bb1ba574078533b1a020a44800ccb}\label{class_a_d_l_1_1_log_stream_a753bb1ba574078533b1a020a44800ccb}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!\+\_\+stream\+Closed@{\+\_\+stream\+Closed}}
+\index{\+\_\+stream\+Closed@{\+\_\+stream\+Closed}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{\+\_\+stream\+Closed}{\_streamClosed}}
+{\footnotesize\ttfamily bool A\+D\+L.\+Log\+Stream.\+\_\+stream\+Closed = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flag that is preventing \mbox{\hyperlink{namespace_a_d_l}{A\+DL}} to crash when the stream is closed. 
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_aafc38c086b8e9211cfc46cf1f86dd18f}\label{class_a_d_l_1_1_log_stream_aafc38c086b8e9211cfc46cf1f86dd18f}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Is\+Stream\+Closed@{Is\+Stream\+Closed}}
+\index{Is\+Stream\+Closed@{Is\+Stream\+Closed}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Is\+Stream\+Closed}{IsStreamClosed}}
+{\footnotesize\ttfamily bool A\+D\+L.\+Log\+Stream.\+Is\+Stream\+Closed\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+If this is true the Underlying Stream is closed and the Whole Object was destroyed. 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_af23693ee745713d880e582484abdcee4}\label{class_a_d_l_1_1_log_stream_af23693ee745713d880e582484abdcee4}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Mask@{Mask}}
+\index{Mask@{Mask}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Mask}{Mask}}
+{\footnotesize\ttfamily int A\+D\+L.\+Log\+Stream.\+Mask\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The Mask that determines wether this stream will receive a log message 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a25e7b0c79959a4c51d2bcfa072d1737e}\label{class_a_d_l_1_1_log_stream_a25e7b0c79959a4c51d2bcfa072d1737e}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Match\+Type@{Match\+Type}}
+\index{Match\+Type@{Match\+Type}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Match\+Type}{MatchType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_a_d_l_af6334296dbae0383a652317263f0bc05}{Match\+Type}} A\+D\+L.\+Log\+Stream.\+Match\+Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The Matchtype that is determining what Checking algorithms to use 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a9d77af7e36ed281e83c500dfd28edfcd}\label{class_a_d_l_1_1_log_stream_a9d77af7e36ed281e83c500dfd28edfcd}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Prepend\+Time\+Stamp@{Prepend\+Time\+Stamp}}
+\index{Prepend\+Time\+Stamp@{Prepend\+Time\+Stamp}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Prepend\+Time\+Stamp}{PrependTimeStamp}}
+{\footnotesize\ttfamily bool A\+D\+L.\+Log\+Stream.\+Prepend\+Time\+Stamp\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Set this to true to Prepend a Timestamp in front of each logging message. 
+
+\mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a65680991404e699fcafd4bc729504fc3}\label{class_a_d_l_1_1_log_stream_a65680991404e699fcafd4bc729504fc3}} 
+\index{A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}!Text\+Stream@{Text\+Stream}}
+\index{Text\+Stream@{Text\+Stream}!A\+D\+L\+::\+Log\+Stream@{A\+D\+L\+::\+Log\+Stream}}
+\subsubsection{\texorpdfstring{Text\+Stream}{TextStream}}
+{\footnotesize\ttfamily Stream A\+D\+L.\+Log\+Stream.\+Text\+Stream\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The Unterlying stream. 
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

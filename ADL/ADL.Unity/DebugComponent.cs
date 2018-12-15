@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace ADL.Unity
 {
+    /// <summary>
+    /// Component to set up and use ADL in unity
+    /// </summary>
     public sealed class DebugComponent : MonoBehaviour
     {
         [Tooltip("The streams that get hooked up to the debug when the game starts")]
@@ -37,7 +40,7 @@ namespace ADL.Unity
             }
             if (UseConsole)
             {
-                SetUpConsole();
+                UnityUtils.CreateUnityConsole(ConsoleParams, ConsoleWarningMask, ConsoleErrorMask);
             }
 
         }
@@ -48,18 +51,7 @@ namespace ADL.Unity
             if (_consoleThread != null) _consoleThread.Abort();
         }
 
-        void SetUpConsole()
-        {
-
-            UnityTextWriter utw = new UnityTextWriter(ConsoleWarningMask, ConsoleErrorMask);
-            Debug.AddOutputStream(ConsoleParams.ToUnityConsoleLogStream(utw));
-        }
-
-
-        void CreateConsole(LogStream ls)
-        {
-            CustomCMD.CMDUtils.CreateCustomConsoleNoReturn(ls.TextStream);
-        }
+        
 
 
 

@@ -28,12 +28,12 @@ namespace ADL.Unity
             {
                 UnityEngine.Debug.Log(buffer.ToString());
             }
-            else if(Utils.IsContainedInMask(FlushType, WarnMask, false))
+            else if(BitMask.IsContainedInMask(FlushType, WarnMask, false))
             {
 
                 UnityEngine.Debug.LogWarning(buffer.ToString());
             }
-            else if(Utils.IsContainedInMask(FlushType, ErrorMask, false)){
+            else if(BitMask.IsContainedInMask(FlushType, ErrorMask, false)){
 
                 UnityEngine.Debug.LogError(buffer.ToString());
             }
