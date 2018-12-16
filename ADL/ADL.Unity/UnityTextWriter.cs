@@ -19,7 +19,7 @@ namespace ADL.Unity
         /// <summary>
         /// The Masks
         /// </summary>
-        private int ErrorMask, WarnMask;
+        private readonly int ErrorMask, WarnMask;
         /// <summary>
         /// Constructor that needs masks
         /// </summary>
