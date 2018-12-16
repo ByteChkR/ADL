@@ -43,6 +43,7 @@ namespace ADL
         /// Removes the specified Stream.
         /// </summary>
         /// <param name="stream">The stream you want to remove</param>
+        /// /// <param name="CloseStream">If streams should be closed upon removal from the system</param>
         public static void RemoveOutputStream(LogStream stream, bool CloseStream = true)
         {
             if (!_steams.Contains(stream)) return;
@@ -54,6 +55,7 @@ namespace ADL
         /// <summary>
         /// Removes all output streams from the list. Everything gets written to file.
         /// </summary>
+        /// <param name="CloseStream">If streams should be closed upon removal from the system</param>
         public static void RemoveAllOutputStreams(bool CloseStream = true)
         {
             Log(-1, "Debug Queue Emptied");

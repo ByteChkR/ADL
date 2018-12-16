@@ -111,9 +111,9 @@ namespace ADL
 
         #region Stream overide methods
 
-        ///<summary>
-        ///Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        ///</summary>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public new void Dispose()
         {
             // clear the internal buffer
@@ -133,11 +133,11 @@ namespace ADL
         ///<summary>
         ///When overridden in a derived class, sets the position within the current stream.
         ///</summary>
+        ///<param name="offset">A byte offset relative to the origin parameter. </param>
+        ///<param name="origin">A value of type System.IO.SeekOrigin indicating the reference point used to obtain the new position. </param>
         ///<returns>
         ///The new position within the current stream.
         ///</returns>
-        ///<param name="offset">A byte offset relative to the origin parameter. </param>
-        ///<param name="origin">A value of type <see cref="T:System.IO.SeekOrigin"></see> indicating the reference point used to obtain the new position. </param>
         public override long Seek(long offset, SeekOrigin origin)
         {
             throw new NotSupportedException();
@@ -152,9 +152,8 @@ namespace ADL
             throw new NotSupportedException();
         }
 
-
-        ///<summary>
-        ///When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.
+        /// <summary>
+        /// When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.
         ///</summary>
         ///<returns>
         ///The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached.

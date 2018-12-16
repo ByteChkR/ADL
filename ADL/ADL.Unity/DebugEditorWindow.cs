@@ -2,18 +2,25 @@
 
 namespace ADL.Unity
 {
+    /// <summary>
+    /// Custom Editor Window  for UnityInspector
+    /// </summary>
     [CustomEditor(typeof(DebugComponent))]
     public sealed class DebugEditorWindow : Editor
     {
+        /// <summary>
+        /// List of string containing the tags.
+        /// </summary>
         SerializedProperty DebugLevel;
-        SerializedProperty StreamArray;
+        
         void OnEnable()
         {
-            StreamArray = serializedObject.FindProperty("Streams");
             DebugLevel = serializedObject.FindProperty("DebugLevel");
         }
 
-
+        /// <summary>
+        /// Draw & Get Data to create a custom bitmask
+        /// </summary>
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();

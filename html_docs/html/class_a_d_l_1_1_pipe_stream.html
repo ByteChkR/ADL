@@ -79,27 +79,24 @@ $(function() {
 
 <p><a class="el" href="class_a_d_l_1_1_pipe_stream.html" title="PipeStream is a thread-safe read/write data stream for use between two threads in a single-producer/s...">PipeStream</a> is a thread-safe read/write data stream for use between two threads in a single-producer/single-consumer type problem. Version: 2014/12/15 1.2 Initial Version 2006/10/13 1.0 - initial version. Update on 2008/10/9 1.1 - uses Monitor instead of Manual Reset events for more elegant synchronicity. Update on 2014/12/15 1.2 - bugfix for read method not using offset - thanks Jörgen Sigvardsson, replace NotImplementedExceptions with NotSupportedException Copyright (c) 2006 James Kolpack (james dot kolpack at google mail)  
  <a href="class_a_d_l_1_1_pipe_stream.html#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for ADL.PipeStream:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="class_a_d_l_1_1_pipe_stream.png" usemap="#ADL.PipeStream_map" alt=""/>
-  <map id="ADL.PipeStream_map" name="ADL.PipeStream_map">
-</map>
- </div></div>
+
+<p>Inherits Stream.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a430dca29f0cd1ff4a27fc7bcafbe7a8f"><td class="memItemLeft" align="right" valign="top">new void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_pipe_stream.html#a430dca29f0cd1ff4a27fc7bcafbe7a8f">Dispose</a> ()</td></tr>
+<tr class="memdesc:a430dca29f0cd1ff4a27fc7bcafbe7a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.  <a href="#a430dca29f0cd1ff4a27fc7bcafbe7a8f">More...</a><br /></td></tr>
 <tr class="separator:a430dca29f0cd1ff4a27fc7bcafbe7a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef56d04b8d784d6606ed348971eb29f3"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_pipe_stream.html#aef56d04b8d784d6606ed348971eb29f3">Flush</a> ()</td></tr>
 <tr class="separator:aef56d04b8d784d6606ed348971eb29f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae34adb2842a65053e2e13dcb15fe65e5"><td class="memItemLeft" align="right" valign="top">override long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_pipe_stream.html#ae34adb2842a65053e2e13dcb15fe65e5">Seek</a> (long offset, SeekOrigin origin)</td></tr>
 <tr class="separator:ae34adb2842a65053e2e13dcb15fe65e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66a10533676de87061ae89c0ab2c62c5"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_pipe_stream.html#a66a10533676de87061ae89c0ab2c62c5">SetLength</a> (long value)</td></tr>
+<tr class="memitem:a66a10533676de87061ae89c0ab2c62c5"><td class="memItemLeft" align="right" valign="top"><a id="a66a10533676de87061ae89c0ab2c62c5"></a>
+override void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLength</b> (long value)</td></tr>
 <tr class="separator:a66a10533676de87061ae89c0ab2c62c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada829c0b71d6896e2bb3cd5d37ccba34"><td class="memItemLeft" align="right" valign="top"><a id="ada829c0b71d6896e2bb3cd5d37ccba34"></a>
-override int&#160;</td><td class="memItemRight" valign="bottom"><b>Read</b> (byte[] buffer, int offset, int count)</td></tr>
+override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_pipe_stream.html#ada829c0b71d6896e2bb3cd5d37ccba34">Read</a> (byte[] buffer, int offset, int count)</td></tr>
+<tr class="memdesc:ada829c0b71d6896e2bb3cd5d37ccba34"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read. /summary&gt; returns&gt; The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached. /returns&gt; param name="offset"&gt;The zero-based byte offset in buffer at which to begin storing the data read from the current stream. param name="count"&gt;The maximum number of bytes to be read from the current stream. param name="buffer"&gt;An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count - 1) replaced by the bytes read from the current source. <br /></td></tr>
 <tr class="separator:ada829c0b71d6896e2bb3cd5d37ccba34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f8e6e0a0b7070fc2e5320d2007eadd1"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_pipe_stream.html#a5f8e6e0a0b7070fc2e5320d2007eadd1">Write</a> (byte[] buffer, int offset, int count)</td></tr>
 <tr class="separator:a5f8e6e0a0b7070fc2e5320d2007eadd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,7 +116,7 @@ Properties</h2></td></tr>
 <tr class="memdesc:a250f42c7da667f60487068e27c3d67d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the maximum number of bytes to store in the buffer.  <a href="#a250f42c7da667f60487068e27c3d67d0">More...</a><br /></td></tr>
 <tr class="separator:a250f42c7da667f60487068e27c3d67d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af05e530e849bfee481290e8139f27379"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_pipe_stream.html#af05e530e849bfee481290e8139f27379">BlockLastReadBuffer</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:af05e530e849bfee481290e8139f27379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets a value indicating whether to block last read method before the buffer is empty. When true, Read() will block until it can fill the passed in buffer and count. When false, Read() will not block, returning all the available buffer data. Setting to true will remove the possibility of ending a stream reader prematurely.  <a href="#af05e530e849bfee481290e8139f27379">More...</a><br /></td></tr>
+<tr class="memdesc:af05e530e849bfee481290e8139f27379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets a value indicating whether to block last read method before the buffer is empty. When true, <a class="el" href="class_a_d_l_1_1_pipe_stream.html#ada829c0b71d6896e2bb3cd5d37ccba34" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> will block until it can fill the passed in buffer and count. When false, <a class="el" href="class_a_d_l_1_1_pipe_stream.html#ada829c0b71d6896e2bb3cd5d37ccba34" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> will not block, returning all the available buffer data. Setting to true will remove the possibility of ending a stream reader prematurely.  <a href="#af05e530e849bfee481290e8139f27379">More...</a><br /></td></tr>
 <tr class="separator:af05e530e849bfee481290e8139f27379"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a194eae1c5b19a0999a5d12bcef00efd9"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_pipe_stream.html#a194eae1c5b19a0999a5d12bcef00efd9">CanRead</a><code> [get]</code></td></tr>
 <tr class="separator:a194eae1c5b19a0999a5d12bcef00efd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,7 +148,7 @@ Private Attributes</h2></td></tr>
 <tr class="memdesc:af8cc7772cf7ae02b1890ab8c58d0cbad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of bytes to store in the buffer.  <a href="#af8cc7772cf7ae02b1890ab8c58d0cbad">More...</a><br /></td></tr>
 <tr class="separator:af8cc7772cf7ae02b1890ab8c58d0cbad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dd964eae6da39ffb26d8bb1ff8ffaa7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_pipe_stream.html#a1dd964eae6da39ffb26d8bb1ff8ffaa7">mBlockLastRead</a></td></tr>
-<tr class="memdesc:a1dd964eae6da39ffb26d8bb1ff8ffaa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setting this to true will cause Read() to block if it appears that it will run out of data.  <a href="#a1dd964eae6da39ffb26d8bb1ff8ffaa7">More...</a><br /></td></tr>
+<tr class="memdesc:a1dd964eae6da39ffb26d8bb1ff8ffaa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setting this to true will cause <a class="el" href="class_a_d_l_1_1_pipe_stream.html#ada829c0b71d6896e2bb3cd5d37ccba34" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> to block if it appears that it will run out of data.  <a href="#a1dd964eae6da39ffb26d8bb1ff8ffaa7">More...</a><br /></td></tr>
 <tr class="separator:a1dd964eae6da39ffb26d8bb1ff8ffaa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -174,6 +171,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </p>
 <p>summary&gt; When overridden in a derived class, clears all buffers for this stream and causes any buffered data to be written to the underlying device. /summary&gt; </p>
 
 </div>
@@ -192,8 +191,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>summary&gt; When overridden in a derived class, sets the position within the current stream. /summary&gt; returns&gt; The new position within the current stream. /returns&gt; param name="offset"&gt;A byte offset relative to the origin parameter. </p>
-<p>param name="origin"&gt;A value of type <a class="el" href="">T:System.IO.SeekOrigin</a> indicating the reference point used to obtain the new position. </p>
+<p>summary&gt; When overridden in a derived class, sets the position within the current stream. /summary&gt; param name="offset"&gt;A byte offset relative to the origin parameter. </p>
+<p>param name="origin"&gt;A value of type System.IO.SeekOrigin indicating the reference point used to obtain the new position. </p>
+<p>returns&gt; The new position within the current stream. /returns&gt; </p>
 
 </div>
 </div>
@@ -261,27 +261,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>summary&gt; When overridden in a derived class, sets the length of the current stream. /summary&gt; param name="value"&gt;The desired length of the current stream in bytes. </p>
-
-</div>
-</div>
-<a id="a66a10533676de87061ae89c0ab2c62c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66a10533676de87061ae89c0ab2c62c5">&#9670;&nbsp;</a></span>SetLength()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void ADL.PipeStream.SetLength </td>
-          <td>(</td>
-          <td class="paramtype">long&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>summary&gt; When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read. /summary&gt; returns&gt; The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached. /returns&gt; param name="offset"&gt;The zero-based byte offset in buffer at which to begin storing the data read from the current stream. </p>
-<p>param name="count"&gt;The maximum number of bytes to be read from the current stream. </p>
-<p>param name="buffer"&gt;An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count - 1) replaced by the bytes read from the current source. </p>
 
 </div>
 </div>
@@ -373,7 +352,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Setting this to true will cause Read() to block if it appears that it will run out of data. </p>
+<p>Setting this to true will cause <a class="el" href="class_a_d_l_1_1_pipe_stream.html#ada829c0b71d6896e2bb3cd5d37ccba34" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> to block if it appears that it will run out of data. </p>
 
 </div>
 </div>
@@ -470,8 +449,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Gets or sets a value indicating whether to block last read method before the buffer is empty. When true, Read() will block until it can fill the passed in buffer and count. When false, Read() will not block, returning all the available buffer data. Setting to true will remove the possibility of ending a stream reader prematurely. </p>
-<p>summary&gt; Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. /summary&gt; </p>
+<p>Gets or sets a value indicating whether to block last read method before the buffer is empty. When true, <a class="el" href="class_a_d_l_1_1_pipe_stream.html#ada829c0b71d6896e2bb3cd5d37ccba34" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> will block until it can fill the passed in buffer and count. When false, <a class="el" href="class_a_d_l_1_1_pipe_stream.html#ada829c0b71d6896e2bb3cd5d37ccba34" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> will not block, returning all the available buffer data. Setting to true will remove the possibility of ending a stream reader prematurely. </p>
 
 </div>
 </div>
@@ -592,7 +570,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>D:/Users/Tim/Documents/ADL/ADL/ADL/PipeStream.cs</li>
+<li>ADL/ADL/PipeStream.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

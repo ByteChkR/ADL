@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace ADL.Unity
 {
+    /// <summary>
+    /// Class required by the Unity Component to Create a logstream.
+    /// </summary>
     [Serializable]
     public sealed class LogStreamParams
     {

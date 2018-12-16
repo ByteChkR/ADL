@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['timer1_5ftick',['Timer1_Tick',['../class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a9afd93546e1a02adc1b48040a244ae79',1,'ADL::CustomCMD::CustomCMDForm']]],
-  ['tologstream',['ToLogStream',['../class_a_d_l_1_1_unity_1_1_log_stream_params.html#a511976146d776a6e618baf1e47c99f34',1,'ADL.Unity.LogStreamParams.ToLogStream()'],['../class_a_d_l_1_1_unity_1_1_log_stream_params.html#a8cd3548465c20596918ee37292bed704',1,'ADL.Unity.LogStreamParams.ToLogStream(System.IO.Stream stream)']]],
-  ['tounityconsolelogstream',['ToUnityConsoleLogStream',['../class_a_d_l_1_1_unity_1_1_unity_utils.html#a2d9a234cdee1d96c7ef8ff9e547118c3',1,'ADL::Unity::UnityUtils']]]
+  ['seek',['Seek',['../class_a_d_l_1_1_pipe_stream.html#ae34adb2842a65053e2e13dcb15fe65e5',1,'ADL::PipeStream']]],
+  ['setallflags',['SetAllFlags',['../class_a_d_l_1_1_bit_mask.html#a025f039a81b7439fcc85a0ddff1a7502',1,'ADL.BitMask.SetAllFlags(int newMask)'],['../class_a_d_l_1_1_bit_mask.html#adbdf89842cde61d787eddde9f1699eec',1,'ADL.BitMask.SetAllFlags(T newFlags)']]],
+  ['setallprefixes',['SetAllPrefixes',['../class_a_d_l_1_1_debug.html#aeee052b6bc6759222ce6ed32dd9763a1',1,'ADL::Debug']]],
+  ['setflag',['SetFlag',['../class_a_d_l_1_1_bit_mask.html#a85429d752e2d22b949c9efa0f9b3763e',1,'ADL.BitMask.SetFlag(int flag, bool yes)'],['../class_a_d_l_1_1_bit_mask.html#aa33bac6ce0fc1a3615f3b5ca4f942b58',1,'ADL.BitMask.SetFlag(T flag, bool yes)']]],
+  ['setmask',['SetMask',['../class_a_d_l_1_1_log_stream.html#a7a1a25f0247d4ebfeb5a4d6e37fe4e3a',1,'ADL::LogStream']]],
+  ['setmatchingmode',['SetMatchingMode',['../class_a_d_l_1_1_log_stream.html#af66833a158ebb7d8e079810bb2b8f50e',1,'ADL::LogStream']]],
+  ['settimestampusage',['SetTimeStampUsage',['../class_a_d_l_1_1_log_stream.html#a533f3bae752ab3ee1c3f1aaac23a7d05',1,'ADL::LogStream']]]
 ];

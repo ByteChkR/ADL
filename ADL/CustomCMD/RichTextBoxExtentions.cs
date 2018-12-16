@@ -3,6 +3,9 @@ using System.Drawing;
 
 namespace ADL.CustomCMD
 {
+    /// <summary>
+    /// Extentions for WindowsForms.RichTextBox
+    /// </summary>
     public static class RichTextBoxExtensions
     {
         /// <summary>

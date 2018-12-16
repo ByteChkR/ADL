@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['flushtype',['FlushType',['../class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a5d9cf1373da2cf300bf88f11f8ec078a',1,'ADL::Unity::UnityTextWriter']]]
+  ['errormask',['ErrorMask',['../class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a150a993a52f0ede7a6f8ba04728b4bfe',1,'ADL::Unity::UnityTextWriter']]]
 ];

@@ -129,7 +129,7 @@ namespace ADL
         /// <summary>
         /// Sets the Matching Mode between MatchAll and MatchOne
         /// </summary>
-        /// <param name="MatchAll"></param>
+        /// <param name="matchType">Match Type</param>
         public void SetMatchingMode(MatchType matchType)
         {
             _matchAllFlags = matchType == MatchType.MATCH_ALL;
@@ -139,7 +139,7 @@ namespace ADL
         /// <summary>
         /// Sets the level mask of the log stream. Set to -1 to get every level
         /// </summary>
-        /// <param name="newMask"></param>
+        /// <param name="newMask">New Mask</param>
         public void SetMask(int newMask)
         {
             _mask = newMask;
@@ -149,7 +149,7 @@ namespace ADL
         /// <summary>
         /// Displays the time when the message was logged.
         /// </summary>
-        /// <param name="useTimeStamps"></param>
+        /// <param name="useTimeStamps">Use Timestamps</param>
         public void SetTimeStampUsage(bool useTimeStamps)
         {
             _setTimeStamp = useTimeStamps;
@@ -160,7 +160,7 @@ namespace ADL
         /// <summary>
         /// Wrapper to Leave out mask ID in the parameters
         /// </summary>
-        /// <param name="flag"></param>
+        /// <param name="flag">Flag you want to check against</param>
         /// <returns>If the flag is contained in the Mask</returns>
         public bool IsContainedInMask(int flag)
         {
@@ -199,7 +199,6 @@ namespace ADL
         /// <param name="path">filepath</param>
         /// <param name="mask">debug level mask</param>
         /// <param name="matchType">should the log only fire if all the flags are in the mask</param>
-        /// <param name="minimumWriteAmount">amount of characters requires to issue another Stream.Write call</param>
         /// <param name="setTimestamp">Put fancy timestamp infront of each line</param>
         /// <param name="appendIfExists">If the log you are trying to open is already existing append to it</param>
         /// <returns>The Created LogStream</returns>
@@ -221,7 +220,6 @@ namespace ADL
         /// <param name="stream">stream</param>
         /// <param name="mask">debug level mask</param>
         /// <param name="matchType">should the log only fire if all the flags are in the mask</param>
-        /// <param name="minimumWriteAmount">amount of characters requires to issue another Stream.Write call</param>
         /// <param name="setTimestamp">Put fancy timestamp infront of each line</param>
         /// <returns>The Created LogStream</returns>
         public static LogStream CreateLogStreamFromStream(System.IO.Stream stream, int mask = -1, MatchType matchType = MatchType.MATCH_ALL, bool setTimestamp = false)

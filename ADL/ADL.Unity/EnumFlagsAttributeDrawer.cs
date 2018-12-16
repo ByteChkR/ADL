@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace ADL.Unity
 {
+
+    /// <summary>
+    /// Draws the Actual mask field.
+    /// </summary>
     [CustomPropertyDrawer(typeof(EnumFlagsAttribute))]
     public sealed class EnumFlagsAttributeDrawer : PropertyDrawer
     {

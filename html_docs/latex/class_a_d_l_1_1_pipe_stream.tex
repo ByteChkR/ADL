@@ -5,26 +5,29 @@
 \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream}{Pipe\+Stream}} is a thread-\/safe read/write data stream for use between two threads in a single-\/producer/single-\/consumer type problem. Version\+: 2014/12/15 1.\+2 Initial Version 2006/10/13 1.\+0 -\/ initial version. Update on 2008/10/9 1.\+1 -\/ uses Monitor instead of Manual Reset events for more elegant synchronicity. Update on 2014/12/15 1.\+2 -\/ bugfix for read method not using offset -\/ thanks Jörgen Sigvardsson, replace Not\+Implemented\+Exceptions with Not\+Supported\+Exception Copyright (c) 2006 James Kolpack (james dot kolpack at google mail)  
 
 
-Inheritance diagram for A\+D\+L.\+Pipe\+Stream\+:\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=2.000000cm]{class_a_d_l_1_1_pipe_stream}
-\end{center}
-\end{figure}
+
+
+Inherits Stream.
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 new void \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a430dca29f0cd1ff4a27fc7bcafbe7a8f}{Dispose}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Performs application-\/defined tasks associated with freeing, releasing, or resetting unmanaged resources. \end{DoxyCompactList}\item 
 override void \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_aef56d04b8d784d6606ed348971eb29f3}{Flush}} ()
 \item 
 override long \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ae34adb2842a65053e2e13dcb15fe65e5}{Seek}} (long offset, Seek\+Origin origin)
 \item 
-override void \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a66a10533676de87061ae89c0ab2c62c5}{Set\+Length}} (long value)
+\mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a66a10533676de87061ae89c0ab2c62c5}\label{class_a_d_l_1_1_pipe_stream_a66a10533676de87061ae89c0ab2c62c5}} 
+override void {\bfseries Set\+Length} (long value)
 \item 
 \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_ada829c0b71d6896e2bb3cd5d37ccba34}\label{class_a_d_l_1_1_pipe_stream_ada829c0b71d6896e2bb3cd5d37ccba34}} 
-override int {\bfseries Read} (byte\mbox{[}$\,$\mbox{]} buffer, int offset, int count)
-\item 
+override int \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ada829c0b71d6896e2bb3cd5d37ccba34}{Read}} (byte\mbox{[}$\,$\mbox{]} buffer, int offset, int count)
+\begin{DoxyCompactList}\small\item\em When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read. /summary$>$ returns$>$ The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached. /returns$>$ param name=\char`\"{}offset\char`\"{}$>$The zero-\/based byte offset in buffer at which to begin storing the data read from the current stream. 
+
+param name=\char`\"{}count\char`\"{}$>$The maximum number of bytes to be read from the current stream. 
+
+param name=\char`\"{}buffer\char`\"{}$>$An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count -\/ 1) replaced by the bytes read from the current source. \end{DoxyCompactList}\item 
 override void \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a5f8e6e0a0b7070fc2e5320d2007eadd1}{Write}} (byte\mbox{[}$\,$\mbox{]} buffer, int offset, int count)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
@@ -40,7 +43,7 @@ const long \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ad4a04360b3d017567a0fd48
 long \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a250f42c7da667f60487068e27c3d67d0}{Max\+Buffer\+Length}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \begin{DoxyCompactList}\small\item\em Gets or sets the maximum number of bytes to store in the buffer. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_af05e530e849bfee481290e8139f27379}{Block\+Last\+Read\+Buffer}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\begin{DoxyCompactList}\small\item\em Gets or sets a value indicating whether to block last read method before the buffer is empty. When true, Read() will block until it can fill the passed in buffer and count. When false, Read() will not block, returning all the available buffer data. Setting to true will remove the possibility of ending a stream reader prematurely. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Gets or sets a value indicating whether to block last read method before the buffer is empty. When true, \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ada829c0b71d6896e2bb3cd5d37ccba34}{Read()}} will block until it can fill the passed in buffer and count. When false, \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ada829c0b71d6896e2bb3cd5d37ccba34}{Read()}} will not block, returning all the available buffer data. Setting to true will remove the possibility of ending a stream reader prematurely. \end{DoxyCompactList}\item 
 override bool \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a194eae1c5b19a0999a5d12bcef00efd9}{Can\+Read}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \item 
 override bool \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ad891fa332a41aeb44026c5a89ddc36e8}{Can\+Seek}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
@@ -67,7 +70,7 @@ bool \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a186ff66fbf297d1491d7ca528326c
 long \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_af8cc7772cf7ae02b1890ab8c58d0cbad}{m\+Max\+Buffer\+Length}} = 200 $\ast$ \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ad4a04360b3d017567a0fd48defd434d0}{MB}}
 \begin{DoxyCompactList}\small\item\em Maximum number of bytes to store in the buffer. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_a1dd964eae6da39ffb26d8bb1ff8ffaa7}{m\+Block\+Last\+Read}}
-\begin{DoxyCompactList}\small\item\em Setting this to true will cause Read() to block if it appears that it will run out of data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Setting this to true will cause \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ada829c0b71d6896e2bb3cd5d37ccba34}{Read()}} to block if it appears that it will run out of data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -86,15 +89,21 @@ T\+HE S\+O\+F\+T\+W\+A\+RE IS P\+R\+O\+V\+I\+D\+ED \char`\"{}\+A\+S I\+S\char`\"
 \subsubsection{\texorpdfstring{Dispose()}{Dispose()}}
 {\footnotesize\ttfamily new void A\+D\+L.\+Pipe\+Stream.\+Dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Performs application-\/defined tasks associated with freeing, releasing, or resetting unmanaged resources. 
+
 summary$>$ When overridden in a derived class, clears all buffers for this stream and causes any buffered data to be written to the underlying device. /summary$>$ \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_aef56d04b8d784d6606ed348971eb29f3}\label{class_a_d_l_1_1_pipe_stream_aef56d04b8d784d6606ed348971eb29f3}} 
 \index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Flush@{Flush}}
 \index{Flush@{Flush}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
 \subsubsection{\texorpdfstring{Flush()}{Flush()}}
 {\footnotesize\ttfamily override void A\+D\+L.\+Pipe\+Stream.\+Flush (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-summary$>$ When overridden in a derived class, sets the position within the current stream. /summary$>$ returns$>$ The new position within the current stream. /returns$>$ param name=\char`\"{}offset\char`\"{}$>$A byte offset relative to the origin parameter. 
+summary$>$ When overridden in a derived class, sets the position within the current stream. /summary$>$ param name=\char`\"{}offset\char`\"{}$>$A byte offset relative to the origin parameter. 
 
-param name=\char`\"{}origin\char`\"{}$>$A value of type \mbox{\hyperlink{}{T\+:\+System.\+I\+O.\+Seek\+Origin}} indicating the reference point used to obtain the new position. \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a82add2a351991d0f3580d4a198f44675}\label{class_a_d_l_1_1_pipe_stream_a82add2a351991d0f3580d4a198f44675}} 
+param name=\char`\"{}origin\char`\"{}$>$A value of type System.\+I\+O.\+Seek\+Origin indicating the reference point used to obtain the new position. 
+
+returns$>$ The new position within the current stream. /returns$>$ \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a82add2a351991d0f3580d4a198f44675}\label{class_a_d_l_1_1_pipe_stream_a82add2a351991d0f3580d4a198f44675}} 
 \index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Read\+Available@{Read\+Available}}
 \index{Read\+Available@{Read\+Available}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
 \subsubsection{\texorpdfstring{Read\+Available()}{ReadAvailable()}}
@@ -122,17 +131,7 @@ param name=\char`\"{}buffer\char`\"{}$>$An array of bytes. This method copies co
 \subsubsection{\texorpdfstring{Seek()}{Seek()}}
 {\footnotesize\ttfamily override long A\+D\+L.\+Pipe\+Stream.\+Seek (\begin{DoxyParamCaption}\item[{long}]{offset,  }\item[{Seek\+Origin}]{origin }\end{DoxyParamCaption})}
 
-summary$>$ When overridden in a derived class, sets the length of the current stream. /summary$>$ param name=\char`\"{}value\char`\"{}$>$The desired length of the current stream in bytes. \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a66a10533676de87061ae89c0ab2c62c5}\label{class_a_d_l_1_1_pipe_stream_a66a10533676de87061ae89c0ab2c62c5}} 
-\index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Set\+Length@{Set\+Length}}
-\index{Set\+Length@{Set\+Length}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
-\subsubsection{\texorpdfstring{Set\+Length()}{SetLength()}}
-{\footnotesize\ttfamily override void A\+D\+L.\+Pipe\+Stream.\+Set\+Length (\begin{DoxyParamCaption}\item[{long}]{value }\end{DoxyParamCaption})}
-
-summary$>$ When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read. /summary$>$ returns$>$ The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached. /returns$>$ param name=\char`\"{}offset\char`\"{}$>$The zero-\/based byte offset in buffer at which to begin storing the data read from the current stream. 
-
-param name=\char`\"{}count\char`\"{}$>$The maximum number of bytes to be read from the current stream. 
-
-param name=\char`\"{}buffer\char`\"{}$>$An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count -\/ 1) replaced by the bytes read from the current source. \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a5f8e6e0a0b7070fc2e5320d2007eadd1}\label{class_a_d_l_1_1_pipe_stream_a5f8e6e0a0b7070fc2e5320d2007eadd1}} 
+summary$>$ When overridden in a derived class, sets the length of the current stream. /summary$>$ param name=\char`\"{}value\char`\"{}$>$The desired length of the current stream in bytes. \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a5f8e6e0a0b7070fc2e5320d2007eadd1}\label{class_a_d_l_1_1_pipe_stream_a5f8e6e0a0b7070fc2e5320d2007eadd1}} 
 \index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Write@{Write}}
 \index{Write@{Write}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
 \subsubsection{\texorpdfstring{Write()}{Write()}}
@@ -169,7 +168,7 @@ Number of bytes in a megabyte
 
 
 
-Setting this to true will cause Read() to block if it appears that it will run out of data. 
+Setting this to true will cause \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ada829c0b71d6896e2bb3cd5d37ccba34}{Read()}} to block if it appears that it will run out of data. 
 
 \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_ac3ea3e53b1c4a1344a6a9618a67751df}\label{class_a_d_l_1_1_pipe_stream_ac3ea3e53b1c4a1344a6a9618a67751df}} 
 \index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!m\+Buffer@{m\+Buffer}}
@@ -212,9 +211,9 @@ Maximum number of bytes to store in the buffer.
 
 
 
-Gets or sets a value indicating whether to block last read method before the buffer is empty. When true, Read() will block until it can fill the passed in buffer and count. When false, Read() will not block, returning all the available buffer data. Setting to true will remove the possibility of ending a stream reader prematurely. 
+Gets or sets a value indicating whether to block last read method before the buffer is empty. When true, \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ada829c0b71d6896e2bb3cd5d37ccba34}{Read()}} will block until it can fill the passed in buffer and count. When false, \mbox{\hyperlink{class_a_d_l_1_1_pipe_stream_ada829c0b71d6896e2bb3cd5d37ccba34}{Read()}} will not block, returning all the available buffer data. Setting to true will remove the possibility of ending a stream reader prematurely. 
 
-summary$>$ Performs application-\/defined tasks associated with freeing, releasing, or resetting unmanaged resources. /summary$>$ \mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a194eae1c5b19a0999a5d12bcef00efd9}\label{class_a_d_l_1_1_pipe_stream_a194eae1c5b19a0999a5d12bcef00efd9}} 
+\mbox{\Hypertarget{class_a_d_l_1_1_pipe_stream_a194eae1c5b19a0999a5d12bcef00efd9}\label{class_a_d_l_1_1_pipe_stream_a194eae1c5b19a0999a5d12bcef00efd9}} 
 \index{A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}!Can\+Read@{Can\+Read}}
 \index{Can\+Read@{Can\+Read}!A\+D\+L\+::\+Pipe\+Stream@{A\+D\+L\+::\+Pipe\+Stream}}
 \subsubsection{\texorpdfstring{Can\+Read}{CanRead}}
@@ -252,4 +251,4 @@ Gets or sets the maximum number of bytes to store in the buffer.
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+Users/\+Tim/\+Documents/\+A\+D\+L/\+A\+D\+L/\+A\+D\+L/Pipe\+Stream.\+cs\end{DoxyCompactItemize}
+A\+D\+L/\+A\+D\+L/Pipe\+Stream.\+cs\end{DoxyCompactItemize}

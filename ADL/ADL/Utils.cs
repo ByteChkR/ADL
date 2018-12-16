@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace ADL
 {
+    /// <summary>
+    /// Helpful functions are stored here.
+    /// </summary>
     public static class Utils
     {
         /// <summary>

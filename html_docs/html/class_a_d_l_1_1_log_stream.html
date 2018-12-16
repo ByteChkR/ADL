@@ -287,7 +287,6 @@ Private Attributes</h2></td></tr>
     <tr><td class="paramname">path</td><td>filepath</td></tr>
     <tr><td class="paramname">mask</td><td>debug level mask</td></tr>
     <tr><td class="paramname">matchType</td><td>should the log only fire if all the flags are in the mask</td></tr>
-    <tr><td class="paramname">minimumWriteAmount</td><td>amount of characters requires to issue another Stream.Write call</td></tr>
     <tr><td class="paramname">setTimestamp</td><td>Put fancy timestamp infront of each line</td></tr>
     <tr><td class="paramname">appendIfExists</td><td>If the log you are trying to open is already existing append to it</td></tr>
   </table>
@@ -349,7 +348,6 @@ Private Attributes</h2></td></tr>
     <tr><td class="paramname">stream</td><td>stream</td></tr>
     <tr><td class="paramname">mask</td><td>debug level mask</td></tr>
     <tr><td class="paramname">matchType</td><td>should the log only fire if all the flags are in the mask</td></tr>
-    <tr><td class="paramname">minimumWriteAmount</td><td>amount of characters requires to issue another Stream.Write call</td></tr>
     <tr><td class="paramname">setTimestamp</td><td>Put fancy timestamp infront of each line</td></tr>
   </table>
   </dd>
@@ -377,7 +375,7 @@ Private Attributes</h2></td></tr>
 <p>Wrapper to Leave out mask ID in the parameters </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">flag</td><td></td></tr>
+    <tr><td class="paramname">flag</td><td>Flag you want to check against</td></tr>
   </table>
   </dd>
 </dl>
@@ -441,7 +439,7 @@ Private Attributes</h2></td></tr>
 <p>Sets the level mask of the log stream. Set to -1 to get every level </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">newMask</td><td></td></tr>
+    <tr><td class="paramname">newMask</td><td>New Mask</td></tr>
   </table>
   </dd>
 </dl>
@@ -467,7 +465,7 @@ Private Attributes</h2></td></tr>
 <p>Sets the Matching Mode between MatchAll and MatchOne </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">MatchAll</td><td></td></tr>
+    <tr><td class="paramname">matchType</td><td>Match Type</td></tr>
   </table>
   </dd>
 </dl>
@@ -493,7 +491,7 @@ Private Attributes</h2></td></tr>
 <p>Displays the time when the message was logged. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">useTimeStamps</td><td></td></tr>
+    <tr><td class="paramname">useTimeStamps</td><td>Use Timestamps</td></tr>
   </table>
   </dd>
 </dl>
@@ -767,7 +765,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>D:/Users/Tim/Documents/ADL/ADL/ADL/LogStream.cs</li>
+<li>ADL/ADL/LogStream.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

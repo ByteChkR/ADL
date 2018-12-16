@@ -128,8 +128,6 @@ Wrapper function that makes the creation and setting up a log stream a no braine
 \hline
 {\em match\+Type} & should the log only fire if all the flags are in the mask\\
 \hline
-{\em minimum\+Write\+Amount} & amount of characters requires to issue another Stream.\+Write call\\
-\hline
 {\em set\+Timestamp} & Put fancy timestamp infront of each line\\
 \hline
 {\em append\+If\+Exists} & If the log you are trying to open is already existing append to it\\
@@ -156,8 +154,6 @@ Wrapper function that makes the creation and setting up a log stream a no braine
 \hline
 {\em match\+Type} & should the log only fire if all the flags are in the mask\\
 \hline
-{\em minimum\+Write\+Amount} & amount of characters requires to issue another Stream.\+Write call\\
-\hline
 {\em set\+Timestamp} & Put fancy timestamp infront of each line\\
 \hline
 \end{DoxyParams}
@@ -176,7 +172,7 @@ Wrapper to Leave out mask ID in the parameters
 
 
 \begin{DoxyParams}{Parameters}
-{\em flag} & \\
+{\em flag} & Flag you want to check against\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -211,7 +207,7 @@ Sets the level mask of the log stream. Set to -\/1 to get every level
 
 
 \begin{DoxyParams}{Parameters}
-{\em new\+Mask} & \\
+{\em new\+Mask} & New Mask\\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_a_d_l_1_1_log_stream_af66833a158ebb7d8e079810bb2b8f50e}\label{class_a_d_l_1_1_log_stream_af66833a158ebb7d8e079810bb2b8f50e}} 
@@ -226,7 +222,7 @@ Sets the Matching Mode between Match\+All and Match\+One
 
 
 \begin{DoxyParams}{Parameters}
-{\em Match\+All} & \\
+{\em match\+Type} & Match Type\\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_a_d_l_1_1_log_stream_a533f3bae752ab3ee1c3f1aaac23a7d05}\label{class_a_d_l_1_1_log_stream_a533f3bae752ab3ee1c3f1aaac23a7d05}} 
@@ -241,7 +237,7 @@ Displays the time when the message was logged.
 
 
 \begin{DoxyParams}{Parameters}
-{\em use\+Time\+Stamps} & \\
+{\em use\+Time\+Stamps} & Use Timestamps\\
 \hline
 \end{DoxyParams}
 
@@ -364,4 +360,4 @@ The Unterlying stream.
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-D\+:/\+Users/\+Tim/\+Documents/\+A\+D\+L/\+A\+D\+L/\+A\+D\+L/Log\+Stream.\+cs\end{DoxyCompactItemize}
+A\+D\+L/\+A\+D\+L/Log\+Stream.\+cs\end{DoxyCompactItemize}
