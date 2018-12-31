@@ -14,7 +14,7 @@ namespace ADL
         /// <summary>
         /// The Mask
         /// </summary>
-        private int _mask = -1;
+        private BitMask _mask = -1;
         /// <summary>
         /// The Mask that determines wether this stream will receive a log message
         /// </summary>
@@ -163,7 +163,7 @@ namespace ADL
         /// </summary>
         /// <param name="flag">Flag you want to check against</param>
         /// <returns>If the flag is contained in the Mask</returns>
-        public bool IsContainedInMask(int flag)
+        public bool IsContainedInMask(BitMask flag)
         {
             return BitMask.IsContainedInMask(_mask, flag, _matchAllFlags);
         }
@@ -173,7 +173,7 @@ namespace ADL
         /// </summary>
         /// <param name="mask">Mask to send trough the Stream(for the unity Text Reader)</param>
         /// <param name="message">Message you want to send.</param>
-        public void Log(int mask, string message)
+        public void Log(BitMask mask, string message)
         {
             if (_streamClosed) return;
             if (_setTimeStamp) message = Utils.TimeStamp + message;
@@ -181,17 +181,6 @@ namespace ADL
             _stream.WriteLine(message, mask);
             _stream.Flush();
         }
-
-
-        ///// <summary>
-        ///// Writes te last bit of the Message buffer before flushing. After that it Flushes the Stream 
-        ///// </summary>
-        //public void FlushStream()
-        //{
-        //    _stream.Flush();
-        //}
-
-
 
         #region LogStreamHelperFunctions
 
@@ -234,12 +223,7 @@ namespace ADL
             };
             return ret;
         }
-
-
         #endregion
-
-
-
     }
 
 }

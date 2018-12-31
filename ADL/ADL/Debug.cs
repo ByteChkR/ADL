@@ -78,7 +78,7 @@ namespace ADL
         /// </summary>
         /// <param name="mask">flag combination</param>
         /// <param name="prefix">desired prefix</param>
-        public static void AddPrefixForMask(int mask, string prefix)
+        public static void AddPrefixForMask(BitMask mask, string prefix)
         {
             if (_prefixes.ContainsKey(mask))
                 _prefixes[mask] = prefix;
@@ -90,7 +90,7 @@ namespace ADL
         /// Removes Prefix from prefix lookup table
         /// </summary>
         /// <param name="mask"></param>
-        public static void RemovePrefixForMask(int mask)
+        public static void RemovePrefixForMask(BitMask mask)
         {
             if (!_prefixes.ContainsKey(mask)) return;
             _prefixes.Remove(mask);
@@ -125,7 +125,7 @@ namespace ADL
         /// </summary>
         /// <param name="mask">the flag</param>
         /// <param name="message">the message</param>
-        public static void Log(int mask, string message)
+        public static void Log(BitMask mask, string message)
         {
             foreach (LogStream adls in _steams)
             {
@@ -144,7 +144,7 @@ namespace ADL
         /// <param name="message">Message</param>
         public static void Log<T>(T level, string message) where T : struct
         {
-            Log(Convert.ToInt32(level), message);
+            Log((ADL.BitMask)Convert.ToInt32(level), message);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace ADL
         /// <param name="prefix">Prefix</param>
         /// <param name="mask">Mask returned by the function</param>
         /// <returns>True if mask is found in Dictionary</returns>
-        public static bool GetPrefixMask(string prefix, out int mask)
+        public static bool GetPrefixMask(string prefix, out BitMask mask)
         {
             mask = 0;
             if (_prefixes.ContainsValue(prefix)){
@@ -174,7 +174,7 @@ namespace ADL
         /// </summary>
         /// <param name="mask"></param>
         /// <returns>All Prefixes for specified mask</returns>
-        public static string GetMaskPrefix(int mask)
+        public static string GetMaskPrefix(BitMask mask)
         {
             if (mask == -1) return "[GLOBAL]";
             _stringBuilder.Length = 0;

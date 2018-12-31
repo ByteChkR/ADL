@@ -25,7 +25,7 @@ namespace ADL.Unity
         /// </summary>
         /// <param name="WarnMask">everything satisfying this mask will be printed as a UnityWarning</param>
         /// <param name="ErrorMask">everything satisfying this mask will be printed as a UnityError</param>
-        public UnityTextWriter(int WarnMask, int ErrorMask)
+        public UnityTextWriter(BitMask WarnMask, BitMask ErrorMask)
         {
             this.WarnMask = WarnMask;
             this.ErrorMask = ErrorMask;

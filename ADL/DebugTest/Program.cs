@@ -74,7 +74,6 @@ namespace DebugTest
 
         }
 
-
         static void TestCustomConsoleOut()
         {
             //First we want to Specify what Messages we want to let trough the LogStream we are creating in a minute.

@@ -18,7 +18,7 @@ namespace ADL.Unity
         [Tooltip("If used as a file, it will append instead of delete")]
         public bool AppendIfExists = false;
         [Tooltip("The Mask. The levels you want to ..Spectate..")]
-        [EnumFlagsAttribute] public int Mask = -1;
+        [EnumFlagsAttribute] public BitMask Mask = -1;
         public bool CreateCustomConsole = false;
 
         /// <summary>
