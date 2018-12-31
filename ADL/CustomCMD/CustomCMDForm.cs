@@ -99,6 +99,8 @@ namespace ADL.CustomCMD
 
             string block = tr.ReadToEnd();
 
+            
+
             if (block != null)
             {
 

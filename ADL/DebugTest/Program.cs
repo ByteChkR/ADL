@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using ADL.Unity;
+using ADL;
 namespace DebugTest
 {
     /// <summary>
@@ -23,155 +24,188 @@ namespace DebugTest
 
 
 
-
- 
-
-        static void Main(string[] args)
+        static void TestConsoleOut()
         {
-            
-            
-            
-            
-            ADL.Debug.SetAllPrefixes(new string[] { "[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[GENERIC]" });
+            //First we want to Specify what Messages we want to let trough the LogStream we are creating in a minute.
 
-            ADL.LogStream ResultLog = ADL.LogStream.CreateLogStreamFromFile("benchmark.log", 0, ADL.MatchType.MATCH_ALL, true, true);
+            //You have multiple ways to create a Bitmask without getting cancer from bitwise operations
+            BitMask bMaskWildCard = new BitMask(true); //Creates a Wildcard(Everything will be let through)
+            BitMask bMaskNone = new BitMask(); //Creates the opposite of Wildcard(Nothing will be let through)
 
-            ADL.Debug.AddOutputStream(ResultLog);
+            //There are also more readable ways to create a mask.
+            //For example with enums. The Implementation will stay the same.
+            BitMask<LoggingTypes> bMaskGenericWildcard = new BitMask<LoggingTypes>(true);
+            BitMask<LoggingTypes> bMaskGenericNone = new BitMask<LoggingTypes>();
 
-            for (int SampleSize = 0; SampleSize < 15; SampleSize++)
+            //But you can do masks easier now.
+            //This bitmask only lets through logs and errors
+            BitMask<LoggingTypes> bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.ERROR, LoggingTypes.LOG);
+
+
+
+
+            //Then we want to create a LogStream that receives the Messages
+            //Important: Its much easier to use CreateLogStreamFromStream than setting everything manually
+            LogStream logStream = LogStream.CreateLogStreamFromStream(
+                Console.OpenStandardOutput(), //The Stream we want to send the Logs to.
+                bMaskGenericCustom, //Lets use the generic custom 
+                MatchType.MATCH_ONE, //We want to make the logs pass when there is at least one tag that is included in the filter.
+                true //Get that fancy timestamp infront of the log.
+                );
+
+            Debug.AddOutputStream(logStream); //Now we have Created the stream, just add it to the system.
+
+            //Maybe we even want to have Custom Tags on the logs, depending what mask they have.
+            Debug.SetAllPrefixes("[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[GENERIC]");
+
+            //This is a test.
+            for (int i = 0; i < 63; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
             {
-
-                //SetUpConsole(131072, 4096);
-
-
+                int mask = i;
+                Debug.Log(mask, "Test with mask " + mask);
             }
 
-            ADL.Debug.RemoveAllOutputStreams();
+            Debug.Log<LoggingTypes>(LoggingTypes.LOG, "Finished the Console Out Test.");
 
-            ResultLog = ADL.LogStream.CreateLogStreamFromFile("benchmark.log", 0, ADL.MatchType.MATCH_ALL,  true, true);
+            //Now we want to remove the stream from the system.
+            Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
+            //But we can remove all Streams in one go
+            Debug.RemoveAllOutputStreams(true);
 
-            ADL.Debug.AddOutputStream(ResultLog);
-
-            for (int SampleSize = 0; SampleSize < 2; SampleSize++)
-            {
-
-                SetUpCustomConsole(131072, 128);
-            }
-
-            ADL.Debug.RemoveAllOutputStreams();
-
-            Console.WriteLine("DebugStreams Closed");
-
-            System.IO.Directory.GetFiles(".\\", "log*.log").ToList().ForEach(x => System.IO.File.Delete(x));
-
-            Console.ReadLine();
         }
 
-        static void SetUpLogFile(int WriteSize, int TestAmount)
+
+        static void TestCustomConsoleOut()
         {
-            int Mask = ADL.BitMask.CombineMasks(); //WIldcard will receive all messages
-            ADL.LogStream logStream = ADL.LogStream.CreateLogStreamFromFile(
-                "log" + ADL.Debug.LogStreamCount + ".log", // The file
-                Mask, //The Mask
-                ADL.MatchType.MATCH_ALL,
-                true,//Timestamp?
-                false);//If file exists, should the log just append?
+            //First we want to Specify what Messages we want to let trough the LogStream we are creating in a minute.
 
-            ADL.Debug.AddOutputStream(logStream);
+            //You have multiple ways to create a Bitmask without getting cancer from bitwise operations
+            BitMask bMaskWildCard = new BitMask(true); //Creates a Wildcard(Everything will be let through)
+            BitMask bMaskNone = new BitMask(); //Creates the opposite of Wildcard(Nothing will be let through)
 
+            //There are also more readable ways to create a mask.
+            //For example with enums. The Implementation will stay the same.
+            BitMask<LoggingTypes> bMaskGenericWildcard = new BitMask<LoggingTypes>(true);
+            BitMask<LoggingTypes> bMaskGenericNone = new BitMask<LoggingTypes>();
 
-            //Testing:
-            Random rnd = new Random((int)DateTime.Now.Ticks);
+            //But you can do masks easier now.
+            //This bitmask only lets through logs and errors
+            BitMask<LoggingTypes> bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.ERROR, LoggingTypes.LOG);
 
-
-            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            sw.Start();
-            for (int i = 0; i < TestAmount; i++)
-            {
-                int r = rnd.Next(1, 64);
-                ADL.Debug.Log(r, "File Log Test nr. " + i);
-            }
-
-            sw.Stop();
+            //We want to Create a PipeStream that our logstream is basing on(pipe streams are threadsave streams in a single sender/single receiver situation)
+            PipeStream pipeStream = new PipeStream(); //Create a new instance
 
 
-            ADL.Debug.Log(-1, "Time for " + TestAmount + " Logs @ "+ADL.Debug.LogStreamCount+" File Stream(" + WriteSize + ") + Random " + "Ticks(Millis): " + sw.ElapsedTicks + "(" + sw.ElapsedMilliseconds + ")");
+            //Then we want to create a LogStream that receives the Messages
+            //Important: Its much easier to use CreateLogStreamFromStream than setting everything manually
+            LogStream logStream = LogStream.CreateLogStreamFromStream(
+                pipeStream, //The Stream we want to send the Logs to.
+                bMaskGenericCustom, //Lets use the generic custom 
+                MatchType.MATCH_ONE, //We want to make the logs pass when there is at least one tag that is included in the filter.
+                true //Get that fancy timestamp infront of the log.
+                );
+
+            Debug.AddOutputStream(logStream); //Now we have Created the stream, just add it to the system.
 
 
-            //ADL.Debug.RemoveOutputStream(logStream);
-        }
-
-        static void SetUpCustomConsole(int WriteSize, int TestAmount)
-        {
-            ADL.PipeStream ps = new ADL.PipeStream();
-            int Mask = ADL.BitMask.CombineMasks(); //WIldcard will receive all messages
-            ADL.LogStream logStream = ADL.LogStream.CreateLogStreamFromStream(
-                ps, // The file
-                Mask, //The Mask
-                ADL.MatchType.MATCH_ALL,
-                true);//Timestamp?
-
-            ADL.Debug.AddOutputStream(logStream);
 
             Dictionary<string, System.Drawing.Color> colorCoding = new Dictionary<string, System.Drawing.Color>()
             {
-                {"[Error]", System.Drawing.Color.Red }
+                {"[Error]", System.Drawing.Color.Red }, //Every errror message should be drawn in red.
+                {"[Warning]", System.Drawing.Color.Orange } //Every warning is painted in orange
             };
 
-            System.Windows.Forms.Form cmd = ADL.CustomCMD.CMDUtils.CreateCustomConsole(ps, colorCoding, 14);
+            //After Creating the log Stream we want to create a custom Cmd window
+            System.Windows.Forms.Form ccmd = //ADL.CustomCMD.CMDUtils.CreateCustomConsole(pipeStream); //Creates a basic Custom cmd with no visual adjustments
+                ADL.CustomCMD.CMDUtils.CreateCustomConsole(pipeStream, colorCoding, 13); //Creates a custom cmd with color coding and custom font size.
 
-            //Testing:
-            Random rnd = new Random((int)DateTime.Now.Ticks);
 
 
-            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            sw.Start();
-            for (int i = 0; i < TestAmount; i++)
+            //Maybe we even want to have Custom Tags on the logs, depending what mask they have.
+            Debug.SetAllPrefixes("[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[GENERIC]");
+
+            //This is a test.
+            for (int i = 0; i < 63; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
             {
-                int r = rnd.Next(1, 64);
-                ADL.Debug.Log(r, "File Log Test nr. " + i);
+                int mask = i;
+                Debug.Log(mask, "Test with mask " + mask);
             }
 
-            sw.Stop();
+            Debug.Log<LoggingTypes>(LoggingTypes.LOG, "Finished the CustomConsole Out Test.");
 
-
-            ADL.Debug.Log(-1, "Time for " + TestAmount + " Logs @ " + ADL.Debug.LogStreamCount + " File Stream(" + WriteSize + ") + Random " + "Ticks(Millis): " + sw.ElapsedTicks + "(" + sw.ElapsedMilliseconds + ")");
-
-            
-            //ADL.Debug.RemoveOutputStream(logStream);
+            //Now we want to remove the stream from the system.
+            Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
+            //But we can remove all Streams in one go
+            Debug.RemoveAllOutputStreams(true);
         }
 
-        static void SetUpConsole(int WriteSize, int TestAmount)
+        static void TestLogFileOut()
         {
-            int Mask = ADL.BitMask.CombineMasks(); //WIldcard will receive all messages
-            ADL.LogStream logStream = ADL.LogStream.CreateLogStreamFromStream(
-                Console.OpenStandardOutput(), // The stream
-                Mask, //The Mask
-                ADL.MatchType.MATCH_ALL,
-                true); //Timestamp?
-            ADL.Debug.AddOutputStream(logStream);
+            //First we want to Specify what Messages we want to let trough the LogStream we are creating in a minute.
+
+            //You have multiple ways to create a Bitmask without getting cancer from bitwise operations
+            BitMask bMaskWildCard = new BitMask(true); //Creates a Wildcard(Everything will be let through)
+            BitMask bMaskNone = new BitMask(); //Creates the opposite of Wildcard(Nothing will be let through)
+
+            //There are also more readable ways to create a mask.
+            //For example with enums. The Implementation will stay the same.
+            BitMask<LoggingTypes> bMaskGenericWildcard = new BitMask<LoggingTypes>(true);
+            BitMask<LoggingTypes> bMaskGenericNone = new BitMask<LoggingTypes>();
+
+            //But you can do masks easier now.
+            //This bitmask only lets through logs and errors
+            BitMask<LoggingTypes> bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.ERROR, LoggingTypes.LOG);
 
 
-            //Testing:
-            Random rnd = new Random((int)DateTime.Now.Ticks);
+            //Then we want to create a LogStream that receives the Messages
+            //Important: Its much easier to use CreateLogStreamFromFile than setting everything manually
+            LogStream logStream = LogStream.CreateLogStreamFromFile(
+                "test.log", //The Stream we want to send the Logs to.(in this case the file name)
+                bMaskGenericCustom, //Lets use the generic custom 
+                MatchType.MATCH_ONE, //We want to make the logs pass when there is at least one tag that is included in the filter.
+                true, //Get that fancy timestamp infront of the log.
+                true //We append the log if it already exists.
+                );
+
+            Debug.AddOutputStream(logStream); //Now we have Created the stream, just add it to the system.
 
 
-            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            sw.Start();
-            for (int i = 0; i < TestAmount; i++)
+            //Maybe we even want to have Custom Tags on the logs, depending what mask they have.
+            Debug.SetAllPrefixes("[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[GENERIC]");
+
+            //This is a test.
+            for (int i = 0; i < 63; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
             {
-                int r = rnd.Next(1, 64);
-                ADL.Debug.Log(r, "Console Log Test nr. " + i);
+                int mask = i;
+                Debug.Log(mask, "Test with mask " + mask);
             }
 
-            sw.Stop();
+            Debug.Log<LoggingTypes>(LoggingTypes.LOG, "Finished the Logfile Out Test.");
+            Console.WriteLine("Finished the Logfile Out Test.");
 
+            //Now we want to remove the stream from the system.
+            Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
+            //But we can remove all Streams in one go
+            Debug.RemoveAllOutputStreams(true);
 
-            ADL.Debug.Log(-1, "Time for " + TestAmount + " Logs @ " + ADL.Debug.LogStreamCount + " Console Stream(" + WriteSize + ") + Random " + "Ticks(Millis): " + sw.ElapsedTicks + "(" + sw.ElapsedMilliseconds + ")");
-
-            //ADL.Debug.RemoveOutputStream(logStream);
-
+            //In this case we want to delete the created log file to prevent logs piling up in the test project.
+            System.IO.File.Delete("test.log");
         }
 
+
+
+        static void Main(string[] args)
+        {
+            TestConsoleOut();
+
+            TestCustomConsoleOut();
+
+            TestLogFileOut();
+
+            Console.Read();
+
+            System.Windows.Forms.Application.Exit(); //Forces the custom console to close.
+
+        }
     }
 }

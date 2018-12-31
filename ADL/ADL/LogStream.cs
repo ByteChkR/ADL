@@ -98,6 +98,7 @@ namespace ADL
         {
             _str = stream;
             _stream = new StreamWriter(stream);
+            
 
         }
 
@@ -178,6 +179,7 @@ namespace ADL
             if (_setTimeStamp) message = Utils.TimeStamp + message;
 
             _stream.WriteLine(message, mask);
+            _stream.Flush();
         }
 
 

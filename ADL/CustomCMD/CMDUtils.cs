@@ -19,7 +19,9 @@ namespace ADL.CustomCMD
         /// <param name="ps">the Form to start on a different Thread.</param>
         private static void CreateCustomConsole(Form ps)
         {
-            new System.Threading.Thread(() => Application.Run(ps)).Start();
+            new System.Threading.Thread(() => 
+            
+            Application.Run(ps)).Start();
         }
 
         /// <summary>
