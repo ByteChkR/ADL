@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ADL
 {
@@ -11,7 +12,7 @@ namespace ADL
         /// <summary>
         /// String Builder to assemble the log
         /// </summary>
-        private static System.Text.StringBuilder _stringBuilder = new System.Text.StringBuilder();
+        private static StringBuilder _stringBuilder = new StringBuilder();
         /// <summary>
         /// List of LogStreams that are active
         /// </summary>

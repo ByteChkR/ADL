@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
-
+using System.IO;
+using System.Drawing;
 namespace ADL.CustomCMD
 {
     /// <summary>
@@ -33,9 +34,9 @@ namespace ADL.CustomCMD
         /// <param name="colorCoding">Default null</param>
         /// <param name="FontSize">Default 8.25</param>
         /// <returns>The Created Console</returns>
-        public static Form CreateCustomConsole(PipeStream ps, Dictionary<string, System.Drawing.Color> colorCoding = null, float FontSize = 8.25f)
+        public static Form CreateCustomConsole(PipeStream ps, Dictionary<string, Color> colorCoding = null, float FontSize = 8.25f)
         {
-            return CreateCustomConsole(ps, System.Drawing.Color.Black, System.Drawing.Color.White, FontSize, colorCoding);
+            return CreateCustomConsole(ps, Color.Black, Color.White, FontSize, colorCoding);
         }
 
         /// <summary>
@@ -47,7 +48,7 @@ namespace ADL.CustomCMD
         /// <param name="FontSize">Font Size</param>
         /// <param name="colorCoding">Color Coding for the Tags</param>
         /// <returns>Reference to the Created Console.(Not Thread Save)</returns>
-        public static Form CreateCustomConsole(PipeStream ps, System.Drawing.Color Background, System.Drawing.Color FontColor, float FontSize = 8.25f, Dictionary<string, System.Drawing.Color> colorCoding = null)
+        public static Form CreateCustomConsole(PipeStream ps, Color Background, Color FontColor, float FontSize = 8.25f, Dictionary<string, Color> colorCoding = null)
         {
             if (!_WinFormsFlagsInitialized)
                 InitWinForms();
@@ -67,7 +68,7 @@ namespace ADL.CustomCMD
         /// <param name="FontColor">Font Color</param>
         /// <param name="FontSize">Font Size</param>
         /// <param name="colorCoding">Color Coding for the Tags</param>
-        public static void CreateCustomConsoleNoReturn(System.IO.Stream ps, System.Drawing.Color Background, System.Drawing.Color FontColor, float FontSize = 8.25f, Dictionary<string, System.Drawing.Color> colorCoding = null)
+        public static void CreateCustomConsoleNoReturn(Stream ps, Color Background, Color FontColor, float FontSize = 8.25f, Dictionary<string, Color> colorCoding = null)
         {
             if (ps != null && !(ps is PipeStream)) return;
             CreateCustomConsole(new CustomCMDForm(ps as PipeStream, Background, FontColor, FontSize, colorCoding));
@@ -81,9 +82,9 @@ namespace ADL.CustomCMD
         /// <param name="ps">Pipe Stream</param>
         /// <param name="FontSize">Font Size</param>
         /// <param name="colorCoding">Color Coding for the Tags</param>
-        public static void CreateCustomConsoleNoReturn(System.IO.Stream ps, float FontSize = 8.25f, Dictionary<string, System.Drawing.Color> colorCoding = null)
+        public static void CreateCustomConsoleNoReturn(Stream ps, float FontSize = 8.25f, Dictionary<string, Color> colorCoding = null)
         {
-            CreateCustomConsoleNoReturn(ps, System.Drawing.Color.Black, System.Drawing.Color.White, FontSize, colorCoding);
+            CreateCustomConsoleNoReturn(ps, Color.Black, Color.White, FontSize, colorCoding);
         }
 
         /// <summary>

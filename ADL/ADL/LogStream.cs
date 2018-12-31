@@ -213,7 +213,7 @@ namespace ADL
         /// <param name="matchType">should the log only fire if all the flags are in the mask</param>
         /// <param name="setTimestamp">Put fancy timestamp infront of each line</param>
         /// <returns>The Created LogStream</returns>
-        public static LogStream CreateLogStreamFromStream(System.IO.Stream stream, int mask = -1, MatchType matchType = MatchType.MATCH_ALL, bool setTimestamp = false)
+        public static LogStream CreateLogStreamFromStream(Stream stream, int mask = -1, MatchType matchType = MatchType.MATCH_ALL, bool setTimestamp = false)
         {
             LogStream ret = new LogStream(stream)
             {
