@@ -22,6 +22,7 @@ namespace ADL.CustomCMD
         ///// Copies the Prefix Array from the Debug Class to the new thread of the CustomCMD
         ///// </summary>
         //Dictionary<int, string> _prefixes = null;
+
         /// <summary>
         /// The Stream reader thats is used to fill the textbox
         /// </summary>

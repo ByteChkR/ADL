@@ -32,6 +32,10 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.clb_TagFilter = new System.Windows.Forms.CheckedListBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -44,7 +48,7 @@
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(1067, 554);
+            this.richTextBox1.Size = new System.Drawing.Size(885, 554);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
@@ -55,23 +59,43 @@
             // 
             // clb_TagFilter
             // 
+            this.clb_TagFilter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clb_TagFilter.FormattingEnabled = true;
-            this.clb_TagFilter.Location = new System.Drawing.Point(857, 12);
+            this.clb_TagFilter.Location = new System.Drawing.Point(0, 0);
             this.clb_TagFilter.Name = "clb_TagFilter";
-            this.clb_TagFilter.Size = new System.Drawing.Size(198, 89);
+            this.clb_TagFilter.Size = new System.Drawing.Size(178, 554);
             this.clb_TagFilter.TabIndex = 2;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.clb_TagFilter);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
+            this.splitContainer1.Size = new System.Drawing.Size(1067, 554);
+            this.splitContainer1.SplitterDistance = 178;
+            this.splitContainer1.TabIndex = 4;
             // 
             // CustomCMDForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
-            this.Controls.Add(this.clb_TagFilter);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CustomCMDForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -80,6 +104,7 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.CheckedListBox clb_TagFilter;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 
