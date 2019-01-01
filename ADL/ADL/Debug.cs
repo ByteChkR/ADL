@@ -9,6 +9,8 @@ namespace ADL
     /// </summary>
     public static class Debug
     {
+        private static bool _adlEnabled = true;
+        public static bool ADLEnabled { get { return _adlEnabled; } set { _adlEnabled = value; } }
         /// <summary>
         /// String Builder to assemble the log
         /// </summary>
@@ -24,7 +26,7 @@ namespace ADL
         /// <summary>
         /// The number of Streams that ADL writes to
         /// </summary>
-        public static int LogStreamCount { get { return _steams.Count; } }
+        public static int LogStreamCount { get { return _adlEnabled ? _steams.Count : 0; } }
 
 
 
@@ -36,7 +38,7 @@ namespace ADL
         /// <param name="stream">The stream you want to add</param>
         public static void AddOutputStream(LogStream stream)
         {
-            if (_steams.Contains(stream)) return;
+            if (!_adlEnabled || _steams.Contains(stream)) return;
             _steams.Add(stream);
         }
 
@@ -47,9 +49,9 @@ namespace ADL
         /// /// <param name="CloseStream">If streams should be closed upon removal from the system</param>
         public static void RemoveOutputStream(LogStream stream, bool CloseStream = true)
         {
-            if (!_steams.Contains(stream)) return;
+            if (!_adlEnabled || !_steams.Contains(stream)) return;
             _steams.Remove(stream);
-            if(CloseStream)stream.CloseStream();
+            if (CloseStream) stream.CloseStream();
 
         }
 
@@ -72,7 +74,7 @@ namespace ADL
 
         #region Prefixes
 
-        
+
 
         /// <summary>
         /// Adds a prefix for the specified level
@@ -81,6 +83,7 @@ namespace ADL
         /// <param name="prefix">desired prefix</param>
         public static void AddPrefixForMask(BitMask mask, string prefix)
         {
+            if (!_adlEnabled) return;
             if (_prefixes.ContainsKey(mask))
                 _prefixes[mask] = prefix;
             else
@@ -93,6 +96,7 @@ namespace ADL
         /// <param name="mask"></param>
         public static void RemovePrefixForMask(BitMask mask)
         {
+            if (!_adlEnabled) return;
             if (!_prefixes.ContainsKey(mask)) return;
             _prefixes.Remove(mask);
         }
@@ -112,6 +116,7 @@ namespace ADL
         /// <param name="prefixes">List of prefixes</param>
         public static void SetAllPrefixes(params string[] prefixes)
         {
+            if (!_adlEnabled) return;
             RemoveAllPrefixes();
 
             for (int i = 0; i < prefixes.Length; i++)
@@ -126,7 +131,7 @@ namespace ADL
         /// <returns></returns>
         public static Dictionary<int, string> GetAllTags()
         {
-            return _prefixes;
+            return _adlEnabled ? _prefixes : new Dictionary<int, string>();
         }
         #endregion
 
@@ -137,6 +142,7 @@ namespace ADL
         /// <param name="message">the message</param>
         public static void Log(BitMask mask, string message)
         {
+            if (!_adlEnabled) return;
             foreach (LogStream adls in _steams)
             {
                 if (adls.IsContainedInMask(mask))
@@ -154,6 +160,7 @@ namespace ADL
         /// <param name="message">Message</param>
         public static void Log<T>(T level, string message) where T : struct
         {
+            if (!_adlEnabled) return;
             Log((ADL.BitMask)Convert.ToInt32(level), message);
         }
 
@@ -165,11 +172,13 @@ namespace ADL
         /// <returns>True if mask is found in Dictionary</returns>
         public static bool GetPrefixMask(string prefix, out BitMask mask)
         {
+
             mask = 0;
-            if (_prefixes.ContainsValue(prefix)){
+            if (_prefixes.ContainsValue(prefix))
+            {
                 foreach (KeyValuePair<int, string> kvp in _prefixes)
                 {
-                    if(prefix == kvp.Value)
+                    if (prefix == kvp.Value)
                     {
                         mask = kvp.Key;
                         return true;
@@ -192,7 +201,7 @@ namespace ADL
             {
                 //We happen to have a custom prefix for the level
                 _stringBuilder.Append(_prefixes[mask]);
-                
+
             }
             else //We have no Prefix specified for this particular level
             {
