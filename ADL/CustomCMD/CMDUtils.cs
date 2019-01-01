@@ -13,6 +13,7 @@ namespace ADL.CustomCMD
         /// Flag to Call InitWinForms once
         /// </summary>
         private static bool _WinFormsFlagsInitialized = false;
+        
 
         /// <summary>
         /// Creates the console on a different thread.

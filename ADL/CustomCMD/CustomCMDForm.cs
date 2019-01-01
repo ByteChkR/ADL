@@ -13,6 +13,9 @@ namespace ADL.CustomCMD
     /// </summary>
     public partial class CustomCMDForm : Form
     {
+        public static readonly int MinConsoleTextLength = 4096;
+
+
         /// <summary>
         /// The Tags and their corresponding colors
         /// </summary>
@@ -134,9 +137,9 @@ namespace ADL.CustomCMD
 
 
 
-                    if (test.Length + richTextBox1.Text.Length > richTextBox1.MaxLength && richTextBox1.Text.Length >= 4096)
+                    if (test.Length + richTextBox1.Text.Length > richTextBox1.MaxLength && richTextBox1.Text.Length >= MinConsoleTextLength)
                     {
-                        richTextBox1.Text = richTextBox1.Text.Substring(richTextBox1.Text.Length - 4096, 4096);
+                        richTextBox1.Text = richTextBox1.Text.Substring(richTextBox1.Text.Length - MinConsoleTextLength, MinConsoleTextLength);
                     }
 
                     if (test.Length != 0) richTextBox1.AppendText(test, logColor);

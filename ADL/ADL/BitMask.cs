@@ -46,7 +46,7 @@ namespace ADL
         {
             if (IsUniqueMask(mask)) return new List<int>() { mask };
             List<int> ret = new List<int>();
-            for (int i = 0; i < sizeof(int) * 8; i++)
+            for (int i = 0; i < sizeof(int) * Utils.BYTE_SIZE; i++)
             {
                 int f = 1 << i;
                 if (IsContainedInMask(mask, f, true))
@@ -94,6 +94,11 @@ namespace ADL
             return mask & ~flags;
         }
 
+        /// <summary>
+        /// Completely Inverts the mask.
+        /// </summary>
+        /// <param name="mask">Mask to invert</param>
+        /// <returns>Inverted Mask</returns>
         public static int FlipMask(int mask)
         {
             return ~mask;
