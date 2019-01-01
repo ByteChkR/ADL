@@ -99,7 +99,7 @@ namespace DebugTest
             //Important: Its much easier to use CreateLogStreamFromStream than setting everything manually
             LogStream logStream = LogStream.CreateLogStreamFromStream(
                 pipeStream, //The Stream we want to send the Logs to.
-                bMaskGenericCustom, //Lets use the generic custom 
+                bMaskGenericWildcard, //Lets use the generic wildcard(you can set the mask dynamically when using a custom console.
                 MatchType.MATCH_ONE, //We want to make the logs pass when there is at least one tag that is included in the filter.
                 true //Get that fancy timestamp infront of the log.
                 );

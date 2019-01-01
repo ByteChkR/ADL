@@ -119,6 +119,15 @@ namespace ADL
                 AddPrefixForMask(Utils.IntPow(2, i), prefixes[i]);
             }
         }
+
+        /// <summary>
+        /// Gets all Tags with corresponding masks.
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<int, string> GetAllTags()
+        {
+            return _prefixes;
+        }
         #endregion
 
         /// <summary>

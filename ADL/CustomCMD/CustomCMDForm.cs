@@ -17,6 +17,11 @@ namespace ADL.CustomCMD
         /// The Tags and their corresponding colors
         /// </summary>
         Dictionary<string, Color> colorCoding = null;
+
+        ///// <summary>
+        ///// Copies the Prefix Array from the Debug Class to the new thread of the CustomCMD
+        ///// </summary>
+        //Dictionary<int, string> _prefixes = null;
         /// <summary>
         /// The Stream reader thats is used to fill the textbox
         /// </summary>
@@ -41,6 +46,12 @@ namespace ADL.CustomCMD
         public CustomCMDForm(PipeStream ps, Color Background, Color BaseFontColor, float fontSize, Dictionary<string, Color> colorCoding = null)
         {
             InitializeComponent();
+
+            foreach (KeyValuePair<int, string> kvp in Debug.GetAllTags())
+            {
+                clb_TagFilter.Items.Add(kvp.Value);
+                clb_TagFilter.SetItemChecked(clb_TagFilter.Items.IndexOf(kvp.Value), true);
+            }
             ps.BlockLastReadBuffer = false;
             tr = new StreamReader(ps);
             richTextBox1.BackColor = Background;
@@ -71,7 +82,7 @@ namespace ADL.CustomCMD
         /// <returns></returns>
         Color GetColorFromLine(string line)
         {
-            Color ret =  baseFontColor;
+            Color ret = baseFontColor;
 
             if (_hasColorCoding)
             {
@@ -99,7 +110,7 @@ namespace ADL.CustomCMD
 
             string block = tr.ReadToEnd();
 
-            
+
 
             if (block != null)
             {
@@ -110,7 +121,17 @@ namespace ADL.CustomCMD
                 {
                     test = logs[i];
 
+                    foreach (string tag in clb_TagFilter.Items)
+                    {
+                        if (test.Contains(tag) && clb_TagFilter.GetItemCheckState(clb_TagFilter.Items.IndexOf(tag)) == CheckState.Unchecked)
+                        {
+                            return;
+                        }
+                    }
+
                     logColor = GetColorFromLine(test);
+
+
 
                     if (test.Length + richTextBox1.Text.Length > richTextBox1.MaxLength && richTextBox1.Text.Length >= 4096)
                     {

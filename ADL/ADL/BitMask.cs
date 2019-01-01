@@ -8,7 +8,7 @@ namespace ADL
     /// </summary>
     public class BitMask
     {
-        public static BitMask empty = 0;
+        public static BitMask Empty = 0;
 
         #region MaskOperations
         /// <summary>
