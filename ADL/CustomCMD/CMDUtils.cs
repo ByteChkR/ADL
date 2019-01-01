@@ -13,7 +13,8 @@ namespace ADL.CustomCMD
         /// Flag to Call InitWinForms once
         /// </summary>
         private static bool _WinFormsFlagsInitialized = false;
-        
+        public static readonly string VersionURL = "https://raw.githubusercontent.com/ByteChkR/ADL/master/docs/versioning/ADL.CustomCMDversion.txt";
+
 
         /// <summary>
         /// Creates the console on a different thread.
@@ -21,8 +22,8 @@ namespace ADL.CustomCMD
         /// <param name="ps">the Form to start on a different Thread.</param>
         private static void CreateCustomConsole(Form ps)
         {
-            new System.Threading.Thread(() => 
-            
+            new System.Threading.Thread(() =>
+
             Application.Run(ps)).Start();
         }
 
@@ -51,6 +52,14 @@ namespace ADL.CustomCMD
         /// <returns>Reference to the Created Console.(Not Thread Save)</returns>
         public static Form CreateCustomConsole(PipeStream ps, Color Background, Color FontColor, float FontSize = 8.25f, Dictionary<string, Color> colorCoding = null)
         {
+            if (Debug.SendUpdateMessageOnFirstLog)
+            {
+                string msg;
+                Utils.CheckUpdate(out msg, "ADL.CustomCMD", VersionURL, System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
+                Debug.Log(new BitMask(true), msg);
+            }
+
+
             if (!_WinFormsFlagsInitialized)
                 InitWinForms();
 

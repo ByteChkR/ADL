@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-
+using System.Net;
 namespace ADL
 {
     /// <summary>
@@ -9,7 +8,7 @@ namespace ADL
     /// </summary>
     public static class Utils
     {
-        public static readonly string VersionURL = "https://bytechkr.github.io/ADL/versioning/version";
+        public static readonly string VersionURL = "https://raw.githubusercontent.com/ByteChkR/ADL/master/docs/versioning/ADLversion.txt";
         public static readonly int BYTE_SIZE = 8;
 
         /// <summary>
@@ -65,6 +64,42 @@ namespace ADL
 
         #endregion
 
+
+        public static void CheckUpdate(out string msg, string PackageName, string URL, Version currentVer)
+        {
+            Version onlineVer;
+            WebClient webCli = new WebClient();
+
+            msg = "Checking For Updates with Current " + PackageName + " Version[" + currentVer.ToString() + "]...\n";
+            try
+            {
+                onlineVer = new Version(webCli.DownloadString(URL));
+
+                int updatesPending = onlineVer.CompareTo(currentVer);
+                if (updatesPending == 0)
+                {
+                    msg += PackageName + " Version Check OK! Newest version installed. ";
+                    return;
+                }
+                else if (updatesPending < 0)
+                {
+                    msg += "Version Check OK!. Current " + PackageName + " Version is higher than official release. ";
+                    return;
+                }
+                else
+                {
+                    msg += "Update Available!. Current " + PackageName + " Version: " + currentVer.ToString() + "Online " + PackageName + " Version: " + onlineVer.ToString() + "";
+                    return;
+                }
+
+            }
+            catch (Exception)
+            {
+                msg += "Could not connect to " + URL + " Try again later or disable UpdateChecking flags in Package: " + PackageName + " to prevent checking for updates.";
+                return;
+            }
+
+        }
 
     }
 }

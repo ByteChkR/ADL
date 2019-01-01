@@ -190,9 +190,10 @@ namespace DebugTest
 
         static void Main(string[] args)
         {
-            TestConsoleOut();
 
             TestCustomConsoleOut();
+
+            TestConsoleOut();
 
             TestLogFileOut();
 

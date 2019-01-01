@@ -25,6 +25,12 @@ namespace ADL.Unity
         private Thread _consoleThread = null;
         void Awake()
         {
+
+            if (Debug.SendUpdateMessageOnFirstLog)
+            {
+                CheckForUpdates();
+            }
+
             DontDestroyOnLoad(gameObject);
             Debug.SetAllPrefixes(DebugLevel);
             foreach (LogStreamParams lsp in Streams)
@@ -52,7 +58,12 @@ namespace ADL.Unity
         }
 
         
-
+        public void CheckForUpdates()
+        {
+            string msg;
+            Utils.CheckUpdate(out msg, "ADL.Unity", UnityUtils.VersionURL, System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
+            Debug.Log(new BitMask(true), msg);
+        }
 
 
     }

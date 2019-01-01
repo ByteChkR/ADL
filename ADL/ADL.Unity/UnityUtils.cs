@@ -6,6 +6,9 @@
     public static class UnityUtils
     {
 
+
+        public static readonly string VersionURL = "https://raw.githubusercontent.com/ByteChkR/ADL/master/docs/versioning/ADL.Unityversion.txt";
+
         /// <summary>
         /// Creates a Unity Text Writer and uses some custom code to insert it into the ADL.Debug system without an underlying stream
         /// </summary>

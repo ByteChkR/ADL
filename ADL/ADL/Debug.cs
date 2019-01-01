@@ -141,43 +141,7 @@ namespace ADL
         #endregion
 
 
-        private static void CheckUpdate(out string msg)
-        {
-            Assembly current = Assembly.GetExecutingAssembly();
-            Version currentVer = current.GetName().Version;
-            Version onlineVer;
-            WebClient webCli = new WebClient();
-
-            msg = "Checking For Updates with Current Version[" + currentVer.ToString() + "]...\n";
-            try
-            {
-                onlineVer = new Version(webCli.DownloadString(Utils.VersionURL));
-
-                int updatesPending = onlineVer.CompareTo(currentVer);
-                if (updatesPending == 0)
-                {
-                    msg += "Version Check OK!. Newest version installed.";
-                    return;
-                }
-                else if (updatesPending < 0)
-                {
-                    msg += "Version Check OK!. Current version is higher than official release.";
-                    return;
-                }
-                else
-                {
-                    msg += "Update Available! Current Version: " + currentVer.ToString() + "Online Version: " + onlineVer.ToString();
-                    return;
-                }
-
-            }
-            catch (Exception)
-            {
-                msg += "Could not connect to " + Utils.VersionURL + ". Try again later or disable ADL.Debug.Disable.SendUpdateMessageOnFirstLog flag to prevent checking for updates.";
-                return;
-            }
-
-        }
+        
 
         /// <summary>
         /// Fire Log Messsage with desired level(flag) and message
@@ -191,7 +155,7 @@ namespace ADL
             {
                 _firstLog = false;
                 string msg;
-                CheckUpdate(out msg);
+                Utils.CheckUpdate(out msg, "ADL", Utils.VersionURL, Assembly.GetExecutingAssembly().GetName().Version);
 
                 Log(new BitMask(true), msg);
 
