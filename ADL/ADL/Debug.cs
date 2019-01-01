@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
+using System.Net;
 
 namespace ADL
 {
@@ -9,8 +11,11 @@ namespace ADL
     /// </summary>
     public static class Debug
     {
+        private static bool _firstLog = true;
         private static bool _adlEnabled = true;
         public static bool ADLEnabled { get { return _adlEnabled; } set { _adlEnabled = value; } }
+        private static bool _sendUpdateMsg = true;
+        public static bool SendUpdateMessageOnFirstLog { get { return _sendUpdateMsg; } set { _sendUpdateMsg = value; } }
         /// <summary>
         /// String Builder to assemble the log
         /// </summary>
@@ -135,6 +140,45 @@ namespace ADL
         }
         #endregion
 
+
+        private static void CheckUpdate(out string msg)
+        {
+            Assembly current = Assembly.GetExecutingAssembly();
+            Version currentVer = current.GetName().Version;
+            Version onlineVer;
+            WebClient webCli = new WebClient();
+
+            msg = "Checking For Updates with Current Version[" + currentVer.ToString() + "]...\n";
+            try
+            {
+                onlineVer = new Version(webCli.DownloadString(Utils.VersionURL));
+
+                int updatesPending = onlineVer.CompareTo(currentVer);
+                if (updatesPending == 0)
+                {
+                    msg += "Version Check OK!. Newest version installed.";
+                    return;
+                }
+                else if (updatesPending < 0)
+                {
+                    msg += "Version Check OK!. Current version is higher than official release.";
+                    return;
+                }
+                else
+                {
+                    msg += "Update Available! Current Version: " + currentVer.ToString() + "Online Version: " + onlineVer.ToString();
+                    return;
+                }
+
+            }
+            catch (Exception)
+            {
+                msg += "Could not connect to " + Utils.VersionURL + ". Try again later or disable ADL.Debug.Disable.SendUpdateMessageOnFirstLog flag to prevent checking for updates.";
+                return;
+            }
+
+        }
+
         /// <summary>
         /// Fire Log Messsage with desired level(flag) and message
         /// </summary>
@@ -142,6 +186,17 @@ namespace ADL
         /// <param name="message">the message</param>
         public static void Log(BitMask mask, string message)
         {
+
+            if (_firstLog && _sendUpdateMsg)
+            {
+                _firstLog = false;
+                string msg;
+                CheckUpdate(out msg);
+
+                Log(new BitMask(true), msg);
+
+            }
+
             if (!_adlEnabled) return;
             foreach (LogStream adls in _steams)
             {

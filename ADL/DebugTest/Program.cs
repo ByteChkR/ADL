@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using ADL.Unity;
 using ADL;
 namespace DebugTest
 {
@@ -41,7 +37,7 @@ namespace DebugTest
             BitMask<LoggingTypes> bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.ERROR, LoggingTypes.LOG);
 
 
-
+            
 
             //Then we want to create a LogStream that receives the Messages
             //Important: Its much easier to use CreateLogStreamFromStream than setting everything manually

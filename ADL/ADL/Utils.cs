@@ -9,6 +9,7 @@ namespace ADL
     /// </summary>
     public static class Utils
     {
+        public static readonly string VersionURL = "https://bytechkr.github.io/ADL/versioning/version";
         public static readonly int BYTE_SIZE = 8;
 
         /// <summary>
