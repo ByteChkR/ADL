@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['_5fadlenabled',['_adlEnabled',['../class_a_d_l_1_1_debug.html#adafa622fad8038eb16274662ce713a75',1,'ADL::Debug']]],
+  ['_5ffirstlog',['_firstLog',['../class_a_d_l_1_1_debug.html#abcc75928552f3403bf18e2a14b8cba21',1,'ADL::Debug']]],
   ['_5fhascolorcoding',['_hasColorCoding',['../class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a55c77dfaef33d120690074e8625d72fc',1,'ADL::CustomCMD::CustomCMDForm']]],
   ['_5fmask',['_mask',['../class_a_d_l_1_1_log_stream.html#a7b49958d6b208d815206005d1e9afa19',1,'ADL::LogStream']]],
   ['_5fmatchallflags',['_matchAllFlags',['../class_a_d_l_1_1_log_stream.html#a93dd10abf1a54aa066e94bb2c675da36',1,'ADL::LogStream']]],

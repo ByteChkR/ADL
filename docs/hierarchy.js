@@ -30,5 +30,6 @@ var hierarchy =
       [ "ADL.Unity.UnityTextWriter", "class_a_d_l_1_1_unity_1_1_unity_text_writer.html", null ]
     ] ],
     [ "ADL.Unity.UnityUtils", "class_a_d_l_1_1_unity_1_1_unity_utils.html", null ],
+    [ "ADL.UpdateDataObject", "class_a_d_l_1_1_update_data_object.html", null ],
     [ "ADL.Utils", "class_a_d_l_1_1_utils.html", null ]
 ];

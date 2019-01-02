@@ -1,6 +1,7 @@
 var class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form =
 [
     [ "CustomCMDForm", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a949c39b280cf0d3fe4490c8731078bad", null ],
+    [ "CloseForm", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#acfefeae5f6be84be800489f0e5149e22", null ],
     [ "Dispose", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a17d8b37ecf0237238b3f2f988a4ec700", null ],
     [ "Form1_Load", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a62b5a9eb917413e8195182107598101c", null ],
     [ "GetColorFromLine", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a56aa8bfb57e4b8efd06ed59d20917665", null ],
@@ -14,7 +15,7 @@ var class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form =
     [ "colorCoding", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a705b940da9cebdc776afa008f2fe9bd7", null ],
     [ "components", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a9e6d11d5b23133dffd23871d74bb4978", null ],
     [ "MinConsoleTextLength", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#adc2dff5983b9722d1cea0bfa44520942", null ],
-    [ "richTextBox1", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a02018c332e924c21cff4afdeb9a9b3a5", null ],
+    [ "rtb_LogOutput", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ae2ea9b4feeaba36f61c5d3663f97ec86", null ],
     [ "splitContainer1", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#acd5a6b6d5f20b23d7a840b350026cefd", null ],
     [ "timer1", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a59bb91294217ae85f9376390b5c47fee", null ],
     [ "tr", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ab41ba63fa3294b392164af4868c326c3", null ]

@@ -1,6 +1,7 @@
 var class_a_d_l_1_1_unity_1_1_debug_component =
 [
     [ "Awake", "class_a_d_l_1_1_unity_1_1_debug_component.html#a510b193bc9c7db46b9a1b3cf38a25e18", null ],
+    [ "CheckForUpdates", "class_a_d_l_1_1_unity_1_1_debug_component.html#a2c53542268a10366b6d7dadcb214ef69", null ],
     [ "OnDestroy", "class_a_d_l_1_1_unity_1_1_debug_component.html#a482a448ac90c7502c94207b1baeab0ce", null ],
     [ "_consoleThread", "class_a_d_l_1_1_unity_1_1_debug_component.html#ae59c8a55238e3464fb9bb8b179bce3c2", null ],
     [ "_DebugLevel", "class_a_d_l_1_1_unity_1_1_debug_component.html#aa23a2532fabf926cc33761d6891251ea", null ],

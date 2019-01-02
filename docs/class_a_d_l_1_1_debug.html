@@ -142,15 +142,24 @@ Properties</h2></td></tr>
 <tr class="memitem:a24102d4f94b0718e578f1cad6ef9f70c"><td class="memItemLeft" align="right" valign="top"><a id="a24102d4f94b0718e578f1cad6ef9f70c"></a>
 static bool&#160;</td><td class="memItemRight" valign="bottom"><b>ADLEnabled</b><code> [get, set]</code></td></tr>
 <tr class="separator:a24102d4f94b0718e578f1cad6ef9f70c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a09d301e1c24e60648a9eeafde625b3"><td class="memItemLeft" align="right" valign="top"><a id="a4a09d301e1c24e60648a9eeafde625b3"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>SendUpdateMessageOnFirstLog</b><code> [get, set]</code></td></tr>
+<tr class="separator:a4a09d301e1c24e60648a9eeafde625b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a63093ff8ac05237224edcce57396c4"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#a5a63093ff8ac05237224edcce57396c4">LogStreamCount</a><code> [get]</code></td></tr>
 <tr class="memdesc:a5a63093ff8ac05237224edcce57396c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of Streams that <a class="el" href="namespace_a_d_l.html">ADL</a> writes to  <a href="#a5a63093ff8ac05237224edcce57396c4">More...</a><br /></td></tr>
 <tr class="separator:a5a63093ff8ac05237224edcce57396c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:adafa622fad8038eb16274662ce713a75"><td class="memItemLeft" align="right" valign="top"><a id="adafa622fad8038eb16274662ce713a75"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>_adlEnabled</b> = true</td></tr>
+<tr class="memitem:abcc75928552f3403bf18e2a14b8cba21"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#abcc75928552f3403bf18e2a14b8cba21">_firstLog</a> = true</td></tr>
+<tr class="memdesc:abcc75928552f3403bf18e2a14b8cba21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to check wether this is the first execution.  <a href="#abcc75928552f3403bf18e2a14b8cba21">More...</a><br /></td></tr>
+<tr class="separator:abcc75928552f3403bf18e2a14b8cba21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adafa622fad8038eb16274662ce713a75"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#adafa622fad8038eb16274662ce713a75">_adlEnabled</a> = true</td></tr>
+<tr class="memdesc:adafa622fad8038eb16274662ce713a75"><td class="mdescLeft">&#160;</td><td class="mdescRight">On of switch  <a href="#adafa622fad8038eb16274662ce713a75">More...</a><br /></td></tr>
 <tr class="separator:adafa622fad8038eb16274662ce713a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a418628d87d48258f4849c627308b0ca4"><td class="memItemLeft" align="right" valign="top"><a id="a418628d87d48258f4849c627308b0ca4"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>_sendUpdateMsg</b> = true</td></tr>
+<tr class="separator:a418628d87d48258f4849c627308b0ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac6098902e6f3da0f23fb57a6086479b"><td class="memItemLeft" align="right" valign="top">static StringBuilder&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#aac6098902e6f3da0f23fb57a6086479b">_stringBuilder</a> = new StringBuilder()</td></tr>
 <tr class="memdesc:aac6098902e6f3da0f23fb57a6086479b"><td class="mdescLeft">&#160;</td><td class="mdescRight">String Builder to assemble the log  <a href="#aac6098902e6f3da0f23fb57a6086479b">More...</a><br /></td></tr>
 <tr class="separator:aac6098902e6f3da0f23fb57a6086479b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -636,6 +645,54 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>_adlEnabled</b
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="adafa622fad8038eb16274662ce713a75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adafa622fad8038eb16274662ce713a75">&#9670;&nbsp;</a></span>_adlEnabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ADL.Debug._adlEnabled = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>On of switch </p>
+
+</div>
+</div>
+<a id="abcc75928552f3403bf18e2a14b8cba21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcc75928552f3403bf18e2a14b8cba21">&#9670;&nbsp;</a></span>_firstLog</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ADL.Debug._firstLog = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flag to check wether this is the first execution. </p>
+
+</div>
+</div>
 <a id="ae158a8228eacba82054cb7b340153fe9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae158a8228eacba82054cb7b340153fe9">&#9670;&nbsp;</a></span>_prefixes</h2>
 

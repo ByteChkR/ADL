@@ -6,5 +6,6 @@ var namespace_a_d_l =
     [ "Debug", "class_a_d_l_1_1_debug.html", "class_a_d_l_1_1_debug" ],
     [ "LogStream", "class_a_d_l_1_1_log_stream.html", "class_a_d_l_1_1_log_stream" ],
     [ "PipeStream", "class_a_d_l_1_1_pipe_stream.html", "class_a_d_l_1_1_pipe_stream" ],
+    [ "UpdateDataObject", "class_a_d_l_1_1_update_data_object.html", "class_a_d_l_1_1_update_data_object" ],
     [ "Utils", "class_a_d_l_1_1_utils.html", "class_a_d_l_1_1_utils" ]
 ];
