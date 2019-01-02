@@ -11,7 +11,13 @@ namespace ADL
     /// </summary>
     public static class Debug
     {
+        /// <summary>
+        /// Flag to check wether this is the first execution.
+        /// </summary>
         private static bool _firstLog = true;
+        /// <summary>
+        /// On of switch
+        /// </summary>
         private static bool _adlEnabled = true;
         public static bool ADLEnabled { get { return _adlEnabled; } set { _adlEnabled = value; } }
         private static bool _sendUpdateMsg = true;
@@ -154,8 +160,8 @@ namespace ADL
             if (_firstLog && _sendUpdateMsg)
             {
                 _firstLog = false;
-                string msg;
-                Utils.CheckUpdate(out msg, "ADL", Utils.VersionURL, Assembly.GetExecutingAssembly().GetName().Version);
+                
+                string msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name, Assembly.GetExecutingAssembly().GetName().Version);
 
                 Log(new BitMask(true), msg);
 

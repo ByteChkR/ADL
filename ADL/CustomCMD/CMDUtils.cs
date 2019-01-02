@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
+using System.Reflection;
 namespace ADL.CustomCMD
 {
     /// <summary>
@@ -13,7 +14,7 @@ namespace ADL.CustomCMD
         /// Flag to Call InitWinForms once
         /// </summary>
         private static bool _WinFormsFlagsInitialized = false;
-        public static readonly string VersionURL = "https://raw.githubusercontent.com/ByteChkR/ADL/master/docs/versioning/ADL.CustomCMDversion.txt";
+
 
 
         /// <summary>
@@ -54,8 +55,7 @@ namespace ADL.CustomCMD
         {
             if (Debug.SendUpdateMessageOnFirstLog)
             {
-                string msg;
-                Utils.CheckUpdate(out msg, "ADL.CustomCMD", VersionURL, System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
+                string msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name, System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
                 Debug.Log(new BitMask(true), msg);
             }
 

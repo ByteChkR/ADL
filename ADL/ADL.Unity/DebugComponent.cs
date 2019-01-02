@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using UnityEngine;
+using System.Reflection;
 
 namespace ADL.Unity
 {
@@ -60,8 +61,7 @@ namespace ADL.Unity
         
         public void CheckForUpdates()
         {
-            string msg;
-            Utils.CheckUpdate(out msg, "ADL.Unity", UnityUtils.VersionURL, System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
+            string msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name, Assembly.GetExecutingAssembly().GetName().Version);
             Debug.Log(new BitMask(true), msg);
         }
 
