@@ -22,32 +22,33 @@ namespace ADL
             Version onlineVer;
             WebClient webCli = new WebClient();
 
-            msg = "Checking For Updates with Current " + PackageName + " Version[" + currentVer.ToString() + "]...\n";
+            msg = "Checking For Updates.\nCurrent " + PackageName + " Version(" + currentVer.ToString() + ")...\n";
             try
             {
+                msg += "Downloading Version from Github Pages...\n";
                 onlineVer = new Version(webCli.DownloadString(url));
 
                 int updatesPending = onlineVer.CompareTo(currentVer);
                 if (updatesPending == 0)
                 {
-                    msg += PackageName + " Version Check OK! Newest version installed. ";
+                    msg += PackageName + " Version Check OK!\nNewest version installed.\n";
 
                 }
                 else if (updatesPending < 0)
                 {
-                    msg += "Version Check OK!. Current " + PackageName + " Version is higher than official release. ";
+                    msg += "Version Check OK!.\n Current " + PackageName + " Version is higher than official release.\n ";
 
                 }
                 else
                 {
-                    msg += "Update Available!. Current " + PackageName + " Version: " + currentVer.ToString() + "Online " + PackageName + " Version: " + onlineVer.ToString() + "";
+                    msg += "Update Available!.\n Current " + PackageName + " Version: (" + currentVer.ToString() + ")\n Online " + PackageName + " Version: (" + onlineVer.ToString() + ").\n";
 
                 }
 
             }
             catch (Exception)
             {
-                msg += "Could not connect to " + url + " Try again later or disable UpdateChecking flags in Package: " + PackageName + " to prevent checking for updates.";
+                msg += "Could not connect to " + url + ".\n Try again later or disable UpdateChecking flags in Package: " + PackageName + "\n to prevent checking for updates.";
 
             }
             return msg;

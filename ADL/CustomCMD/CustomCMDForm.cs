@@ -50,7 +50,7 @@ namespace ADL.CustomCMD
         public CustomCMDForm(PipeStream ps, Color Background, Color BaseFontColor, float fontSize, Dictionary<string, Color> colorCoding = null)
         {
             InitializeComponent();
-
+            FormClosed += CloseForm;
             foreach (KeyValuePair<int, string> kvp in Debug.GetAllTags())
             {
                 clb_TagFilter.Items.Add(kvp.Value);
@@ -66,6 +66,11 @@ namespace ADL.CustomCMD
                 _hasColorCoding = true;
             }
             richTextBox1.Font = new Font(richTextBox1.Font.FontFamily, fontSize);
+        }
+
+        void CloseForm(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         /// <summary>
@@ -142,7 +147,7 @@ namespace ADL.CustomCMD
                         richTextBox1.Text = richTextBox1.Text.Substring(richTextBox1.Text.Length - MinConsoleTextLength, MinConsoleTextLength);
                     }
 
-                    if (test.Length != 0) richTextBox1.AppendText(test, logColor);
+                    if (test.Length != 0) richTextBox1.AppendText(test+"\n", logColor);
 
                 }
 
