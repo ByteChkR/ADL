@@ -58,14 +58,14 @@ namespace ADL.CustomCMD
             }
             ps.BlockLastReadBuffer = false;
             tr = new StreamReader(ps);
-            richTextBox1.BackColor = Background;
+            rtb_LogOutput.BackColor = Background;
             baseFontColor = BaseFontColor;
             if (colorCoding != null && colorCoding.Count != 0)
             {
                 this.colorCoding = colorCoding;
                 _hasColorCoding = true;
             }
-            richTextBox1.Font = new Font(richTextBox1.Font.FontFamily, fontSize);
+            rtb_LogOutput.Font = new Font(rtb_LogOutput.Font.FontFamily, fontSize);
         }
 
         void CloseForm(object sender, FormClosedEventArgs e)
@@ -142,12 +142,12 @@ namespace ADL.CustomCMD
 
 
 
-                    if (test.Length + richTextBox1.Text.Length > richTextBox1.MaxLength && richTextBox1.Text.Length >= MinConsoleTextLength)
+                    if (test.Length + rtb_LogOutput.Text.Length > rtb_LogOutput.MaxLength && rtb_LogOutput.Text.Length >= MinConsoleTextLength)
                     {
-                        richTextBox1.Text = richTextBox1.Text.Substring(richTextBox1.Text.Length - MinConsoleTextLength, MinConsoleTextLength);
+                        rtb_LogOutput.Text = rtb_LogOutput.Text.Substring(rtb_LogOutput.Text.Length - MinConsoleTextLength, MinConsoleTextLength);
                     }
 
-                    if (test.Length != 0) richTextBox1.AppendText(test+"\n", logColor);
+                    if (test.Length != 0) rtb_LogOutput.AppendText(test+"\n", logColor);
 
                 }
 
@@ -177,8 +177,8 @@ namespace ADL.CustomCMD
         /// <param name="e"></param>
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
         {
-            richTextBox1.SelectionStart = richTextBox1.Text.Length;
-            richTextBox1.ScrollToCaret();
+            rtb_LogOutput.SelectionStart = rtb_LogOutput.Text.Length;
+            rtb_LogOutput.ScrollToCaret();
         }
     }
 }

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomCMDForm));
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtb_LogOutput = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.clb_TagFilter = new System.Windows.Forms.CheckedListBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -39,20 +39,21 @@
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // rtb_LogOutput
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.Black;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.ForeColor = System.Drawing.Color.Lime;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(885, 554);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
+            this.rtb_LogOutput.BackColor = System.Drawing.Color.Black;
+            this.rtb_LogOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtb_LogOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_LogOutput.ForeColor = System.Drawing.Color.Lime;
+            this.rtb_LogOutput.Location = new System.Drawing.Point(0, 0);
+            this.rtb_LogOutput.Margin = new System.Windows.Forms.Padding(4);
+            this.rtb_LogOutput.Name = "rtb_LogOutput";
+            this.rtb_LogOutput.ReadOnly = true;
+            this.rtb_LogOutput.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.rtb_LogOutput.Size = new System.Drawing.Size(885, 554);
+            this.rtb_LogOutput.TabIndex = 1;
+            this.rtb_LogOutput.Text = "";
+            this.rtb_LogOutput.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
             // 
             // timer1
             // 
@@ -79,7 +80,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.rtb_LogOutput);
             this.splitContainer1.Size = new System.Drawing.Size(1067, 554);
             this.splitContainer1.SplitterDistance = 178;
             this.splitContainer1.TabIndex = 4;
@@ -103,7 +104,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtb_LogOutput;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.CheckedListBox clb_TagFilter;
         private System.Windows.Forms.SplitContainer splitContainer1;
