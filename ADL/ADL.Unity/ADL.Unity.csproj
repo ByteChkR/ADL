@@ -33,29 +33,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Core">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Data">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Xml">
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>D:\UnityHub\2018.2.17f1\Editor\Data\Managed\UnityEditor.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>D:\UnityHub\2018.2.17f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -72,10 +74,6 @@
     <ProjectReference Include="..\ADL\ADL.csproj">
       <Project>{a6217f9e-bb25-4acc-8c90-209d3af80dc4}</Project>
       <Name>ADL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CustomCMD\ADL.CustomCMD.csproj">
-      <Project>{7e8c8892-86a6-46af-ac32-bc632613b288}</Project>
-      <Name>ADL.CustomCMD</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
