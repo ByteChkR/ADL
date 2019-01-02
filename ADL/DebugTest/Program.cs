@@ -109,14 +109,14 @@ namespace DebugTest
                 {"[Warning]", System.Drawing.Color.Orange } //Every warning is painted in orange
             };
 
+            //Maybe we even want to have Custom Tags on the logs, depending what mask they have.
+            //Important: If your Custom Console does not show the tags right away, try setting the prefixes before creating the console window.
+            Debug.SetAllPrefixes("[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[GENERIC]");
+
+
             //After Creating the log Stream we want to create a custom Cmd window
             System.Windows.Forms.Form ccmd = //ADL.CustomCMD.CMDUtils.CreateCustomConsole(pipeStream); //Creates a basic Custom cmd with no visual adjustments
                 ADL.CustomCMD.CMDUtils.CreateCustomConsole(pipeStream, colorCoding, 13); //Creates a custom cmd with color coding and custom font size.
-
-
-
-            //Maybe we even want to have Custom Tags on the logs, depending what mask they have.
-            Debug.SetAllPrefixes("[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[GENERIC]");
 
             //This is a test.
             for (int i = 0; i < 63; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
