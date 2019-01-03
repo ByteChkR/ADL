@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
-using System.Net;
 
+/// <summary>
+/// Namespace ADL is the "Root" namespace of ADL. It contains the Code needed to use ADL. But also in sub namespaces you will find other helpful tools.
+/// </summary>
 namespace ADL
 {
     /// <summary>
@@ -16,11 +18,20 @@ namespace ADL
         /// </summary>
         private static bool _firstLog = true;
         /// <summary>
-        /// On of switch
+        /// On/Off switch
         /// </summary>
         private static bool _adlEnabled = true;
+        /// <summary>
+        /// Public property, used to disable ADl
+        /// </summary>
         public static bool ADLEnabled { get { return _adlEnabled; } set { _adlEnabled = value; } }
+        /// <summary>
+        /// Should ADL search for updates?
+        /// </summary>
         private static bool _sendUpdateMsg = true;
+        /// <summary>
+        /// Public property, used to disable update check.(Saves ~500ms)
+        /// </summary>
         public static bool SendUpdateMessageOnFirstLog { get { return _sendUpdateMsg; } set { _sendUpdateMsg = value; } }
         /// <summary>
         /// String Builder to assemble the log
@@ -98,7 +109,6 @@ namespace ADL
             if (!BitMask.IsUniqueMask(mask))
             {
                 Log(-1, "Adding Prefix: " + prefix + " for mask: " + mask + ". Mask is not unique.");
-                //return;
             }
             if (_prefixes.ContainsKey(mask))
                 _prefixes[mask] = prefix;
@@ -162,6 +172,8 @@ namespace ADL
         public static void Log(BitMask mask, string message)
         {
 
+            if (!_adlEnabled) return;
+
             if (_firstLog && _sendUpdateMsg)
             {
                 _firstLog = false;
@@ -172,12 +184,11 @@ namespace ADL
 
             }
 
-            if (!_adlEnabled) return;
-            foreach (LogStream adls in _streams)
+            foreach (LogStream logs in _streams)
             {
-                if (adls.IsContainedInMask(mask))
+                if (logs.IsContainedInMask(mask))
                 {
-                    adls.Log(mask, GetMaskPrefix(mask) + message);
+                    logs.Log(mask, GetMaskPrefix(mask) + message);
                 }
             }
         }
