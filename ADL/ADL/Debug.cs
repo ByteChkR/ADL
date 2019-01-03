@@ -29,7 +29,7 @@ namespace ADL
         /// <summary>
         /// List of LogStreams that are active
         /// </summary>
-        private static List<LogStream> _steams = new List<LogStream>();
+        private static List<LogStream> _streams = new List<LogStream>();
         /// <summary>
         /// Dictionary of Prefixes for the corresponding Masks
         /// </summary>
@@ -37,7 +37,7 @@ namespace ADL
         /// <summary>
         /// The number of Streams that ADL writes to
         /// </summary>
-        public static int LogStreamCount { get { return _adlEnabled ? _steams.Count : 0; } }
+        public static int LogStreamCount { get { return _adlEnabled ? _streams.Count : 0; } }
 
 
 
@@ -49,8 +49,8 @@ namespace ADL
         /// <param name="stream">The stream you want to add</param>
         public static void AddOutputStream(LogStream stream)
         {
-            if (!_adlEnabled || _steams.Contains(stream)) return;
-            _steams.Add(stream);
+            if (!_adlEnabled || _streams.Contains(stream)) return;
+            _streams.Add(stream);
         }
 
         /// <summary>
@@ -60,8 +60,8 @@ namespace ADL
         /// /// <param name="CloseStream">If streams should be closed upon removal from the system</param>
         public static void RemoveOutputStream(LogStream stream, bool CloseStream = true)
         {
-            if (!_adlEnabled || !_steams.Contains(stream)) return;
-            _steams.Remove(stream);
+            if (!_adlEnabled || !_streams.Contains(stream)) return;
+            _streams.Remove(stream);
             if (CloseStream) stream.CloseStream();
 
         }
@@ -74,11 +74,11 @@ namespace ADL
         {
             Log(-1, "Debug Queue Emptied");
             if (CloseStream)
-                foreach (LogStream ls in _steams)
+                foreach (LogStream ls in _streams)
                 {
                     ls.CloseStream();
                 }
-            _steams.Clear();
+            _streams.Clear();
         }
 
         #endregion
@@ -95,6 +95,11 @@ namespace ADL
         public static void AddPrefixForMask(BitMask mask, string prefix)
         {
             if (!_adlEnabled) return;
+            if (!BitMask.IsUniqueMask(mask))
+            {
+                Log(-1, "Adding Prefix: " + prefix + " for mask: " + mask + ". Mask is not unique.");
+                //return;
+            }
             if (_prefixes.ContainsKey(mask))
                 _prefixes[mask] = prefix;
             else
@@ -168,7 +173,7 @@ namespace ADL
             }
 
             if (!_adlEnabled) return;
-            foreach (LogStream adls in _steams)
+            foreach (LogStream adls in _streams)
             {
                 if (adls.IsContainedInMask(mask))
                 {

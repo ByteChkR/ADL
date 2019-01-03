@@ -68,7 +68,7 @@ namespace ADL.Unity
         public override void WriteLine(string value, object arg0)
         {
             FlushType = (int)arg0;
-            Write(value+'\n');
+            Write(value+ Utils.NEW_LINE);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace ADL.Unity
                 if (len > 0)
                 {
                     var lastChar = value[len - 1];
-                    if (lastChar == '\n')
+                    if (lastChar == Utils.NEW_LINE)
                     {
                         Flush();
                     }
@@ -99,7 +99,7 @@ namespace ADL.Unity
         public override void Write(char value)
         {
             buffer.Append(value);
-            if (value == '\n')
+            if (value ==  Utils.NEW_LINE )
             {
                 Flush();
             }

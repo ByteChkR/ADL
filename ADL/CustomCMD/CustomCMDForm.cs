@@ -37,7 +37,40 @@ namespace ADL.CustomCMD
         /// <summary>
         /// Basis color. If no colorcoding or tag is not found
         /// </summary>
-        Color baseFontColor;
+
+        Color BackgroundColor {
+            get
+            {
+                return rtb_LogOutput.BackColor;
+            }
+            set
+            {
+                rtb_LogOutput.BackColor = value;
+            }
+        }
+
+        Color FontColor
+        {
+            get
+            {
+                return rtb_LogOutput.ForeColor;
+            }
+            set
+            {
+                rtb_LogOutput.ForeColor = value;
+            }
+        }
+
+        float FontSize { get
+            {
+                return rtb_LogOutput.Font.Size;
+            }
+            set
+            {
+                float v = value;
+                rtb_LogOutput.Font = new Font(rtb_LogOutput.Font.FontFamily, v);
+            }
+        }
 
         /// <summary>
         /// Creates a new CustomCMD.
@@ -50,24 +83,37 @@ namespace ADL.CustomCMD
         public CustomCMDForm(PipeStream ps, Color Background, Color BaseFontColor, float fontSize, Dictionary<string, Color> colorCoding = null)
         {
             InitializeComponent();
-            FormClosed += CloseForm;
-            foreach (KeyValuePair<int, string> kvp in Debug.GetAllTags())
+            FormClosed += CloseForm; //Makes the programm close when this console is closed.
+            foreach (KeyValuePair<int, string> kvp in Debug.GetAllTags()) //Copy all tags to the form. To Mitigate some access violation.
             {
                 clb_TagFilter.Items.Add(kvp.Value);
                 clb_TagFilter.SetItemChecked(clb_TagFilter.Items.IndexOf(kvp.Value), true);
             }
-            ps.BlockLastReadBuffer = false;
+            ps.BlockLastReadBuffer = false; //Nothing in the stream? Nothing in the return.
+
             tr = new StreamReader(ps);
-            rtb_LogOutput.BackColor = Background;
-            baseFontColor = BaseFontColor;
-            if (colorCoding != null && colorCoding.Count != 0)
+
+            //Visual elements
+            BackColor = Background;
+            FontColor = BaseFontColor;
+            FontSize = fontSize;
+
+            if (colorCoding != null && colorCoding.Count != 0) 
             {
                 this.colorCoding = colorCoding;
                 _hasColorCoding = true;
             }
-            rtb_LogOutput.Font = new Font(rtb_LogOutput.Font.FontFamily, fontSize);
+
+
         }
 
+        
+
+        /// <summary>
+        /// Completely Terminates the Window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void CloseForm(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -91,7 +137,7 @@ namespace ADL.CustomCMD
         /// <returns></returns>
         Color GetColorFromLine(string line)
         {
-            Color ret = baseFontColor;
+            Color ret = FontColor;
 
             if (_hasColorCoding)
             {
@@ -124,7 +170,7 @@ namespace ADL.CustomCMD
             if (block != null)
             {
 
-                string[] logs = block.Split('\n');
+                string[] logs = block.Split(Utils.NEW_LINE);
 
                 for (int i = 0; i < logs.Length; i++)
                 {
@@ -147,7 +193,7 @@ namespace ADL.CustomCMD
                         rtb_LogOutput.Text = rtb_LogOutput.Text.Substring(rtb_LogOutput.Text.Length - MinConsoleTextLength, MinConsoleTextLength);
                     }
 
-                    if (test.Length != 0) rtb_LogOutput.AppendText(test+"\n", logColor);
+                    if (test.Length != 0) rtb_LogOutput.AppendText(test+Utils.NEW_LINE, logColor);
 
                 }
 

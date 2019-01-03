@@ -19,33 +19,33 @@ namespace ADL
             Version onlineVer;
             WebClient webCli = new WebClient();
 
-            msg = "Checking For Updates.\nCurrent " + PackageName + " Version(" + currentVer.ToString() + ")...\n";
+            msg = "Checking For Updates."+ Utils.NEW_LINE + "Current " + PackageName + " Version(" + currentVer.ToString() + ")..."+ Utils.NEW_LINE + "";
             try
             {
-                msg += "Downloading Version from Github Pages...\n";
+                msg += "Downloading Version from Github Pages..."+ Utils.NEW_LINE + "";
                 onlineVer = new Version(webCli.DownloadString(url));
 
                 int updatesPending = onlineVer.CompareTo(currentVer);
                 if (updatesPending == 0)
                 {
-                    msg += PackageName + " Version Check OK!\nNewest version installed.\n";
+                    msg += PackageName + " Version Check OK!"+ Utils.NEW_LINE + "Newest version installed."+ Utils.NEW_LINE + "";
 
                 }
                 else if (updatesPending < 0)
                 {
-                    msg += "Version Check OK!.\n Current " + PackageName + " Version is higher than official release.\n ";
+                    msg += "Version Check OK!."+ Utils.NEW_LINE + " Current " + PackageName + " Version is higher than official release."+ Utils.NEW_LINE + " ";
 
                 }
                 else
                 {
-                    msg += "Update Available!.\n Current " + PackageName + " Version: (" + currentVer.ToString() + ")\n Online " + PackageName + " Version: (" + onlineVer.ToString() + ").\n";
+                    msg += "Update Available!."+ Utils.NEW_LINE + " Current " + PackageName + " Version: (" + currentVer.ToString() + ")"+ Utils.NEW_LINE + " Online " + PackageName + " Version: (" + onlineVer.ToString() + ")."+ Utils.NEW_LINE + "";
 
                 }
 
             }
             catch (Exception)
             {
-                msg += "Could not connect to " + url + ".\n Try again later or disable UpdateChecking flags in Package: " + PackageName + "\n to prevent checking for updates.";
+                msg += "Could not connect to " + url + "."+ Utils.NEW_LINE + " Try again later or disable UpdateChecking flags in Package: " + PackageName + ""+ Utils.NEW_LINE + " to prevent checking for updates.";
 
             }
             return msg;
