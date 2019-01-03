@@ -6,5 +6,6 @@ var searchData=
   ['appendtext',['AppendText',['../class_a_d_l_1_1_custom_c_m_d_1_1_rich_text_box_extensions.html#a47d508f47f347c3631bcfeb940b080e3',1,'ADL::CustomCMD::RichTextBoxExtensions']]],
   ['customcmd',['CustomCMD',['../namespace_a_d_l_1_1_custom_c_m_d.html',1,'ADL']]],
   ['properties',['Properties',['../namespace_a_d_l_1_1_custom_c_m_d_1_1_properties.html',1,'ADL::CustomCMD']]],
+  ['unittests',['UnitTests',['../namespace_a_d_l_1_1_unit_tests.html',1,'ADL']]],
   ['unity',['Unity',['../namespace_a_d_l_1_1_unity.html',1,'ADL']]]
 ];

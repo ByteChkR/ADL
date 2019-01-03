@@ -1,6 +1,7 @@
 var namespace_a_d_l =
 [
     [ "CustomCMD", "namespace_a_d_l_1_1_custom_c_m_d.html", "namespace_a_d_l_1_1_custom_c_m_d" ],
+    [ "UnitTests", "namespace_a_d_l_1_1_unit_tests.html", "namespace_a_d_l_1_1_unit_tests" ],
     [ "Unity", "namespace_a_d_l_1_1_unity.html", "namespace_a_d_l_1_1_unity" ],
     [ "BitMask", "class_a_d_l_1_1_bit_mask.html", null ],
     [ "Debug", "class_a_d_l_1_1_debug.html", "class_a_d_l_1_1_debug" ],
