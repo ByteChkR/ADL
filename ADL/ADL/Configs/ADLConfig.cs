@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ADL
+namespace ADL.Configs
 {
     /// <summary>
     /// Contains the Configurations of the main ADL.Debug class.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ADL
+namespace ADL.Configs
 {
     /// <summary>
     /// A Serializable Dictionary that splits up the dictionary in two lists(while giving up the dictionaries functionality) to make it serializable

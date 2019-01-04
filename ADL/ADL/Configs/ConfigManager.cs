@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml.Serialization;
 using System.IO;
 
-namespace ADL
+namespace ADL.Configs
 {
     /// <summary>
     /// Contains the code for saving and loading Config files in this project

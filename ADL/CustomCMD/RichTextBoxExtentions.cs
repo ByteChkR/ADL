@@ -8,7 +8,6 @@ namespace ADL.CustomCMD
     /// </summary>
     public static class RichTextBoxExtensions
     {
-        private static int test = 0;
         /// <summary>
         /// Appends text in a specified color.
         /// </summary>

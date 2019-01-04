@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ADL;
+using ADL.Configs;
 namespace DebugTest
 {
     /// <summary>
@@ -218,15 +219,16 @@ namespace DebugTest
 
         private static void CreateADLCustomCMDConfig()
         {
-            SerializableDictionary<string, ADL.CustomCMD.SerializableColor> colorCoding =
-                new SerializableDictionary<string, ADL.CustomCMD.SerializableColor>(
-                    new Dictionary<string, ADL.CustomCMD.SerializableColor>()
+            
+            SerializableDictionary<string, SerializableColor> colorCoding =
+                new SerializableDictionary<string, SerializableColor>(
+                    new Dictionary<string, SerializableColor>()
                     {
                         {"[Error]", System.Drawing.Color.Red }, //Every errror message should be drawn in red.
                         {"[Warning]", System.Drawing.Color.Orange }, //Every warning is painted in orange
                         {"[ADL]", System.Drawing.Color.Green }
                     });
-            ADL.CustomCMD.ADLCustomConsoleConfig config = ADL.CustomCMD.ADLCustomConsoleConfig.Standard;
+            ADLCustomConsoleConfig config = ADLCustomConsoleConfig.Standard;
             config.FontSize = 13;
             config.ColorCoding = colorCoding;
             ADL.CustomCMD.CMDUtils.SaveConfig(config);

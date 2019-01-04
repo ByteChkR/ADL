@@ -2,8 +2,9 @@
 using System;
 using System.Drawing;
 using System.Collections.Generic;
+using ADL.Configs;
 
-namespace ADL.CustomCMD
+namespace ADL.Configs
 {
 
     /// <summary>

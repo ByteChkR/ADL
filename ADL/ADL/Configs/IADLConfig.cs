@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ADL
+namespace ADL.Configs
 {
     /// <summary>
     /// A interface that all Config files in this project have in common. This makes me able to always return "something" even if i can not read the config.

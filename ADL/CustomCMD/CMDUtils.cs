@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
 using System.Reflection;
-using System.Linq;
+using ADL.Configs;
 namespace ADL.CustomCMD
 {
     /// <summary>

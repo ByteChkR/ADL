@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace ADL.CustomCMD
+namespace ADL.Configs
 {
     /// <summary>
     /// A Struct that has implicit conversion to System.Drawing.Color.
