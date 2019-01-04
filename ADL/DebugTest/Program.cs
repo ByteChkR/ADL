@@ -63,9 +63,9 @@ namespace DebugTest
             Debug.Log<LoggingTypes>(LoggingTypes.LOG, "Finished the Console Out Test.");
 
             //Now we want to remove the stream from the system.
-            Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
+            //Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
             //But we can remove all Streams in one go
-            Debug.RemoveAllOutputStreams(true);
+            //Debug.RemoveAllOutputStreams(true);
 
         }
 
@@ -118,9 +118,9 @@ namespace DebugTest
             Debug.Log<LoggingTypes>(LoggingTypes.LOG, "Finished the CustomConsole Out Test.");
 
             //Now we want to remove the stream from the system.
-            Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
+            //Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
             //But we can remove all Streams in one go
-            Debug.RemoveAllOutputStreams(true);
+            //Debug.RemoveAllOutputStreams(true);
         }
 
         static void TestLogFileOut()
@@ -164,12 +164,12 @@ namespace DebugTest
             Console.WriteLine("Finished the Logfile Out Test.");
 
             //Now we want to remove the stream from the system.
-            Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
+            //Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
             //But we can remove all Streams in one go
-            Debug.RemoveAllOutputStreams(true);
+            //Debug.RemoveAllOutputStreams(true);
 
             //In this case we want to delete the created log file to prevent logs piling up in the test project.
-            System.IO.File.Delete("test.log");
+            //System.IO.File.Delete("test.log");
         }
 
 
@@ -187,6 +187,14 @@ namespace DebugTest
             TestConsoleOut();
 
             TestLogFileOut();
+            Random rnd = new Random();
+            int mul;
+            while (true)
+            {
+                System.Threading.Thread.Sleep(100);
+                mul = rnd.Next(0, 7);
+                Debug.Log(Utils.IntPow(2,mul), "Testing In Progress.");
+            }
 
             Console.Read();
 

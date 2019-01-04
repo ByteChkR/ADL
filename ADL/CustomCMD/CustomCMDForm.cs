@@ -13,7 +13,7 @@ namespace ADL.CustomCMD
     /// </summary>
     public partial class CustomCMDForm : Form
     {
-        public static readonly int MinConsoleTextLength = 4096;
+        public static readonly int MaxConsoleTextLength = 2147483647;
 
 
         /// <summary>
@@ -38,7 +38,8 @@ namespace ADL.CustomCMD
         /// Basis color. If no colorcoding or tag is not found
         /// </summary>
 
-        Color BackgroundColor {
+        Color BackgroundColor
+        {
             get
             {
                 return rtb_LogOutput.BackColor;
@@ -61,7 +62,9 @@ namespace ADL.CustomCMD
             }
         }
 
-        float FontSize { get
+        float FontSize
+        {
+            get
             {
                 return rtb_LogOutput.Font.Size;
             }
@@ -98,7 +101,7 @@ namespace ADL.CustomCMD
             FontColor = BaseFontColor;
             FontSize = fontSize;
 
-            if (colorCoding != null && colorCoding.Count != 0) 
+            if (colorCoding != null && colorCoding.Count != 0)
             {
                 this.colorCoding = colorCoding;
                 _hasColorCoding = true;
@@ -107,7 +110,7 @@ namespace ADL.CustomCMD
 
         }
 
-        
+
 
         /// <summary>
         /// Completely Terminates the Window.
@@ -127,6 +130,8 @@ namespace ADL.CustomCMD
         private void Form1_Load(object sender, EventArgs e)
         {
             Show();
+
+
             timer1.Start();
         }
 
@@ -160,6 +165,8 @@ namespace ADL.CustomCMD
         /// </summary>
         void RefreshTextBox()
         {
+
+            //Application.DoEvents();
             string test = "";
             Color logColor;
 
@@ -169,6 +176,7 @@ namespace ADL.CustomCMD
 
             if (block != null)
             {
+                if (block == "") return;
 
                 string[] logs = block.Split(Utils.NEW_LINE);
 
@@ -188,12 +196,15 @@ namespace ADL.CustomCMD
 
 
 
-                    if (test.Length + rtb_LogOutput.Text.Length > rtb_LogOutput.MaxLength && rtb_LogOutput.Text.Length >= MinConsoleTextLength)
+                    if (rtb_LogOutput.Text.Length+test.Length > MaxConsoleTextLength)
                     {
-                        rtb_LogOutput.Text = rtb_LogOutput.Text.Substring(rtb_LogOutput.Text.Length - MinConsoleTextLength, MinConsoleTextLength);
+                        string txt = rtb_LogOutput.Text;
+                        txt = txt.Substring(txt.Length - MaxConsoleTextLength/2, MaxConsoleTextLength/2);
+                        rtb_LogOutput.Text = txt;
                     }
 
-                    if (test.Length != 0) rtb_LogOutput.AppendText(test+Utils.NEW_LINE, logColor);
+
+                    rtb_LogOutput.AppendText(test, logColor);
 
                 }
 
