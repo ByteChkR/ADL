@@ -1,8 +1,9 @@
 var hierarchy =
 [
-    [ "ADL.BitMask< T >", "class_a_d_l_1_1_bit_mask.html", null ],
     [ "ADL.BitMask", "class_a_d_l_1_1_bit_mask.html", null ],
+    [ "ADL.BitMask< T >", "class_a_d_l_1_1_bit_mask.html", null ],
     [ "ADL.CustomCMD.CMDUtils", "class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils.html", null ],
+    [ "ADL.ConfigManager", "class_a_d_l_1_1_config_manager.html", null ],
     [ "ADL.Debug", "class_a_d_l_1_1_debug.html", null ],
     [ "ADL.UnitTests.DebugOperations", "class_a_d_l_1_1_unit_tests_1_1_debug_operations.html", null ],
     [ "Editor", null, [
@@ -10,6 +11,10 @@ var hierarchy =
     ] ],
     [ "Form", null, [
       [ "ADL.CustomCMD.CustomCMDForm", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html", null ]
+    ] ],
+    [ "ADL.IADLConfig", "interface_a_d_l_1_1_i_a_d_l_config.html", [
+      [ "ADL.ADLConfig", "struct_a_d_l_1_1_a_d_l_config.html", null ],
+      [ "ADL.CustomCMD.ADLCustomConsoleConfig", "struct_a_d_l_1_1_custom_c_m_d_1_1_a_d_l_custom_console_config.html", null ]
     ] ],
     [ "ADL.LogStream", "class_a_d_l_1_1_log_stream.html", null ],
     [ "ADL.Unity.LogStreamParams", "class_a_d_l_1_1_unity_1_1_log_stream_params.html", null ],
@@ -25,6 +30,10 @@ var hierarchy =
       [ "ADL.Unity.EnumFlagsAttributeDrawer", "class_a_d_l_1_1_unity_1_1_enum_flags_attribute_drawer.html", null ]
     ] ],
     [ "ADL.CustomCMD.RichTextBoxExtensions", "class_a_d_l_1_1_custom_c_m_d_1_1_rich_text_box_extensions.html", null ],
+    [ "ADL.CustomCMD.SerializableColor", "struct_a_d_l_1_1_custom_c_m_d_1_1_serializable_color.html", null ],
+    [ "ADL.SerializableDictionary< T1, T2 >", "struct_a_d_l_1_1_serializable_dictionary.html", null ],
+    [ "ADL.SerializableDictionary< int, string >", "struct_a_d_l_1_1_serializable_dictionary.html", null ],
+    [ "ADL.SerializableDictionary< string, ADL.CustomCMD.SerializableColor >", "struct_a_d_l_1_1_serializable_dictionary.html", null ],
     [ "Stream", null, [
       [ "ADL.PipeStream", "class_a_d_l_1_1_pipe_stream.html", null ]
     ] ],

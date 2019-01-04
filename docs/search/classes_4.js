@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['logstream',['LogStream',['../class_a_d_l_1_1_log_stream.html',1,'ADL']]],
-  ['logstreamparams',['LogStreamParams',['../class_a_d_l_1_1_unity_1_1_log_stream_params.html',1,'ADL::Unity']]]
+  ['enumflagsattribute',['EnumFlagsAttribute',['../class_a_d_l_1_1_unity_1_1_enum_flags_attribute.html',1,'ADL::Unity']]],
+  ['enumflagsattributedrawer',['EnumFlagsAttributeDrawer',['../class_a_d_l_1_1_unity_1_1_enum_flags_attribute_drawer.html',1,'ADL::Unity']]]
 ];

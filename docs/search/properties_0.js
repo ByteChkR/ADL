@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['backgroundcolor',['BackgroundColor',['../class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a36b4c3dbdffb0f8f46f47d3def549964',1,'ADL::CustomCMD::CustomCMDForm']]],
-  ['blocklastreadbuffer',['BlockLastReadBuffer',['../class_a_d_l_1_1_pipe_stream.html#af05e530e849bfee481290e8139f27379',1,'ADL::PipeStream']]]
+  ['adlenabled',['ADLEnabled',['../class_a_d_l_1_1_debug.html#a24102d4f94b0718e578f1cad6ef9f70c',1,'ADL::Debug']]],
+  ['adlwarningmask',['ADLWarningMask',['../class_a_d_l_1_1_debug.html#ae2261249b4849913d33acbc6a67ce4ef',1,'ADL::Debug']]]
 ];
