@@ -136,13 +136,13 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a52195de21772a5d778309243ab307425"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#a52195de21772a5d778309243ab307425">GetMaskPrefix</a> (<a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a> mask)</td></tr>
 <tr class="memdesc:a52195de21772a5d778309243ab307425"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the concatenated string of all the Prefixes that are fallin in that mask.  <a href="#a52195de21772a5d778309243ab307425">More...</a><br /></td></tr>
 <tr class="separator:a52195de21772a5d778309243ab307425"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f2fd8123023fc5f0aee45bd08624a84"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#a5f2fd8123023fc5f0aee45bd08624a84">LoadConfig</a> (<a class="el" href="struct_a_d_l_1_1_a_d_l_config.html">ADLConfig</a> config)</td></tr>
-<tr class="memdesc:a5f2fd8123023fc5f0aee45bd08624a84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a supplied <a class="el" href="struct_a_d_l_1_1_a_d_l_config.html" title="Contains the Configurations of the main ADL.Debug class. ">ADLConfig</a>.  <a href="#a5f2fd8123023fc5f0aee45bd08624a84">More...</a><br /></td></tr>
+<tr class="memitem:a5f2fd8123023fc5f0aee45bd08624a84"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#a5f2fd8123023fc5f0aee45bd08624a84">LoadConfig</a> (<a class="el" href="struct_a_d_l_1_1_configs_1_1_a_d_l_config.html">ADLConfig</a> config)</td></tr>
+<tr class="memdesc:a5f2fd8123023fc5f0aee45bd08624a84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a supplied ADLConfig.  <a href="#a5f2fd8123023fc5f0aee45bd08624a84">More...</a><br /></td></tr>
 <tr class="separator:a5f2fd8123023fc5f0aee45bd08624a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad667cd3a1e313c2bca7a2d915160efbf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#ad667cd3a1e313c2bca7a2d915160efbf">LoadConfig</a> (string path=&quot;adl_config.xml&quot;)</td></tr>
 <tr class="memdesc:ad667cd3a1e313c2bca7a2d915160efbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the <a class="el" href="namespace_a_d_l.html" title="Namespace ADL is the &quot;Root&quot; namespace of ADL. It contains the Code needed to use ADL. But also in sub namespaces you will find other helpful tools. ">ADL</a> Config from the file at the supplied path  <a href="#ad667cd3a1e313c2bca7a2d915160efbf">More...</a><br /></td></tr>
 <tr class="separator:ad667cd3a1e313c2bca7a2d915160efbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86e70ee0cee79ede6c8a5767e97aed1a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#a86e70ee0cee79ede6c8a5767e97aed1a">SaveConfig</a> (<a class="el" href="struct_a_d_l_1_1_a_d_l_config.html">ADLConfig</a> config, string path=&quot;adl_config.xml&quot;)</td></tr>
+<tr class="memitem:a86e70ee0cee79ede6c8a5767e97aed1a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#a86e70ee0cee79ede6c8a5767e97aed1a">SaveConfig</a> (<a class="el" href="struct_a_d_l_1_1_configs_1_1_a_d_l_config.html">ADLConfig</a> config, string path=&quot;adl_config.xml&quot;)</td></tr>
 <tr class="memdesc:a86e70ee0cee79ede6c8a5767e97aed1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the configuration to the given file path  <a href="#a86e70ee0cee79ede6c8a5767e97aed1a">More...</a><br /></td></tr>
 <tr class="separator:a86e70ee0cee79ede6c8a5767e97aed1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97509c5ce2e79d902d388bea0854a382"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_debug.html#a97509c5ce2e79d902d388bea0854a382">SaveConfig</a> (string path=&quot;adl_config.xml&quot;)</td></tr>
@@ -403,7 +403,7 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>_sendWarnings<
         <tr>
           <td class="memname">static void ADL.Debug.LoadConfig </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_a_d_l_1_1_a_d_l_config.html">ADLConfig</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_a_d_l_1_1_configs_1_1_a_d_l_config.html">ADLConfig</a>&#160;</td>
           <td class="paramname"><em>config</em></td><td>)</td>
           <td></td>
         </tr>
@@ -415,7 +415,7 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>_sendWarnings<
 </table>
 </div><div class="memdoc">
 
-<p>Loads a supplied <a class="el" href="struct_a_d_l_1_1_a_d_l_config.html" title="Contains the Configurations of the main ADL.Debug class. ">ADLConfig</a>. </p>
+<p>Loads a supplied ADLConfig. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">config</td><td>Config to load</td></tr>
@@ -720,7 +720,7 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>_sendWarnings<
         <tr>
           <td class="memname">static void ADL.Debug.SaveConfig </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_a_d_l_1_1_a_d_l_config.html">ADLConfig</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_a_d_l_1_1_configs_1_1_a_d_l_config.html">ADLConfig</a>&#160;</td>
           <td class="paramname"><em>config</em>, </td>
         </tr>
         <tr>

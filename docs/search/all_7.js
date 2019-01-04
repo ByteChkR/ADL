@@ -6,6 +6,6 @@ var searchData=
   ['getenumsize',['GetEnumSize',['../class_a_d_l_1_1_utils.html#a2440a02543f713bece0b2feede4f9eae',1,'ADL::Utils']]],
   ['getmaskprefix',['GetMaskPrefix',['../class_a_d_l_1_1_debug.html#a52195de21772a5d778309243ab307425',1,'ADL::Debug']]],
   ['getprefixmask',['GetPrefixMask',['../class_a_d_l_1_1_debug.html#ae1a3f8085e6595a497792899be51c7e8',1,'ADL::Debug']]],
-  ['getstandard',['GetStandard',['../struct_a_d_l_1_1_a_d_l_config.html#a1688197a3cac1ea52b27c57ff05d65e8',1,'ADL.ADLConfig.GetStandard()'],['../interface_a_d_l_1_1_i_a_d_l_config.html#acaa3f91fc2df9fd6af6965d8d1f7df67',1,'ADL.IADLConfig.GetStandard()'],['../struct_a_d_l_1_1_custom_c_m_d_1_1_a_d_l_custom_console_config.html#a9c61e0c966a70c4a2183cf189cc2e911',1,'ADL.CustomCMD.ADLCustomConsoleConfig.GetStandard()']]],
+  ['getstandard',['GetStandard',['../struct_a_d_l_1_1_configs_1_1_a_d_l_config.html#abc68dccdea1d2f192a2e3de99379a8bd',1,'ADL.Configs.ADLConfig.GetStandard()'],['../interface_a_d_l_1_1_configs_1_1_i_a_d_l_config.html#a7429389a13b8859e91820e33330e0913',1,'ADL.Configs.IADLConfig.GetStandard()'],['../struct_a_d_l_1_1_configs_1_1_a_d_l_custom_console_config.html#a94b66d43d2dccbdabc0a54830577536b',1,'ADL.Configs.ADLCustomConsoleConfig.GetStandard()']]],
   ['getuniquemasksset',['GetUniqueMasksSet',['../class_a_d_l_1_1_bit_mask.html#acff3f9aefb61678465947c80f558905c',1,'ADL::BitMask']]]
 ];
