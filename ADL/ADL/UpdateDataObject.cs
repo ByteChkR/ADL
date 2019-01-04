@@ -3,14 +3,29 @@ using System.Net;
 namespace ADL
 {
 
-    public class UpdateDataObject
+    public static class UpdateDataObject
     {
+        /// <summary>
+        /// The Raw link to the location where i have my version files.
+        /// </summary>
         public static string rawLink = "https://raw.githubusercontent.com/ByteChkR/ADL/master/docs/versioning/{0}version.txt";
+
+        /// <summary>
+        /// Creates the right link from the raw link and the package name
+        /// </summary>
+        /// <param name="package">the package name</param>
+        /// <returns>returns a valid link to the version file.</returns>
         public static string GenerateLink(string package)
         {
             return string.Format(rawLink, package);
         }
 
+        /// <summary>
+        /// Checks For Updates for the specified package.
+        /// </summary>
+        /// <param name="PackageName">Package name to search for</param>
+        /// <param name="currentVer">The current assembly version of the package</param>
+        /// <returns></returns>
         public static string CheckUpdate(string PackageName, Version currentVer)
         {
             string url = GenerateLink(PackageName);

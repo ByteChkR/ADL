@@ -62,7 +62,7 @@ namespace ADL.Unity
         public void CheckForUpdates()
         {
             string msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name, Assembly.GetExecutingAssembly().GetName().Version);
-            Debug.Log(new BitMask(true), msg);
+            Debug.Log(Debug.UpdateMask, msg);
         }
 
 

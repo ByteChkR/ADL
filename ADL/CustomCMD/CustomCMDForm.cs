@@ -19,7 +19,7 @@ namespace ADL.CustomCMD
         /// <summary>
         /// The Tags and their corresponding colors
         /// </summary>
-        Dictionary<string, Color> colorCoding = null;
+        Dictionary<string, SerializableColor> colorCoding = null;
 
         ///// <summary>
         ///// Copies the Prefix Array from the Debug Class to the new thread of the CustomCMD
@@ -80,11 +80,11 @@ namespace ADL.CustomCMD
         /// <param name="BaseFontColor">Base Font Color. Acts as fallback if no color coding or tag not found</param>
         /// <param name="fontSize">font size of the logs</param>
         /// <param name="colorCoding">colorcoding</param>
-        public CustomCMDForm(PipeStream ps, Color Background, Color BaseFontColor, float fontSize, Dictionary<string, Color> colorCoding = null)
+        public CustomCMDForm(PipeStream ps, Color Background, Color BaseFontColor, float fontSize, Dictionary<string, SerializableColor> colorCoding = null)
         {
             InitializeComponent();
             FormClosed += CloseForm; //Makes the programm close when this console is closed.
-            foreach (KeyValuePair<int, string> kvp in Debug.GetAllTags()) //Copy all tags to the form. To Mitigate some access violation.
+            foreach (KeyValuePair<int, string> kvp in Debug.GetAllPrefixes()) //Copy all tags to the form. To Mitigate some access violation.
             {
                 clb_TagFilter.Items.Add(kvp.Value);
                 clb_TagFilter.SetItemChecked(clb_TagFilter.Items.IndexOf(kvp.Value), true);

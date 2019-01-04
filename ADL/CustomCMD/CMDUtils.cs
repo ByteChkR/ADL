@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
 using System.Reflection;
+using System.Linq;
 namespace ADL.CustomCMD
 {
     /// <summary>
@@ -28,19 +29,7 @@ namespace ADL.CustomCMD
             Application.Run(ps)).Start();
         }
 
-        /// <summary>
-        /// Creates a Custom Console on the Supplied PipeStream.
-        /// The console will have the default Background and BaseFontColor
-        /// This Function is a Wrapper. See Other Overloads for more options.
-        /// </summary>
-        /// <param name="ps"></param>
-        /// <param name="colorCoding">Default null</param>
-        /// <param name="FontSize">Default 8.25</param>
-        /// <returns>The Created Console</returns>
-        public static Form CreateCustomConsole(PipeStream ps, Dictionary<string, Color> colorCoding = null, float FontSize = 8.25f)
-        {
-            return CreateCustomConsole(ps, Color.Black, Color.White, FontSize, colorCoding);
-        }
+
 
         /// <summary>
         /// Creates a Custom Console on the Supplied PipeStream.
@@ -51,12 +40,12 @@ namespace ADL.CustomCMD
         /// <param name="FontSize">Font Size</param>
         /// <param name="colorCoding">Color Coding for the Tags</param>
         /// <returns>Reference to the Created Console.(Not Thread Save)</returns>
-        public static Form CreateCustomConsole(PipeStream ps, Color Background, Color FontColor, float FontSize = 8.25f, Dictionary<string, Color> colorCoding = null)
+        public static Form CreateCustomConsole(PipeStream ps, Color Background, Color FontColor, float FontSize = 8.25f, Dictionary<string, SerializableColor> colorCoding = null)
         {
             if (Debug.SendUpdateMessageOnFirstLog)
             {
                 string msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name, System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
-                Debug.Log(new BitMask(true), msg);
+                Debug.Log(Debug.UpdateMask, msg);
             }
 
 
@@ -70,6 +59,58 @@ namespace ADL.CustomCMD
         }
 
         /// <summary>
+        /// Create a Console Window with a supplied config
+        /// </summary>
+        /// <param name="ps"></param>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public static Form CreateCustomConsole(PipeStream ps, ADLCustomConsoleConfig config)
+        {
+            return CreateCustomConsole(ps, config.BackgroundColor, config.FontColor, config.FontSize, config.ColorCoding.ToDictionary());
+        }
+
+        /// <summary>
+        /// Creates a CustomCmd based on the config at the supplied filepath
+        /// </summary>
+        /// <param name="ps">The pipestream that is used.</param>
+        /// <param name="configPath">The path to the config</param>
+        /// <returns></returns>
+        public static Form CreateCustomConsole(PipeStream ps, string configPath = "adl_customcmd_config.xml")
+        {
+            return CreateCustomConsole(ps, ConfigManager.ReadFromFile<ADLCustomConsoleConfig>(configPath));
+        }
+
+
+        /// <summary>
+        /// Saves the supplied config to the supplied file path
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="path"></param>
+        public static void SaveConfig(ADLCustomConsoleConfig config, string path = "adl_customcmd_config.xml")
+        {
+            ConfigManager.SaveToFile(path, config);
+        }
+
+
+        /// <summary>
+        /// Saves the Supplied Arguments into a config file, that can be loaded when creating the form.
+        /// </summary>
+        /// <param name="Background"></param>
+        /// <param name="FontColor"></param>
+        /// <param name="FontSize"></param>
+        /// <param name="colorCoding"></param>
+        /// <param name="path"></param>
+        public static void SaveConfig(Color Background, Color FontColor, float FontSize, Dictionary<string, SerializableColor> colorCoding, string path = "adl_customcmd_config.xml")
+        {
+            ADLCustomConsoleConfig config = new ADLCustomConsoleConfig();
+            config.BackgroundColor = Background;
+            config.FontColor = FontColor;
+            config.FontSize = FontSize;
+            config.ColorCoding = new SerializableDictionary<string, SerializableColor>(colorCoding);
+            SaveConfig(config, path);
+        }
+
+        /// <summary>
         /// Creates a Custom Console but without returning it.
         /// This function can be called without having to reference System.Windows.Forms.
         /// </summary>
@@ -78,7 +119,7 @@ namespace ADL.CustomCMD
         /// <param name="FontColor">Font Color</param>
         /// <param name="FontSize">Font Size</param>
         /// <param name="colorCoding">Color Coding for the Tags</param>
-        public static void CreateCustomConsoleNoReturn(Stream ps, Color Background, Color FontColor, float FontSize = 8.25f, Dictionary<string, Color> colorCoding = null)
+        public static void CreateCustomConsoleNoReturn(Stream ps, Color Background, Color FontColor, float FontSize = 8.25f, Dictionary<string, SerializableColor> colorCoding = null)
         {
             if (ps != null && !(ps is PipeStream)) return;
             CreateCustomConsole(new CustomCMDForm(ps as PipeStream, Background, FontColor, FontSize, colorCoding));
@@ -92,7 +133,7 @@ namespace ADL.CustomCMD
         /// <param name="ps">Pipe Stream</param>
         /// <param name="FontSize">Font Size</param>
         /// <param name="colorCoding">Color Coding for the Tags</param>
-        public static void CreateCustomConsoleNoReturn(Stream ps, float FontSize = 8.25f, Dictionary<string, Color> colorCoding = null)
+        public static void CreateCustomConsoleNoReturn(Stream ps, float FontSize = 8.25f, Dictionary<string, SerializableColor> colorCoding = null)
         {
             CreateCustomConsoleNoReturn(ps, Color.Black, Color.White, FontSize, colorCoding);
         }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Diagnostics;
 namespace ADL.UnitTests
 {
     [TestClass]
@@ -7,9 +8,15 @@ namespace ADL.UnitTests
         [TestMethod]
         public void Test_AddPrefixForMask()
         {
+            Debug.SendUpdateMessageOnFirstLog = false;
+
+
             BitMask bm = new BitMask(2 | 8);
             Debug.AddPrefixForMask(bm, "HELLO");
-            Assert.IsTrue(Debug.GetMaskPrefix(bm) == "HELLO");
+            bool ret = Debug.GetMaskPrefix(bm) == "HELLO";
+
+            Assert.IsTrue(ret);
+            
         }
 
         [TestMethod]
@@ -18,7 +25,7 @@ namespace ADL.UnitTests
             BitMask bm = new BitMask(2 | 8);
             Debug.AddPrefixForMask(bm, "HELLO");
             Debug.RemovePrefixForMask(bm);
-            Assert.IsTrue(Debug.GetAllTags().Count == 0);
+            Assert.IsTrue(Debug.GetAllPrefixes().Count == 0);
         }
 
         [TestMethod]
@@ -27,7 +34,7 @@ namespace ADL.UnitTests
             BitMask bm = new BitMask(2 | 8);
             Debug.AddPrefixForMask(bm, "HELLO");
             Debug.RemoveAllPrefixes();
-            Assert.IsTrue(Debug.GetAllTags().Count == 0);
+            Assert.IsTrue(Debug.GetAllPrefixes().Count == 0);
 
         }
 

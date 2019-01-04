@@ -7,7 +7,7 @@ namespace ADL
     /// </summary>
     public static class Utils
     {
-        public static UpdateDataObject Updater = null;
+
         public static readonly int BYTE_SIZE = 8;
         public static readonly char NEW_LINE = '\n';
         /// <summary>

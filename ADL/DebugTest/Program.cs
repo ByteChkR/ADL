@@ -37,7 +37,7 @@ namespace DebugTest
             BitMask<LoggingTypes> bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.ERROR, LoggingTypes.LOG);
 
 
-            
+
 
             //Then we want to create a LogStream that receives the Messages
             //Important: Its much easier to use CreateLogStreamFromStream than setting everything manually
@@ -50,8 +50,8 @@ namespace DebugTest
 
             Debug.AddOutputStream(logStream); //Now we have Created the stream, just add it to the system.
 
-            //Maybe we even want to have Custom Tags on the logs, depending what mask they have.
-            Debug.SetAllPrefixes("[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[GENERIC]");
+            
+
 
             //This is a test.
             for (int i = 0; i < 63; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
@@ -103,20 +103,10 @@ namespace DebugTest
 
 
 
-            Dictionary<string, System.Drawing.Color> colorCoding = new Dictionary<string, System.Drawing.Color>()
-            {
-                {"[Error]", System.Drawing.Color.Red }, //Every errror message should be drawn in red.
-                {"[Warning]", System.Drawing.Color.Orange } //Every warning is painted in orange
-            };
-
-            //Maybe we even want to have Custom Tags on the logs, depending what mask they have.
-            //Important: If your Custom Console does not show the tags right away, try setting the prefixes before creating the console window.
-            Debug.SetAllPrefixes("[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[GENERIC]");
-
 
             //After Creating the log Stream we want to create a custom Cmd window
             System.Windows.Forms.Form ccmd = //ADL.CustomCMD.CMDUtils.CreateCustomConsole(pipeStream); //Creates a basic Custom cmd with no visual adjustments
-                ADL.CustomCMD.CMDUtils.CreateCustomConsole(pipeStream, colorCoding, 13); //Creates a custom cmd with color coding and custom font size.
+                ADL.CustomCMD.CMDUtils.CreateCustomConsole(pipeStream); //Creates a custom cmd with color coding and custom font size.
 
             //This is a test.
             for (int i = 0; i < 63; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
@@ -163,10 +153,6 @@ namespace DebugTest
 
             Debug.AddOutputStream(logStream); //Now we have Created the stream, just add it to the system.
 
-
-            //Maybe we even want to have Custom Tags on the logs, depending what mask they have.
-            Debug.SetAllPrefixes("[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[GENERIC]");
-
             //This is a test.
             for (int i = 0; i < 63; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
             {
@@ -190,6 +176,11 @@ namespace DebugTest
 
         static void Main(string[] args)
         {
+            Debug.LoadConfig(); //Using the standard path
+
+            //Runtime Config Changes(not Getting saved):
+            Debug.SendWarnings = true;
+            Debug.ADLEnabled = true;
 
             TestCustomConsoleOut();
 
@@ -201,6 +192,36 @@ namespace DebugTest
 
             System.Windows.Forms.Application.Exit(); //Forces the custom console to close.
 
+        }
+
+        /// <summary>
+        /// How to set up ADL.
+        /// </summary>
+        private static void CreateADLConfig()
+        {
+            Debug.SetAllPrefixes("[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[ADL]");
+            Debug.ADLWarningMask = 4;
+            Debug.ADLEnabled = false;
+            Debug.SendUpdateMessageOnFirstLog = true;
+            Debug.SendWarnings = false;
+            Debug.UpdateMask = 32;
+            Debug.SaveConfig(); //Not Needed to work, but for the next time we can just load the config
+        }
+
+        private static void CreateADLCustomCMDConfig()
+        {
+            SerializableDictionary<string, ADL.CustomCMD.SerializableColor> colorCoding =
+                new SerializableDictionary<string, ADL.CustomCMD.SerializableColor>(
+                    new Dictionary<string, ADL.CustomCMD.SerializableColor>()
+                    {
+                        {"[Error]", System.Drawing.Color.Red }, //Every errror message should be drawn in red.
+                        {"[Warning]", System.Drawing.Color.Orange }, //Every warning is painted in orange
+                        {"[ADL]", System.Drawing.Color.Green }
+                    });
+            ADL.CustomCMD.ADLCustomConsoleConfig config = ADL.CustomCMD.ADLCustomConsoleConfig.Standard;
+            config.FontSize = 13;
+            config.ColorCoding = colorCoding;
+            ADL.CustomCMD.CMDUtils.SaveConfig(config);
         }
     }
 }
