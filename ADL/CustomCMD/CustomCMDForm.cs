@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using ADL.Configs;
+using System.Linq;
 namespace ADL.CustomCMD
 {
 
@@ -13,7 +14,9 @@ namespace ADL.CustomCMD
     /// </summary>
     public partial class CustomCMDForm : Form
     {
-        public static readonly int MaxConsoleTextLength = 2147483647;
+        public static readonly int MaxConsoleTextLength = 25000;
+        public static readonly int MinConsoleTextLength = 5000;
+        public static readonly int MaxLogCountPerFrame = 250;
 
 
         /// <summary>
@@ -131,7 +134,11 @@ namespace ADL.CustomCMD
         {
             Show();
 
-
+            //while (true)
+            //{
+            //    Application.DoEvents();
+            //    RefreshTextBox();
+            //}
             timer1.Start();
         }
 
@@ -160,60 +167,129 @@ namespace ADL.CustomCMD
             return ret;
         }
 
+
+        private string ConsoleTitleInfo = "ADL : Custom Console : Logs Received {0} : Logs Written {1} : Blocks Writen {2}(1:{3}) : Text Cleared {4}";
+        private int _totalLogsReceived = 0;
+        private int _logsWritten = 0;
+        private int _blocksWritten = 0;
+        private int _consoleCleared = 0;
+        private float _avgLogsPerBlock = 0;
+        private int _totalLogsWrittenInBlocks = 0;
         /// <summary>
         /// Refreshes text box with content from the log stream.
         /// </summary>
         void RefreshTextBox()
         {
+            if (rtb_LogOutput.IsDisposed || rtb_LogOutput.Disposing) return;
+            string block = ReadBlock();
+            if (block == null && block == "") return;
 
-            //Application.DoEvents();
-            string test = "";
-            Color logColor;
+            if (MaxConsoleTextLength < rtb_LogOutput.TextLength + block.Length)
+                ClearConsole(block.Length);
 
-            string block = tr.ReadToEnd();
+            ShowInConsole(block);
+            Text = string.Format(ConsoleTitleInfo, _totalLogsReceived, _logsWritten, _blocksWritten, Math.Round(_avgLogsPerBlock, 3), _consoleCleared);
+
+        }
 
 
+        private string ReadBlock()
+        {
+            return tr.ReadToEnd();
+        }
 
-            if (block != null)
+        private List<string> SplitLogs(string block)
+        {
+            return block.Split(Utils.NEW_LINE).ToList();
+
+        }
+
+        /// <summary>
+        /// Filters the Logs based on the Checked State of the tags in clb_tagFilter
+        /// </summary>
+        /// <param name="logs"></param>
+        /// <returns></returns>
+        private List<string> FilterLogs(List<string> logs)
+        {
+            bool[] result = new bool[logs.Count];
+            bool containsOne = false;
+            for (int i = 0; i < logs.Count; i++)
             {
-                if (block == "") return;
-
-                string[] logs = block.Split(Utils.NEW_LINE);
-
-                for (int i = 0; i < logs.Length; i++)
+                containsOne = false;
+                for (int j = 0; j < clb_TagFilter.CheckedItems.Count; j++)
                 {
-                    test = logs[i];
-
-                    foreach (string tag in clb_TagFilter.Items)
-                    {
-                        if (test.Contains(tag) && clb_TagFilter.GetItemCheckState(clb_TagFilter.Items.IndexOf(tag)) == CheckState.Unchecked)
-                        {
-                            return;
-                        }
-                    }
-
-                    logColor = GetColorFromLine(test);
-
-
-
-                    if (rtb_LogOutput.Text.Length+test.Length > MaxConsoleTextLength)
-                    {
-                        string txt = rtb_LogOutput.Text;
-                        txt = txt.Substring(txt.Length - MaxConsoleTextLength/2, MaxConsoleTextLength/2);
-                        rtb_LogOutput.Text = txt;
-                    }
-
-
-                    rtb_LogOutput.AppendText(test, logColor);
-
+                    if (logs[i].Contains(clb_TagFilter.CheckedItems[j].ToString())) containsOne = true;
                 }
 
+                result[i] = containsOne;
+            }
+
+            for (int i = result.Length - 1; i >= 0; i--)
+            {
+                if (result[i]) continue;
+                logs.RemoveAt(i);
+            }
+            result = null;
+            return logs;
+        }
+
+        /// <summary>
+        /// Splits the log string on new lines
+        /// Filters them, and chooses the right way to append it to the console.
+        /// </summary>
+        /// <param name="logs">whole block of logs</param>
+        private void ShowInConsole(string logs)
+        {
+            List<string> llogs = FilterLogs(SplitLogs(logs));
+            if (llogs.Count == 0) return;
+            _totalLogsReceived += llogs.Count;
+            if (llogs.Count > MaxLogCountPerFrame) //Can not keep up with the amount of logs. Writing this whole block without color support and at one piece.
+            {
+                _totalLogsWrittenInBlocks += llogs.Count;
+                _blocksWritten++;
+
+                WriteToConsole(string.Join("", llogs.ToArray()), FontColor); //Rejoin the filtered list.
             }
             else
             {
-                Application.Exit();
+                _logsWritten += llogs.Count;
+                Color fontColor;
+                foreach (string l in llogs)
+                {
+                    fontColor = GetColorFromLine(l);
+                    WriteToConsole(l, fontColor);
+                }
             }
+            rtb_LogOutput.ScrollToBottom();
+            _avgLogsPerBlock = (float)_totalLogsWrittenInBlocks / _blocksWritten;
+        }
 
+        /// <summary>
+        /// Writes the text to the RichTextBox
+        /// </summary>
+        /// <param name="text">Text to write</param>
+        /// <param name="textColor">Text Color</param>
+        private void WriteToConsole(string text, Color textColor)
+        {
+            rtb_LogOutput.AppendText(text, textColor);
+        }
+
+        /// <summary>
+        /// Clears the RichTextBox.Text part that is not on screen.
+        /// </summary>
+        /// <param name="nextLength"></param>
+        private void ClearConsole(int nextLength)
+        {
+
+            if (rtb_LogOutput.TextLength < MinConsoleTextLength + nextLength) return;
+            _consoleCleared++;
+            
+            int totalLength = rtb_LogOutput.Text.Length + nextLength;
+            string txt = rtb_LogOutput.Text.Substring
+                (rtb_LogOutput.TextLength - (MinConsoleTextLength + nextLength),
+                MinConsoleTextLength + nextLength);
+            rtb_LogOutput.Clear();
+            rtb_LogOutput.AppendText(txt, FontColor);
         }
 
 
@@ -225,17 +301,6 @@ namespace ADL.CustomCMD
         private void Timer1_Tick(object sender, EventArgs e)
         {
             RefreshTextBox();
-        }
-
-        /// <summary>
-        /// Makes the textbox scroll down when text changed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RichTextBox1_TextChanged(object sender, EventArgs e)
-        {
-            rtb_LogOutput.SelectionStart = rtb_LogOutput.Text.Length;
-            rtb_LogOutput.ScrollToCaret();
         }
     }
 }

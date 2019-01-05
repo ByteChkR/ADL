@@ -1,6 +1,8 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
-
+using System.Security;
+using System.Runtime.InteropServices;
+using System;
 namespace ADL.CustomCMD
 {
     /// <summary>
@@ -8,6 +10,7 @@ namespace ADL.CustomCMD
     /// </summary>
     public static class RichTextBoxExtensions
     {
+
         /// <summary>
         /// Appends text in a specified color.
         /// </summary>
@@ -17,14 +20,42 @@ namespace ADL.CustomCMD
         public static void AppendText(this RichTextBox box, string text, Color color)
         {
 
-            
+            if (box.Disposing || box.IsDisposed) return;
             box.SelectionStart = box.TextLength;
             box.SelectionLength = 0;
 
             box.SelectionColor = color;
+
+
             box.AppendText(text);
+
+
             box.SelectionColor = box.ForeColor;
 
+
+        }
+
+        /// <summary>
+        /// Wrapper to extend the RichTextBox
+        /// </summary>
+        /// <param name="box"></param>
+        public static void ScrollToBottom(this RichTextBox box)
+        {
+            ScrollToBtm(box);
+        }
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern int SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
+        private const int WM_VSCROLL = 277;
+        private const int SB_PAGEBOTTOM = 7;
+
+        /// <summary>
+        /// Since winforms issues an Access violation exception I implemented a external function to cope with this
+        /// </summary>
+        /// <param name="MyRichTextBox">The textbox that should be scrolled down</param>
+        public static void ScrollToBtm(RichTextBox MyRichTextBox)
+        {
+            SendMessage(MyRichTextBox.Handle, WM_VSCROLL, (IntPtr)SB_PAGEBOTTOM, IntPtr.Zero);
         }
     }
 }

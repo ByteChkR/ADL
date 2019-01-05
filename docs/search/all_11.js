@@ -2,6 +2,8 @@ var searchData=
 [
   ['saveconfig',['SaveConfig',['../class_a_d_l_1_1_debug.html#a86e70ee0cee79ede6c8a5767e97aed1a',1,'ADL.Debug.SaveConfig(ADLConfig config, string path=&quot;adl_config.xml&quot;)'],['../class_a_d_l_1_1_debug.html#a97509c5ce2e79d902d388bea0854a382',1,'ADL.Debug.SaveConfig(string path=&quot;adl_config.xml&quot;)'],['../class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils.html#a071245c01fe80ff024c0f24f9b6b98c3',1,'ADL.CustomCMD.CMDUtils.SaveConfig(ADLCustomConsoleConfig config, string path=&quot;adl_customcmd_config.xml&quot;)'],['../class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils.html#a3b9fe40ab8425c942faaa9bb8a17ebe3',1,'ADL.CustomCMD.CMDUtils.SaveConfig(Color Background, Color FontColor, float FontSize, Dictionary&lt; string, SerializableColor &gt; colorCoding, string path=&quot;adl_customcmd_config.xml&quot;)']]],
   ['savetofile_3c_20t_20_3e',['SaveToFile&lt; T &gt;',['../class_a_d_l_1_1_configs_1_1_config_manager.html#a6b904fb26f8cf01f1192a801590f2796',1,'ADL::Configs::ConfigManager']]],
+  ['scrolltobottom',['ScrollToBottom',['../class_a_d_l_1_1_custom_c_m_d_1_1_rich_text_box_extensions.html#a095b66f980833aed876bc583744b36fb',1,'ADL::CustomCMD::RichTextBoxExtensions']]],
+  ['scrolltobtm',['ScrollToBtm',['../class_a_d_l_1_1_custom_c_m_d_1_1_rich_text_box_extensions.html#aa77f6b712abceeabe675fc039c2505b4',1,'ADL::CustomCMD::RichTextBoxExtensions']]],
   ['seek',['Seek',['../class_a_d_l_1_1_pipe_stream.html#ae34adb2842a65053e2e13dcb15fe65e5',1,'ADL::PipeStream']]],
   ['sendupdatemessageonfirstlog',['SendUpdateMessageOnFirstLog',['../struct_a_d_l_1_1_configs_1_1_a_d_l_config.html#ab1ecae8eba61f84b8271cea27ba70e9d',1,'ADL.Configs.ADLConfig.SendUpdateMessageOnFirstLog()'],['../class_a_d_l_1_1_debug.html#a4a09d301e1c24e60648a9eeafde625b3',1,'ADL.Debug.SendUpdateMessageOnFirstLog()']]],
   ['sendwarnings',['SendWarnings',['../struct_a_d_l_1_1_configs_1_1_a_d_l_config.html#af43900540c2324ecc9084ed8c65e08f7',1,'ADL.Configs.ADLConfig.SendWarnings()'],['../class_a_d_l_1_1_debug.html#aecf68aebfffa4d12f59c42013b9f7a28',1,'ADL.Debug.SendWarnings()']]],
@@ -16,5 +18,6 @@ var searchData=
   ['setmask',['SetMask',['../class_a_d_l_1_1_log_stream.html#a7a1a25f0247d4ebfeb5a4d6e37fe4e3a',1,'ADL::LogStream']]],
   ['setmatchingmode',['SetMatchingMode',['../class_a_d_l_1_1_log_stream.html#af66833a158ebb7d8e079810bb2b8f50e',1,'ADL::LogStream']]],
   ['settimestampusage',['SetTimeStampUsage',['../class_a_d_l_1_1_log_stream.html#a533f3bae752ab3ee1c3f1aaac23a7d05',1,'ADL::LogStream']]],
+  ['showinconsole',['ShowInConsole',['../class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#aae9c4e77ad76bd7f799960cb67764204',1,'ADL::CustomCMD::CustomCMDForm']]],
   ['standard',['Standard',['../struct_a_d_l_1_1_configs_1_1_a_d_l_config.html#ab289b70ad72c9ba5464b10a78b022f0d',1,'ADL.Configs.ADLConfig.Standard()'],['../struct_a_d_l_1_1_configs_1_1_a_d_l_custom_console_config.html#ad20a1bcfa05db53b0904b7c1c4b8ee64',1,'ADL.Configs.ADLCustomConsoleConfig.Standard()']]]
 ];

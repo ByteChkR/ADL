@@ -52,7 +52,6 @@
             this.rtb_LogOutput.Size = new System.Drawing.Size(664, 450);
             this.rtb_LogOutput.TabIndex = 1;
             this.rtb_LogOutput.Text = "";
-            this.rtb_LogOutput.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
             // 
             // timer1
             // 

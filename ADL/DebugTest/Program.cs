@@ -110,7 +110,7 @@ namespace DebugTest
                 ADL.CustomCMD.CMDUtils.CreateCustomConsole(pipeStream); //Creates a custom cmd with color coding and custom font size.
 
             //This is a test.
-            for (int i = 0; i < 63; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
+            for (int i = 0; i < 64; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
             {
                 int mask = i;
                 Debug.Log(mask, "Test with mask " + mask);
@@ -192,7 +192,7 @@ namespace DebugTest
             int mul;
             while (true)
             {
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(5);
                 mul = rnd.Next(0, 7);
                 Debug.Log(Utils.IntPow(2,mul), "Testing In Progress.");
             }
