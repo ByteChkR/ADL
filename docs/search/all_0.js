@@ -1,17 +1,22 @@
 var searchData=
 [
   ['_5fadlenabled',['_adlEnabled',['../class_a_d_l_1_1_debug.html#adafa622fad8038eb16274662ce713a75',1,'ADL::Debug']]],
+  ['_5fadlwarningmask',['_adlWarningMask',['../class_a_d_l_1_1_debug.html#a08a94ca024f3ac0f6b592fbdc4a918b5',1,'ADL::Debug']]],
+  ['_5fcolorcoding',['_colorCoding',['../class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a7b283c973482c4394846c590032f0df1',1,'ADL::CustomCMD::CustomCMDForm']]],
   ['_5ffirstlog',['_firstLog',['../class_a_d_l_1_1_debug.html#abcc75928552f3403bf18e2a14b8cba21',1,'ADL::Debug']]],
   ['_5fhascolorcoding',['_hasColorCoding',['../class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a55c77dfaef33d120690074e8625d72fc',1,'ADL::CustomCMD::CustomCMDForm']]],
   ['_5fmask',['_mask',['../class_a_d_l_1_1_log_stream.html#a7b49958d6b208d815206005d1e9afa19',1,'ADL::LogStream']]],
   ['_5fmatchallflags',['_matchAllFlags',['../class_a_d_l_1_1_log_stream.html#a93dd10abf1a54aa066e94bb2c675da36',1,'ADL::LogStream']]],
   ['_5fprefixes',['_prefixes',['../class_a_d_l_1_1_debug.html#ae158a8228eacba82054cb7b340153fe9',1,'ADL::Debug']]],
   ['_5fsendupdatemsg',['_sendUpdateMsg',['../class_a_d_l_1_1_debug.html#a418628d87d48258f4849c627308b0ca4',1,'ADL::Debug']]],
+  ['_5fsendwarnings',['_sendWarnings',['../class_a_d_l_1_1_debug.html#a8275966d207aaf1735ec4c00b4e16e16',1,'ADL::Debug']]],
   ['_5fsettimestamp',['_setTimeStamp',['../class_a_d_l_1_1_log_stream.html#ac5385a0fa83955ccf5debf4a3e4f5b4c',1,'ADL::LogStream']]],
   ['_5fstr',['_str',['../class_a_d_l_1_1_log_stream.html#a005371df709890708a1bc2cdac48fa0d',1,'ADL::LogStream']]],
   ['_5fstream',['_stream',['../class_a_d_l_1_1_log_stream.html#a9655793b8d2cace20afc1242f6d431e0',1,'ADL::LogStream']]],
   ['_5fstreamclosed',['_streamClosed',['../class_a_d_l_1_1_log_stream.html#a753bb1ba574078533b1a020a44800ccb',1,'ADL::LogStream']]],
   ['_5fstreams',['_streams',['../class_a_d_l_1_1_debug.html#ad2f0edb191fef5907e3e4a18a9bc0ac3',1,'ADL::Debug']]],
   ['_5fstringbuilder',['_stringBuilder',['../class_a_d_l_1_1_debug.html#aac6098902e6f3da0f23fb57a6086479b',1,'ADL::Debug']]],
+  ['_5ftr',['_tr',['../class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#af804d34002e49ca92ad0983de7dd08ee',1,'ADL::CustomCMD::CustomCMDForm']]],
+  ['_5fupdatemask',['_updateMask',['../class_a_d_l_1_1_debug.html#a4571141cce65fe85f5d0ac905f35083a',1,'ADL::Debug']]],
   ['_5fwinformsflagsinitialized',['_WinFormsFlagsInitialized',['../class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils.html#a146849b04a89ae31e86ae3fe959e98f5',1,'ADL::CustomCMD::CMDUtils']]]
 ];

@@ -15,45 +15,44 @@ namespace ADL
     /// </summary>
     public static class Debug
     {
-        /// <summary>
-        /// Flag to check wether this is the first execution.
-        /// </summary>
-        private static bool _firstLog = true;
+        
+        #region Private Variables
+
         /// <summary>
         /// On/Off switch
         /// </summary>
         private static bool _adlEnabled = true;
+
         /// <summary>
-        /// Public property, used to disable ADl
+        /// Flag to check wether this is the first execution.
         /// </summary>
-        public static bool ADLEnabled { get { return _adlEnabled; } set { _adlEnabled = value; } }
+        private static bool _firstLog = true;
+
         /// <summary>
         /// Should ADL search for updates?
         /// </summary>
         private static bool _sendUpdateMsg = true;
-        /// <summary>
-        /// Public property, used to disable update check.(Saves ~500ms)
-        /// </summary>
-        public static bool SendUpdateMessageOnFirstLog { get { return _sendUpdateMsg; } set { _sendUpdateMsg = value; } }
 
         /// <summary>
-        /// Update Mask. This mask gets used when one of the ADL Components are checking for updates.
-        /// To disable the update messages, simly change the mask to new Bitmask(false)
+        /// Should ADL send warning of potential wrong use?
         /// </summary>
-        public static BitMask UpdateMask { get { return _updateMask; } set { _updateMask = value; } }
+        private static bool _sendWarnings = true;
+
+        /// <summary>
+        /// Dictionary of Prefixes for the corresponding Masks
+        /// </summary>
+        private static Dictionary<int, string> _prefixes = new Dictionary<int, string>();
+
+        /// <summary>
+        /// The mask that gets used when _sendUpdateMessage is true
+        /// </summary>
         private static BitMask _updateMask = new BitMask(true);
 
         /// <summary>
-        /// Warning Mask. This mask gets used when ADL sends warnings about (possible)wrong use.
+        /// The mask that gets used when ADL is sending warnings
         /// </summary>
-        public static BitMask ADLWarningMask { get { return _adlWarningMask; } set { _adlWarningMask = value; } }
         private static BitMask _adlWarningMask = new BitMask(true);
 
-        /// <summary>
-        /// Determines if ADL should send warnings about potential wrong use to the log streams
-        /// </summary>
-        public static bool SendWarnings { get { return _sendWarnings; } set { _sendWarnings = value; } }
-        private static bool _sendWarnings = true;
         /// <summary>
         /// String Builder to assemble the log
         /// </summary>
@@ -62,16 +61,41 @@ namespace ADL
         /// List of LogStreams that are active
         /// </summary>
         private static List<LogStream> _streams = new List<LogStream>();
+
+        #endregion
+
+        #region Public Properties
         /// <summary>
-        /// Dictionary of Prefixes for the corresponding Masks
+        /// Public property, used to disable ADl
         /// </summary>
-        private static Dictionary<int, string> _prefixes = new Dictionary<int, string>();
+        public static bool ADLEnabled { get { return _adlEnabled; } set { _adlEnabled = value; } }
+        
+        /// <summary>
+        /// Public property, used to disable update check.(Saves ~500ms)
+        /// </summary>
+        public static bool SendUpdateMessageOnFirstLog { get { return _sendUpdateMsg; } set { _sendUpdateMsg = value; } }
+
+        /// <summary>
+        /// Determines if ADL should send warnings about potential wrong use to the log streams
+        /// </summary>
+        public static bool SendWarnings { get { return _sendWarnings; } set { _sendWarnings = value; } }
+
+        /// <summary>
+        /// Update Mask. This mask gets used when one of the ADL Components are checking for updates.
+        /// To disable the update messages, simly change the mask to new Bitmask(false)
+        /// </summary>
+        public static BitMask UpdateMask { get { return _updateMask; } set { _updateMask = value; } }
+        
+        /// <summary>
+        /// Warning Mask. This mask gets used when ADL sends warnings about (possible)wrong use.
+        /// </summary>
+        public static BitMask ADLWarningMask { get { return _adlWarningMask; } set { _adlWarningMask = value; } }
+
         /// <summary>
         /// The number of Streams that ADL writes to
         /// </summary>
         public static int LogStreamCount { get { return _adlEnabled ? _streams.Count : 0; } }
-
-
+#endregion
 
         #region Streams
 
@@ -214,8 +238,7 @@ namespace ADL
         }
         #endregion
 
-
-
+        #region Logging
 
         /// <summary>
         /// Fire Log Messsage with desired level(flag) and message
@@ -317,7 +340,9 @@ namespace ADL
             return _stringBuilder.ToString();
 
         }
+        #endregion
 
+        #region Config
         /// <summary>
         /// Loads a supplied ADLConfig.
         /// </summary>
@@ -368,7 +393,7 @@ namespace ADL
             config.Prefixes = new SerializableDictionary<int, string>(_prefixes);
             SaveConfig(config, path);
         }
-
+        #endregion
 
     }
 }

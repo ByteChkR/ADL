@@ -14,15 +14,48 @@ namespace ADL.CustomCMD
     /// </summary>
     public partial class CustomCMDForm : Form
     {
-        public static readonly int MaxConsoleTextLength = 25000;
-        public static readonly int MinConsoleTextLength = 5000;
-        public static readonly int MaxLogCountPerFrame = 250;
+        private int _maxConsoleTextLength = 25000;
+        private int _minConsoleTextLength = 5000;
+        private int _maxLogCountPerFrame = 250;
+        public int MaxConsoleTextLength
+        {
+            get
+            {
+                return _maxConsoleTextLength;
+            }
+            set
+            {
+                _maxConsoleTextLength = value;
+            }
+        }
+        public int MinConsoleTextLength
+        {
+            get
+            {
+                return _minConsoleTextLength;
+            }
+            set
+            {
+                _minConsoleTextLength = value;
+            }
+        }
 
+        public int MaxLogCountPerFrame
+        {
+            get
+            {
+                return _maxLogCountPerFrame;
+            }
+            set
+            {
+                _maxLogCountPerFrame = value;
+            }
+        }
 
         /// <summary>
         /// The Tags and their corresponding colors
         /// </summary>
-        Dictionary<string, SerializableColor> colorCoding = null;
+        private Dictionary<string, SerializableColor> _colorCoding = null;
 
         ///// <summary>
         ///// Copies the Prefix Array from the Debug Class to the new thread of the CustomCMD
@@ -32,16 +65,16 @@ namespace ADL.CustomCMD
         /// <summary>
         /// The Stream reader thats is used to fill the textbox
         /// </summary>
-        StreamReader tr;
+        private StreamReader _tr;
         /// <summary>
         /// Flag to check if running the color coding algorithm is useful
         /// </summary>
-        bool _hasColorCoding;
+        private bool _hasColorCoding;
         /// <summary>
         /// Basis color. If no colorcoding or tag is not found
         /// </summary>
 
-        Color BackgroundColor
+        public Color BackgroundColor
         {
             get
             {
@@ -53,7 +86,7 @@ namespace ADL.CustomCMD
             }
         }
 
-        Color FontColor
+        public Color FontColor
         {
             get
             {
@@ -65,7 +98,7 @@ namespace ADL.CustomCMD
             }
         }
 
-        float FontSize
+        public float FontSize
         {
             get
             {
@@ -97,7 +130,7 @@ namespace ADL.CustomCMD
             }
             ps.BlockLastReadBuffer = false; //Nothing in the stream? Nothing in the return.
 
-            tr = new StreamReader(ps);
+            _tr = new StreamReader(ps);
 
             //Visual elements
             BackColor = Background;
@@ -106,7 +139,7 @@ namespace ADL.CustomCMD
 
             if (colorCoding != null && colorCoding.Count != 0)
             {
-                this.colorCoding = colorCoding;
+                this._colorCoding = colorCoding;
                 _hasColorCoding = true;
             }
 
@@ -157,9 +190,9 @@ namespace ADL.CustomCMD
                 foreach (string tag in s)
                 {
 
-                    if (colorCoding.ContainsKey(tag + ']'))
+                    if (_colorCoding.ContainsKey(tag + ']'))
                     {
-                        ret = colorCoding[tag + ']'];
+                        ret = _colorCoding[tag + ']'];
                         break;
                     }
                 }
@@ -195,7 +228,7 @@ namespace ADL.CustomCMD
 
         private string ReadBlock()
         {
-            return tr.ReadToEnd();
+            return _tr.ReadToEnd();
         }
 
         private List<string> SplitLogs(string block)

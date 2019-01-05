@@ -7,6 +7,9 @@ namespace ADL
     /// </summary>
     public sealed class LogStream
     {
+
+        #region Private Variables
+
         /// <summary>
         /// The Text Writer ADL uses to write logs
         /// </summary>
@@ -16,9 +19,33 @@ namespace ADL
         /// </summary>
         private BitMask _mask = -1;
         /// <summary>
+        /// The Flag that adl uses
+        /// </summary>
+        private bool _matchAllFlags = true;
+        /// <summary>
+        /// Flag for timestamps that adl uses
+        /// </summary>
+        private bool _setTimeStamp = false;
+        /// <summary>
+        /// Flag that is preventing ADL to crash when the stream is closed.
+        /// </summary>
+        private bool _streamClosed = false;
+        /// <summary>
+        /// Underlying stream
+        /// </summary>
+        private readonly Stream _str = null;
+
+
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
         /// The Mask that determines wether this stream will receive a log message
         /// </summary>
-        public int Mask {
+        public int Mask
+        {
             get
             {
                 return _mask;
@@ -29,10 +56,6 @@ namespace ADL
             }
         }
 
-        /// <summary>
-        /// The Flag that adl uses
-        /// </summary>
-        private bool _matchAllFlags = true;
         /// <summary>
         /// The Matchtype that is determining what Checking algorithms to use
         /// </summary>
@@ -48,10 +71,6 @@ namespace ADL
             }
         }
         /// <summary>
-        /// Flag for timestamps that adl uses
-        /// </summary>
-        private bool _setTimeStamp = false;
-        /// <summary>
         /// Set this to true to Prepend a Timestamp in front of each logging message.
         /// </summary>
         public bool PrependTimeStamp
@@ -66,10 +85,6 @@ namespace ADL
             }
         }
         /// <summary>
-        /// Flag that is preventing ADL to crash when the stream is closed.
-        /// </summary>
-        private bool _streamClosed = false;
-        /// <summary>
         /// If this is true the Underlying Stream is closed and the Whole Object was destroyed.
         /// </summary>
         public bool IsStreamClosed
@@ -80,15 +95,15 @@ namespace ADL
             }
         }
 
-        /// <summary>
-        /// Underlying stream
-        /// </summary>
-        private readonly Stream _str = null;
 
         /// <summary>
         /// The Unterlying stream.
         /// </summary>
         public Stream TextStream { get { return _str; } }
+
+
+        #endregion
+
 
         /// <summary>
         /// Base Constructor. For file streams or similar
