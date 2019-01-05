@@ -34,57 +34,53 @@ namespace ADL
 
     public class PipeStream : Stream
     {
-        #region Private members
+        #region Private Variables
 
         /// <summary>
         /// Queue of bytes provides the datastructure for transmitting from an
         /// input stream to an output stream.
         /// Possible more effecient ways to accomplish this.
         /// </summary>
-        private readonly Queue<byte> mBuffer = new Queue<byte>();
+        private readonly Queue<byte> _mBuffer = new Queue<byte>();
 
         /// <summary>
         /// Indicates that the input stream has been flushed and that
         /// all remaining data should be written to the output stream.
         /// </summary>
-        private bool mFlushed;
+        private bool _mFlushed;
 
         /// <summary>
         /// Maximum number of bytes to store in the buffer.
         /// </summary>
-        private long mMaxBufferLength = 200 * MB;
+        private long _mMaxBufferLength = 200 * MB;
 
         /// <summary>
         /// Setting this to true will cause Read() to block if it appears
         /// that it will run out of data.
         /// </summary>
-        private bool mBlockLastRead;
-
-        #endregion
-
-        #region Public Const members
+        private bool _mBlockLastRead;
 
         /// <summary>
         /// Number of bytes in a kilobyte
         /// </summary>
-        public const long KB = 1024;
+        private const long KB = 1024;
 
         /// <summary>
         /// Number of bytes in a megabyte
         /// </summary>
-        public const long MB = KB * 1024;
+        private const long MB = KB * 1024;
 
         #endregion
 
-        #region Public properties
+        #region Public Properties
 
         /// <summary>
         /// Gets or sets the maximum number of bytes to store in the buffer.
         /// </summary>
         public long MaxBufferLength
         {
-            get { return mMaxBufferLength; }
-            set { mMaxBufferLength = value; }
+            get { return _mMaxBufferLength; }
+            set { _mMaxBufferLength = value; }
         }
 
         /// <summary>
@@ -95,17 +91,75 @@ namespace ADL
         /// </summary>
         public bool BlockLastReadBuffer
         {
-            get { return mBlockLastRead; }
+            get { return _mBlockLastRead; }
             set
             {
-                mBlockLastRead = value;
+                _mBlockLastRead = value;
 
                 // when turning off the block last read, signal Read() that it may now read the rest of the buffer.
-                if (!mBlockLastRead)
-                    lock (mBuffer)
-                        Monitor.Pulse(mBuffer);
+                if (!_mBlockLastRead)
+                    lock (_mBuffer)
+                        Monitor.Pulse(_mBuffer);
             }
         }
+
+        #region Overrides
+        ///<summary>
+        ///When overridden in a derived class, gets a value indicating whether the current stream supports reading.
+        ///</summary>
+        ///<returns>
+        ///true if the stream supports reading; otherwise, false.
+        ///</returns>
+        public override bool CanRead
+        {
+            get { return true; }
+        }
+
+        ///<summary>
+        ///When overridden in a derived class, gets a value indicating whether the current stream supports seeking.
+        ///</summary>
+        ///<returns>
+        ///true if the stream supports seeking; otherwise, false.
+        ///</returns>
+        public override bool CanSeek
+        {
+            get { return false; }
+        }
+
+        ///<summary>
+        ///When overridden in a derived class, gets a value indicating whether the current stream supports writing.
+        ///</summary>
+        ///<returns>
+        ///true if the stream supports writing; otherwise, false.
+        ///</returns>
+        public override bool CanWrite
+        {
+            get { return true; }
+        }
+
+        ///<summary>
+        ///When overridden in a derived class, gets the length in bytes of the stream.
+        ///</summary>
+        ///<returns>
+        ///A long value representing the length of the stream in bytes.
+        ///</returns>
+        public override long Length
+        {
+            get { return _mBuffer.Count; }
+        }
+
+        ///<summary>
+        ///When overridden in a derived class, gets or sets the position within the current stream.
+        ///</summary>
+        ///<returns>
+        ///The current position within the stream.
+        ///</returns>
+        public override long Position
+        {
+            get { return 0; }
+            set { throw new NotSupportedException(); }
+        }
+        #endregion
 
         #endregion
 
@@ -117,7 +171,7 @@ namespace ADL
         public new void Dispose()
         {
             // clear the internal buffer
-            mBuffer.Clear();
+            _mBuffer.Clear();
         }
 
         ///<summary>
@@ -125,9 +179,9 @@ namespace ADL
         ///</summary>
         public override void Flush()
         {
-            mFlushed = true;
-            lock (mBuffer)
-                Monitor.Pulse(mBuffer);
+            _mFlushed = true;
+            lock (_mBuffer)
+                Monitor.Pulse(_mBuffer);
         }
 
         ///<summary>
@@ -171,26 +225,26 @@ namespace ADL
                 throw new ArgumentException("The sum of offset and count is greater than the buffer length. ");
             if (offset < 0 || count < 0)
                 throw new ArgumentOutOfRangeException("offset", "offset or count is negative.");
-            if (BlockLastReadBuffer && count >= mMaxBufferLength)
-                throw new ArgumentException(String.Format("count({0}) > mMaxBufferLength({1})", count, mMaxBufferLength));
+            if (BlockLastReadBuffer && count >= _mMaxBufferLength)
+                throw new ArgumentException(String.Format("count({0}) > mMaxBufferLength({1})", count, _mMaxBufferLength));
 
             if (count == 0)
                 return 0;
 
             int readLength = 0;
 
-            lock (mBuffer)
+            lock (_mBuffer)
             {
                 while (!ReadAvailable(count))
-                    Monitor.Wait(mBuffer);
+                    Monitor.Wait(_mBuffer);
 
                 // fill the read buffer
                 for (; readLength < count && Length > 0; readLength++)
                 {
-                    buffer[offset + readLength] = mBuffer.Dequeue();
+                    buffer[offset + readLength] = _mBuffer.Dequeue();
                 }
 
-                Monitor.Pulse(mBuffer);
+                Monitor.Pulse(_mBuffer);
             }
             return readLength;
         }
@@ -202,7 +256,7 @@ namespace ADL
         /// <returns></returns>
         private bool ReadAvailable(int count)
         {
-            return (Length >= count || mFlushed) &&
+            return (Length >= count || _mFlushed) &&
                    (Length >= (count + 1) || !BlockLastReadBuffer);
         }
 
@@ -223,79 +277,25 @@ namespace ADL
             if (count == 0)
                 return;
 
-            lock (mBuffer)
+            lock (_mBuffer)
             {
                 // wait until the buffer isn't full
-                while (Length >= mMaxBufferLength)
-                    Monitor.Wait(mBuffer);
+                while (Length >= _mMaxBufferLength)
+                    Monitor.Wait(_mBuffer);
 
-                mFlushed = false; // if it were flushed before, it soon will not be.
+                _mFlushed = false; // if it were flushed before, it soon will not be.
 
                 // queue up the buffer data
                 for (int i = offset; i < offset + count; i++)
                 {
-                    mBuffer.Enqueue(buffer[i]);
+                    _mBuffer.Enqueue(buffer[i]);
                 }
 
-                Monitor.Pulse(mBuffer); // signal that write has occured
+                Monitor.Pulse(_mBuffer); // signal that write has occured
             }
         }
 
-        ///<summary>
-        ///When overridden in a derived class, gets a value indicating whether the current stream supports reading.
-        ///</summary>
-        ///<returns>
-        ///true if the stream supports reading; otherwise, false.
-        ///</returns>
-        public override bool CanRead
-        {
-            get { return true; }
-        }
-
-        ///<summary>
-        ///When overridden in a derived class, gets a value indicating whether the current stream supports seeking.
-        ///</summary>
-        ///<returns>
-        ///true if the stream supports seeking; otherwise, false.
-        ///</returns>
-        public override bool CanSeek
-        {
-            get { return false; }
-        }
-
-        ///<summary>
-        ///When overridden in a derived class, gets a value indicating whether the current stream supports writing.
-        ///</summary>
-        ///<returns>
-        ///true if the stream supports writing; otherwise, false.
-        ///</returns>
-        public override bool CanWrite
-        {
-            get { return true; }
-        }
-
-        ///<summary>
-        ///When overridden in a derived class, gets the length in bytes of the stream.
-        ///</summary>
-        ///<returns>
-        ///A long value representing the length of the stream in bytes.
-        ///</returns>
-        public override long Length
-        {
-            get { return mBuffer.Count; }
-        }
-
-        ///<summary>
-        ///When overridden in a derived class, gets or sets the position within the current stream.
-        ///</summary>
-        ///<returns>
-        ///The current position within the stream.
-        ///</returns>
-        public override long Position
-        {
-            get { return 0; }
-            set { throw new NotSupportedException(); }
-        }
+        
 
         #endregion
     }

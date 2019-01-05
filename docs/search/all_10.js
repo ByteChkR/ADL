@@ -1,7 +1,6 @@
 var searchData=
 [
   ['r',['R',['../struct_a_d_l_1_1_configs_1_1_serializable_color.html#ae17c35b2b5c9f284b90ec2081309eac6',1,'ADL::Configs::SerializableColor']]],
-  ['rawlink',['rawLink',['../class_a_d_l_1_1_update_data_object.html#ad13e204f14b98d031f30481e0db81744',1,'ADL::UpdateDataObject']]],
   ['read',['Read',['../class_a_d_l_1_1_pipe_stream.html#ada829c0b71d6896e2bb3cd5d37ccba34',1,'ADL::PipeStream']]],
   ['readavailable',['ReadAvailable',['../class_a_d_l_1_1_pipe_stream.html#a82add2a351991d0f3580d4a198f44675',1,'ADL::PipeStream']]],
   ['readfromfile_3c_20t_20_3e',['ReadFromFile&lt; T &gt;',['../class_a_d_l_1_1_configs_1_1_config_manager.html#a7a6e7f2260d173ed964078495f007060',1,'ADL::Configs::ConfigManager']]],

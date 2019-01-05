@@ -8,18 +8,30 @@ namespace ADL.Unity
     /// </summary>
     public sealed class UnityTextWriter : TextWriter
     {
+
+        #region Private Variables
         /// <summary>
         /// The Buffer of the TextWriter
         /// </summary>
-        private StringBuilder buffer = new StringBuilder();
+        private StringBuilder _buffer = new StringBuilder();
+        
+        /// <summary>
+        /// The Error Mask
+        /// </summary>
+        private readonly int _errorMask;
+        /// <summary>
+        /// The Warn Mask
+        /// </summary>
+        private readonly int _warnMask;
+
+        #endregion
+
+        
         /// <summary>
         /// The Log Type
         /// </summary>
         public int FlushType = 0;
-        /// <summary>
-        /// The Masks
-        /// </summary>
-        private readonly int ErrorMask, WarnMask;
+
         /// <summary>
         /// Constructor that needs masks
         /// </summary>
@@ -27,8 +39,8 @@ namespace ADL.Unity
         /// <param name="ErrorMask">everything satisfying this mask will be printed as a UnityError</param>
         public UnityTextWriter(BitMask WarnMask, BitMask ErrorMask)
         {
-            this.WarnMask = WarnMask;
-            this.ErrorMask = ErrorMask;
+            _warnMask = WarnMask;
+            _errorMask = ErrorMask;
         }
 
         /// <summary>
@@ -38,25 +50,25 @@ namespace ADL.Unity
         {
             if(FlushType == -1 || FlushType == 0)
             {
-                UnityEngine.Debug.Log(buffer.ToString());
+                UnityEngine.Debug.Log(_buffer.ToString());
             }
-            else if(BitMask.IsContainedInMask(FlushType, WarnMask, false))
+            else if(BitMask.IsContainedInMask(FlushType, _warnMask, false))
             {
 
-                UnityEngine.Debug.LogWarning(buffer.ToString());
+                UnityEngine.Debug.LogWarning(_buffer.ToString());
             }
-            else if(BitMask.IsContainedInMask(FlushType, ErrorMask, false)){
+            else if(BitMask.IsContainedInMask(FlushType, _errorMask, false)){
 
-                UnityEngine.Debug.LogError(buffer.ToString());
+                UnityEngine.Debug.LogError(_buffer.ToString());
             }
             else
             {
 
-                UnityEngine.Debug.Log(buffer.ToString());
+                UnityEngine.Debug.Log(_buffer.ToString());
             }
 
             FlushType = 0;
-            buffer.Length = 0;
+            _buffer.Length = 0;
         }
 
         
@@ -77,7 +89,7 @@ namespace ADL.Unity
         /// <param name="value">Line</param>
         public override void Write(string value)
         {
-            buffer.Append(value);
+            _buffer.Append(value);
             if (value != null)
             {
                 var len = value.Length;
@@ -98,7 +110,7 @@ namespace ADL.Unity
         /// <param name="value">char</param>
         public override void Write(char value)
         {
-            buffer.Append(value);
+            _buffer.Append(value);
             if (value ==  Utils.NEW_LINE )
             {
                 Flush();

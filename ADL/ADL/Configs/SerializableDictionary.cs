@@ -15,11 +15,11 @@ namespace ADL.Configs
         /// <summary>
         /// The Stored Keys
         /// </summary>
-        public List<T1> keys;
+        public List<T1> Keys;
         /// <summary>
         /// The Stored Values
         /// </summary>
-        public List<T2> values;
+        public List<T2> Values;
 
         /// <summary>
         /// Converts dict into a Serializable Dictionary
@@ -27,12 +27,12 @@ namespace ADL.Configs
         /// <param name="dict">The Dictionary you want to serialize</param>
         public SerializableDictionary(Dictionary<T1,T2> dict)
         {
-            keys = new List<T1>();
-            values = new List<T2>();
+            Keys = new List<T1>();
+            Values = new List<T2>();
             foreach (KeyValuePair<T1,T2> kvp in dict)
             {
-                keys.Add(kvp.Key);
-                values.Add(kvp.Value);
+                Keys.Add(kvp.Key);
+                Values.Add(kvp.Value);
             }
         }
 
@@ -43,9 +43,9 @@ namespace ADL.Configs
         public Dictionary<T1, T2> ToDictionary()
         {
             Dictionary<T1, T2> ret = new Dictionary<T1, T2>();
-            for (int i = 0; i < keys.Count; i++)
+            for (int i = 0; i < Keys.Count; i++)
             {
-                ret.Add(keys[i], values[i]);
+                ret.Add(Keys[i], Values[i]);
             }
             return ret;
         }

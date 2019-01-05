@@ -11,11 +11,11 @@ namespace ADL.Unity
         /// <summary>
         /// List of string containing the tags.
         /// </summary>
-        SerializedProperty DebugLevel;
+        private SerializedProperty _debugLevel;
         
         void OnEnable()
         {
-            DebugLevel = serializedObject.FindProperty("DebugLevel");
+            _debugLevel = serializedObject.FindProperty("DebugLevel");
         }
 
         /// <summary>
@@ -24,10 +24,10 @@ namespace ADL.Unity
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            string[] names = new string[DebugLevel.arraySize];
+            string[] names = new string[_debugLevel.arraySize];
             for (int i = 0; i < names.Length; i++)
             {
-                names[i] = DebugLevel.GetArrayElementAtIndex(i).stringValue;
+                names[i] = _debugLevel.GetArrayElementAtIndex(i).stringValue;
             }
             DebugComponent._DebugLevel = names;
         }

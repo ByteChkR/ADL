@@ -14,7 +14,7 @@ namespace ADL.Configs
         /// <summary>
         /// The field of the serializer that gets used.
         /// </summary>
-        private static XmlSerializer ser;
+        private static XmlSerializer _serializer;
 
         /// <summary>
         /// Reads a config of type T from file.
@@ -25,7 +25,7 @@ namespace ADL.Configs
         public static T ReadFromFile<T>(string path) where T : IADLConfig
         {
             T ret;
-            ser = new XmlSerializer(typeof(T));
+            _serializer = new XmlSerializer(typeof(T));
             if (!File.Exists(path))
             {
                 return (T)Activator.CreateInstance<T>().GetStandard();
@@ -33,7 +33,7 @@ namespace ADL.Configs
             try
             {
                 FileStream fs = File.Open(path, FileMode.Open, FileAccess.Read);
-                ret = (T)ser.Deserialize(fs);
+                ret = (T)_serializer.Deserialize(fs);
                 fs.Close();
             }
             catch (Exception)
@@ -52,9 +52,9 @@ namespace ADL.Configs
         /// <param name="data">config object></param>
         public static void SaveToFile<T>(string path, T data) where T : IADLConfig
         {
-            ser = new XmlSerializer(typeof(T));
+            _serializer = new XmlSerializer(typeof(T));
             FileStream fs = File.Open(path, FileMode.OpenOrCreate, FileAccess.Write);
-            ser.Serialize(fs, data);
+            _serializer.Serialize(fs, data);
             fs.Close();
         }
     }

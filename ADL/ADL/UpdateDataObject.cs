@@ -8,7 +8,7 @@ namespace ADL
         /// <summary>
         /// The Raw link to the location where i have my version files.
         /// </summary>
-        public static string rawLink = "https://raw.githubusercontent.com/ByteChkR/ADL/master/docs/versioning/{0}version.txt";
+        private static readonly string _rawLink = "https://raw.githubusercontent.com/ByteChkR/ADL/master/docs/versioning/{0}version.txt";
 
         /// <summary>
         /// Creates the right link from the raw link and the package name
@@ -17,7 +17,7 @@ namespace ADL
         /// <returns>returns a valid link to the version file.</returns>
         public static string GenerateLink(string package)
         {
-            return string.Format(rawLink, package);
+            return string.Format(_rawLink, package);
         }
 
         /// <summary>
