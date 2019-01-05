@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['prefixes',['Prefixes',['../struct_a_d_l_1_1_configs_1_1_a_d_l_config.html#a4a9327c643eed1e775d1109d9da4706f',1,'ADL::Configs::ADLConfig']]]
+  ['r',['R',['../struct_a_d_l_1_1_configs_1_1_serializable_color.html#ae17c35b2b5c9f284b90ec2081309eac6',1,'ADL::Configs::SerializableColor']]]
 ];

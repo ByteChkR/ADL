@@ -52,7 +52,7 @@ namespace ADL
         /// <summary>
         /// Maximum number of bytes to store in the buffer.
         /// </summary>
-        private long _mMaxBufferLength = 200 * MB;
+        private long _mMaxBufferLength = 200 * _MB;
 
         /// <summary>
         /// Setting this to true will cause Read() to block if it appears
@@ -63,12 +63,12 @@ namespace ADL
         /// <summary>
         /// Number of bytes in a kilobyte
         /// </summary>
-        private const long KB = 1024;
+        private const long _KB = 1024;
 
         /// <summary>
         /// Number of bytes in a megabyte
         /// </summary>
-        private const long MB = KB * 1024;
+        private const long _MB = _KB * 1024;
 
         #endregion
 

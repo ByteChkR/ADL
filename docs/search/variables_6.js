@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mb',['MB',['../class_a_d_l_1_1_pipe_stream.html#ad4a04360b3d017567a0fd48defd434d0',1,'ADL::PipeStream']]]
+  ['prefixes',['Prefixes',['../struct_a_d_l_1_1_configs_1_1_a_d_l_config.html#a4a9327c643eed1e775d1109d9da4706f',1,'ADL::Configs::ADLConfig']]]
 ];
