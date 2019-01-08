@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ADL;
 using ADL.Configs;
+using ADL.Streams;
 namespace DebugTest
 {
     /// <summary>
@@ -42,7 +43,8 @@ namespace DebugTest
 
             //Then we want to create a LogStream that receives the Messages
             //Important: Its much easier to use CreateLogStreamFromStream than setting everything manually
-            LogStream logStream = LogStream.CreateLogStreamFromConsoleStream(
+            LogStream logStream = new LogTextStream(
+                Console.OpenStandardOutput(),
                 bMaskGenericCustom, //Lets use the generic custom 
                 MatchType.MATCH_ONE, //We want to make the logs pass when there is at least one tag that is included in the filter.
                 true //Get that fancy timestamp infront of the log.
@@ -92,7 +94,7 @@ namespace DebugTest
 
             //Then we want to create a LogStream that receives the Messages
             //Important: Its much easier to use CreateLogStreamFromStream than setting everything manually
-            LogStream logStream = LogStream.CreateLogStreamFromStream(
+            LogStream logStream = new LogStream(
                 pipeStream, //The Stream we want to send the Logs to.
                 bMaskGenericWildcard, //Lets use the generic wildcard(you can set the mask dynamically when using a custom console.
                 MatchType.MATCH_ONE, //We want to make the logs pass when all tags are included in the filter.
@@ -143,12 +145,10 @@ namespace DebugTest
 
             //Then we want to create a LogStream that receives the Messages
             //Important: Its much easier to use CreateLogStreamFromFile than setting everything manually
-            LogStream logStream = LogStream.CreateLogStreamFromFile(
-                "test.log", //The Stream we want to send the Logs to.(in this case the file name)
+            LogStream logStream = new LogTextStream(new System.IO.FileStream("test.log", System.IO.FileMode.OpenOrCreate),
                 bMaskGenericCustom, //Lets use the generic custom 
                 MatchType.MATCH_ONE, //We want to make the logs pass when there is at least one tag that is included in the filter.
-                true, //Get that fancy timestamp infront of the log.
-                true //We append the log if it already exists.
+                true //Get that fancy timestamp infront of the log.
                 );
 
             Debug.AddOutputStream(logStream); //Now we have Created the stream, just add it to the system.
@@ -176,6 +176,8 @@ namespace DebugTest
 
         static void Main(string[] args)
         {
+            CreateADLConfig();
+            CreateADLCustomCMDConfig();
             Debug.LoadConfig(); //Using the standard path
 
             //Runtime Config Changes(not Getting saved):
@@ -184,14 +186,16 @@ namespace DebugTest
 
             TestCustomConsoleOut();
 
+
             TestConsoleOut();
 
             TestLogFileOut();
+
             Random rnd = new Random();
             int mul;
             while (true)
             {
-                System.Threading.Thread.Sleep(5);
+                System.Threading.Thread.Sleep(50);
                 mul = rnd.Next(0, 7);
                 Debug.Log(Utils.IntPow(2,mul), "Testing In Progress.");
             }
@@ -219,13 +223,13 @@ namespace DebugTest
         private static void CreateADLCustomCMDConfig()
         {
             
-            SerializableDictionary<string, SerializableColor> colorCoding =
-                new SerializableDictionary<string, SerializableColor>(
-                    new Dictionary<string, SerializableColor>()
+            SerializableDictionary<int, SerializableColor> colorCoding =
+                new SerializableDictionary<int, SerializableColor>(
+                    new Dictionary<int, SerializableColor>()
                     {
-                        {"[Error]", System.Drawing.Color.Red }, //Every errror message should be drawn in red.
-                        {"[Warning]", System.Drawing.Color.Orange }, //Every warning is painted in orange
-                        {"[ADL]", System.Drawing.Color.Green }
+                        {8, System.Drawing.Color.Red }, //Every errror message should be drawn in red.
+                        {4, System.Drawing.Color.Orange }, //Every warning is painted in orange
+                        {32, System.Drawing.Color.Green }
                     });
             ADLCustomConsoleConfig config = ADLCustomConsoleConfig.Standard;
             config.FontSize = 13;

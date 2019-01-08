@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using UnityEngine;
 using System.Reflection;
+using ADL.Streams;
 
 namespace ADL.Unity
 {
@@ -20,9 +21,9 @@ namespace ADL.Unity
         public LogStreamParams ConsoleParams;
 
         [Tooltip("On What prefixes should the unity console log a Warning")]
-        [EnumFlagsAttribute] public int ConsoleWarningMask = -1;
+        [EnumFlagsAttribute] public int ConsoleWarningMask = 0;
         [Tooltip("On What prefixes should the unity console log an Error")]
-        [EnumFlagsAttribute] public int ConsoleErrorMask = -1;
+        [EnumFlagsAttribute] public int ConsoleErrorMask = 0;
         private Thread _consoleThread = null;
         void Awake()
         {

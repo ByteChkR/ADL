@@ -1,14 +1,74 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
 using System.Runtime.Remoting;
 using System.Threading;
+using System.IO;
 
-namespace ADL
+namespace ADL.Streams
 {
-    public class LogTextSteam : Stream
+    public class LogStream : Stream
     {
+
+        private BitMask _mask = new BitMask(true);
+        private MatchType _matchType = MatchType.MATCH_ALL;
+        private bool _setTimeStamp = false;
+        private bool _streamClosed = false;
+
+        protected Stream _baseStream = null;
+
+        #region Properties
+
+
+        /// <summary>
+        /// The Mask that determines wether this stream will receive a log message
+        /// </summary>
+        public int Mask
+        {
+            get
+            {
+                return _mask;
+            }
+            set
+            {
+                _mask = value;
+            }
+        }
+
+        public MatchType MatchType
+        {
+            get
+            {
+                return _matchType;
+            }
+            set
+            {
+                _matchType = value;
+            }
+        }
+
+        public bool AddTimeStamp
+        {
+            get
+            {
+                return _setTimeStamp;
+            }
+            set
+            {
+                _setTimeStamp = value;
+            }
+        }
+
+        /// <summary>
+        /// If this is true the Underlying Stream is closed and the Whole Object was destroyed.
+        /// </summary>
+        public bool IsStreamClosed
+        {
+            get
+            {
+                return _streamClosed;
+            }
+        }
+
+        #endregion
 
         #region Overrides
 
@@ -43,9 +103,9 @@ namespace ADL
 
         public override void Close()
         {
+            _streamClosed = true;
             _baseStream.Close();
         }
-
 
         public override ObjRef CreateObjRef(Type requestedType)
         {
@@ -155,17 +215,31 @@ namespace ADL
             _baseStream.SetLength(value);
         }
 
-      
+
         #endregion
 
-        Stream _baseStream;
 
-
-        public LogTextSteam(Stream baseStream)
+        public LogStream(Stream baseStream, int mask = ~0, MatchType matchType = MatchType.MATCH_ALL, bool setTimeStamp = false )
         {
+            _mask = mask;
+            _matchType = matchType;
+            _setTimeStamp = setTimeStamp;
             _baseStream = baseStream;
         }
 
-        
+        public virtual void Write(Log log)
+        {
+            if (_streamClosed) return;
+            if (_setTimeStamp) log.Message = Utils.TimeStamp + log.Message;
+            byte[] buffer = log.Serialize();
+            _baseStream.Write(buffer, 0, buffer.Length);
+            Flush();
+        }
+
+        public bool IsContainedInMask(BitMask mask)
+        {
+            return BitMask.IsContainedInMask(_mask, mask, _matchType == MatchType.MATCH_ALL);
+        }
+
     }
 }
