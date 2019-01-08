@@ -1,20 +1,61 @@
-﻿using System.Text;
+﻿using System;
 using System.IO;
-
+using System.Collections.Generic;
+using ADL.Streams;
 namespace ADL.Unity
 {
     /// <summary>
     /// Textwriter derived UnityTextWriter, Supporting Wanring/Error mask.
     /// </summary>
-    public sealed class UnityTextWriter : TextWriter
+    public sealed class UnityTextWriter : Stream
     {
+
+        #region Overrides
+
+        ///<summary>
+        ///When overridden in a derived class, sets the position within the current stream.
+        ///</summary>
+        ///<param name="offset">A byte offset relative to the origin parameter. </param>
+        ///<param name="origin">A value of type System.IO.SeekOrigin indicating the reference point used to obtain the new position. </param>
+        ///<returns>
+        ///The new position within the current stream.
+        ///</returns>
+        public override long Seek(long offset, SeekOrigin origin)
+        {
+            throw new NotSupportedException();
+        }
+
+        ///<summary>
+        ///When overridden in a derived class, sets the length of the current stream.
+        ///</summary>
+        ///<param name="value">The desired length of the current stream in bytes. </param>
+        public override void SetLength(long value)
+        {
+            throw new NotSupportedException();
+        }
+
+        public override bool CanRead
+        {
+            get { return false; }
+        }
+
+        public override bool CanSeek { get { return false; } }
+        public override bool CanWrite { get { return true; } }
+
+        public override long Length { get { return _buffer.Count; } }
+
+        public override long Position { get => 0; set => throw new NotImplementedException(); }
+
+
+
+        #endregion
 
         #region Private Variables
         /// <summary>
         /// The Buffer of the TextWriter
         /// </summary>
-        private StringBuilder _buffer = new StringBuilder();
-        
+        private List<byte> _buffer = new List<byte>();
+
         /// <summary>
         /// The Error Mask
         /// </summary>
@@ -27,10 +68,6 @@ namespace ADL.Unity
         #endregion
 
         
-        /// <summary>
-        /// The Log Type
-        /// </summary>
-        public int FlushType = 0;
 
         /// <summary>
         /// Constructor that needs masks
@@ -48,93 +85,47 @@ namespace ADL.Unity
         /// </summary>
         public override void Flush()
         {
-            if(FlushType == -1 || FlushType == 0)
+            LogPackage lp = new LogPackage(_buffer.ToArray());
+            foreach (Log l in lp.Logs)
             {
-                UnityEngine.Debug.Log(_buffer.ToString());
-            }
-            else if(BitMask.IsContainedInMask(FlushType, _warnMask, false))
-            {
-
-                UnityEngine.Debug.LogWarning(_buffer.ToString());
-            }
-            else if(BitMask.IsContainedInMask(FlushType, _errorMask, false)){
-
-                UnityEngine.Debug.LogError(_buffer.ToString());
-            }
-            else
-            {
-
-                UnityEngine.Debug.Log(_buffer.ToString());
+                if (l.Mask == _warnMask)
+                {
+                    UnityEngine.Debug.LogWarning(_buffer.ToString());
+                }
+                else if (l.Mask == _errorMask)
+                {
+                    UnityEngine.Debug.LogError(_buffer.ToString());
+                }
+                else
+                {
+                    UnityEngine.Debug.Log(_buffer.ToString());
+                }
             }
 
-            FlushType = 0;
-            _buffer.Length = 0;
+            _buffer.Clear();
         }
 
-        
-        /// <summary>
-        /// Uses arg0 as Flush Type(actually pretty hacked)
-        /// </summary>
-        /// <param name="value">line</param>
-        /// <param name="arg0">log mask</param>
-        public override void WriteLine(string value, object arg0)
-        {
-            FlushType = (int)arg0;
-            Write(value+ Utils.NEW_LINE);
-        }
+
+
 
         /// <summary>
         /// Fills Buffer
         /// </summary>
         /// <param name="value">Line</param>
-        public override void Write(string value)
+        public override void Write(byte[] value, int start, int count)
         {
-            _buffer.Append(value);
-            if (value != null)
-            {
-                var len = value.Length;
-                if (len > 0)
-                {
-                    var lastChar = value[len - 1];
-                    if (lastChar == Utils.NEW_LINE)
-                    {
-                        Flush();
-                    }
-                }
-            }
+            byte[] tmp = new byte[count];
+            Array.Copy(value, 0, tmp, 0, count);
+            _buffer.AddRange(tmp);
+            Flush();
         }
 
-        /// <summary>
-        /// Write single char
-        /// </summary>
-        /// <param name="value">char</param>
-        public override void Write(char value)
+        public override int Read(byte[] buffer, int offset, int count)
         {
-            _buffer.Append(value);
-            if (value ==  Utils.NEW_LINE )
-            {
-                Flush();
-            }
+            throw new NotSupportedException();
         }
 
-        /// <summary>
-        /// Write an array of char
-        /// </summary>
-        /// <param name="value">array</param>
-        /// <param name="index">start index to start reading from the array</param>
-        /// <param name="count">how much from the array to read</param>
-        public override void Write(char[] value, int index, int count)
-        {
-            Write(new string(value, index, count));
-        }
-        /// <summary>
-        /// Specifies encoding of the textWriter
-        /// </summary>
-        public override Encoding Encoding
-        {
-            get { return Encoding.Default; }
-        }
     }
 
-   
+
 }

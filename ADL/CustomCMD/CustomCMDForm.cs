@@ -5,6 +5,8 @@ using System.IO;
 using System.Windows.Forms;
 using ADL.Configs;
 using System.Linq;
+using ADL.Streams;
+using ADL;
 namespace ADL.CustomCMD
 {
 
@@ -17,7 +19,9 @@ namespace ADL.CustomCMD
         private int _maxConsoleTextLength = 25000;
         private int _minConsoleTextLength = 5000;
         private int _maxLogCountPerFrame = 250;
-        public int MaxConsoleTextLength
+        private PipeStream ps;
+        
+        public int MaxConsoleLogCount
         {
             get
             {
@@ -55,17 +59,14 @@ namespace ADL.CustomCMD
         /// <summary>
         /// The Tags and their corresponding colors
         /// </summary>
-        private Dictionary<string, SerializableColor> _colorCoding = null;
+        private Dictionary<int, SerializableColor> _colorCoding = null;
 
         ///// <summary>
         ///// Copies the Prefix Array from the Debug Class to the new thread of the CustomCMD
         ///// </summary>
         //Dictionary<int, string> _prefixes = null;
 
-        /// <summary>
-        /// The Stream reader thats is used to fill the textbox
-        /// </summary>
-        private StreamReader _tr;
+
         /// <summary>
         /// Flag to check if running the color coding algorithm is useful
         /// </summary>
@@ -119,10 +120,10 @@ namespace ADL.CustomCMD
         /// <param name="BaseFontColor">Base Font Color. Acts as fallback if no color coding or tag not found</param>
         /// <param name="fontSize">font size of the logs</param>
         /// <param name="colorCoding">colorcoding</param>
-        public CustomCMDForm(PipeStream ps, Color Background, Color BaseFontColor, float fontSize, Dictionary<string, SerializableColor> colorCoding = null)
+        public CustomCMDForm(PipeStream ps, Color Background, Color BaseFontColor, float fontSize, Dictionary<int, SerializableColor> colorCoding = null)
         {
             InitializeComponent();
-            FormClosed += CloseForm; //Makes the programm close when this console is closed.
+            this.ps = ps;
             foreach (KeyValuePair<int, string> kvp in Debug.GetAllPrefixes()) //Copy all tags to the form. To Mitigate some access violation.
             {
                 clb_TagFilter.Items.Add(kvp.Value);
@@ -130,7 +131,6 @@ namespace ADL.CustomCMD
             }
             ps.BlockLastReadBuffer = false; //Nothing in the stream? Nothing in the return.
 
-            _tr = new StreamReader(ps);
 
             //Visual elements
             BackColor = Background;
@@ -144,18 +144,6 @@ namespace ADL.CustomCMD
             }
 
 
-        }
-
-
-
-        /// <summary>
-        /// Completely Terminates the Window.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void CloseForm(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
         }
 
         /// <summary>
@@ -180,22 +168,13 @@ namespace ADL.CustomCMD
         /// </summary>
         /// <param name="line">entire log line</param>
         /// <returns></returns>
-        Color GetColorFromLine(string line)
+        Color GetColorFromMask(int mask)
         {
             Color ret = FontColor;
 
             if (_hasColorCoding)
             {
-                string[] s = line.Split(']');
-                foreach (string tag in s)
-                {
-
-                    if (_colorCoding.ContainsKey(tag + ']'))
-                    {
-                        ret = _colorCoding[tag + ']'];
-                        break;
-                    }
-                }
+                if (_colorCoding.ContainsKey(mask)) return _colorCoding[mask];
             }
             return ret;
         }
@@ -214,11 +193,11 @@ namespace ADL.CustomCMD
         void RefreshTextBox()
         {
             if (rtb_LogOutput.IsDisposed || rtb_LogOutput.Disposing) return;
-            string block = ReadBlock();
-            if (block == null && block == "") return;
+            LogPackage block = ReadBlock();
+            if (block.Logs.Count == 0) return;
 
-            if (MaxConsoleTextLength < rtb_LogOutput.TextLength + block.Length)
-                ClearConsole(block.Length);
+            if (MaxConsoleLogCount < block.Logs.Count)
+                ClearConsole(block.Logs.Count());
 
             ShowInConsole(block);
             Text = string.Format(ConsoleTitleInfo, _totalLogsReceived, _logsWritten, _blocksWritten, Math.Round(_avgLogsPerBlock, 3), _consoleCleared);
@@ -226,32 +205,32 @@ namespace ADL.CustomCMD
         }
 
 
-        private string ReadBlock()
+        private LogPackage ReadBlock()
         {
-            return _tr.ReadToEnd();
+            byte[] buffer = new byte[ps.Length];
+            ps.Read(buffer, 0, (int)ps.Length);
+            return new LogPackage(buffer);
         }
 
-        private List<string> SplitLogs(string block)
-        {
-            return block.Split(Utils.NEW_LINE).ToList();
 
-        }
 
         /// <summary>
         /// Filters the Logs based on the Checked State of the tags in clb_tagFilter
         /// </summary>
-        /// <param name="logs"></param>
+        /// <param name="logPackage"></param>
         /// <returns></returns>
-        private List<string> FilterLogs(List<string> logs)
+        private LogPackage FilterLogs(LogPackage logPackage)
         {
-            bool[] result = new bool[logs.Count];
+            bool[] result = new bool[logPackage.Logs.Count];
             bool containsOne = false;
-            for (int i = 0; i < logs.Count; i++)
+            for (int i = 0; i < logPackage.Logs.Count; i++)
             {
                 containsOne = false;
+                BitMask mask;
                 for (int j = 0; j < clb_TagFilter.CheckedItems.Count; j++)
                 {
-                    if (logs[i].Contains(clb_TagFilter.CheckedItems[j].ToString())) containsOne = true;
+                    if (!Debug.GetPrefixMask(clb_TagFilter.CheckedItems[j].ToString(), out mask)) continue;
+                    if (BitMask.IsContainedInMask(mask,  logPackage.Logs[i].Mask, false)) containsOne = true;
                 }
 
                 result[i] = containsOne;
@@ -260,10 +239,10 @@ namespace ADL.CustomCMD
             for (int i = result.Length - 1; i >= 0; i--)
             {
                 if (result[i]) continue;
-                logs.RemoveAt(i);
+                logPackage.Logs.RemoveAt(i);
             }
             result = null;
-            return logs;
+            return logPackage;
         }
 
         /// <summary>
@@ -271,26 +250,26 @@ namespace ADL.CustomCMD
         /// Filters them, and chooses the right way to append it to the console.
         /// </summary>
         /// <param name="logs">whole block of logs</param>
-        private void ShowInConsole(string logs)
+        private void ShowInConsole(LogPackage logs)
         {
-            List<string> llogs = FilterLogs(SplitLogs(logs));
-            if (llogs.Count == 0) return;
-            _totalLogsReceived += llogs.Count;
-            if (llogs.Count > MaxLogCountPerFrame) //Can not keep up with the amount of logs. Writing this whole block without color support and at one piece.
+            LogPackage llogs = FilterLogs(logs);
+            if (llogs.Logs.Count == 0) return;
+            _totalLogsReceived += llogs.Logs.Count;
+            if (llogs.Logs.Count > MaxLogCountPerFrame) //Can not keep up with the amount of logs. Writing this whole block without color support and at one piece.
             {
-                _totalLogsWrittenInBlocks += llogs.Count;
+                _totalLogsWrittenInBlocks += llogs.Logs.Count;
                 _blocksWritten++;
 
-                WriteToConsole(string.Join("", llogs.ToArray()), FontColor); //Rejoin the filtered list.
+                WriteToConsole(string.Join("", llogs.Logs.Select(x=>x.Message).ToArray()), FontColor); //Rejoin the filtered list.
             }
             else
             {
-                _logsWritten += llogs.Count;
+                _logsWritten += llogs.Logs.Count;
                 Color fontColor;
-                foreach (string l in llogs)
+                foreach (Log l in llogs.Logs)
                 {
-                    fontColor = GetColorFromLine(l);
-                    WriteToConsole(l, fontColor);
+                    fontColor = GetColorFromMask(l.Mask);
+                    WriteToConsole(l.Message, fontColor);
                 }
             }
             rtb_LogOutput.ScrollToBottom();

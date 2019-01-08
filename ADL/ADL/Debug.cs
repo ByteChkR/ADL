@@ -4,7 +4,7 @@ using System.Text;
 using System.Reflection;
 using System.Linq;
 using ADL.Configs;
-
+using ADL.Streams;
 /// <summary>
 /// Namespace ADL is the "Root" namespace of ADL. It contains the Code needed to use ADL. But also in sub namespaces you will find other helpful tools.
 /// </summary>
@@ -15,7 +15,7 @@ namespace ADL
     /// </summary>
     public static class Debug
     {
-        
+
         #region Private Variables
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace ADL
         /// Public property, used to disable ADl
         /// </summary>
         public static bool ADLEnabled { get { return _adlEnabled; } set { _adlEnabled = value; } }
-        
+
         /// <summary>
         /// Public property, used to disable update check.(Saves ~500ms)
         /// </summary>
@@ -85,7 +85,7 @@ namespace ADL
         /// To disable the update messages, simly change the mask to new Bitmask(false)
         /// </summary>
         public static BitMask UpdateMask { get { return _updateMask; } set { _updateMask = value; } }
-        
+
         /// <summary>
         /// Warning Mask. This mask gets used when ADL sends warnings about (possible)wrong use.
         /// </summary>
@@ -95,7 +95,7 @@ namespace ADL
         /// The number of Streams that ADL writes to
         /// </summary>
         public static int LogStreamCount { get { return _adlEnabled ? _streams.Count : 0; } }
-#endregion
+        #endregion
 
         #region Streams
 
@@ -135,7 +135,7 @@ namespace ADL
                 return;
             }
             _streams.Remove(stream);
-            if (CloseStream) stream.CloseStream();
+            if (CloseStream) stream.Close();
 
         }
 
@@ -149,7 +149,7 @@ namespace ADL
             if (CloseStream)
                 foreach (LogStream ls in _streams)
                 {
-                    ls.CloseStream();
+                    ls.Close();
                 }
             _streams.Clear();
         }
@@ -259,11 +259,12 @@ namespace ADL
 
             }
 
+
             foreach (LogStream logs in _streams)
             {
                 if (logs.IsContainedInMask(mask))
                 {
-                    logs.Log(mask, GetMaskPrefix(mask) + message);
+                    logs.Write(new Log(mask, GetMaskPrefix(mask) + message + Utils.NEW_LINE));
                 }
             }
         }
@@ -314,7 +315,6 @@ namespace ADL
         /// <returns>All Prefixes for specified mask</returns>
         public static string GetMaskPrefix(BitMask mask)
         {
-            if (mask == -1) return "[GLOBAL]";
             _stringBuilder.Length = 0;
             if (_prefixes.ContainsKey(mask))
             {

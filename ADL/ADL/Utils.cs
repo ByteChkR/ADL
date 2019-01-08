@@ -10,6 +10,7 @@ namespace ADL
 
         public static readonly int BYTE_SIZE = 8;
         public static readonly char NEW_LINE = '\n';
+        public static readonly int MASK_ALL = ~0;
         /// <summary>
         /// Returns the Enum Size for the specified enum
         /// </summary>

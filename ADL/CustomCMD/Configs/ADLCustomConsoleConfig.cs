@@ -27,7 +27,7 @@ namespace ADL.Configs
         /// <summary>
         /// The color coding of the log window
         /// </summary>
-        public SerializableDictionary<string, SerializableColor> ColorCoding;
+        public SerializableDictionary<int, SerializableColor> ColorCoding;
 
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace ADL.Configs
                 config.BackgroundColor = Color.Black;
                 config.FontColor = Color.White;
                 config.FontSize = 8.5f;
-                config.ColorCoding = new SerializableDictionary<string, SerializableColor>(new Dictionary<string, SerializableColor>());
+                config.ColorCoding = new SerializableDictionary<int, SerializableColor>(new Dictionary<int, SerializableColor>());
                 return config;
             }
         }
