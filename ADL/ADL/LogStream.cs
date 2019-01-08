@@ -13,7 +13,7 @@ namespace ADL
         /// <summary>
         /// The Text Writer ADL uses to write logs
         /// </summary>
-        private TextWriter _stream;
+        private StreamWriter _stream;
         /// <summary>
         /// The Mask
         /// </summary>
@@ -99,7 +99,7 @@ namespace ADL
         /// <summary>
         /// The Unterlying stream.
         /// </summary>
-        public Stream TextStream { get { return _str; } }
+        public Stream Stream { get { return _str; } }
 
 
         #endregion
@@ -113,19 +113,10 @@ namespace ADL
         {
             _str = stream;
             _stream = new StreamWriter(stream);
-            
+
 
         }
 
-        /// <summary>
-        /// Constructor with just the Text Writer. leaving out assigning the actual stream.
-        /// Used in the unity component(UnityTextWriter has no base stream).
-        /// </summary>
-        /// <param name="textReader">Text reader you want to create the Log on</param>
-        public LogStream(TextWriter textReader)
-        {
-            _stream = textReader;
-        }
 
 
         /// <summary>
@@ -193,8 +184,12 @@ namespace ADL
             if (_streamClosed) return;
             if (_setTimeStamp) message = Utils.TimeStamp + message;
 
-            _stream.WriteLine(message, mask);
-            _stream.Flush();
+            if (_str != null)
+            {
+                byte[] b = new Log(mask, message).Serialize();
+                _str.Write(b, 0, b.Length);
+            }
+
         }
 
         #region LogStreamHelperFunctions
@@ -210,7 +205,7 @@ namespace ADL
         /// <returns>The Created LogStream</returns>
         public static LogStream CreateLogStreamFromFile(string path, int mask = -1, MatchType matchType = MatchType.MATCH_ALL, bool setTimestamp = false, bool appendIfExists = false)
         {
-            Stream s = new FileStream(path, appendIfExists? FileMode.Append: FileMode.Create);
+            Stream s = new LogFileStream(path, appendIfExists ? FileMode.Append : FileMode.Create);
             LogStream ret = new LogStream(s)
             {
                 Mask = mask,
@@ -238,6 +233,19 @@ namespace ADL
             };
             return ret;
         }
+
+        public static LogStream CreateLogStreamFromConsoleStream(int mask = -1, MatchType matchType = MatchType.MATCH_ALL, bool setTimeStamp = false)
+        {
+            LogStream ret = new LogStream(new LogTextSteam(Console.OpenStandardOutput()))
+            {
+                Mask = mask,
+                MatchType = matchType,
+                PrependTimeStamp = setTimeStamp
+            };
+            return ret;
+        }
+
+
         #endregion
     }
 

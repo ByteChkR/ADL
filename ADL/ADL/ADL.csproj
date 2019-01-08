@@ -50,12 +50,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogFileStream.cs" />
+    <Compile Include="LogPackage.cs" />
     <Compile Include="Configs\ADLConfig.cs" />
     <Compile Include="BitMask.cs" />
     <Compile Include="Configs\ConfigManager.cs" />
     <Compile Include="Configs\IADLConfig.cs" />
     <Compile Include="LogStream.cs" />
     <Compile Include="Debug.cs" />
+    <Compile Include="LogTextSteam.cs" />
     <Compile Include="MaskCombineType.cs" />
     <Compile Include="MatchType.cs" />
     <Compile Include="PipeStream.cs" />

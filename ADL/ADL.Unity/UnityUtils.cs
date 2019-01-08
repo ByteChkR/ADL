@@ -27,7 +27,7 @@
         public static LogStream ToUnityConsoleLogStream(UnityTextWriter utw, LogStreamParams param)
         {
 
-            LogStream ls = new LogStream(utw)
+            LogStream ls = new LogStream(new LogTextSteam(utw))
             {
                 Mask = param.Mask,
                 MatchType = param.MatchType,

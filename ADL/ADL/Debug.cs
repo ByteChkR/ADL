@@ -258,7 +258,7 @@ namespace ADL
                 Log(UpdateMask, msg);
 
             }
-
+            
             foreach (LogStream logs in _streams)
             {
                 if (logs.IsContainedInMask(mask))

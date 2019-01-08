@@ -42,8 +42,7 @@ namespace DebugTest
 
             //Then we want to create a LogStream that receives the Messages
             //Important: Its much easier to use CreateLogStreamFromStream than setting everything manually
-            LogStream logStream = LogStream.CreateLogStreamFromStream(
-                Console.OpenStandardOutput(), //The Stream we want to send the Logs to.
+            LogStream logStream = LogStream.CreateLogStreamFromConsoleStream(
                 bMaskGenericCustom, //Lets use the generic custom 
                 MatchType.MATCH_ONE, //We want to make the logs pass when there is at least one tag that is included in the filter.
                 true //Get that fancy timestamp infront of the log.
