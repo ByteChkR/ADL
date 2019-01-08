@@ -5,27 +5,51 @@ using System.Text;
 
 namespace ADL.Streams
 {
+    /// <summary>
+    /// Struct that can serialize and deserialize to be sent over a stream
+    /// </summary>
     public struct Log
     {
+        /// <summary>
+        /// The mask of the log.
+        /// </summary>
         public BitMask Mask;
+        /// <summary>
+        /// The message that has been sent
+        /// </summary>
         public string Message;
 
 
+        /// <summary>
+        /// Creates a valid Log Struct
+        /// </summary>
+        /// <param name="mask"></param>
+        /// <param name="message"></param>
         public Log(BitMask mask, string message)
         {
             Mask = mask;
             Message = message;
         }
 
+        /// <summary>
+        /// Turns this object in to a byte array.
+        /// </summary>
+        /// <returns></returns>
         public byte[] Serialize()
         {
-
             List<byte> ret = BitConverter.GetBytes(Mask).ToList(); //Mask
             ret.AddRange(BitConverter.GetBytes(Message.Length));//Message Length
             ret.AddRange(Encoding.ASCII.GetBytes(Message)); //Message
             return ret.ToArray();
         }
 
+        /// <summary>
+        /// Creates an Log object from a byte stream.
+        /// </summary>
+        /// <param name="buffer">the buffer where the object is in</param>
+        /// <param name="startIndex">e.g. offset</param>
+        /// <param name="bytesRead">0 = no object found(end of stream), -1 = no object found.(nothing there)</param>
+        /// <returns></returns>
         public static Log Deserialize(byte[] buffer, int startIndex, out int bytesRead)
         {
             bytesRead = 0;

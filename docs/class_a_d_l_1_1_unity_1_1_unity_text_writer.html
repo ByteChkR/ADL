@@ -87,7 +87,6 @@ $(document).ready(function(){initNavTree('class_a_d_l_1_1_unity_1_1_unity_text_w
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_a_d_l_1_1_unity_1_1_unity_text_writer-members.html">List of all members</a>  </div>
@@ -109,42 +108,48 @@ Inheritance diagram for ADL.Unity.UnityTextWriter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ac1433e1a8fea0b44cbc90d1250c5cad3"><td class="memItemLeft" align="right" valign="top">override long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#ac1433e1a8fea0b44cbc90d1250c5cad3">Seek</a> (long offset, SeekOrigin origin)</td></tr>
+<tr class="memdesc:ac1433e1a8fea0b44cbc90d1250c5cad3"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, sets the position within the current stream. /summary&gt; param name="offset"&gt;A byte offset relative to the origin parameter. param name="origin"&gt;A value of type System.IO.SeekOrigin indicating the reference point used to obtain the new position. returns&gt; The new position within the current stream. /returns&gt;  <a href="#ac1433e1a8fea0b44cbc90d1250c5cad3">More...</a><br /></td></tr>
+<tr class="separator:ac1433e1a8fea0b44cbc90d1250c5cad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04ec5542e040a8601dc860b34dad5e13"><td class="memItemLeft" align="right" valign="top"><a id="a04ec5542e040a8601dc860b34dad5e13"></a>
+override void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLength</b> (long value)</td></tr>
+<tr class="separator:a04ec5542e040a8601dc860b34dad5e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57d9eed679dbab0551e2b3865085718a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a57d9eed679dbab0551e2b3865085718a">UnityTextWriter</a> (<a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a> WarnMask, <a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a> ErrorMask)</td></tr>
 <tr class="memdesc:a57d9eed679dbab0551e2b3865085718a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that needs masks  <a href="#a57d9eed679dbab0551e2b3865085718a">More...</a><br /></td></tr>
 <tr class="separator:a57d9eed679dbab0551e2b3865085718a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad62666e8a12f473f34780dbfdbc71975"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#ad62666e8a12f473f34780dbfdbc71975">Flush</a> ()</td></tr>
 <tr class="memdesc:ad62666e8a12f473f34780dbfdbc71975"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the Log to the UnityConsole.  <a href="#ad62666e8a12f473f34780dbfdbc71975">More...</a><br /></td></tr>
 <tr class="separator:ad62666e8a12f473f34780dbfdbc71975"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12b1bcfd083d9e771330d95d1857e569"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a12b1bcfd083d9e771330d95d1857e569">WriteLine</a> (string value, object arg0)</td></tr>
-<tr class="memdesc:a12b1bcfd083d9e771330d95d1857e569"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses arg0 as Flush Type(actually pretty hacked)  <a href="#a12b1bcfd083d9e771330d95d1857e569">More...</a><br /></td></tr>
-<tr class="separator:a12b1bcfd083d9e771330d95d1857e569"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad951026a7b9df781b94fbc9a5274ac51"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#ad951026a7b9df781b94fbc9a5274ac51">Write</a> (string value)</td></tr>
-<tr class="memdesc:ad951026a7b9df781b94fbc9a5274ac51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills Buffer  <a href="#ad951026a7b9df781b94fbc9a5274ac51">More...</a><br /></td></tr>
-<tr class="separator:ad951026a7b9df781b94fbc9a5274ac51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9636a16d9e1f9b04d76d4087688bac3a"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a9636a16d9e1f9b04d76d4087688bac3a">Write</a> (char value)</td></tr>
-<tr class="memdesc:a9636a16d9e1f9b04d76d4087688bac3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write single char  <a href="#a9636a16d9e1f9b04d76d4087688bac3a">More...</a><br /></td></tr>
-<tr class="separator:a9636a16d9e1f9b04d76d4087688bac3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace3ec2f343589f5a1d92145f5f61fb47"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#ace3ec2f343589f5a1d92145f5f61fb47">Write</a> (char[] value, int index, int count)</td></tr>
-<tr class="memdesc:ace3ec2f343589f5a1d92145f5f61fb47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write an array of char  <a href="#ace3ec2f343589f5a1d92145f5f61fb47">More...</a><br /></td></tr>
-<tr class="separator:ace3ec2f343589f5a1d92145f5f61fb47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a5d9cf1373da2cf300bf88f11f8ec078a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a5d9cf1373da2cf300bf88f11f8ec078a">FlushType</a> = 0</td></tr>
-<tr class="memdesc:a5d9cf1373da2cf300bf88f11f8ec078a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Log Type  <a href="#a5d9cf1373da2cf300bf88f11f8ec078a">More...</a><br /></td></tr>
-<tr class="separator:a5d9cf1373da2cf300bf88f11f8ec078a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a377c14675ccab471ee103871f1a9782d"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a377c14675ccab471ee103871f1a9782d">Write</a> (byte[] value, int start, int count)</td></tr>
+<tr class="memdesc:a377c14675ccab471ee103871f1a9782d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills Buffer  <a href="#a377c14675ccab471ee103871f1a9782d">More...</a><br /></td></tr>
+<tr class="separator:a377c14675ccab471ee103871f1a9782d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bcbcf32d34c9bdf53492b85cbb67781"><td class="memItemLeft" align="right" valign="top"><a id="a0bcbcf32d34c9bdf53492b85cbb67781"></a>
+override int&#160;</td><td class="memItemRight" valign="bottom"><b>Read</b> (byte[] buffer, int offset, int count)</td></tr>
+<tr class="separator:a0bcbcf32d34c9bdf53492b85cbb67781"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:ae188dacb6a045f6f314480f0fbd18ccc"><td class="memItemLeft" align="right" valign="top">override Encoding&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#ae188dacb6a045f6f314480f0fbd18ccc">Encoding</a><code> [get]</code></td></tr>
-<tr class="memdesc:ae188dacb6a045f6f314480f0fbd18ccc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specifies encoding of the textWriter  <a href="#ae188dacb6a045f6f314480f0fbd18ccc">More...</a><br /></td></tr>
-<tr class="separator:ae188dacb6a045f6f314480f0fbd18ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee01d4ddb0385399382a59d981c8a6d1"><td class="memItemLeft" align="right" valign="top"><a id="aee01d4ddb0385399382a59d981c8a6d1"></a>
+override bool&#160;</td><td class="memItemRight" valign="bottom"><b>CanRead</b><code> [get]</code></td></tr>
+<tr class="separator:aee01d4ddb0385399382a59d981c8a6d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdaac036a699350805d1c31d27b63b39"><td class="memItemLeft" align="right" valign="top"><a id="acdaac036a699350805d1c31d27b63b39"></a>
+override bool&#160;</td><td class="memItemRight" valign="bottom"><b>CanSeek</b><code> [get]</code></td></tr>
+<tr class="separator:acdaac036a699350805d1c31d27b63b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac85b736f171a962b0ff5bba5e1ab3ecd"><td class="memItemLeft" align="right" valign="top"><a id="ac85b736f171a962b0ff5bba5e1ab3ecd"></a>
+override bool&#160;</td><td class="memItemRight" valign="bottom"><b>CanWrite</b><code> [get]</code></td></tr>
+<tr class="separator:ac85b736f171a962b0ff5bba5e1ab3ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11a4f0d230845fc4148a75a85699c19b"><td class="memItemLeft" align="right" valign="top"><a id="a11a4f0d230845fc4148a75a85699c19b"></a>
+override long&#160;</td><td class="memItemRight" valign="bottom"><b>Length</b><code> [get]</code></td></tr>
+<tr class="separator:a11a4f0d230845fc4148a75a85699c19b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86a6922ca11c2689971b0fad5c53a241"><td class="memItemLeft" align="right" valign="top"><a id="a86a6922ca11c2689971b0fad5c53a241"></a>
+override long&#160;</td><td class="memItemRight" valign="bottom"><b>Position</b><code> [get, set]</code></td></tr>
+<tr class="separator:a86a6922ca11c2689971b0fad5c53a241"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a1a70db71377a37084101b28881af7477"><td class="memItemLeft" align="right" valign="top">StringBuilder&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a1a70db71377a37084101b28881af7477">_buffer</a> = new StringBuilder()</td></tr>
-<tr class="memdesc:a1a70db71377a37084101b28881af7477"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Buffer of the TextWriter  <a href="#a1a70db71377a37084101b28881af7477">More...</a><br /></td></tr>
-<tr class="separator:a1a70db71377a37084101b28881af7477"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4a80742ff977c59d01cd2d06c2df379"><td class="memItemLeft" align="right" valign="top">List&lt; byte &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#ac4a80742ff977c59d01cd2d06c2df379">_buffer</a> = new List&lt;byte&gt;()</td></tr>
+<tr class="memdesc:ac4a80742ff977c59d01cd2d06c2df379"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Buffer of the TextWriter  <a href="#ac4a80742ff977c59d01cd2d06c2df379">More...</a><br /></td></tr>
+<tr class="separator:ac4a80742ff977c59d01cd2d06c2df379"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd218089c35e95bbb5be6b008fc8803c"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#afd218089c35e95bbb5be6b008fc8803c">_errorMask</a></td></tr>
 <tr class="memdesc:afd218089c35e95bbb5be6b008fc8803c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Error Mask  <a href="#afd218089c35e95bbb5be6b008fc8803c">More...</a><br /></td></tr>
 <tr class="separator:afd218089c35e95bbb5be6b008fc8803c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,34 +217,39 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad951026a7b9df781b94fbc9a5274ac51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad951026a7b9df781b94fbc9a5274ac51">&#9670;&nbsp;</a></span>Write() <span class="overload">[1/3]</span></h2>
+<a id="ac1433e1a8fea0b44cbc90d1250c5cad3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1433e1a8fea0b44cbc90d1250c5cad3">&#9670;&nbsp;</a></span>Seek()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">override void ADL.Unity.UnityTextWriter.Write </td>
+          <td class="memname">override long ADL.Unity.UnityTextWriter.Seek </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">SeekOrigin&#160;</td>
+          <td class="paramname"><em>origin</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Fills Buffer </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>Line</td></tr>
-  </table>
-  </dd>
-</dl>
+<p>When overridden in a derived class, sets the position within the current stream. /summary&gt; param name="offset"&gt;A byte offset relative to the origin parameter. param name="origin"&gt;A value of type System.IO.SeekOrigin indicating the reference point used to obtain the new position. returns&gt; The new position within the current stream. /returns&gt; </p>
+<p>summary&gt; When overridden in a derived class, sets the length of the current stream. /summary&gt; param name="value"&gt;The desired length of the current stream in bytes. </p>
 
 </div>
 </div>
-<a id="a9636a16d9e1f9b04d76d4087688bac3a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9636a16d9e1f9b04d76d4087688bac3a">&#9670;&nbsp;</a></span>Write() <span class="overload">[2/3]</span></h2>
+<a id="a377c14675ccab471ee103871f1a9782d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a377c14675ccab471ee103871f1a9782d">&#9670;&nbsp;</a></span>Write()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -247,40 +257,14 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">override void ADL.Unity.UnityTextWriter.Write </td>
           <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Write single char </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>char</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ace3ec2f343589f5a1d92145f5f61fb47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace3ec2f343589f5a1d92145f5f61fb47">&#9670;&nbsp;</a></span>Write() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void ADL.Unity.UnityTextWriter.Write </td>
-          <td>(</td>
-          <td class="paramtype">char []&#160;</td>
+          <td class="paramtype">byte []&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
+          <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -296,49 +280,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Write an array of char </p>
+<p>Fills Buffer </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>array</td></tr>
-    <tr><td class="paramname">index</td><td>start index to start reading from the array</td></tr>
-    <tr><td class="paramname">count</td><td>how much from the array to read</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a12b1bcfd083d9e771330d95d1857e569"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12b1bcfd083d9e771330d95d1857e569">&#9670;&nbsp;</a></span>WriteLine()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void ADL.Unity.UnityTextWriter.WriteLine </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>arg0</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Uses arg0 as Flush Type(actually pretty hacked) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>line</td></tr>
-    <tr><td class="paramname">arg0</td><td>log mask</td></tr>
+    <tr><td class="paramname">value</td><td>Line</td></tr>
   </table>
   </dd>
 </dl>
@@ -346,8 +291,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a1a70db71377a37084101b28881af7477"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a70db71377a37084101b28881af7477">&#9670;&nbsp;</a></span>_buffer</h2>
+<a id="ac4a80742ff977c59d01cd2d06c2df379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4a80742ff977c59d01cd2d06c2df379">&#9670;&nbsp;</a></span>_buffer</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -356,7 +301,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">StringBuilder ADL.Unity.UnityTextWriter._buffer = new StringBuilder()</td>
+          <td class="memname">List&lt;byte&gt; ADL.Unity.UnityTextWriter._buffer = new List&lt;byte&gt;()</td>
         </tr>
       </table>
   </td>
@@ -415,47 +360,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The Warn Mask </p>
-
-</div>
-</div>
-<a id="a5d9cf1373da2cf300bf88f11f8ec078a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d9cf1373da2cf300bf88f11f8ec078a">&#9670;&nbsp;</a></span>FlushType</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int ADL.Unity.UnityTextWriter.FlushType = 0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The Log Type </p>
-
-</div>
-</div>
-<h2 class="groupheader">Property Documentation</h2>
-<a id="ae188dacb6a045f6f314480f0fbd18ccc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae188dacb6a045f6f314480f0fbd18ccc">&#9670;&nbsp;</a></span>Encoding</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override Encoding ADL.Unity.UnityTextWriter.Encoding</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Specifies encoding of the textWriter </p>
 
 </div>
 </div>

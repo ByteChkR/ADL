@@ -5,14 +5,34 @@ using System.IO;
 
 namespace ADL.Streams
 {
+    /// <summary>
+    /// Log stream class that you can use with virtually any stream(as long as you handle the multithreading on your own if used)
+    /// This class wraps around your supplied stream and interacts with the system. 
+    /// Because the LogStream implements every override and passes it to the base stream,
+    /// you can use your created base stream itself instead of the LogStream.
+    /// </summary>
     public class LogStream : Stream
     {
 
+        /// <summary>
+        /// Mask that the system uses to filter logs
+        /// </summary>
         private BitMask _mask = new BitMask(true);
+        /// <summary>
+        /// The match type(how the mask gets compared)
+        /// </summary>
         private MatchType _matchType = MatchType.MATCH_ALL;
+        /// <summary>
+        /// Put a timestamp infront of the log.
+        /// </summary>
         private bool _setTimeStamp = false;
+        /// <summary>
+        /// Is the stream closed?
+        /// </summary>
         private bool _streamClosed = false;
-
+        /// <summary>
+        /// Base stream
+        /// </summary>
         protected Stream _baseStream = null;
 
         #region Properties
@@ -32,7 +52,9 @@ namespace ADL.Streams
                 _mask = value;
             }
         }
-
+        /// <summary>
+        /// The match type(how the mask gets compared)
+        /// </summary>
         public MatchType MatchType
         {
             get
@@ -45,6 +67,9 @@ namespace ADL.Streams
             }
         }
 
+        /// <summary>
+        /// Put a timestamp infront of the log.
+        /// </summary>
         public bool AddTimeStamp
         {
             get
@@ -74,10 +99,7 @@ namespace ADL.Streams
 
         #region Methods
 
-        /// <summary>
-        /// Fills Buffer
-        /// </summary>
-        /// <param name="value">Line</param>
+
         public override void Write(byte[] value, int start, int count)
         {
             byte[] tmp = new byte[count];
@@ -193,23 +215,11 @@ namespace ADL.Streams
 
         #endregion
 
-        ///<summary>
-        ///When overridden in a derived class, sets the position within the current stream.
-        ///</summary>
-        ///<param name="offset">A byte offset relative to the origin parameter. </param>
-        ///<param name="origin">A value of type System.IO.SeekOrigin indicating the reference point used to obtain the new position. </param>
-        ///<returns>
-        ///The new position within the current stream.
-        ///</returns>
         public override long Seek(long offset, SeekOrigin origin)
         {
             return _baseStream.Seek(offset, origin);
         }
 
-        ///<summary>
-        ///When overridden in a derived class, sets the length of the current stream.
-        ///</summary>
-        ///<param name="value">The desired length of the current stream in bytes. </param>
         public override void SetLength(long value)
         {
             _baseStream.SetLength(value);
@@ -219,6 +229,13 @@ namespace ADL.Streams
         #endregion
 
 
+        /// <summary>
+        /// Creates a Log stream based on the parameters supplied.
+        /// </summary>
+        /// <param name="baseStream"></param>
+        /// <param name="mask"></param>
+        /// <param name="matchType"></param>
+        /// <param name="setTimeStamp"></param>
         public LogStream(Stream baseStream, int mask = ~0, MatchType matchType = MatchType.MATCH_ALL, bool setTimeStamp = false )
         {
             _mask = mask;
@@ -227,6 +244,10 @@ namespace ADL.Streams
             _baseStream = baseStream;
         }
 
+        /// <summary>
+        /// Writes a log to the stream.
+        /// </summary>
+        /// <param name="log">the log to send</param>
         public virtual void Write(Log log)
         {
             if (_streamClosed) return;
@@ -236,6 +257,11 @@ namespace ADL.Streams
             Flush();
         }
 
+        /// <summary>
+        /// Wrapper to make code more readable
+        /// </summary>
+        /// <param name="mask"></param>
+        /// <returns></returns>
         public bool IsContainedInMask(BitMask mask)
         {
             return BitMask.IsContainedInMask(_mask, mask, _matchType == MatchType.MATCH_ALL);

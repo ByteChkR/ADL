@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('class_a_d_l_1_1_custom_c_m_d_1_1_custo
 </div><!--header-->
 <div class="contents">
 
-<p>Form to Display the Content of a <a class="el" href="class_a_d_l_1_1_log_stream.html" title="Log Stream class, use this when you want to add a new stream to the debug system. ...">LogStream</a>. Color coding supported.  
+<p>Form to Display the Content of a LogStream. Color coding supported.  
  <a href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for ADL.CustomCMD.CustomCMDForm:</div>
@@ -110,9 +110,9 @@ Inheritance diagram for ADL.CustomCMD.CustomCMDForm:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a66812d430e14aeecd0049af4d4ddb9c6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a66812d430e14aeecd0049af4d4ddb9c6">CustomCMDForm</a> (<a class="el" href="class_a_d_l_1_1_pipe_stream.html">PipeStream</a> ps, Color Background, Color BaseFontColor, float fontSize, Dictionary&lt; string, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a> &gt; colorCoding=null)</td></tr>
-<tr class="memdesc:a66812d430e14aeecd0049af4d4ddb9c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="namespace_a_d_l_1_1_custom_c_m_d.html">CustomCMD</a>.  <a href="#a66812d430e14aeecd0049af4d4ddb9c6">More...</a><br /></td></tr>
-<tr class="separator:a66812d430e14aeecd0049af4d4ddb9c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c35db7b06ac67bbe60352effced02d5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a9c35db7b06ac67bbe60352effced02d5">CustomCMDForm</a> (<a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html">PipeStream</a> ps, Color Background, Color BaseFontColor, float fontSize, Dictionary&lt; int, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a> &gt; colorCoding=null)</td></tr>
+<tr class="memdesc:a9c35db7b06ac67bbe60352effced02d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="namespace_a_d_l_1_1_custom_c_m_d.html">CustomCMD</a>.  <a href="#a9c35db7b06ac67bbe60352effced02d5">More...</a><br /></td></tr>
+<tr class="separator:a9c35db7b06ac67bbe60352effced02d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -122,9 +122,9 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a0e4c76ca2e86a1c84b13ea02f3e87b14"><td class="memItemLeft" align="right" valign="top"><a id="a0e4c76ca2e86a1c84b13ea02f3e87b14"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxConsoleTextLength</b><code> [get, set]</code></td></tr>
-<tr class="separator:a0e4c76ca2e86a1c84b13ea02f3e87b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ea382a860fccedd6684ecb1dfbfbe61"><td class="memItemLeft" align="right" valign="top"><a id="a9ea382a860fccedd6684ecb1dfbfbe61"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxConsoleLogCount</b><code> [get, set]</code></td></tr>
+<tr class="separator:a9ea382a860fccedd6684ecb1dfbfbe61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24585ec27816f5ce7e5e9df6bb9e10d2"><td class="memItemLeft" align="right" valign="top"><a id="a24585ec27816f5ce7e5e9df6bb9e10d2"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>MinConsoleTextLength</b><code> [get, set]</code></td></tr>
 <tr class="separator:a24585ec27816f5ce7e5e9df6bb9e10d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,30 +143,24 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>FontSize</b><code> [
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:acfefeae5f6be84be800489f0e5149e22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#acfefeae5f6be84be800489f0e5149e22">CloseForm</a> (object sender, FormClosedEventArgs e)</td></tr>
-<tr class="memdesc:acfefeae5f6be84be800489f0e5149e22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Completely Terminates the Window.  <a href="#acfefeae5f6be84be800489f0e5149e22">More...</a><br /></td></tr>
-<tr class="separator:acfefeae5f6be84be800489f0e5149e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62b5a9eb917413e8195182107598101c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a62b5a9eb917413e8195182107598101c">Form1_Load</a> (object sender, EventArgs e)</td></tr>
 <tr class="memdesc:a62b5a9eb917413e8195182107598101c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets called when the form is fully initialized.  <a href="#a62b5a9eb917413e8195182107598101c">More...</a><br /></td></tr>
 <tr class="separator:a62b5a9eb917413e8195182107598101c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56aa8bfb57e4b8efd06ed59d20917665"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a56aa8bfb57e4b8efd06ed59d20917665">GetColorFromLine</a> (string line)</td></tr>
-<tr class="memdesc:a56aa8bfb57e4b8efd06ed59d20917665"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters the Tags and returns the right color  <a href="#a56aa8bfb57e4b8efd06ed59d20917665">More...</a><br /></td></tr>
-<tr class="separator:a56aa8bfb57e4b8efd06ed59d20917665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48bdff992c483d2983cf0a42031c6280"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a48bdff992c483d2983cf0a42031c6280">GetColorFromMask</a> (int mask)</td></tr>
+<tr class="memdesc:a48bdff992c483d2983cf0a42031c6280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters the Tags and returns the right color  <a href="#a48bdff992c483d2983cf0a42031c6280">More...</a><br /></td></tr>
+<tr class="separator:a48bdff992c483d2983cf0a42031c6280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81dfe3dc03b1651dd3590f951914f6a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a81dfe3dc03b1651dd3590f951914f6a8">RefreshTextBox</a> ()</td></tr>
 <tr class="memdesc:a81dfe3dc03b1651dd3590f951914f6a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refreshes text box with content from the log stream.  <a href="#a81dfe3dc03b1651dd3590f951914f6a8">More...</a><br /></td></tr>
 <tr class="separator:a81dfe3dc03b1651dd3590f951914f6a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae903ba9cd44e82b37ea815fce16b5b82"><td class="memItemLeft" align="right" valign="top"><a id="ae903ba9cd44e82b37ea815fce16b5b82"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>ReadBlock</b> ()</td></tr>
-<tr class="separator:ae903ba9cd44e82b37ea815fce16b5b82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7bdbea19307c1f93fa4f9acd6369f59"><td class="memItemLeft" align="right" valign="top"><a id="ad7bdbea19307c1f93fa4f9acd6369f59"></a>
-List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>SplitLogs</b> (string block)</td></tr>
-<tr class="separator:ad7bdbea19307c1f93fa4f9acd6369f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b91a0e0088dfd3c0c7e4c48002bcd85"><td class="memItemLeft" align="right" valign="top">List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a3b91a0e0088dfd3c0c7e4c48002bcd85">FilterLogs</a> (List&lt; string &gt; logs)</td></tr>
-<tr class="memdesc:a3b91a0e0088dfd3c0c7e4c48002bcd85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters the Logs based on the Checked State of the tags in clb_tagFilter  <a href="#a3b91a0e0088dfd3c0c7e4c48002bcd85">More...</a><br /></td></tr>
-<tr class="separator:a3b91a0e0088dfd3c0c7e4c48002bcd85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae9c4e77ad76bd7f799960cb67764204"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#aae9c4e77ad76bd7f799960cb67764204">ShowInConsole</a> (string logs)</td></tr>
-<tr class="memdesc:aae9c4e77ad76bd7f799960cb67764204"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits the log string on new lines Filters them, and chooses the right way to append it to the console.  <a href="#aae9c4e77ad76bd7f799960cb67764204">More...</a><br /></td></tr>
-<tr class="separator:aae9c4e77ad76bd7f799960cb67764204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68ead95c98b5e5586f6cb2aa09383193"><td class="memItemLeft" align="right" valign="top"><a id="a68ead95c98b5e5586f6cb2aa09383193"></a>
+<a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html">LogPackage</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ReadBlock</b> ()</td></tr>
+<tr class="separator:a68ead95c98b5e5586f6cb2aa09383193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f741ab2ef660f34a8d13dde9b85dca0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html">LogPackage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a5f741ab2ef660f34a8d13dde9b85dca0">FilterLogs</a> (<a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html">LogPackage</a> logPackage)</td></tr>
+<tr class="memdesc:a5f741ab2ef660f34a8d13dde9b85dca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters the Logs based on the Checked State of the tags in clb_tagFilter  <a href="#a5f741ab2ef660f34a8d13dde9b85dca0">More...</a><br /></td></tr>
+<tr class="separator:a5f741ab2ef660f34a8d13dde9b85dca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd8d6ea4d48eb22564481afb842685f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#acd8d6ea4d48eb22564481afb842685f9">ShowInConsole</a> (<a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html">LogPackage</a> logs)</td></tr>
+<tr class="memdesc:acd8d6ea4d48eb22564481afb842685f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits the log string on new lines Filters them, and chooses the right way to append it to the console.  <a href="#acd8d6ea4d48eb22564481afb842685f9">More...</a><br /></td></tr>
+<tr class="separator:acd8d6ea4d48eb22564481afb842685f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a399886c4842abc9b480429a6ceea9922"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a399886c4842abc9b480429a6ceea9922">WriteToConsole</a> (string text, Color textColor)</td></tr>
 <tr class="memdesc:a399886c4842abc9b480429a6ceea9922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the text to the RichTextBox  <a href="#a399886c4842abc9b480429a6ceea9922">More...</a><br /></td></tr>
 <tr class="separator:a399886c4842abc9b480429a6ceea9922"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -191,12 +185,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_minConsoleTextLength<
 <tr class="memitem:ab1a2fb56c082758c41a73f2fe3fba815"><td class="memItemLeft" align="right" valign="top"><a id="ab1a2fb56c082758c41a73f2fe3fba815"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxLogCountPerFrame</b> = 250</td></tr>
 <tr class="separator:ab1a2fb56c082758c41a73f2fe3fba815"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b283c973482c4394846c590032f0df1"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; string, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a7b283c973482c4394846c590032f0df1">_colorCoding</a> = null</td></tr>
-<tr class="memdesc:a7b283c973482c4394846c590032f0df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Tags and their corresponding colors  <a href="#a7b283c973482c4394846c590032f0df1">More...</a><br /></td></tr>
-<tr class="separator:a7b283c973482c4394846c590032f0df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af804d34002e49ca92ad0983de7dd08ee"><td class="memItemLeft" align="right" valign="top">StreamReader&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#af804d34002e49ca92ad0983de7dd08ee">_tr</a></td></tr>
-<tr class="memdesc:af804d34002e49ca92ad0983de7dd08ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Stream reader thats is used to fill the textbox  <a href="#af804d34002e49ca92ad0983de7dd08ee">More...</a><br /></td></tr>
-<tr class="separator:af804d34002e49ca92ad0983de7dd08ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a232ba288f707c6d63fa19e0b538c7daf"><td class="memItemLeft" align="right" valign="top"><a id="a232ba288f707c6d63fa19e0b538c7daf"></a>
+<a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html">PipeStream</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ps</b></td></tr>
+<tr class="separator:a232ba288f707c6d63fa19e0b538c7daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b693fad7b2ef96af9fc30da2062aacb"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a4b693fad7b2ef96af9fc30da2062aacb">_colorCoding</a> = null</td></tr>
+<tr class="memdesc:a4b693fad7b2ef96af9fc30da2062aacb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Tags and their corresponding colors  <a href="#a4b693fad7b2ef96af9fc30da2062aacb">More...</a><br /></td></tr>
+<tr class="separator:a4b693fad7b2ef96af9fc30da2062aacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55c77dfaef33d120690074e8625d72fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a55c77dfaef33d120690074e8625d72fc">_hasColorCoding</a></td></tr>
 <tr class="memdesc:a55c77dfaef33d120690074e8625d72fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to check if running the color coding algorithm is useful  <a href="#a55c77dfaef33d120690074e8625d72fc">More...</a><br /></td></tr>
 <tr class="separator:a55c77dfaef33d120690074e8625d72fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,10 +232,10 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
 <tr class="separator:acd5a6b6d5f20b23d7a840b350026cefd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Form to Display the Content of a <a class="el" href="class_a_d_l_1_1_log_stream.html" title="Log Stream class, use this when you want to add a new stream to the debug system. ...">LogStream</a>. Color coding supported. </p>
+<div class="textblock"><p>Form to Display the Content of a LogStream. Color coding supported. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a66812d430e14aeecd0049af4d4ddb9c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66812d430e14aeecd0049af4d4ddb9c6">&#9670;&nbsp;</a></span>CustomCMDForm()</h2>
+<a id="a9c35db7b06ac67bbe60352effced02d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c35db7b06ac67bbe60352effced02d5">&#9670;&nbsp;</a></span>CustomCMDForm()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -249,7 +243,7 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
         <tr>
           <td class="memname">ADL.CustomCMD.CustomCMDForm.CustomCMDForm </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_a_d_l_1_1_pipe_stream.html">PipeStream</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html">PipeStream</a>&#160;</td>
           <td class="paramname"><em>ps</em>, </td>
         </tr>
         <tr>
@@ -273,7 +267,7 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Dictionary&lt; string, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a> &gt;&#160;</td>
+          <td class="paramtype">Dictionary&lt; int, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a> &gt;&#160;</td>
           <td class="paramname"><em>colorCoding</em> = <code>null</code>&#160;</td>
         </tr>
         <tr>
@@ -333,51 +327,6 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
 
 </div>
 </div>
-<a id="acfefeae5f6be84be800489f0e5149e22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acfefeae5f6be84be800489f0e5149e22">&#9670;&nbsp;</a></span>CloseForm()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ADL.CustomCMD.CustomCMDForm.CloseForm </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>sender</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">FormClosedEventArgs&#160;</td>
-          <td class="paramname"><em>e</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Completely Terminates the Window. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sender</td><td></td></tr>
-    <tr><td class="paramname">e</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a17d8b37ecf0237238b3f2f988a4ec700"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a17d8b37ecf0237238b3f2f988a4ec700">&#9670;&nbsp;</a></span>Dispose()</h2>
 
@@ -412,8 +361,8 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
 
 </div>
 </div>
-<a id="a3b91a0e0088dfd3c0c7e4c48002bcd85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b91a0e0088dfd3c0c7e4c48002bcd85">&#9670;&nbsp;</a></span>FilterLogs()</h2>
+<a id="a5f741ab2ef660f34a8d13dde9b85dca0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f741ab2ef660f34a8d13dde9b85dca0">&#9670;&nbsp;</a></span>FilterLogs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -422,10 +371,10 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">List&lt;string&gt; ADL.CustomCMD.CustomCMDForm.FilterLogs </td>
+          <td class="memname"><a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html">LogPackage</a> ADL.CustomCMD.CustomCMDForm.FilterLogs </td>
           <td>(</td>
-          <td class="paramtype">List&lt; string &gt;&#160;</td>
-          <td class="paramname"><em>logs</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html">LogPackage</a>&#160;</td>
+          <td class="paramname"><em>logPackage</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -439,7 +388,7 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
 <p>Filters the Logs based on the Checked State of the tags in clb_tagFilter </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">logs</td><td></td></tr>
+    <tr><td class="paramname">logPackage</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -492,8 +441,8 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
 
 </div>
 </div>
-<a id="a56aa8bfb57e4b8efd06ed59d20917665"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56aa8bfb57e4b8efd06ed59d20917665">&#9670;&nbsp;</a></span>GetColorFromLine()</h2>
+<a id="a48bdff992c483d2983cf0a42031c6280"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48bdff992c483d2983cf0a42031c6280">&#9670;&nbsp;</a></span>GetColorFromMask()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -502,10 +451,10 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Color ADL.CustomCMD.CustomCMDForm.GetColorFromLine </td>
+          <td class="memname">Color ADL.CustomCMD.CustomCMDForm.GetColorFromMask </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>line</em></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mask</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -581,8 +530,8 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
 
 </div>
 </div>
-<a id="aae9c4e77ad76bd7f799960cb67764204"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae9c4e77ad76bd7f799960cb67764204">&#9670;&nbsp;</a></span>ShowInConsole()</h2>
+<a id="acd8d6ea4d48eb22564481afb842685f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd8d6ea4d48eb22564481afb842685f9">&#9670;&nbsp;</a></span>ShowInConsole()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -593,7 +542,7 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
         <tr>
           <td class="memname">void ADL.CustomCMD.CustomCMDForm.ShowInConsole </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html">LogPackage</a>&#160;</td>
           <td class="paramname"><em>logs</em></td><td>)</td>
           <td></td>
         </tr>
@@ -706,8 +655,8 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a7b283c973482c4394846c590032f0df1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b283c973482c4394846c590032f0df1">&#9670;&nbsp;</a></span>_colorCoding</h2>
+<a id="a4b693fad7b2ef96af9fc30da2062aacb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b693fad7b2ef96af9fc30da2062aacb">&#9670;&nbsp;</a></span>_colorCoding</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -716,7 +665,7 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Dictionary&lt;string, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a>&gt; ADL.CustomCMD.CustomCMDForm._colorCoding = null</td>
+          <td class="memname">Dictionary&lt;int, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a>&gt; ADL.CustomCMD.CustomCMDForm._colorCoding = null</td>
         </tr>
       </table>
   </td>
@@ -751,30 +700,6 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
 </div><div class="memdoc">
 
 <p>Flag to check if running the color coding algorithm is useful </p>
-
-</div>
-</div>
-<a id="af804d34002e49ca92ad0983de7dd08ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af804d34002e49ca92ad0983de7dd08ee">&#9670;&nbsp;</a></span>_tr</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">StreamReader ADL.CustomCMD.CustomCMDForm._tr</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The Stream reader thats is used to fill the textbox </p>
 
 </div>
 </div>

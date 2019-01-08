@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['textstream',['TextStream',['../class_a_d_l_1_1_log_stream.html#a65680991404e699fcafd4bc729504fc3',1,'ADL::LogStream']]],
   ['timer1_5ftick',['Timer1_Tick',['../class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a9afd93546e1a02adc1b48040a244ae79',1,'ADL::CustomCMD::CustomCMDForm']]],
   ['timestamp',['TimeStamp',['../class_a_d_l_1_1_utils.html#a93a1013d16031cf968a4383b56f4b24f',1,'ADL::Utils']]],
   ['tocolor',['ToColor',['../struct_a_d_l_1_1_configs_1_1_serializable_color.html#a66d8990761f72f71b9bd7974583e0970',1,'ADL::Configs::SerializableColor']]],

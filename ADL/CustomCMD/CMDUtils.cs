@@ -30,6 +30,10 @@ namespace ADL.CustomCMD
 
         }
 
+        /// <summary>
+        /// Runs the form.
+        /// </summary>
+        /// <param name="ps"></param>
         static void Run(Form ps)
         {
             
