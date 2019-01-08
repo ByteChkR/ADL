@@ -185,8 +185,7 @@ namespace DebugTest
             Debug.ADLEnabled = true;
 
             TestCustomConsoleOut();
-
-
+            
             TestConsoleOut();
 
             TestLogFileOut();
