@@ -5,9 +5,20 @@ using System.Text;
 
 namespace ADL.Streams
 {
+    /// <summary>
+    /// Object to wrap all received logs into one object.
+    /// </summary>
     public struct LogPackage
     {
+        /// <summary>
+        /// Logs that were deserialized
+        /// </summary>
         public List<Log> Logs;
+
+        /// <summary>
+        /// Constructor that takes the output of the stream.
+        /// </summary>
+        /// <param name="buffer"></param>
         public LogPackage(byte[] buffer)
         {
             List<Log> logs = new List<Log>();
