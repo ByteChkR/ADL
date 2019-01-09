@@ -17,7 +17,7 @@ namespace DebugTest
             WARNING = 4,
             ERROR = 8,
             FATAL = 16,
-            GENERICTEST = 32
+            ADL = 32
         }
 
 

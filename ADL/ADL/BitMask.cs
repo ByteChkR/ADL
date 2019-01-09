@@ -135,7 +135,7 @@ namespace ADL
         /// <param name="wildcard">If true, its a wildcard mask(everything)</param>
         public BitMask(bool wildcard = false)
         {
-            if (!wildcard) _mask = 0;
+            if (wildcard) _mask = ~0;
         }
 
         /// <summary>
