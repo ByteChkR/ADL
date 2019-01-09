@@ -125,9 +125,9 @@ Properties</h2></td></tr>
 <tr class="memitem:a9ea382a860fccedd6684ecb1dfbfbe61"><td class="memItemLeft" align="right" valign="top"><a id="a9ea382a860fccedd6684ecb1dfbfbe61"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxConsoleLogCount</b><code> [get, set]</code></td></tr>
 <tr class="separator:a9ea382a860fccedd6684ecb1dfbfbe61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24585ec27816f5ce7e5e9df6bb9e10d2"><td class="memItemLeft" align="right" valign="top"><a id="a24585ec27816f5ce7e5e9df6bb9e10d2"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>MinConsoleTextLength</b><code> [get, set]</code></td></tr>
-<tr class="separator:a24585ec27816f5ce7e5e9df6bb9e10d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5324b1c712616b7040096fc718b4e342"><td class="memItemLeft" align="right" valign="top"><a id="a5324b1c712616b7040096fc718b4e342"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>MinConsoleLogCount</b><code> [get, set]</code></td></tr>
+<tr class="separator:a5324b1c712616b7040096fc718b4e342"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab63ece45d90e2f013b4792f28e3bd3b3"><td class="memItemLeft" align="right" valign="top"><a id="ab63ece45d90e2f013b4792f28e3bd3b3"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxLogCountPerFrame</b><code> [get, set]</code></td></tr>
 <tr class="separator:ab63ece45d90e2f013b4792f28e3bd3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -176,14 +176,14 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a94b90c4074f13153d3ba3a1d5242e6b1"><td class="memItemLeft" align="right" valign="top"><a id="a94b90c4074f13153d3ba3a1d5242e6b1"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxConsoleTextLength</b> = 25000</td></tr>
-<tr class="separator:a94b90c4074f13153d3ba3a1d5242e6b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb4658d62ec1dac82fe80812a949b044"><td class="memItemLeft" align="right" valign="top"><a id="acb4658d62ec1dac82fe80812a949b044"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_minConsoleTextLength</b> = 5000</td></tr>
-<tr class="separator:acb4658d62ec1dac82fe80812a949b044"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06985a62c3c6b4e05b0f78a6a576695d"><td class="memItemLeft" align="right" valign="top"><a id="a06985a62c3c6b4e05b0f78a6a576695d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxConsoleLogCount</b> = 500</td></tr>
+<tr class="separator:a06985a62c3c6b4e05b0f78a6a576695d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad76af202e119b4346565859ecaf40395"><td class="memItemLeft" align="right" valign="top"><a id="ad76af202e119b4346565859ecaf40395"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_minConsoleLogCount</b> = 23</td></tr>
+<tr class="separator:ad76af202e119b4346565859ecaf40395"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1a2fb56c082758c41a73f2fe3fba815"><td class="memItemLeft" align="right" valign="top"><a id="ab1a2fb56c082758c41a73f2fe3fba815"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxLogCountPerFrame</b> = 250</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxLogCountPerFrame</b> = 200</td></tr>
 <tr class="separator:ab1a2fb56c082758c41a73f2fe3fba815"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a232ba288f707c6d63fa19e0b538c7daf"><td class="memItemLeft" align="right" valign="top"><a id="a232ba288f707c6d63fa19e0b538c7daf"></a>
 <a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html">PipeStream</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ps</b></td></tr>
@@ -215,6 +215,12 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>_avgLogsPerBlock</b>
 <tr class="memitem:afc7ac9dcfe6b54bca7ed6a6d079aa00f"><td class="memItemLeft" align="right" valign="top"><a id="afc7ac9dcfe6b54bca7ed6a6d079aa00f"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>_totalLogsWrittenInBlocks</b> = 0</td></tr>
 <tr class="separator:afc7ac9dcfe6b54bca7ed6a6d079aa00f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0dfeefeb41ba5c65eafe3b9323a8b0c"><td class="memItemLeft" align="right" valign="top"><a id="ad0dfeefeb41ba5c65eafe3b9323a8b0c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_logCount</b> = 0</td></tr>
+<tr class="separator:ad0dfeefeb41ba5c65eafe3b9323a8b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affe15c9f17424dcd6a65bc70d65af1e7"><td class="memItemLeft" align="right" valign="top"><a id="affe15c9f17424dcd6a65bc70d65af1e7"></a>
+Queue&lt; <a class="el" href="struct_a_d_l_1_1_streams_1_1_log.html">Log</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lastLogs</b> = new Queue&lt;<a class="el" href="struct_a_d_l_1_1_streams_1_1_log.html">Log</a>&gt;()</td></tr>
+<tr class="separator:affe15c9f17424dcd6a65bc70d65af1e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e6d11d5b23133dffd23871d74bb4978"><td class="memItemLeft" align="right" valign="top">System.ComponentModel.IContainer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a9e6d11d5b23133dffd23871d74bb4978">components</a> = null</td></tr>
 <tr class="memdesc:a9e6d11d5b23133dffd23871d74bb4978"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required designer variable.  <a href="#a9e6d11d5b23133dffd23871d74bb4978">More...</a><br /></td></tr>
 <tr class="separator:a9e6d11d5b23133dffd23871d74bb4978"><td class="memSeparator" colspan="2">&#160;</td></tr>

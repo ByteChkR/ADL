@@ -16,31 +16,31 @@ namespace ADL.CustomCMD
     /// </summary>
     public partial class CustomCMDForm : Form
     {
-        private int _maxConsoleTextLength = 25000;
-        private int _minConsoleTextLength = 5000;
-        private int _maxLogCountPerFrame = 250;
+        private int _maxConsoleLogCount = 500;
+        private int _minConsoleLogCount = 23;
+        private int _maxLogCountPerFrame = 200;
         private PipeStream ps;
-        
+
         public int MaxConsoleLogCount
         {
             get
             {
-                return _maxConsoleTextLength;
+                return _maxConsoleLogCount;
             }
             set
             {
-                _maxConsoleTextLength = value;
+                _maxConsoleLogCount = value;
             }
         }
-        public int MinConsoleTextLength
+        public int MinConsoleLogCount
         {
             get
             {
-                return _minConsoleTextLength;
+                return _minConsoleLogCount;
             }
             set
             {
-                _minConsoleTextLength = value;
+                _minConsoleLogCount = value;
             }
         }
 
@@ -187,6 +187,7 @@ namespace ADL.CustomCMD
         private int _consoleCleared = 0;
         private float _avgLogsPerBlock = 0;
         private int _totalLogsWrittenInBlocks = 0;
+        private int _logCount = 0;
         /// <summary>
         /// Refreshes text box with content from the log stream.
         /// </summary>
@@ -196,9 +197,9 @@ namespace ADL.CustomCMD
             LogPackage block = ReadBlock();
             if (block.Logs.Count == 0) return;
 
-            if (MaxConsoleLogCount < block.Logs.Count)
+            if (MaxConsoleLogCount < _logCount)
                 ClearConsole(block.Logs.Count());
-
+            _logCount += block.Logs.Count;
             ShowInConsole(block);
             Text = string.Format(ConsoleTitleInfo, _totalLogsReceived, _logsWritten, _blocksWritten, Math.Round(_avgLogsPerBlock, 3), _consoleCleared);
 
@@ -230,7 +231,7 @@ namespace ADL.CustomCMD
                 for (int j = 0; j < clb_TagFilter.CheckedItems.Count; j++)
                 {
                     if (!Debug.GetPrefixMask(clb_TagFilter.CheckedItems[j].ToString(), out mask)) continue;
-                    if (BitMask.IsContainedInMask(mask,  logPackage.Logs[i].Mask, false)) containsOne = true;
+                    if (BitMask.IsContainedInMask(mask, logPackage.Logs[i].Mask, false)) containsOne = true;
                 }
 
                 result[i] = containsOne;
@@ -245,6 +246,9 @@ namespace ADL.CustomCMD
             return logPackage;
         }
 
+
+        private Queue<Log> lastLogs = new Queue<Log>();
+
         /// <summary>
         /// Splits the log string on new lines
         /// Filters them, and chooses the right way to append it to the console.
@@ -257,10 +261,11 @@ namespace ADL.CustomCMD
             _totalLogsReceived += llogs.Logs.Count;
             if (llogs.Logs.Count > MaxLogCountPerFrame) //Can not keep up with the amount of logs. Writing this whole block without color support and at one piece.
             {
+                Debug.Log(Debug.ADLWarningMask, "CustomCMDForm.ShowInConsole(Logpackage Logs) : You are outputting to much logs. the Console can not keep up in that pace. Consider changing the mask for the console to achieve better performance.");
                 _totalLogsWrittenInBlocks += llogs.Logs.Count;
                 _blocksWritten++;
 
-                WriteToConsole(string.Join("", llogs.Logs.Select(x=>x.Message).ToArray()), FontColor); //Rejoin the filtered list.
+                WriteToConsole(string.Join("", llogs.Logs.Select(x => x.Message).ToArray()), FontColor); //Rejoin the filtered list.
             }
             else
             {
@@ -269,6 +274,10 @@ namespace ADL.CustomCMD
                 foreach (Log l in llogs.Logs)
                 {
                     fontColor = GetColorFromMask(l.Mask);
+
+                    lastLogs.Enqueue(l);
+                    if (lastLogs.Count > MinConsoleLogCount)
+                        lastLogs.Dequeue();
                     WriteToConsole(l.Message, fontColor);
                 }
             }
@@ -293,15 +302,16 @@ namespace ADL.CustomCMD
         private void ClearConsole(int nextLength)
         {
 
-            if (rtb_LogOutput.TextLength < MinConsoleTextLength + nextLength) return;
             _consoleCleared++;
-            
-            int totalLength = rtb_LogOutput.Text.Length + nextLength;
-            string txt = rtb_LogOutput.Text.Substring
-                (rtb_LogOutput.TextLength - (MinConsoleTextLength + nextLength),
-                MinConsoleTextLength + nextLength);
+            List<Log> logs = lastLogs.ToList();
+            lastLogs.Clear();
+            _logCount = 0;
             rtb_LogOutput.Clear();
-            rtb_LogOutput.AppendText(txt, FontColor);
+
+            foreach (Log log in logs)
+            {
+                WriteToConsole(log.Message, GetColorFromMask(log.Mask));
+            }
         }
 
 

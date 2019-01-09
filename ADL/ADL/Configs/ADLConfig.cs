@@ -38,6 +38,11 @@ namespace ADL.Configs
         public SerializableDictionary<int, string> Prefixes;
 
         /// <summary>
+        /// Determines the Options on how much effort is put into finding the right tags
+        /// </summary>
+        public PrefixLookupSettings PrefixLookupMode;
+
+        /// <summary>
         /// Standard Confuguration
         /// </summary>
         /// <returns>The standard configuration of ADL</returns>
@@ -60,6 +65,7 @@ namespace ADL.Configs
                 std.WarningMask = new BitMask(true);
                 std.SendWarnings = true;
                 std.Prefixes = new SerializableDictionary<int, string>(new Dictionary<int, string>());
+                std.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE | PrefixLookupSettings.DECONSTRUCTMASKTOFIND;
                 return std;
             }
         }

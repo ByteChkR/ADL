@@ -17,15 +17,17 @@ var class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form =
     [ "_colorCoding", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a4b693fad7b2ef96af9fc30da2062aacb", null ],
     [ "_consoleCleared", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a5c008630b4cfde18de53b7f38344f07c", null ],
     [ "_hasColorCoding", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a55c77dfaef33d120690074e8625d72fc", null ],
+    [ "_logCount", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ad0dfeefeb41ba5c65eafe3b9323a8b0c", null ],
     [ "_logsWritten", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a46cb84a81ba221a872b5b18efb6f89b0", null ],
-    [ "_maxConsoleTextLength", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a94b90c4074f13153d3ba3a1d5242e6b1", null ],
+    [ "_maxConsoleLogCount", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a06985a62c3c6b4e05b0f78a6a576695d", null ],
     [ "_maxLogCountPerFrame", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ab1a2fb56c082758c41a73f2fe3fba815", null ],
-    [ "_minConsoleTextLength", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#acb4658d62ec1dac82fe80812a949b044", null ],
+    [ "_minConsoleLogCount", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ad76af202e119b4346565859ecaf40395", null ],
     [ "_totalLogsReceived", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ad308303ac30d0309a4eeaafb459b009b", null ],
     [ "_totalLogsWrittenInBlocks", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#afc7ac9dcfe6b54bca7ed6a6d079aa00f", null ],
     [ "clb_TagFilter", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a82e25539fd59031c2807322d1d8d2d4a", null ],
     [ "components", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a9e6d11d5b23133dffd23871d74bb4978", null ],
     [ "ConsoleTitleInfo", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#aa042d971f1d68d501b6f78d7ed53e6d3", null ],
+    [ "lastLogs", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#affe15c9f17424dcd6a65bc70d65af1e7", null ],
     [ "ps", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a232ba288f707c6d63fa19e0b538c7daf", null ],
     [ "rtb_LogOutput", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ae2ea9b4feeaba36f61c5d3663f97ec86", null ],
     [ "splitContainer1", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#acd5a6b6d5f20b23d7a840b350026cefd", null ],
@@ -35,5 +37,5 @@ var class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form =
     [ "FontSize", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a98ecd48a580259fd1bb9f7a3dce7e263", null ],
     [ "MaxConsoleLogCount", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a9ea382a860fccedd6684ecb1dfbfbe61", null ],
     [ "MaxLogCountPerFrame", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ab63ece45d90e2f013b4792f28e3bd3b3", null ],
-    [ "MinConsoleTextLength", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a24585ec27816f5ce7e5e9df6bb9e10d2", null ]
+    [ "MinConsoleLogCount", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a5324b1c712616b7040096fc718b4e342", null ]
 ];

@@ -18,7 +18,7 @@ namespace ADL.Streams
         public LogTextStream(Stream baseStream, int mask = ~0, MatchType matchType = MatchType.MATCH_ALL, bool setTimeStamp = false) : base(baseStream, mask, matchType, setTimeStamp) { }
 
         /// <summary>
-        /// Fills Buffer with the string message only.(used when used System.Console
+        /// Fills Buffer with the string message only.(used when output is System.Console)
         /// </summary>
         /// <param name="value">Line</param>
         public override void Write(Log log)

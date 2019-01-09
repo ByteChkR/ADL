@@ -179,7 +179,6 @@ namespace DebugTest
             CreateADLConfig();
             CreateADLCustomCMDConfig();
             Debug.LoadConfig(); //Using the standard path
-
             //Runtime Config Changes(not Getting saved):
             Debug.SendWarnings = true;
             Debug.ADLEnabled = true;

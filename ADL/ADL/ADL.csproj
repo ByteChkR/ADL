@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configs\PrefixLookupSettings.cs" />
     <Compile Include="Streams\Log.cs" />
     <Compile Include="Streams\LogPackage.cs" />
     <Compile Include="Configs\ADLConfig.cs" />
