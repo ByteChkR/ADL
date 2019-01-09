@@ -16,7 +16,8 @@ var hierarchy =
       [ "ADL.Configs.ADLConfig", "struct_a_d_l_1_1_configs_1_1_a_d_l_config.html", null ],
       [ "ADL.Configs.ADLCustomConsoleConfig", "struct_a_d_l_1_1_configs_1_1_a_d_l_custom_console_config.html", null ]
     ] ],
-    [ "ADL.LogStream", "class_a_d_l_1_1_log_stream.html", null ],
+    [ "ADL.Streams.Log", "struct_a_d_l_1_1_streams_1_1_log.html", null ],
+    [ "ADL.Streams.LogPackage", "struct_a_d_l_1_1_streams_1_1_log_package.html", null ],
     [ "ADL.Unity.LogStreamParams", "class_a_d_l_1_1_unity_1_1_log_stream_params.html", null ],
     [ "ADL.UnitTests.MaskOperations", "class_a_d_l_1_1_unit_tests_1_1_mask_operations.html", null ],
     [ "MonoBehaviour", null, [
@@ -32,12 +33,13 @@ var hierarchy =
     [ "ADL.CustomCMD.RichTextBoxExtensions", "class_a_d_l_1_1_custom_c_m_d_1_1_rich_text_box_extensions.html", null ],
     [ "ADL.Configs.SerializableColor", "struct_a_d_l_1_1_configs_1_1_serializable_color.html", null ],
     [ "ADL.Configs.SerializableDictionary< T1, T2 >", "struct_a_d_l_1_1_configs_1_1_serializable_dictionary.html", null ],
+    [ "ADL.Configs.SerializableDictionary< int, ADL.Configs.SerializableColor >", "struct_a_d_l_1_1_configs_1_1_serializable_dictionary.html", null ],
     [ "ADL.Configs.SerializableDictionary< int, string >", "struct_a_d_l_1_1_configs_1_1_serializable_dictionary.html", null ],
-    [ "ADL.Configs.SerializableDictionary< string, ADL.Configs.SerializableColor >", "struct_a_d_l_1_1_configs_1_1_serializable_dictionary.html", null ],
     [ "Stream", null, [
-      [ "ADL.PipeStream", "class_a_d_l_1_1_pipe_stream.html", null ]
-    ] ],
-    [ "TextWriter", null, [
+      [ "ADL.Streams.LogStream", "class_a_d_l_1_1_streams_1_1_log_stream.html", [
+        [ "ADL.Streams.LogTextStream", "class_a_d_l_1_1_streams_1_1_log_text_stream.html", null ]
+      ] ],
+      [ "ADL.Streams.PipeStream", "class_a_d_l_1_1_streams_1_1_pipe_stream.html", null ],
       [ "ADL.Unity.UnityTextWriter", "class_a_d_l_1_1_unity_1_1_unity_text_writer.html", null ]
     ] ],
     [ "ADL.Unity.UnityUtils", "class_a_d_l_1_1_unity_1_1_unity_utils.html", null ],

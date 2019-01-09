@@ -50,17 +50,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configs\PrefixLookupSettings.cs" />
+    <Compile Include="Streams\Log.cs" />
+    <Compile Include="Streams\LogPackage.cs" />
     <Compile Include="Configs\ADLConfig.cs" />
     <Compile Include="BitMask.cs" />
     <Compile Include="Configs\ConfigManager.cs" />
     <Compile Include="Configs\IADLConfig.cs" />
-    <Compile Include="LogStream.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="MaskCombineType.cs" />
     <Compile Include="MatchType.cs" />
-    <Compile Include="PipeStream.cs" />
+    <Compile Include="Streams\PipeStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Configs\SerializableDictionary.cs" />
+    <Compile Include="Streams\LogStream.cs" />
+    <Compile Include="Streams\LogTextStream.cs" />
     <Compile Include="UpdateDataObject.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>

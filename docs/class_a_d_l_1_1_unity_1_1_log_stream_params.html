@@ -99,10 +99,10 @@ $(document).ready(function(){initNavTree('class_a_d_l_1_1_unity_1_1_log_stream_p
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a511976146d776a6e618baf1e47c99f34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_d_l_1_1_log_stream.html">LogStream</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_log_stream_params.html#a511976146d776a6e618baf1e47c99f34">ToLogStream</a> ()</td></tr>
-<tr class="memdesc:a511976146d776a6e618baf1e47c99f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="class_a_d_l_1_1_log_stream.html" title="Log Stream class, use this when you want to add a new stream to the debug system. ...">LogStream</a>. If CreateCustomConsole = true then its not initialized with filname. Instead its initialized with a <a class="el" href="class_a_d_l_1_1_pipe_stream.html" title="PipeStream is a thread-safe read/write data stream for use between two threads in a single-producer/s...">PipeStream</a> to support the Custrom Console Window.  <a href="#a511976146d776a6e618baf1e47c99f34">More...</a><br /></td></tr>
+<tr class="memitem:a511976146d776a6e618baf1e47c99f34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html">LogStream</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_log_stream_params.html#a511976146d776a6e618baf1e47c99f34">ToLogStream</a> ()</td></tr>
+<tr class="memdesc:a511976146d776a6e618baf1e47c99f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a LogStream. If CreateCustomConsole = true then its not initialized with filname. Instead its initialized with a PipeStream to support the Custrom Console Window.  <a href="#a511976146d776a6e618baf1e47c99f34">More...</a><br /></td></tr>
 <tr class="separator:a511976146d776a6e618baf1e47c99f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cd3548465c20596918ee37292bed704"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_d_l_1_1_log_stream.html">LogStream</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_log_stream_params.html#a8cd3548465c20596918ee37292bed704">ToLogStream</a> (System.IO.Stream stream)</td></tr>
+<tr class="memitem:a8cd3548465c20596918ee37292bed704"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html">LogStream</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_log_stream_params.html#a8cd3548465c20596918ee37292bed704">ToLogStream</a> (System.IO.Stream stream)</td></tr>
 <tr class="memdesc:a8cd3548465c20596918ee37292bed704"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a Log Stream from specified stream. Discards some of the information in this object.  <a href="#a8cd3548465c20596918ee37292bed704">More...</a><br /></td></tr>
 <tr class="separator:a8cd3548465c20596918ee37292bed704"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -117,11 +117,8 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>FilePath</b> = &quo
 <tr class="memitem:ad27da98d363d1b2de2c2acef2aa2ba99"><td class="memItemLeft" align="right" valign="top"><a id="ad27da98d363d1b2de2c2acef2aa2ba99"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>SetTimeStamp</b> = false</td></tr>
 <tr class="separator:ad27da98d363d1b2de2c2acef2aa2ba99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab10680435c136de2248cf8a7fbad1a21"><td class="memItemLeft" align="right" valign="top"><a id="ab10680435c136de2248cf8a7fbad1a21"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>AppendIfExists</b> = false</td></tr>
-<tr class="separator:ab10680435c136de2248cf8a7fbad1a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a049cda413bc480b15e4c102c28b04e19"><td class="memItemLeft" align="right" valign="top"><a id="a049cda413bc480b15e4c102c28b04e19"></a>
-<a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Mask</b> = -1</td></tr>
+<a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Mask</b> = new <a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a>(true)</td></tr>
 <tr class="separator:a049cda413bc480b15e4c102c28b04e19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a044c493acf72de9c5ee1e35575bc13"><td class="memItemLeft" align="right" valign="top"><a id="a0a044c493acf72de9c5ee1e35575bc13"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>CreateCustomConsole</b> = false</td></tr>
@@ -137,7 +134,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>CreateCustomConsole</
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_a_d_l_1_1_log_stream.html">LogStream</a> ADL.Unity.LogStreamParams.ToLogStream </td>
+          <td class="memname"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html">LogStream</a> ADL.Unity.LogStreamParams.ToLogStream </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -145,7 +142,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>CreateCustomConsole</
       </table>
 </div><div class="memdoc">
 
-<p>Creates a <a class="el" href="class_a_d_l_1_1_log_stream.html" title="Log Stream class, use this when you want to add a new stream to the debug system. ...">LogStream</a>. If CreateCustomConsole = true then its not initialized with filname. Instead its initialized with a <a class="el" href="class_a_d_l_1_1_pipe_stream.html" title="PipeStream is a thread-safe read/write data stream for use between two threads in a single-producer/s...">PipeStream</a> to support the Custrom Console Window. </p>
+<p>Creates a LogStream. If CreateCustomConsole = true then its not initialized with filname. Instead its initialized with a PipeStream to support the Custrom Console Window. </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
@@ -157,7 +154,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>CreateCustomConsole</
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_a_d_l_1_1_log_stream.html">LogStream</a> ADL.Unity.LogStreamParams.ToLogStream </td>
+          <td class="memname"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html">LogStream</a> ADL.Unity.LogStreamParams.ToLogStream </td>
           <td>(</td>
           <td class="paramtype">System.IO.Stream&#160;</td>
           <td class="paramname"><em>stream</em></td><td>)</td>

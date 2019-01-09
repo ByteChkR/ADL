@@ -4,6 +4,7 @@ using System.IO;
 using System.Drawing;
 using System.Reflection;
 using ADL.Configs;
+using ADL.Streams;
 namespace ADL.CustomCMD
 {
     /// <summary>
@@ -19,17 +20,28 @@ namespace ADL.CustomCMD
 
 
         /// <summary>
-        /// Creates the console on a different thread.
+        /// Runs a WindowsForm on a different thread.
         /// </summary>
         /// <param name="ps">the Form to start on a different Thread.</param>
         private static void CreateCustomConsole(Form ps)
         {
-                new System.Threading.Thread(() =>
-                    Application.Run(ps)).Start();
+            new System.Threading.Thread(() =>
+                Run(ps)).Start();
 
         }
 
+        #region Creating Custom Console
 
+        /// <summary>
+        /// Runs the form.
+        /// </summary>
+        /// <param name="ps"></param>
+        static void Run(Form ps)
+        {
+            
+            Application.Run(ps);
+
+        }
 
         /// <summary>
         /// Creates a Custom Console on the Supplied PipeStream.
@@ -40,7 +52,7 @@ namespace ADL.CustomCMD
         /// <param name="FontSize">Font Size</param>
         /// <param name="colorCoding">Color Coding for the Tags</param>
         /// <returns>Reference to the Created Console.(Not Thread Save)</returns>
-        public static Form CreateCustomConsole(PipeStream ps, Color Background, Color FontColor, float FontSize = 8.25f, Dictionary<string, SerializableColor> colorCoding = null)
+        public static Form CreateCustomConsole(PipeStream ps, Color Background, Color FontColor, float FontSize = 8.25f, Dictionary<int, SerializableColor> colorCoding = null)
         {
             if (Debug.SendUpdateMessageOnFirstLog)
             {
@@ -80,6 +92,34 @@ namespace ADL.CustomCMD
             return CreateCustomConsole(ps, ConfigManager.ReadFromFile<ADLCustomConsoleConfig>(configPath));
         }
 
+        /// <summary>
+        /// Creates a Custom Console but without returning it.
+        /// This function can be called without having to reference System.Windows.Forms.
+        /// </summary>
+        /// <param name="ps">Pipe Stream</param>
+        /// <param name="Background">Background Color</param>
+        /// <param name="FontColor">Font Color</param>
+        /// <param name="FontSize">Font Size</param>
+        /// <param name="colorCoding">Color Coding for the Tags</param>
+        public static void CreateCustomConsoleNoReturn(PipeStream ps, ADLCustomConsoleConfig config)
+        {
+            CreateCustomConsole(new CustomCMDForm(ps as PipeStream, config.BackgroundColor , config.FontColor, config.FontSize, config.ColorCoding.ToDictionary()));
+        }
+
+        /// <summary>
+        /// Creates a Custom Console but without returning it.
+        /// This function can be called without having to reference System.Windows.Forms.
+        /// This Function is a Wrapper. See Other Overloads for more options.
+        /// </summary>
+        /// <param name="ps">Pipe Stream</param>
+        /// <param name="FontSize">Font Size</param>
+        /// <param name="colorCoding">Color Coding for the Tags</param>
+        public static void CreateCustomConsoleNoReturn(PipeStream ps, string configPath = "adl_customcmd_config.xml")
+        {
+            CreateCustomConsoleNoReturn(ps, ConfigManager.ReadFromFile<ADLCustomConsoleConfig>(configPath));
+        }
+
+        #endregion
 
         /// <summary>
         /// Saves the supplied config to the supplied file path
@@ -91,7 +131,6 @@ namespace ADL.CustomCMD
             ConfigManager.SaveToFile(path, config);
         }
 
-
         /// <summary>
         /// Saves the Supplied Arguments into a config file, that can be loaded when creating the form.
         /// </summary>
@@ -100,43 +139,17 @@ namespace ADL.CustomCMD
         /// <param name="FontSize"></param>
         /// <param name="colorCoding"></param>
         /// <param name="path"></param>
-        public static void SaveConfig(Color Background, Color FontColor, float FontSize, Dictionary<string, SerializableColor> colorCoding, string path = "adl_customcmd_config.xml")
+        public static void SaveConfig(Color Background, Color FontColor, float FontSize, Dictionary<int, SerializableColor> colorCoding, string path = "adl_customcmd_config.xml")
         {
             ADLCustomConsoleConfig config = new ADLCustomConsoleConfig();
             config.BackgroundColor = Background;
             config.FontColor = FontColor;
             config.FontSize = FontSize;
-            config.ColorCoding = new SerializableDictionary<string, SerializableColor>(colorCoding);
+            config.ColorCoding = new SerializableDictionary<int, SerializableColor>(colorCoding);
             SaveConfig(config, path);
         }
 
-        /// <summary>
-        /// Creates a Custom Console but without returning it.
-        /// This function can be called without having to reference System.Windows.Forms.
-        /// </summary>
-        /// <param name="ps">Pipe Stream</param>
-        /// <param name="Background">Background Color</param>
-        /// <param name="FontColor">Font Color</param>
-        /// <param name="FontSize">Font Size</param>
-        /// <param name="colorCoding">Color Coding for the Tags</param>
-        public static void CreateCustomConsoleNoReturn(Stream ps, Color Background, Color FontColor, float FontSize = 8.25f, Dictionary<string, SerializableColor> colorCoding = null)
-        {
-            if (ps != null && !(ps is PipeStream)) return;
-            CreateCustomConsole(new CustomCMDForm(ps as PipeStream, Background, FontColor, FontSize, colorCoding));
-        }
-
-        /// <summary>
-        /// Creates a Custom Console but without returning it.
-        /// This function can be called without having to reference System.Windows.Forms.
-        /// This Function is a Wrapper. See Other Overloads for more options.
-        /// </summary>
-        /// <param name="ps">Pipe Stream</param>
-        /// <param name="FontSize">Font Size</param>
-        /// <param name="colorCoding">Color Coding for the Tags</param>
-        public static void CreateCustomConsoleNoReturn(Stream ps, float FontSize = 8.25f, Dictionary<string, SerializableColor> colorCoding = null)
-        {
-            CreateCustomConsoleNoReturn(ps, Color.Black, Color.White, FontSize, colorCoding);
-        }
+        
 
         /// <summary>
         /// Initializes the System.Windows.Forms System.

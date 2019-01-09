@@ -18,11 +18,10 @@ namespace ADL
         /// <param name="flag">the flag</param>
         /// <param name="MatchAll">if false, it will return true if ANY flag is set on both sides.</param>
         /// <returns></returns>
-        public static bool IsContainedInMask(int mask, int flag, bool MatchAll)
+        public static bool IsContainedInMask(int mask, int flag, bool matchType)
         {
-            if (mask == -1 || flag == -1) return true; //Wildcard. When -1 you will get any message
             if (mask == 0 || flag == 0) return false; //Anti-Wildcard
-            if (MatchAll) //If true it compares the whole mask with the whole flag(if constructed from different flags)
+            if (matchType) //If true it compares the whole mask with the whole flag(if constructed from different flags)
             {
                 return (mask & flag) == flag;
             }
@@ -74,7 +73,7 @@ namespace ADL
         /// <returns></returns>
         public static int CombineMasks(MaskCombineType combineType = MaskCombineType.BIT_OR, params int[] masks)
         {
-            if (masks.Length == 0) return -1;
+            if (masks.Length == 0) return 0;
             int mask = masks[0];
             for (int i = 1; i < masks.Length; i++)
             {
@@ -127,7 +126,7 @@ namespace ADL
 
         #endregion
 
-        int _mask = -1;
+        int _mask = 0;
 
 
         /// <summary>
@@ -264,7 +263,7 @@ namespace ADL
         }
         #endregion
 
-        int _mask = -1;
+        int _mask = 0;
 
 
         /// <summary>
@@ -273,7 +272,7 @@ namespace ADL
         /// <param name="wildcard">If true, its a wildcard mask(everything)</param>
         public BitMask(bool wildcard = false)
         {
-            if (!wildcard) _mask = 0;
+            if (wildcard) _mask = ~0;
         }
 
         /// <summary>

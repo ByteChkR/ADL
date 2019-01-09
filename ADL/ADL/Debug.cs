@@ -4,7 +4,7 @@ using System.Text;
 using System.Reflection;
 using System.Linq;
 using ADL.Configs;
-
+using ADL.Streams;
 /// <summary>
 /// Namespace ADL is the "Root" namespace of ADL. It contains the Code needed to use ADL. But also in sub namespaces you will find other helpful tools.
 /// </summary>
@@ -15,7 +15,7 @@ namespace ADL
     /// </summary>
     public static class Debug
     {
-        
+
         #region Private Variables
 
         /// <summary>
@@ -62,6 +62,22 @@ namespace ADL
         /// </summary>
         private static List<LogStream> _streams = new List<LogStream>();
 
+        /// <summary>
+        /// Contains the flags that determine the way prefixes get looked up
+        /// </summary>
+        private static PrefixLookupSettings _lookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE | PrefixLookupSettings.DECONSTRUCTMASKTOFIND;
+        /// <summary>
+        /// The extracted flag if we should put tags at all
+        /// </summary>
+        private static bool _addPrefix;
+        /// <summary>
+        /// The extracted flag if we should deconstruct the mask to find potential tags
+        /// </summary>
+        private static bool _deconstructtofind;
+        /// <summary>
+        /// The extracted flag if we should end the lookup when one tag was found.(Does nothing if deconstruct flag is set to false)
+        /// </summary>
+        private static bool _onlyone;
         #endregion
 
         #region Public Properties
@@ -69,7 +85,7 @@ namespace ADL
         /// Public property, used to disable ADl
         /// </summary>
         public static bool ADLEnabled { get { return _adlEnabled; } set { _adlEnabled = value; } }
-        
+
         /// <summary>
         /// Public property, used to disable update check.(Saves ~500ms)
         /// </summary>
@@ -85,7 +101,7 @@ namespace ADL
         /// To disable the update messages, simly change the mask to new Bitmask(false)
         /// </summary>
         public static BitMask UpdateMask { get { return _updateMask; } set { _updateMask = value; } }
-        
+
         /// <summary>
         /// Warning Mask. This mask gets used when ADL sends warnings about (possible)wrong use.
         /// </summary>
@@ -95,7 +111,19 @@ namespace ADL
         /// The number of Streams that ADL writes to
         /// </summary>
         public static int LogStreamCount { get { return _adlEnabled ? _streams.Count : 0; } }
-#endregion
+
+        public static PrefixLookupSettings PrefixLookupMode
+        {
+            get { return _lookupMode; }
+            set
+            {
+                _addPrefix = BitMask.IsContainedInMask((int)value, (int)PrefixLookupSettings.ADDPREFIXIFAVAILABLE, false);
+                _deconstructtofind = BitMask.IsContainedInMask((int)value, (int)PrefixLookupSettings.DECONSTRUCTMASKTOFIND, false);
+                _onlyone = BitMask.IsContainedInMask((int)value, (int)PrefixLookupSettings.ONLYONEPREFIX, false);
+                _lookupMode = value;
+            }
+        }
+        #endregion
 
         #region Streams
 
@@ -135,7 +163,7 @@ namespace ADL
                 return;
             }
             _streams.Remove(stream);
-            if (CloseStream) stream.CloseStream();
+            if (CloseStream) stream.Close();
 
         }
 
@@ -149,7 +177,7 @@ namespace ADL
             if (CloseStream)
                 foreach (LogStream ls in _streams)
                 {
-                    ls.CloseStream();
+                    ls.Close();
                 }
             _streams.Clear();
         }
@@ -259,11 +287,13 @@ namespace ADL
 
             }
 
+            string _prefixes = GetMaskPrefix(mask);
+
             foreach (LogStream logs in _streams)
             {
                 if (logs.IsContainedInMask(mask))
                 {
-                    logs.Log(mask, GetMaskPrefix(mask) + message);
+                    logs.Write(new Log(mask, _prefixes + message + Utils.NEW_LINE));
                 }
             }
         }
@@ -314,7 +344,7 @@ namespace ADL
         /// <returns>All Prefixes for specified mask</returns>
         public static string GetMaskPrefix(BitMask mask)
         {
-            if (mask == -1) return "[GLOBAL]";
+            if (!_addPrefix) return "";
             _stringBuilder.Length = 0;
             if (_prefixes.ContainsKey(mask))
             {
@@ -322,7 +352,7 @@ namespace ADL
                 _stringBuilder.Append(_prefixes[mask]);
 
             }
-            else //We have no Prefix specified for this particular level
+            else if(_deconstructtofind) //We have no Prefix specified for this particular level
             {
                 List<int> flags = BitMask.GetUniqueMasksSet(mask); //Lets try to split all the flags into unique ones
                 for (int i = 0; i < flags.Count; i++) //And then we apply the prefixes.
@@ -330,10 +360,12 @@ namespace ADL
                     if (_prefixes.ContainsKey(flags[i]))
                     {
                         _stringBuilder.Insert(0, _prefixes[flags[i]]);
+                        if (_onlyone) break;
                     }
                     else //If still not in prefix lookup table, better have a prefix than having just plain text.
                     {
                         _stringBuilder.Insert(0, "[Log Mask:" + flags[i] + "]");
+                        if (_onlyone) break;
                     }
                 }
             }
@@ -355,6 +387,7 @@ namespace ADL
             ADLWarningMask = config.WarningMask;
             SendWarnings = config.SendWarnings;
             _prefixes = config.Prefixes.ToDictionary();
+            PrefixLookupMode = config.PrefixLookupMode;
         }
 
         /// <summary>
@@ -391,6 +424,7 @@ namespace ADL
             config.WarningMask = ADLWarningMask;
             config.SendWarnings = SendWarnings;
             config.Prefixes = new SerializableDictionary<int, string>(_prefixes);
+            config.PrefixLookupMode = PrefixLookupMode;
             SaveConfig(config, path);
         }
         #endregion

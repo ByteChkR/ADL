@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-
+using ADL.Streams;
 namespace ADL.Unity
 {
     /// <summary>
@@ -15,10 +15,8 @@ namespace ADL.Unity
         public MatchType MatchType = MatchType.MATCH_ALL;
         [Tooltip("Adds Timestamps([hh:mm:ss]) to the Logs")]
         public bool SetTimeStamp = false;
-        [Tooltip("If used as a file, it will append instead of delete")]
-        public bool AppendIfExists = false;
         [Tooltip("The Mask. The levels you want to ..Spectate..")]
-        [EnumFlagsAttribute] public BitMask Mask = -1;
+        [EnumFlagsAttribute] public BitMask Mask = new BitMask(true);
         public bool CreateCustomConsole = false;
 
         /// <summary>
@@ -30,9 +28,9 @@ namespace ADL.Unity
         {
             if (CreateCustomConsole)
             {
-                return LogStream.CreateLogStreamFromStream(new PipeStream(), Mask, MatchType, SetTimeStamp);
+                return new LogStream(new PipeStream(), Mask, MatchType, SetTimeStamp);
             }
-            return LogStream.CreateLogStreamFromFile(FilePath, Mask, MatchType, SetTimeStamp, AppendIfExists);
+            return new LogTextStream(new System.IO.FileStream(FilePath, System.IO.FileMode.OpenOrCreate), Mask, MatchType, SetTimeStamp);
         }
 
         /// <summary>
@@ -42,7 +40,7 @@ namespace ADL.Unity
         /// <returns></returns>
         public LogStream ToLogStream(System.IO.Stream stream)
         {
-            return LogStream.CreateLogStreamFromStream(stream, Mask, MatchType, SetTimeStamp);
+            return new LogStream(stream, Mask, MatchType, SetTimeStamp);
         }
 
         
