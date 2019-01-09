@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DAE6445D-6F2B-4C3B-BEED-F04CA2332F97}</ProjectGuid>
+    <ProjectGuid>{AE88768A-A112-4456-A3BA-68A2188AD1A6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DebugLoggingTest</RootNamespace>
-    <AssemblyName>AdvancedDebugLoggingTest</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <RootNamespace>ADLTest</RootNamespace>
+    <AssemblyName>ADLTest</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,20 +31,28 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>DebugTest.Program</StartupObject>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>icons8-code-100.ico</ApplicationIcon>
-  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ADL">
+      <HintPath>..\ADLRelease\ADL.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ADL.CustomCMD">
+      <HintPath>..\ADLRelease\ADL.CustomCMD.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ADL.Unity">
+      <HintPath>..\ADLRelease\ADL.Unity.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -55,23 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ADL.Unity\ADL.Unity.csproj">
-      <Project>{91132b0f-9dfb-4b0a-a30c-a47a1c94764a}</Project>
-      <Name>ADL.Unity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ADL\ADL.csproj">
-      <Project>{a6217f9e-bb25-4acc-8c90-209d3af80dc4}</Project>
-      <Name>ADL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CustomCMD\ADL.CustomCMD.csproj">
-      <Project>{7e8c8892-86a6-46af-ac32-bc632613b288}</Project>
-      <Name>ADL.CustomCMD</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="icons8-code-100.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

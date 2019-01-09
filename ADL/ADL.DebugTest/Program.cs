@@ -215,6 +215,7 @@ namespace DebugTest
             Debug.SendUpdateMessageOnFirstLog = true;
             Debug.SendWarnings = false;
             Debug.UpdateMask = 32;
+            Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
             Debug.SaveConfig(); //Not Needed to work, but for the next time we can just load the config
         }
 

@@ -157,8 +157,16 @@ namespace ADL.CustomCMD
         private static void InitWinForms()
         {
             _WinFormsFlagsInitialized = true;
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            try
+            {
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+            }
+            catch (System.Exception)
+            {
+                
+            }
         }
     }
 }

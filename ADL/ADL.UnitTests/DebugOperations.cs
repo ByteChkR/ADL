@@ -8,8 +8,10 @@ namespace ADL.UnitTests
         [TestMethod]
         public void Test_AddPrefixForMask()
         {
-            Debug.SendUpdateMessageOnFirstLog = false;
+            //Flag is required to find tags made up of unique masks(example: 2|8)
+            Debug.PrefixLookupMode = Configs.PrefixLookupSettings.ADDPREFIXIFAVAILABLE | Configs.PrefixLookupSettings.DECONSTRUCTMASKTOFIND;
 
+            Debug.SendUpdateMessageOnFirstLog = false;
 
             BitMask bm = new BitMask(2 | 8);
             Debug.AddPrefixForMask(bm, "HELLO");
@@ -41,6 +43,10 @@ namespace ADL.UnitTests
         [TestMethod]
         public void Test_SetAllPrefixes()
         {
+            //Flag is required to find tags made up of unique masks(example: 2|8)
+            Debug.PrefixLookupMode = Configs.PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
+
+
             Debug.SetAllPrefixes("Hello", "HELLO1", "HOLA2");
             Assert.IsTrue(Debug.GetMaskPrefix(1) == "Hello");
             Assert.IsTrue(Debug.GetMaskPrefix(2) == "HELLO1");
@@ -70,6 +76,8 @@ namespace ADL.UnitTests
         [TestMethod]
         public void Test_GetMaskPrefix()
         {
+            //Flag is required to find tags made up of unique masks(example: 2|8)
+            Debug.PrefixLookupMode = Configs.PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
 
             Debug.SetAllPrefixes("Hello", "HELLO1", "HOLA2");
             BitMask bm = 2;

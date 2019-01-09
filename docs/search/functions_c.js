@@ -1,13 +1,10 @@
 var searchData=
 [
-  ['read',['Read',['../class_a_d_l_1_1_streams_1_1_pipe_stream.html#aab6e79fca3863325043d394971c6c5d3',1,'ADL::Streams::PipeStream']]],
-  ['readavailable',['ReadAvailable',['../class_a_d_l_1_1_streams_1_1_pipe_stream.html#a3d7c91851f832a5497b2f674d7de2e61',1,'ADL::Streams::PipeStream']]],
-  ['readfromfile_3c_20t_20_3e',['ReadFromFile&lt; T &gt;',['../class_a_d_l_1_1_configs_1_1_config_manager.html#a7a6e7f2260d173ed964078495f007060',1,'ADL::Configs::ConfigManager']]],
-  ['refreshtextbox',['RefreshTextBox',['../class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a81dfe3dc03b1651dd3590f951914f6a8',1,'ADL::CustomCMD::CustomCMDForm']]],
-  ['removealloutputstreams',['RemoveAllOutputStreams',['../class_a_d_l_1_1_debug.html#adae2e77eb29191dc812b8875bd1ebd57',1,'ADL::Debug']]],
-  ['removeallprefixes',['RemoveAllPrefixes',['../class_a_d_l_1_1_debug.html#a55a298962d5f05d55c5b3b045e7f6fe7',1,'ADL::Debug']]],
-  ['removeflags',['RemoveFlags',['../class_a_d_l_1_1_bit_mask.html#aa50e8985e56cf41f53ba1f895791a2c5',1,'ADL::BitMask']]],
-  ['removeoutputstream',['RemoveOutputStream',['../class_a_d_l_1_1_debug.html#a72625a03910e11ca410548f07ecf8e32',1,'ADL::Debug']]],
-  ['removeprefixformask',['RemovePrefixForMask',['../class_a_d_l_1_1_debug.html#ab5709ff737a5647cf286569e91903a36',1,'ADL::Debug']]],
-  ['run',['Run',['../class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils.html#a362604458e6cc537407a4ee8f35177f4',1,'ADL::CustomCMD::CMDUtils']]]
+  ['oninspectorgui',['OnInspectorGUI',['../class_a_d_l_1_1_unity_1_1_debug_editor_window.html#ab25bbc6b5b7b8260e76dbf9a781fa815',1,'ADL::Unity::DebugEditorWindow']]],
+  ['operator_20bitmask',['operator BitMask',['../class_a_d_l_1_1_bit_mask.html#a0bcda263459cd77d6ae4f26be876385c',1,'ADL::BitMask']]],
+  ['operator_20bitmask_3c_20t_20_3e',['operator BitMask&lt; T &gt;',['../class_a_d_l_1_1_bit_mask.html#af0ec658c5a4bec51fda9ef9f52eda2c8',1,'ADL.BitMask.operator BitMask&lt; T &gt;(int mask)'],['../class_a_d_l_1_1_bit_mask.html#afe6859c33564e472239a277fea607393',1,'ADL.BitMask.operator BitMask&lt; T &gt;(T mask)']]],
+  ['operator_20color',['operator Color',['../struct_a_d_l_1_1_configs_1_1_serializable_color.html#a07b8d0d3ebab99181ee541f6e87e5418',1,'ADL::Configs::SerializableColor']]],
+  ['operator_20int',['operator int',['../class_a_d_l_1_1_bit_mask.html#a72abb623e82b9a2ac62208e14e8711d4',1,'ADL.BitMask.operator int(BitMask mask)'],['../class_a_d_l_1_1_bit_mask.html#afca9da1d8f687f188de8e8bc5eb6a3f1',1,'ADL.BitMask.operator int(BitMask&lt; T &gt; mask)']]],
+  ['operator_20serializablecolor',['operator SerializableColor',['../struct_a_d_l_1_1_configs_1_1_serializable_color.html#a5574df30790d667c53a70c5272e33e1e',1,'ADL::Configs::SerializableColor']]],
+  ['operator_20t',['operator T',['../class_a_d_l_1_1_bit_mask.html#a9cb8ff8547b6343cd918443a948c08f6',1,'ADL::BitMask']]]
 ];

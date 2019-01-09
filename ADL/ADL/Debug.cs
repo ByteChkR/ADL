@@ -65,7 +65,7 @@ namespace ADL
         /// <summary>
         /// Contains the flags that determine the way prefixes get looked up
         /// </summary>
-        private static PrefixLookupSettings _lookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE | PrefixLookupSettings.DECONSTRUCTMASKTOFIND;
+        private static PrefixLookupSettings _lookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
         /// <summary>
         /// The extracted flag if we should put tags at all
         /// </summary>

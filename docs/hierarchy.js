@@ -10,7 +10,8 @@ var hierarchy =
       [ "ADL.Unity.DebugEditorWindow", "class_a_d_l_1_1_unity_1_1_debug_editor_window.html", null ]
     ] ],
     [ "Form", null, [
-      [ "ADL.CustomCMD.CustomCMDForm", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html", null ]
+      [ "ADL.CustomCMD.CustomCMDForm", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html", null ],
+      [ "ADLFormTest.Form1", "class_a_d_l_form_test_1_1_form1.html", null ]
     ] ],
     [ "ADL.Configs.IADLConfig", "interface_a_d_l_1_1_configs_1_1_i_a_d_l_config.html", [
       [ "ADL.Configs.ADLConfig", "struct_a_d_l_1_1_configs_1_1_a_d_l_config.html", null ],
@@ -24,6 +25,8 @@ var hierarchy =
       [ "ADL.Unity.DebugComponent", "class_a_d_l_1_1_unity_1_1_debug_component.html", null ]
     ] ],
     [ "DebugTest.Program", "class_debug_test_1_1_program.html", null ],
+    [ "ADLFormTest.Program", "class_a_d_l_form_test_1_1_program.html", null ],
+    [ "ADLTest.Program", "class_a_d_l_test_1_1_program.html", null ],
     [ "PropertyAttribute", null, [
       [ "ADL.Unity.EnumFlagsAttribute", "class_a_d_l_1_1_unity_1_1_enum_flags_attribute.html", null ]
     ] ],

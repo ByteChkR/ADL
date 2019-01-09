@@ -5,13 +5,13 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL", "ADL\ADL.csproj", "{A6217F9E-BB25-4ACC-8C90-209D3AF80DC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.DebugTest", "DebugTest\ADL.DebugTest.csproj", "{DAE6445D-6F2B-4C3B-BEED-F04CA2332F97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.DebugTest", "ADL.DebugTest\ADL.DebugTest.csproj", "{DAE6445D-6F2B-4C3B-BEED-F04CA2332F97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.Unity", "ADL.Unity\ADL.Unity.csproj", "{91132B0F-9DFB-4B0A-A30C-A47A1C94764A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.CustomCMD", "CustomCMD\ADL.CustomCMD.csproj", "{7E8C8892-86A6-46AF-AC32-BC632613B288}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.CustomCMD", "ADL.CustomCMD\ADL.CustomCMD.csproj", "{7E8C8892-86A6-46AF-AC32-BC632613B288}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.UnitTests", "UnitTestProject1\ADL.UnitTests.csproj", "{F64CD928-7247-4D1E-8310-245E6EE95093}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.UnitTests", "ADL.UnitTests\ADL.UnitTests.csproj", "{F64CD928-7247-4D1E-8310-245E6EE95093}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
