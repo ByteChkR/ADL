@@ -19,6 +19,7 @@ namespace ADL.Unity
         [EnumFlagsAttribute] public BitMask Mask = new BitMask(true);
         public bool CreateCustomConsole = false;
 
+
         /// <summary>
         /// Creates a LogStream. If CreateCustomConsole = true then its not initialized with filname.
         /// Instead its initialized with a PipeStream to support the Custrom Console Window.

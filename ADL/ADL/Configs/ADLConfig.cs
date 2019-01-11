@@ -8,6 +8,7 @@ namespace ADL.Configs
     /// <summary>
     /// Contains the Configurations of the main ADL.Debug class.
     /// </summary>
+    [Serializable]
     public struct ADLConfig : IADLConfig
     {
         /// <summary>
@@ -35,6 +36,7 @@ namespace ADL.Configs
         /// <summary>
         /// The prefixes that are used when a log in a specific mask gets sent.
         /// </summary>
+       
         public SerializableDictionary<int, string> Prefixes;
 
         /// <summary>

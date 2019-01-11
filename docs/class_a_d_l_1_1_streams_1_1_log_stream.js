@@ -28,6 +28,7 @@ var class_a_d_l_1_1_streams_1_1_log_stream =
     [ "_streamClosed", "class_a_d_l_1_1_streams_1_1_log_stream.html#a635f94985015ba00f409229b71a9ac5b", null ],
     [ "CanTimeout", "class_a_d_l_1_1_streams_1_1_log_stream.html#a2a0fd48f03105754ecba1888d5dda7dd", null ],
     [ "AddTimeStamp", "class_a_d_l_1_1_streams_1_1_log_stream.html#a823b105ac24365376838f276a1bba514", null ],
+    [ "BaseStream", "class_a_d_l_1_1_streams_1_1_log_stream.html#acc2cdd6c5e42b7f078890ee72a3b6a0b", null ],
     [ "CanRead", "class_a_d_l_1_1_streams_1_1_log_stream.html#adbe057d21eda597e2e24d3cff016f2f4", null ],
     [ "CanSeek", "class_a_d_l_1_1_streams_1_1_log_stream.html#ac5abce0f6cddf69c1fac7017939cf992", null ],
     [ "CanWrite", "class_a_d_l_1_1_streams_1_1_log_stream.html#a22e32df786f24d95210a1af32fdcd4e2", null ],

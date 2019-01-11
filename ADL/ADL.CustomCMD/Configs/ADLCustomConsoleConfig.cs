@@ -10,6 +10,7 @@ namespace ADL.Configs
     /// <summary>
     /// Contains all fields that are configurable in the component CustomCMD
     /// </summary>
+    [Serializable]
     public struct ADLCustomConsoleConfig : IADLConfig
     {
         /// <summary>

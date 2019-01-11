@@ -103,7 +103,9 @@ namespace ADL.CustomCMD
         /// <param name="colorCoding">Color Coding for the Tags</param>
         public static void CreateCustomConsoleNoReturn(PipeStream ps, ADLCustomConsoleConfig config)
         {
-            CreateCustomConsole(new CustomCMDForm(ps as PipeStream, config.BackgroundColor , config.FontColor, config.FontSize, config.ColorCoding.ToDictionary()));
+            //Fix readability later
+
+            CreateCustomConsole(CreateCustomConsole(ps as PipeStream, config.BackgroundColor , config.FontColor, config.FontSize, config.ColorCoding.ToDictionary()));
         }
 
         /// <summary>

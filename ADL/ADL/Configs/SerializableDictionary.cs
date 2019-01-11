@@ -10,6 +10,7 @@ namespace ADL.Configs
     /// </summary>
     /// <typeparam name="T1">Key</typeparam>
     /// <typeparam name="T2">Value</typeparam>
+    [Serializable]
     public struct SerializableDictionary<T1, T2>
     {
         /// <summary>

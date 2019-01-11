@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Reflection;
 using ADL.Streams;
-
+using ADL.Configs;
 namespace ADL.Unity
 {
     /// <summary>
@@ -10,6 +10,13 @@ namespace ADL.Unity
     /// </summary>
     public sealed class DebugComponent : MonoBehaviour
     {
+        [Tooltip("Configuration of ADL")]
+        public ADLConfig Configuration = ADLConfig.Standard;
+
+        [Tooltip("Configuration of ADL")]
+        public ADLCustomConsoleConfig CustomCMDConfig = ADLCustomConsoleConfig.Standard;
+
+
         [Tooltip("The streams that get hooked up to the debug when the game starts")]
         public LogStreamParams[] Streams;
         [Tooltip("The Debug levels(Enum like)")]
@@ -24,14 +31,10 @@ namespace ADL.Unity
         [EnumFlagsAttribute] public int ConsoleWarningMask = 0;
         [Tooltip("On What prefixes should the unity console log an Error")]
         [EnumFlagsAttribute] public int ConsoleErrorMask = 0;
-        private Thread _consoleThread = null;
         void Awake()
         {
-
-            if (Debug.SendUpdateMessageOnFirstLog)
-            {
-                CheckForUpdates();
-            }
+            Debug.LoadConfig(Configuration);
+            
 
             DontDestroyOnLoad(gameObject);
             Debug.SetAllPrefixes(DebugLevel);
@@ -41,7 +44,7 @@ namespace ADL.Unity
                 Debug.AddOutputStream(ls);
                 if (lsp.CreateCustomConsole)
                 {
-                    //CreateConsole(ls); Currently not working due to referencing problems with my compiled code(using System.Windows.Forms)
+                    ADL.CustomCMD.CMDUtils.CreateCustomConsoleNoReturn(ls.BaseStream as PipeStream, CustomCMDConfig);// Currently not working due to referencing problems with my compiled code(using System.Windows.Forms)
                     //Apparently Unity Editor dll loading capabilities were never meant to load system resources.(The error is that the windows forms code is not able to find System.Runtime.Interopservices.Marshal.ReadInt16)
                     //Probably dumb mistake by me. Otherwise i manage to poke some super old 16 bit code that is not supported on my 64bit machine.
                 }
@@ -50,16 +53,19 @@ namespace ADL.Unity
             {
                 UnityUtils.CreateUnityConsole(ConsoleParams, ConsoleWarningMask, ConsoleErrorMask);
             }
+            if (Debug.SendUpdateMessageOnFirstLog)
+            {
+                CheckForUpdates();
+            }
 
         }
 
         void OnDestroy()
         {
             Debug.RemoveAllOutputStreams();
-            if (_consoleThread != null) _consoleThread.Abort();
         }
 
-        
+
         public void CheckForUpdates()
         {
             string msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name, Assembly.GetExecutingAssembly().GetName().Version);

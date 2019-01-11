@@ -9,6 +9,7 @@ namespace ADL.Configs
     /// <summary>
     /// A Struct that has implicit conversion to System.Drawing.Color.
     /// </summary>
+    [Serializable]
     public struct SerializableColor
     {
         /// <summary>

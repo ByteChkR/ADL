@@ -28,7 +28,7 @@ namespace ADL.Unity
         public static LogStream ToUnityConsoleLogStream(UnityTextWriter utw, LogStreamParams param)
         {
 
-            LogStream ls = new LogTextStream(utw, param.Mask, param.MatchType, param.SetTimeStamp);
+            LogStream ls = new LogStream(utw, param.Mask, param.MatchType, param.SetTimeStamp);
             return ls;
         }
     }

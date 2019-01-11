@@ -90,15 +90,15 @@ namespace ADL.Unity
             {
                 if (l.Mask == _warnMask)
                 {
-                    UnityEngine.Debug.LogWarning(_buffer.ToString());
+                    UnityEngine.Debug.LogWarning(l.Message);
                 }
                 else if (l.Mask == _errorMask)
                 {
-                    UnityEngine.Debug.LogError(_buffer.ToString());
+                    UnityEngine.Debug.LogError(l.Message);
                 }
                 else
                 {
-                    UnityEngine.Debug.Log(_buffer.ToString());
+                    UnityEngine.Debug.Log(l.Message);
                 }
             }
 

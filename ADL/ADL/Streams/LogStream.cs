@@ -93,6 +93,14 @@ namespace ADL.Streams
             }
         }
 
+        public Stream BaseStream
+        {
+            get
+            {
+                return _baseStream;
+            }
+        }
+
         #endregion
 
         #region Overrides
