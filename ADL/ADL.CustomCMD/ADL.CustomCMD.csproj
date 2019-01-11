@@ -98,8 +98,6 @@
   <ItemGroup>
     <Content Include="icons8-code-100.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Streams\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

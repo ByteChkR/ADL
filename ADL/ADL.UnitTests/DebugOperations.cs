@@ -18,7 +18,7 @@ namespace ADL.UnitTests
             bool ret = Debug.GetMaskPrefix(bm) == "HELLO";
 
             Assert.IsTrue(ret);
-            
+
         }
 
         [TestMethod]
@@ -84,7 +84,42 @@ namespace ADL.UnitTests
             Assert.IsTrue(Debug.GetMaskPrefix(bm) == "HELLO1");
         }
 
+        [TestMethod]
+        public void Test_Log()
+        {
+            Streams.LogTextStream lts = new Streams.LogTextStream(new Streams.PipeStream());
+            lts.AddTimeStamp = false;
+            Debug.PrefixLookupMode = Configs.PrefixLookupSettings.NOPREFIX;
+            Debug.SendUpdateMessageOnFirstLog = false;
+            Debug.AddOutputStream(lts);
+            Debug.Log(1, "ffffffffff");
+            byte[] buf = new byte[lts.Length];
+            lts.Read(buf, 0, buf.Length);
+            string s = System.Text.Encoding.ASCII.GetString(buf);
+            System.Console.WriteLine(s);
+            Assert.IsTrue(s == "ffffffffff\n"); //ADL is appending the \n when using LogTextStreams
+        }
 
+        [TestMethod]
+        public void Test_RemoveOutputStream()
+        {
+            Streams.LogTextStream lts = new Streams.LogTextStream(new Streams.PipeStream());
+            Debug.AddOutputStream(lts);
+            int newCount = Debug.LogStreamCount;
+            Debug.RemoveOutputStream(lts);
+            Assert.IsTrue(Debug.LogStreamCount == newCount-1);
+        }
 
+        [TestMethod]
+        public void Test_LoadConfig()
+        {
+            Debug.LoadConfig(Configs.ADLConfig.Standard);
+            Assert.IsTrue(Debug.ADLEnabled == Configs.ADLConfig.Standard.ADLEnabled);
+            Assert.IsTrue(Debug.ADLWarningMask == Configs.ADLConfig.Standard.WarningMask);
+            Assert.IsTrue(Debug.UpdateMask == Configs.ADLConfig.Standard.UpdateMask);
+            Assert.IsTrue(Debug.SendWarnings == Configs.ADLConfig.Standard.SendWarnings);
+            Assert.IsTrue(Debug.GetAllPrefixes().Count == Configs.ADLConfig.Standard.Prefixes.Keys.Count);
+
+        }
     }
 }

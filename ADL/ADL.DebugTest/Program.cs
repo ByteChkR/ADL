@@ -195,7 +195,7 @@ namespace DebugTest
             {
                 System.Threading.Thread.Sleep(50);
                 mul = rnd.Next(0, 7);
-                Debug.Log(Utils.IntPow(2,mul), "Testing In Progress.");
+               //Debug.Log(Utils.IntPow(2,mul), "Testing In Progress.");
             }
 
             Console.Read();

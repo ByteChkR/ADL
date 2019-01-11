@@ -160,7 +160,8 @@ namespace ADL.Streams
 
         public override bool Equals(object obj)
         {
-            return _baseStream.Equals(obj);
+            return base.Equals(obj);
+            //return _baseStream.Equals(obj);
         }
 
         public override int GetHashCode()
