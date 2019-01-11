@@ -42,9 +42,22 @@ namespace ADLFormTest
             CMDUtils.SaveConfig(config);
         }
 
+        void CloseDebug(object sender, EventArgs e)
+        {
+            if(debugFrm != null)
+            {
+                CheckForIllegalCrossThreadCalls = false;
+                debugFrm.Close();
+                CheckForIllegalCrossThreadCalls = true;
+            }
+        }
+
+        Form debugFrm;
+
         public Form1()
         {
             InitializeComponent();
+            this.FormClosing += CloseDebug;
             // Create Config if not there:
             CreateADLConfig();
             CreateADLCustomCMDConfig();
@@ -55,7 +68,7 @@ namespace ADLFormTest
             PipeStream ps = new PipeStream();
             LogStream ls = new LogStream(ps, new BitMask(true));
             Debug.AddOutputStream(ls); //Custom Console
-            Form f = CMDUtils.CreateCustomConsole(ps);
+            debugFrm = CMDUtils.CreateCustomConsole(ps);
 
 
         }
