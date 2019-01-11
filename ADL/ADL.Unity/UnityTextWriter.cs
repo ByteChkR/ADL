@@ -7,7 +7,7 @@ namespace ADL.Unity
     /// <summary>
     /// Textwriter derived UnityTextWriter, Supporting Wanring/Error mask.
     /// </summary>
-    public sealed class UnityTextWriter : Stream
+    public  class UnityTextWriter : Stream
     {
 
         #region Overrides

@@ -4,7 +4,7 @@ namespace ADL.Unity
     /// <summary>
     /// Custom Arrtibute for unity inspector
     /// </summary>
-    public sealed class EnumFlagsAttribute : PropertyAttribute
+    public  class EnumFlagsAttribute : PropertyAttribute
     {
         /// <summary>
         /// Empty public constructor

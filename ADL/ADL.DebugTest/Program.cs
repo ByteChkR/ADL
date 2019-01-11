@@ -176,8 +176,8 @@ namespace DebugTest
 
         static void Main(string[] args)
         {
-            CreateADLConfig();
-            CreateADLCustomCMDConfig();
+            //CreateADLConfig();
+            //CreateADLCustomCMDConfig();
             Debug.LoadConfig(); //Using the standard path
             //Runtime Config Changes(not Getting saved):
             Debug.SendWarnings = true;

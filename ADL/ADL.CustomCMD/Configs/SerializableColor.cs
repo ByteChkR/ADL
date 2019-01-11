@@ -27,6 +27,7 @@ namespace ADL.Configs
             G = color.G;
             B = color.B;
         }
+        
 
 
         /// <summary>

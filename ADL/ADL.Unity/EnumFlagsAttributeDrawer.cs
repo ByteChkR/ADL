@@ -8,7 +8,7 @@ namespace ADL.Unity
     /// Draws the Actual mask field.
     /// </summary>
     [CustomPropertyDrawer(typeof(EnumFlagsAttribute))]
-    public sealed class EnumFlagsAttributeDrawer : PropertyDrawer
+    public  class EnumFlagsAttributeDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect _position, SerializedProperty _property, GUIContent _label)
         {

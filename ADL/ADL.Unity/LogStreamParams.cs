@@ -7,7 +7,7 @@ namespace ADL.Unity
     /// Class required by the Unity Component to Create a logstream.
     /// </summary>
     [Serializable]
-    public sealed class LogStreamParams
+    public  class LogStreamParams
     {
         [Tooltip("The file where the log should be saved\nNo effect on Console")]
         public string FilePath = "log.log";
@@ -16,7 +16,8 @@ namespace ADL.Unity
         [Tooltip("Adds Timestamps([hh:mm:ss]) to the Logs")]
         public bool SetTimeStamp = false;
         [Tooltip("The Mask. The levels you want to ..Spectate..")]
-        [EnumFlagsAttribute] public BitMask Mask = new BitMask(true);
+        [EnumFlagsAttribute]
+        public int Mask = new BitMask(true);
         public bool CreateCustomConsole = false;
 
 

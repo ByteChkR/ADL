@@ -9,7 +9,7 @@ namespace ADL.Configs
     /// Contains the Configurations of the main ADL.Debug class.
     /// </summary>
     [Serializable]
-    public struct ADLConfig : IADLConfig
+    public class ADLConfig : IADLConfig
     {
         /// <summary>
         /// Is ADL enabled when this config is loaded?

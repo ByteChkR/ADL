@@ -6,7 +6,7 @@ namespace ADL.Unity
     /// Custom Editor Window  for UnityInspector
     /// </summary>
     [CustomEditor(typeof(DebugComponent))]
-    public sealed class DebugEditorWindow : Editor
+    public  class DebugEditorWindow : Editor
     {
         /// <summary>
         /// List of string containing the tags.
@@ -15,7 +15,7 @@ namespace ADL.Unity
         
         void OnEnable()
         {
-            _debugLevel = serializedObject.FindProperty("DebugLevel");
+            _debugLevel = serializedObject.FindProperty("Configuration").FindPropertyRelative("MaskPrefix").FindPropertyRelative("Values");
         }
 
         /// <summary>

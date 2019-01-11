@@ -11,7 +11,7 @@ namespace ADL.Configs
     /// Contains all fields that are configurable in the component CustomCMD
     /// </summary>
     [Serializable]
-    public struct ADLCustomConsoleConfig : IADLConfig
+    public class ADLCustomConsoleConfig : IADLConfig
     {
         /// <summary>
         /// The background color of the log window
