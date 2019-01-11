@@ -47,11 +47,13 @@ namespace ADL.Configs
         {
             get
             {
-                ADLCustomConsoleConfig config = new ADLCustomConsoleConfig();
-                config.BackgroundColor = Color.Black;
-                config.FontColor = Color.White;
-                config.FontSize = 8.5f;
-                config.ColorCoding = new SerializableDictionary<int, SerializableColor>(new Dictionary<int, SerializableColor>());
+                ADLCustomConsoleConfig config = new ADLCustomConsoleConfig
+                {
+                    BackgroundColor = Color.Black,
+                    FontColor = Color.White,
+                    FontSize = 8.5f,
+                    ColorCoding = new SerializableDictionary<int, SerializableColor>(new Dictionary<int, SerializableColor>())
+                };
                 return config;
             }
         }

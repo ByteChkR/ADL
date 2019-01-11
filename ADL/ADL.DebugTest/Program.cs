@@ -198,9 +198,9 @@ namespace DebugTest
                //Debug.Log(Utils.IntPow(2,mul), "Testing In Progress.");
             }
 
-            Console.Read();
 
-            System.Windows.Forms.Application.Exit(); //Forces the custom console to close.
+
+            //System.Windows.Forms.Application.Exit(); //Forces the custom console to close.
 
         }
 

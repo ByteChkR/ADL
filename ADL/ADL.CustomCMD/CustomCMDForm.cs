@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 using ADL.Configs;
 using System.Linq;
 using ADL.Streams;
-using ADL;
 namespace ADL.CustomCMD
 {
 
@@ -227,10 +225,9 @@ namespace ADL.CustomCMD
             for (int i = 0; i < logPackage.Logs.Count; i++)
             {
                 containsOne = false;
-                BitMask mask;
                 for (int j = 0; j < clb_TagFilter.CheckedItems.Count; j++)
                 {
-                    if (!Debug.GetPrefixMask(clb_TagFilter.CheckedItems[j].ToString(), out mask)) continue;
+                    if (!Debug.GetPrefixMask(clb_TagFilter.CheckedItems[j].ToString(), out BitMask mask)) continue;
                     if (BitMask.IsContainedInMask(mask, logPackage.Logs[i].Mask, false)) containsOne = true;
                 }
 

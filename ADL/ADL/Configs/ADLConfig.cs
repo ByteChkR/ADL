@@ -60,14 +60,16 @@ namespace ADL.Configs
         {
             get
             {
-                ADLConfig std = new ADLConfig();
-                std.ADLEnabled = true;
-                std.SendUpdateMessageOnFirstLog = true;
-                std.UpdateMask = new BitMask(true);
-                std.WarningMask = new BitMask(true);
-                std.SendWarnings = true;
-                std.Prefixes = new SerializableDictionary<int, string>(new Dictionary<int, string>());
-                std.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE | PrefixLookupSettings.DECONSTRUCTMASKTOFIND;
+                ADLConfig std = new ADLConfig
+                {
+                    ADLEnabled = true,
+                    SendUpdateMessageOnFirstLog = true,
+                    UpdateMask = new BitMask(true),
+                    WarningMask = new BitMask(true),
+                    SendWarnings = true,
+                    Prefixes = new SerializableDictionary<int, string>(new Dictionary<int, string>()),
+                    PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE | PrefixLookupSettings.DECONSTRUCTMASKTOFIND
+                };
                 return std;
             }
         }

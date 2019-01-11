@@ -143,11 +143,13 @@ namespace ADL.CustomCMD
         /// <param name="path"></param>
         public static void SaveConfig(Color Background, Color FontColor, float FontSize, Dictionary<int, SerializableColor> colorCoding, string path = "adl_customcmd_config.xml")
         {
-            ADLCustomConsoleConfig config = new ADLCustomConsoleConfig();
-            config.BackgroundColor = Background;
-            config.FontColor = FontColor;
-            config.FontSize = FontSize;
-            config.ColorCoding = new SerializableDictionary<int, SerializableColor>(colorCoding);
+            ADLCustomConsoleConfig config = new ADLCustomConsoleConfig
+            {
+                BackgroundColor = Background,
+                FontColor = FontColor,
+                FontSize = FontSize,
+                ColorCoding = new SerializableDictionary<int, SerializableColor>(colorCoding)
+            };
             SaveConfig(config, path);
         }
 

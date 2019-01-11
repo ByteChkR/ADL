@@ -58,8 +58,7 @@ namespace ADL.UnitTests
         {
 
             Debug.SetAllPrefixes("Hello", "HELLO1", "HOLA2");
-            BitMask bm;
-            if (Debug.GetPrefixMask("Hello", out bm))
+            if (Debug.GetPrefixMask("Hello", out BitMask bm))
             {
                 Assert.IsTrue(bm == 1);
             }
@@ -87,8 +86,10 @@ namespace ADL.UnitTests
         [TestMethod]
         public void Test_Log()
         {
-            Streams.LogTextStream lts = new Streams.LogTextStream(new Streams.PipeStream());
-            lts.AddTimeStamp = false;
+            Streams.LogTextStream lts = new Streams.LogTextStream(new Streams.PipeStream())
+            {
+                AddTimeStamp = false
+            };
             Debug.PrefixLookupMode = Configs.PrefixLookupSettings.NOPREFIX;
             Debug.SendUpdateMessageOnFirstLog = false;
             Debug.AddOutputStream(lts);
