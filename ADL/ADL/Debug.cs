@@ -306,7 +306,7 @@ namespace ADL
         /// <param name="message">Message</param>
         public static void Log<T>(T mask, string message) where T : struct
         {
-            if (!_adlEnabled && ((BitMask)Convert.ToInt32(mask) != ADLWarningMask || !_sendWarnings))
+            if (!_adlEnabled && (!_sendWarnings || (BitMask)Convert.ToInt32(mask) != ADLWarningMask))
             {
                 return;
             }

@@ -94,6 +94,7 @@ namespace ADL.UnitTests
             Debug.SendUpdateMessageOnFirstLog = false;
             Debug.AddOutputStream(lts);
             Debug.Log(1, "ffffffffff");
+
             byte[] buf = new byte[lts.Length];
             lts.Read(buf, 0, buf.Length);
             string s = System.Text.Encoding.ASCII.GetString(buf);
