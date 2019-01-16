@@ -35,6 +35,19 @@ namespace ADL.Streams
             } while (bytesRead != 0);
             Logs = logs;
         }
+
+        public byte[] GetSerialized(bool setTimestamp)
+        {
+            List<byte> ret = new List<byte>();
+            Log l;
+            for(int i = 0; i < Logs.Count; i++)
+            {
+                l = Logs[i];
+                if (setTimestamp) l.Message = Utils.TimeStamp + l.Message;
+                ret.AddRange(l.Serialize());
+            }
+            return ret.ToArray();
+        }
     }
 }
 

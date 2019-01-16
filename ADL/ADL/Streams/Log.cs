@@ -13,7 +13,7 @@ namespace ADL.Streams
         /// <summary>
         /// The mask of the log.
         /// </summary>
-        public BitMask Mask;
+        public int Mask;
         /// <summary>
         /// The message that has been sent
         /// </summary>
@@ -25,7 +25,7 @@ namespace ADL.Streams
         /// </summary>
         /// <param name="mask"></param>
         /// <param name="message"></param>
-        public Log(BitMask mask, string message)
+        public Log(int mask, string message)
         {
             Mask = mask;
             Message = message;

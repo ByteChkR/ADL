@@ -28,7 +28,7 @@ namespace ADL.Configs
             _serializer = new XmlSerializer(typeof(T));
             if (!File.Exists(path))
             {
-                Debug.Log(new BitMask(true), "Config Manager: File" + path + "does not exist");
+                Debug.Log(BitMask.WildCard, "Config Manager: File" + path + "does not exist");
                 return (T)Activator.CreateInstance<T>().GetStandard();
             }
             try
@@ -40,7 +40,7 @@ namespace ADL.Configs
             catch (Exception)
             {
                 ret = (T)Activator.CreateInstance<T>().GetStandard();
-                Debug.Log(new BitMask(true), "Config Manager: Failed to deserialize XML file. Either XML file is corrupted or file access is denied.");
+                Debug.Log(BitMask.WildCard, "Config Manager: Failed to deserialize XML file. Either XML file is corrupted or file access is denied.");
             }
 
             return ret;
@@ -63,7 +63,7 @@ namespace ADL.Configs
             }
             catch (Exception)
             {
-                Debug.Log(new BitMask(true), "Config Manager: Failed to save xml file. Directory exists? Access to Write to directory?");
+                Debug.Log(BitMask.WildCard, "Config Manager: Failed to save xml file. Directory exists? Access to Write to directory?");
             }
         }
     }

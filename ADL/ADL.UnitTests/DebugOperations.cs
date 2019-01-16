@@ -98,7 +98,7 @@ namespace ADL.UnitTests
             byte[] buf = new byte[lts.Length];
             lts.Read(buf, 0, buf.Length);
             string s = System.Text.Encoding.ASCII.GetString(buf);
-            System.Console.WriteLine(s);
+            
             Assert.IsTrue(s == "ffffffffff\n"); //ADL is appending the \n when using LogTextStreams
         }
 

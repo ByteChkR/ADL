@@ -46,12 +46,12 @@ namespace ADL
         /// <summary>
         /// The mask that gets used when _sendUpdateMessage is true
         /// </summary>
-        private static BitMask _updateMask = new BitMask(true);
+        private static int _updateMask = new BitMask(true);
 
         /// <summary>
         /// The mask that gets used when ADL is sending warnings
         /// </summary>
-        private static BitMask _adlWarningMask = new BitMask(true);
+        private static int _adlWarningMask = new BitMask(true);
 
         /// <summary>
         /// String Builder to assemble the log
@@ -135,12 +135,12 @@ namespace ADL
         {
             if (!_adlEnabled)
             {
-                Log(ADLWarningMask, "AddOutputStream(" + stream.Mask + "): ADL is disabled, you are adding an Output Stream while ADL is disabled.");
+                Log(_adlWarningMask, "AddOutputStream(" + stream.Mask + "): ADL is disabled, you are adding an Output Stream while ADL is disabled.");
 
             }
             if (_streams.Contains(stream))
             {
-                Log(ADLWarningMask, "AddOutputStream(" + stream.Mask + "): Supplied stream is already in the list. Aborting!");
+                Log(_adlWarningMask, "AddOutputStream(" + stream.Mask + "): Supplied stream is already in the list. Aborting!");
                 return;
             }
             _streams.Add(stream);
@@ -155,11 +155,11 @@ namespace ADL
         {
             if (!_adlEnabled)
             {
-                Log(ADLWarningMask, "RemoveOutputStream(" + stream.Mask + "): ADL is disabled, you are removing an Output Stream while while ADL is disabled.");
+                Log(_adlWarningMask, "RemoveOutputStream(" + stream.Mask + "): ADL is disabled, you are removing an Output Stream while while ADL is disabled.");
             }
             if (!_streams.Contains(stream))
             {
-                Log(ADLWarningMask, "RemoveOutputStream(" + stream.Mask + "): Supplied stream is not in the list. Aborting!");
+                Log(_adlWarningMask, "RemoveOutputStream(" + stream.Mask + "): Supplied stream is not in the list. Aborting!");
                 return;
             }
             _streams.Remove(stream);
@@ -197,11 +197,11 @@ namespace ADL
         {
             if (!_adlEnabled)
             {
-                Log(ADLWarningMask, "AddPrefixForMask(" + mask + "): ADL is disabled, you are adding a prefix for a mask while ADL is disabled.");
+                Log(_adlWarningMask, "AddPrefixForMask(" + mask + "): ADL is disabled, you are adding a prefix for a mask while ADL is disabled.");
             }
             if (!BitMask.IsUniqueMask(mask))
             {
-                Log(ADLWarningMask, "AddPrefixForMask(" + mask + "): Adding Prefix: " + prefix + " for mask: " + mask + ". Mask is not unique.");
+                Log(_adlWarningMask, "AddPrefixForMask(" + mask + "): Adding Prefix: " + prefix + " for mask: " + mask + ". Mask is not unique.");
             }
             if (_prefixes.ContainsKey(mask))
                 _prefixes[mask] = prefix;
@@ -217,7 +217,7 @@ namespace ADL
         {
             if (!_adlEnabled)
             {
-                Log(ADLWarningMask, "RemovePrefixForMask(" + mask + "): ADL is disabled, you are removing a prefix for a mask while ADL is disabled.");
+                Log(_adlWarningMask, "RemovePrefixForMask(" + mask + "): ADL is disabled, you are removing a prefix for a mask while ADL is disabled.");
             }
             if (!_prefixes.ContainsKey(mask)) return;
             _prefixes.Remove(mask);
@@ -242,7 +242,7 @@ namespace ADL
             {
                 string info = "";
                 prefixes.ToList().ForEach(x => info += x + ", ");
-                Log(ADLWarningMask, "SetAllPrefixes(" + info + "): ADL is disabled, you are removing a prefix for a mask while ADL is disabled.");
+                Log(_adlWarningMask, "SetAllPrefixes(" + info + "): ADL is disabled, you are removing a prefix for a mask while ADL is disabled.");
             }
             RemoveAllPrefixes();
 
@@ -260,7 +260,7 @@ namespace ADL
         {
             if (!_adlEnabled)
             {
-                Log(ADLWarningMask, "GetAllPrefixes(): ADL is disabled, you are getting all prefixes while ADL is disabled.");
+                Log(_adlWarningMask, "GetAllPrefixes(): ADL is disabled, you are getting all prefixes while ADL is disabled.");
             }
             return _prefixes;
         }
@@ -273,27 +273,30 @@ namespace ADL
         /// </summary>
         /// <param name="mask">the flag</param>
         /// <param name="message">the message</param>
-        public static void Log(BitMask mask, string message)
+        public static void Log(int mask, string message)
         {
             if (!_adlEnabled && (mask != ADLWarningMask || !_sendWarnings)) return;
 
-            if (_firstLog && _sendUpdateMsg)
+            if (_firstLog)
             {
                 _firstLog = false;
 
-                string msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name, Assembly.GetExecutingAssembly().GetName().Version);
+                if (_sendUpdateMsg)
+                {
+                    string msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name, Assembly.GetExecutingAssembly().GetName().Version);
 
-                Log(UpdateMask, msg);
+                    Log(UpdateMask, msg);
 
+                }
             }
 
-            string _prefixes = GetMaskPrefix(mask);
+            string _msg = GetMaskPrefix(mask) + message + Utils.NEW_LINE;
 
             foreach (LogStream logs in _streams)
             {
                 if (logs.IsContainedInMask(mask))
                 {
-                    logs.Write(new Log(mask, _prefixes + message + Utils.NEW_LINE));
+                    logs.Write(new Log(mask, _msg));
                 }
             }
         }
@@ -304,13 +307,13 @@ namespace ADL
         /// <typeparam name="T">Enum</typeparam>
         /// <param name="mask">Enum Mask</param>
         /// <param name="message">Message</param>
-        public static void Log<T>(T mask, string message) where T : struct
+        public static void LogGen<T>(T mask, string message) where T : struct
         {
             if (!_adlEnabled && (!_sendWarnings || (BitMask)Convert.ToInt32(mask) != ADLWarningMask))
             {
                 return;
             }
-            Log((BitMask)Convert.ToInt32(mask), message);
+            Log(Convert.ToInt32(mask), message);
         }
 
         /// <summary>
@@ -352,7 +355,7 @@ namespace ADL
                 _stringBuilder.Append(_prefixes[mask]);
 
             }
-            else if(_deconstructtofind) //We have no Prefix specified for this particular level
+            else if (_deconstructtofind) //We have no Prefix specified for this particular level
             {
                 List<int> flags = BitMask.GetUniqueMasksSet(mask); //Lets try to split all the flags into unique ones
                 for (int i = 0; i < flags.Count; i++) //And then we apply the prefixes.

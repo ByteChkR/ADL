@@ -62,7 +62,7 @@ namespace DebugTest
                 Debug.Log(mask, "Test with mask " + mask);
             }
 
-            Debug.Log<LoggingTypes>(LoggingTypes.LOG, "Finished the Console Out Test.");
+            Debug.LogGen<LoggingTypes>(LoggingTypes.LOG, "Finished the Console Out Test.");
 
             //Now we want to remove the stream from the system.
             //Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
@@ -117,7 +117,7 @@ namespace DebugTest
                 Debug.Log(mask, "Test with mask " + mask);
             }
 
-            Debug.Log<LoggingTypes>(LoggingTypes.LOG, "Finished the CustomConsole Out Test.");
+            Debug.LogGen<LoggingTypes>(LoggingTypes.LOG, "Finished the CustomConsole Out Test.");
 
             //Now we want to remove the stream from the system.
             //Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
@@ -160,7 +160,7 @@ namespace DebugTest
                 Debug.Log(mask, "Test with mask " + mask);
             }
 
-            Debug.Log<LoggingTypes>(LoggingTypes.LOG, "Finished the Logfile Out Test.");
+            Debug.LogGen<LoggingTypes>(LoggingTypes.LOG, "Finished the Logfile Out Test.");
             Console.WriteLine("Finished the Logfile Out Test.");
 
             //Now we want to remove the stream from the system.
