@@ -1,9 +1,9 @@
 # ADL(Advanced Debug Logging)
 ___
 
-##License [here](https://github.com/ByteChkR/ADL/blob/master/LICENSE)
+## License [here](https://github.com/ByteChkR/ADL/blob/master/LICENSE)
 
-##Code of Conduct [here](https://github.com/ByteChkR/ADL/blob/master/CODE_OF_CONDUCT.md)
+## Code of Conduct [here](https://github.com/ByteChkR/ADL/blob/master/CODE_OF_CONDUCT.md)
 
 ## Documentation can be found [here](https://bytechkr.github.io/ADL/)
 
