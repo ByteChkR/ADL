@@ -14,8 +14,12 @@ var hierarchy =
       [ "ADLFormTest.Form1", "class_a_d_l_form_test_1_1_form1.html", null ]
     ] ],
     [ "ADL.Configs.IADLConfig", "interface_a_d_l_1_1_configs_1_1_i_a_d_l_config.html", [
-      [ "ADL.Configs.ADLConfig", "struct_a_d_l_1_1_configs_1_1_a_d_l_config.html", null ],
-      [ "ADL.Configs.ADLCustomConsoleConfig", "struct_a_d_l_1_1_configs_1_1_a_d_l_custom_console_config.html", null ]
+      [ "ADL.Configs.ADLConfig", "class_a_d_l_1_1_configs_1_1_a_d_l_config.html", [
+        [ "ADL.Unity.UnityConfig.UnityADLConfig", "class_a_d_l_1_1_unity_1_1_unity_config_1_1_unity_a_d_l_config.html", null ]
+      ] ],
+      [ "ADL.Configs.ADLCustomConsoleConfig", "class_a_d_l_1_1_configs_1_1_a_d_l_custom_console_config.html", [
+        [ "ADL.Unity.UnityConfig.UnityADLCustomConsoleConfig", "class_a_d_l_1_1_unity_1_1_unity_config_1_1_unity_a_d_l_custom_console_config.html", null ]
+      ] ]
     ] ],
     [ "ADL.Streams.Log", "struct_a_d_l_1_1_streams_1_1_log.html", null ],
     [ "ADL.Streams.LogPackage", "struct_a_d_l_1_1_streams_1_1_log_package.html", null ],
@@ -35,9 +39,14 @@ var hierarchy =
     ] ],
     [ "ADL.CustomCMD.RichTextBoxExtensions", "class_a_d_l_1_1_custom_c_m_d_1_1_rich_text_box_extensions.html", null ],
     [ "ADL.Configs.SerializableColor", "struct_a_d_l_1_1_configs_1_1_serializable_color.html", null ],
-    [ "ADL.Configs.SerializableDictionary< T1, T2 >", "struct_a_d_l_1_1_configs_1_1_serializable_dictionary.html", null ],
-    [ "ADL.Configs.SerializableDictionary< int, ADL.Configs.SerializableColor >", "struct_a_d_l_1_1_configs_1_1_serializable_dictionary.html", null ],
-    [ "ADL.Configs.SerializableDictionary< int, string >", "struct_a_d_l_1_1_configs_1_1_serializable_dictionary.html", null ],
+    [ "ADL.Configs.SerializableDictionary< T1, T2 >", "class_a_d_l_1_1_configs_1_1_serializable_dictionary.html", null ],
+    [ "ADL.Configs.SerializableDictionary< int, ADL.Configs.SerializableColor >", "class_a_d_l_1_1_configs_1_1_serializable_dictionary.html", null ],
+    [ "ADL.Configs.SerializableDictionary< int, SerializableColor >", "class_a_d_l_1_1_configs_1_1_serializable_dictionary.html", [
+      [ "ADL.Unity.UnityConfig.SerializableDictionaryIntColor", "class_a_d_l_1_1_unity_1_1_unity_config_1_1_serializable_dictionary_int_color.html", null ]
+    ] ],
+    [ "ADL.Configs.SerializableDictionary< int, string >", "class_a_d_l_1_1_configs_1_1_serializable_dictionary.html", [
+      [ "ADL.Unity.UnityConfig.SerializableDictionaryIntString", "class_a_d_l_1_1_unity_1_1_unity_config_1_1_serializable_dictionary_int_string.html", null ]
+    ] ],
     [ "Stream", null, [
       [ "ADL.Streams.LogStream", "class_a_d_l_1_1_streams_1_1_log_stream.html", [
         [ "ADL.Streams.LogTextStream", "class_a_d_l_1_1_streams_1_1_log_text_stream.html", null ]

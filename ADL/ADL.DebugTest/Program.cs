@@ -52,11 +52,11 @@ namespace DebugTest
 
             Debug.AddOutputStream(logStream); //Now we have Created the stream, just add it to the system.
 
-            
+
 
 
             //This is a test.
-            for (int i = 0; i < 63; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
+            for (int i = 1; i < 64; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
             {
                 int mask = i;
                 Debug.Log(mask, "Test with mask " + mask);
@@ -111,10 +111,10 @@ namespace DebugTest
                 ADL.CustomCMD.CMDUtils.CreateCustomConsole(pipeStream); //Creates a custom cmd with color coding and custom font size.
 
             //This is a test.
-            for (int i = 0; i < 64; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
+            for (int i = 1; i < 64; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
             {
                 int mask = i;
-                Debug.Log(mask, "Test with mask " + mask);
+                //Debug.Log(mask, "Test with mask " + mask);
             }
 
             Debug.LogGen<LoggingTypes>(LoggingTypes.LOG, "Finished the CustomConsole Out Test.");
@@ -154,7 +154,7 @@ namespace DebugTest
             Debug.AddOutputStream(logStream); //Now we have Created the stream, just add it to the system.
 
             //This is a test.
-            for (int i = 0; i < 63; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
+            for (int i = 1; i < 64; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
             {
                 int mask = i;
                 Debug.Log(mask, "Test with mask " + mask);
@@ -176,26 +176,37 @@ namespace DebugTest
 
         static void Main(string[] args)
         {
-            //CreateADLConfig();
+            CreateADLConfig();
             //CreateADLCustomCMDConfig();
             Debug.LoadConfig(); //Using the standard path
             //Runtime Config Changes(not Getting saved):
             Debug.SendWarnings = true;
             Debug.ADLEnabled = true;
+            Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE | 
+                                    PrefixLookupSettings.DECONSTRUCTMASKTOFIND | 
+                                    PrefixLookupSettings.BAKEPREFIXES; //If you have int.minvalue to int.maxvalue channels this is not really advisable. (Config files can be bloated by baked prefixes thus getting a huge size.)
 
             TestCustomConsoleOut();
-            
-            TestConsoleOut();
 
-            TestLogFileOut();
+            //TestConsoleOut();
+
+            //TestLogFileOut();
 
             Random rnd = new Random();
             int mul;
+            long msLastTime = 0;
+            float avg = 0;
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
             while (true)
             {
-                System.Threading.Thread.Sleep(50);
-                mul = rnd.Next(0, 7);
-               //Debug.Log(Utils.IntPow(2,mul), "Testing In Progress.");
+                System.Threading.Thread.Sleep(5);
+                mul = rnd.Next(int.MinValue, int.MaxValue); //Check the whole range of channels
+                sw.Start();
+                Debug.Log(mul, "Testing In Progress. LastTime: " + msLastTime + " AVG: " + avg);
+                sw.Stop();
+                msLastTime = sw.ElapsedTicks;
+                avg = (avg + msLastTime) / 2;
+                sw.Reset();
             }
 
 
@@ -210,6 +221,7 @@ namespace DebugTest
         private static void CreateADLConfig()
         {
             Debug.SetAllPrefixes("[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[ADL]");
+            Debug.AddPrefixForMask(new BitMask(true), "[GLOBAL]");
             Debug.ADLWarningMask = 4;
             Debug.ADLEnabled = false;
             Debug.SendUpdateMessageOnFirstLog = true;
@@ -221,7 +233,7 @@ namespace DebugTest
 
         private static void CreateADLCustomCMDConfig()
         {
-            
+
             SerializableDictionary<int, SerializableColor> colorCoding =
                 new SerializableDictionary<int, SerializableColor>(
                     new Dictionary<int, SerializableColor>()

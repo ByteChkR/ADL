@@ -2,7 +2,8 @@ var searchData=
 [
   ['_5faddprefix',['_addPrefix',['../class_a_d_l_1_1_debug.html#ab1afe975492f8548e6273e597f2a7702',1,'ADL::Debug']]],
   ['_5fadlenabled',['_adlEnabled',['../class_a_d_l_1_1_debug.html#adafa622fad8038eb16274662ce713a75',1,'ADL::Debug']]],
-  ['_5fadlwarningmask',['_adlWarningMask',['../class_a_d_l_1_1_debug.html#a08a94ca024f3ac0f6b592fbdc4a918b5',1,'ADL::Debug']]],
+  ['_5fadlwarningmask',['_adlWarningMask',['../class_a_d_l_1_1_debug.html#a2de65d9e998728adc8a01ccd66a1c8de',1,'ADL::Debug']]],
+  ['_5fbakeprefixes',['_bakePrefixes',['../class_a_d_l_1_1_debug.html#a8e84685fbeb37ccfc6dd22c846aa552b',1,'ADL::Debug']]],
   ['_5fbasestream',['_baseStream',['../class_a_d_l_1_1_streams_1_1_log_stream.html#abb85405d3d32a6525884e453d6adbda4',1,'ADL::Streams::LogStream']]],
   ['_5fbuffer',['_buffer',['../class_a_d_l_1_1_unity_1_1_unity_text_writer.html#ac4a80742ff977c59d01cd2d06c2df379',1,'ADL::Unity::UnityTextWriter']]],
   ['_5fcolorcoding',['_colorCoding',['../class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a4b693fad7b2ef96af9fc30da2062aacb',1,'ADL::CustomCMD::CustomCMDForm']]],
@@ -30,7 +31,7 @@ var searchData=
   ['_5fstreamclosed',['_streamClosed',['../class_a_d_l_1_1_streams_1_1_log_stream.html#a635f94985015ba00f409229b71a9ac5b',1,'ADL::Streams::LogStream']]],
   ['_5fstreams',['_streams',['../class_a_d_l_1_1_debug.html#ad2f0edb191fef5907e3e4a18a9bc0ac3',1,'ADL::Debug']]],
   ['_5fstringbuilder',['_stringBuilder',['../class_a_d_l_1_1_debug.html#aac6098902e6f3da0f23fb57a6086479b',1,'ADL::Debug']]],
-  ['_5fupdatemask',['_updateMask',['../class_a_d_l_1_1_debug.html#a4571141cce65fe85f5d0ac905f35083a',1,'ADL::Debug']]],
+  ['_5fupdatemask',['_updateMask',['../class_a_d_l_1_1_debug.html#a9716552c94f3d7291a17b5aa5e44da1a',1,'ADL::Debug']]],
   ['_5fwarnmask',['_warnMask',['../class_a_d_l_1_1_unity_1_1_unity_text_writer.html#aa985465017bf1ccf3c7f121fd4b8e136',1,'ADL::Unity::UnityTextWriter']]],
   ['_5fwinformsflagsinitialized',['_WinFormsFlagsInitialized',['../class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils.html#a146849b04a89ae31e86ae3fe959e98f5',1,'ADL::CustomCMD::CMDUtils']]]
 ];

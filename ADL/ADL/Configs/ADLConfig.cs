@@ -44,6 +44,30 @@ namespace ADL.Configs
         /// </summary>
         public PrefixLookupSettings PrefixLookupMode;
 
+        #region Lookup Presets
+
+        public static PrefixLookupSettings LowestPerformance =
+            PrefixLookupSettings.ADDPREFIXIFAVAILABLE |
+            PrefixLookupSettings.DECONSTRUCTMASKTOFIND;
+
+        public static PrefixLookupSettings LowPerformance =
+            PrefixLookupSettings.ADDPREFIXIFAVAILABLE |
+            PrefixLookupSettings.DECONSTRUCTMASKTOFIND |
+            PrefixLookupSettings.ONLYONEPREFIX;
+
+        public static PrefixLookupSettings MediumPerformance =
+            PrefixLookupSettings.ADDPREFIXIFAVAILABLE |
+            PrefixLookupSettings.DECONSTRUCTMASKTOFIND |
+            PrefixLookupSettings.BAKEPREFIXES;
+
+        public static PrefixLookupSettings HighPerformance =
+            PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
+
+        public static PrefixLookupSettings HighestPerformance = 
+            PrefixLookupSettings.NOPREFIX;
+
+        #endregion
+
         /// <summary>
         /// Standard Confuguration
         /// </summary>

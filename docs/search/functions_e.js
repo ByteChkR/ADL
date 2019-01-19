@@ -6,7 +6,7 @@ var searchData=
   ['scrolltobtm',['ScrollToBtm',['../class_a_d_l_1_1_custom_c_m_d_1_1_rich_text_box_extensions.html#aa77f6b712abceeabe675fc039c2505b4',1,'ADL::CustomCMD::RichTextBoxExtensions']]],
   ['seek',['Seek',['../class_a_d_l_1_1_streams_1_1_pipe_stream.html#a05518cb1662f33087cd3bfd2402b79e4',1,'ADL.Streams.PipeStream.Seek()'],['../class_a_d_l_1_1_unity_1_1_unity_text_writer.html#ac1433e1a8fea0b44cbc90d1250c5cad3',1,'ADL.Unity.UnityTextWriter.Seek()']]],
   ['serializablecolor',['SerializableColor',['../struct_a_d_l_1_1_configs_1_1_serializable_color.html#a6781a7c00531579ef8db6236bfc1af6a',1,'ADL::Configs::SerializableColor']]],
-  ['serializabledictionary',['SerializableDictionary',['../struct_a_d_l_1_1_configs_1_1_serializable_dictionary.html#ad96efae4a2992e72e47e5eb5ed4125b7',1,'ADL::Configs::SerializableDictionary']]],
+  ['serializabledictionary',['SerializableDictionary',['../class_a_d_l_1_1_configs_1_1_serializable_dictionary.html#ad96efae4a2992e72e47e5eb5ed4125b7',1,'ADL::Configs::SerializableDictionary']]],
   ['serialize',['Serialize',['../struct_a_d_l_1_1_streams_1_1_log.html#ab1c919b25b86148564ff5440ae608205',1,'ADL::Streams::Log']]],
   ['setallflags',['SetAllFlags',['../class_a_d_l_1_1_bit_mask.html#a025f039a81b7439fcc85a0ddff1a7502',1,'ADL.BitMask.SetAllFlags(int newMask)'],['../class_a_d_l_1_1_bit_mask.html#adbdf89842cde61d787eddde9f1699eec',1,'ADL.BitMask.SetAllFlags(T newFlags)']]],
   ['setallprefixes',['SetAllPrefixes',['../class_a_d_l_1_1_debug.html#aeee052b6bc6759222ce6ed32dd9763a1',1,'ADL::Debug']]],

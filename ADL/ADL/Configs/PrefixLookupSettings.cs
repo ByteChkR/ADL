@@ -11,6 +11,7 @@ namespace ADL.Configs
         NOPREFIX = 0,
         ADDPREFIXIFAVAILABLE = 1,
         DECONSTRUCTMASKTOFIND = 2,
-        ONLYONEPREFIX = 4
+        ONLYONEPREFIX = 4,
+        BAKEPREFIXES = 8
     }
 }

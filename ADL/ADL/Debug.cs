@@ -78,6 +78,12 @@ namespace ADL
         /// The extracted flag if we should end the lookup when one tag was found.(Does nothing if deconstruct flag is set to false)
         /// </summary>
         private static bool _onlyone;
+
+        /// <summary>
+        /// The extracted flag if ADL should bake prefixes on the fly to archieve better lookup performance.
+        /// This makes every new flag that is not prefixed a new prefix entry with the combined mask.
+        /// </summary>
+        private static bool _bakePrefixes;
         #endregion
 
         #region Public Properties
@@ -121,6 +127,7 @@ namespace ADL
                 _deconstructtofind = BitMask.IsContainedInMask((int)value, (int)PrefixLookupSettings.DECONSTRUCTMASKTOFIND, false);
                 _onlyone = BitMask.IsContainedInMask((int)value, (int)PrefixLookupSettings.ONLYONEPREFIX, false);
                 _lookupMode = value;
+                _bakePrefixes = BitMask.IsContainedInMask((int)value, (int)PrefixLookupSettings.BAKEPREFIXES, false);
             }
         }
         #endregion
@@ -363,13 +370,20 @@ namespace ADL
                     if (_prefixes.ContainsKey(flags[i]))
                     {
                         _stringBuilder.Insert(0, _prefixes[flags[i]]);
+                        
                         if (_onlyone) break;
                     }
                     else //If still not in prefix lookup table, better have a prefix than having just plain text.
                     {
                         _stringBuilder.Insert(0, "[Log Mask:" + flags[i] + "]");
+
                         if (_onlyone) break;
                     }
+                }
+                if(_bakePrefixes) //If we want to bake prefixes(adding constructed prefixes for faster lookup)
+                {
+                    _prefixes.Add(mask, _stringBuilder.ToString());//Create a "custom prefix" with the constructed mask.
+                    //Log(new BitMask(true), "Baked Prefix: "+_stringBuilder.ToString());
                 }
             }
             return _stringBuilder.ToString();
