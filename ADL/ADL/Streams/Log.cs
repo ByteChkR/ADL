@@ -63,7 +63,14 @@ namespace ADL.Streams
                 bytesRead = -1;
                 return new Log();
             }
-            string message = Encoding.ASCII.GetString(buffer, startIndex + sizeof(int) * 2, msgLength);
+            string message = "";
+            if (msgLength > buffer.Length - startIndex - sizeof(int) * 2)
+            {
+                return new Log();
+            }
+
+            message = Encoding.ASCII.GetString(buffer, startIndex + sizeof(int) * 2, msgLength);
+
             bytesRead = sizeof(int) * 2 + msgLength;
 
             return new Log(mask, message);

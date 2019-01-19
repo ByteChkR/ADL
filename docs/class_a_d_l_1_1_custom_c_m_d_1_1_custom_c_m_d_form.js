@@ -1,6 +1,6 @@
 var class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form =
 [
-    [ "CustomCMDForm", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a9c35db7b06ac67bbe60352effced02d5", null ],
+    [ "CustomCMDForm", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a23c9114f5dd7d0842555b699a65decdf", null ],
     [ "ClearConsole", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a73e3c94434ccdf2ea5077669a41b6002", null ],
     [ "Dispose", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a17d8b37ecf0237238b3f2f988a4ec700", null ],
     [ "FilterLogs", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a5f741ab2ef660f34a8d13dde9b85dca0", null ],
@@ -20,6 +20,7 @@ var class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form =
     [ "_logCount", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ad0dfeefeb41ba5c65eafe3b9323a8b0c", null ],
     [ "_logsWritten", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a46cb84a81ba221a872b5b18efb6f89b0", null ],
     [ "_maxConsoleLogCount", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a06985a62c3c6b4e05b0f78a6a576695d", null ],
+    [ "_maxLogCountPerBlock", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#aa7fdf812dcb500e42a6813bcc3998244", null ],
     [ "_maxLogCountPerFrame", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ab1a2fb56c082758c41a73f2fe3fba815", null ],
     [ "_minConsoleLogCount", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ad76af202e119b4346565859ecaf40395", null ],
     [ "_totalLogsReceived", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ad308303ac30d0309a4eeaafb459b009b", null ],
@@ -36,6 +37,7 @@ var class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form =
     [ "FontColor", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ab40e06989bf257f7a0fb4a7a6cc6f76d", null ],
     [ "FontSize", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a98ecd48a580259fd1bb9f7a3dce7e263", null ],
     [ "MaxConsoleLogCount", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a9ea382a860fccedd6684ecb1dfbfbe61", null ],
+    [ "MaxLogCountPerBlock", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a075b0e48c5f784fed8b31de2ec455b9d", null ],
     [ "MaxLogCountPerFrame", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ab63ece45d90e2f013b4792f28e3bd3b3", null ],
     [ "MinConsoleLogCount", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a5324b1c712616b7040096fc718b4e342", null ]
 ];

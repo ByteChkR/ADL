@@ -30,6 +30,7 @@ var class_a_d_l_1_1_debug =
     [ "_streams", "class_a_d_l_1_1_debug.html#ad2f0edb191fef5907e3e4a18a9bc0ac3", null ],
     [ "_stringBuilder", "class_a_d_l_1_1_debug.html#aac6098902e6f3da0f23fb57a6086479b", null ],
     [ "_updateMask", "class_a_d_l_1_1_debug.html#a9716552c94f3d7291a17b5aa5e44da1a", null ],
+    [ "PREFIX_LOCK", "class_a_d_l_1_1_debug.html#a34a5ddf1cdb951d651646429526771bc", null ],
     [ "ADLEnabled", "class_a_d_l_1_1_debug.html#a24102d4f94b0718e578f1cad6ef9f70c", null ],
     [ "ADLWarningMask", "class_a_d_l_1_1_debug.html#ae2261249b4849913d33acbc6a67ce4ef", null ],
     [ "LogStreamCount", "class_a_d_l_1_1_debug.html#a5a63093ff8ac05237224edcce57396c4", null ],

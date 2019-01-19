@@ -17,6 +17,7 @@ namespace ADL.CustomCMD
         private int _maxConsoleLogCount = 500;
         private int _minConsoleLogCount = 23;
         private int _maxLogCountPerFrame = 200;
+        private int _maxLogCountPerBlock = 500;
         private PipeStream ps;
 
         public int MaxConsoleLogCount
@@ -28,6 +29,18 @@ namespace ADL.CustomCMD
             set
             {
                 _maxConsoleLogCount = value;
+            }
+        }
+
+        public int MaxLogCountPerBlock
+        {
+            get
+            {
+                return _maxLogCountPerFrame;
+            }
+            set
+            {
+                _maxLogCountPerFrame = value;
             }
         }
         public int MinConsoleLogCount
@@ -110,6 +123,8 @@ namespace ADL.CustomCMD
             }
         }
 
+        
+
         /// <summary>
         /// Creates a new CustomCMD.
         /// </summary>
@@ -118,7 +133,7 @@ namespace ADL.CustomCMD
         /// <param name="BaseFontColor">Base Font Color. Acts as fallback if no color coding or tag not found</param>
         /// <param name="fontSize">font size of the logs</param>
         /// <param name="colorCoding">colorcoding</param>
-        public CustomCMDForm(PipeStream ps, Color Background, Color BaseFontColor, float fontSize, Dictionary<int, SerializableColor> colorCoding = null)
+        public CustomCMDForm(PipeStream ps, Color Background, Color BaseFontColor, float fontSize, int frameTime, Dictionary<int, SerializableColor> colorCoding = null)
         {
             InitializeComponent();
             this.ps = ps;
@@ -129,6 +144,7 @@ namespace ADL.CustomCMD
             }
             ps.BlockLastReadBuffer = false; //Nothing in the stream? Nothing in the return.
 
+            timer1.Interval = frameTime;
 
             //Visual elements
             BackColor = Background;
@@ -206,8 +222,10 @@ namespace ADL.CustomCMD
 
         private LogPackage ReadBlock()
         {
-            byte[] buffer = new byte[ps.Length];
-            ps.Read(buffer, 0, (int)ps.Length);
+            int length = (int)ps.Length; //Save it because between next and next+1 line there can still be added something to the stream
+            //Due to multithreading
+            byte[] buffer = new byte[length];
+            ps.Read(buffer, 0, length);
             return new LogPackage(buffer);
         }
 
@@ -253,11 +271,13 @@ namespace ADL.CustomCMD
         /// <param name="logs">whole block of logs</param>
         private void ShowInConsole(LogPackage logs)
         {
-            LogPackage llogs = FilterLogs(logs);
+            LogPackage llogs = logs;//FilterLogs(logs);
             if (llogs.Logs.Count == 0) return;
             _totalLogsReceived += llogs.Logs.Count;
             if (llogs.Logs.Count > MaxLogCountPerFrame) //Can not keep up with the amount of logs. Writing this whole block without color support and at one piece.
             {
+                if (_maxLogCountPerBlock < llogs.Logs.Count) return; // Thats not worth it. there is no way to write all of that in the console.
+                llogs = FilterLogs(llogs); //If we write in blocks filter out the wrong logs
                 Debug.Log(Debug.ADLWarningMask, "CustomCMDForm.ShowInConsole(Logpackage Logs) : You are outputting to much logs. the Console can not keep up in that pace. Consider changing the mask for the console to achieve better performance.");
                 _totalLogsWrittenInBlocks += llogs.Logs.Count;
                 _blocksWritten++;
@@ -270,6 +290,17 @@ namespace ADL.CustomCMD
                 Color fontColor;
                 foreach (Log l in llogs.Logs)
                 {
+
+                    //Do the FilterLogs() code in this loop to prevent another 2 for loops.
+                    bool containsOne = false;
+                    for (int j = 0; j < clb_TagFilter.CheckedItems.Count; j++)
+                    {
+                        if (!Debug.GetPrefixMask(clb_TagFilter.CheckedItems[j].ToString(), out BitMask mask)) continue;
+                        if (BitMask.IsContainedInMask(mask, l.Mask, false)) containsOne = true;
+                    }
+                    if (!containsOne) break;
+
+
                     fontColor = GetColorFromMask(l.Mask);
 
                     lastLogs.Enqueue(l);
@@ -319,6 +350,7 @@ namespace ADL.CustomCMD
         /// <param name="e"></param>
         private void Timer1_Tick(object sender, EventArgs e)
         {
+            Application.DoEvents();
             RefreshTextBox();
         }
     }

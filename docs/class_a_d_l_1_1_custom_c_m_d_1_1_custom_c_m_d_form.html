@@ -110,9 +110,9 @@ Inheritance diagram for ADL.CustomCMD.CustomCMDForm:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9c35db7b06ac67bbe60352effced02d5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a9c35db7b06ac67bbe60352effced02d5">CustomCMDForm</a> (<a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html">PipeStream</a> ps, Color Background, Color BaseFontColor, float fontSize, Dictionary&lt; int, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a> &gt; colorCoding=null)</td></tr>
-<tr class="memdesc:a9c35db7b06ac67bbe60352effced02d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="namespace_a_d_l_1_1_custom_c_m_d.html">CustomCMD</a>.  <a href="#a9c35db7b06ac67bbe60352effced02d5">More...</a><br /></td></tr>
-<tr class="separator:a9c35db7b06ac67bbe60352effced02d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23c9114f5dd7d0842555b699a65decdf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a23c9114f5dd7d0842555b699a65decdf">CustomCMDForm</a> (<a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html">PipeStream</a> ps, Color Background, Color BaseFontColor, float fontSize, int frameTime, Dictionary&lt; int, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a> &gt; colorCoding=null)</td></tr>
+<tr class="memdesc:a23c9114f5dd7d0842555b699a65decdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="namespace_a_d_l_1_1_custom_c_m_d.html">CustomCMD</a>.  <a href="#a23c9114f5dd7d0842555b699a65decdf">More...</a><br /></td></tr>
+<tr class="separator:a23c9114f5dd7d0842555b699a65decdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -125,6 +125,9 @@ Properties</h2></td></tr>
 <tr class="memitem:a9ea382a860fccedd6684ecb1dfbfbe61"><td class="memItemLeft" align="right" valign="top"><a id="a9ea382a860fccedd6684ecb1dfbfbe61"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxConsoleLogCount</b><code> [get, set]</code></td></tr>
 <tr class="separator:a9ea382a860fccedd6684ecb1dfbfbe61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a075b0e48c5f784fed8b31de2ec455b9d"><td class="memItemLeft" align="right" valign="top"><a id="a075b0e48c5f784fed8b31de2ec455b9d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxLogCountPerBlock</b><code> [get, set]</code></td></tr>
+<tr class="separator:a075b0e48c5f784fed8b31de2ec455b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5324b1c712616b7040096fc718b4e342"><td class="memItemLeft" align="right" valign="top"><a id="a5324b1c712616b7040096fc718b4e342"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>MinConsoleLogCount</b><code> [get, set]</code></td></tr>
 <tr class="separator:a5324b1c712616b7040096fc718b4e342"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -185,6 +188,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_minConsoleLogCount</b
 <tr class="memitem:ab1a2fb56c082758c41a73f2fe3fba815"><td class="memItemLeft" align="right" valign="top"><a id="ab1a2fb56c082758c41a73f2fe3fba815"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxLogCountPerFrame</b> = 200</td></tr>
 <tr class="separator:ab1a2fb56c082758c41a73f2fe3fba815"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7fdf812dcb500e42a6813bcc3998244"><td class="memItemLeft" align="right" valign="top"><a id="aa7fdf812dcb500e42a6813bcc3998244"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxLogCountPerBlock</b> = 500</td></tr>
+<tr class="separator:aa7fdf812dcb500e42a6813bcc3998244"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a232ba288f707c6d63fa19e0b538c7daf"><td class="memItemLeft" align="right" valign="top"><a id="a232ba288f707c6d63fa19e0b538c7daf"></a>
 <a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html">PipeStream</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ps</b></td></tr>
 <tr class="separator:a232ba288f707c6d63fa19e0b538c7daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -240,8 +246,8 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Form to Display the Content of a LogStream. Color coding supported. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a9c35db7b06ac67bbe60352effced02d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c35db7b06ac67bbe60352effced02d5">&#9670;&nbsp;</a></span>CustomCMDForm()</h2>
+<a id="a23c9114f5dd7d0842555b699a65decdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23c9114f5dd7d0842555b699a65decdf">&#9670;&nbsp;</a></span>CustomCMDForm()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -269,6 +275,12 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
           <td></td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>fontSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>frameTime</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

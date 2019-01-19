@@ -188,9 +188,9 @@ namespace DebugTest
 
             TestCustomConsoleOut();
 
-            //TestConsoleOut();
+            TestConsoleOut();
 
-            //TestLogFileOut();
+            TestLogFileOut();
 
             Random rnd = new Random();
             int mul;
@@ -199,7 +199,7 @@ namespace DebugTest
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
             while (true)
             {
-                System.Threading.Thread.Sleep(5);
+                //System.Threading.Thread.Sleep(5);
                 mul = rnd.Next(int.MinValue, int.MaxValue); //Check the whole range of channels
                 sw.Start();
                 Debug.Log(mul, "Testing In Progress. LastTime: " + msLastTime + " AVG: " + avg);
@@ -244,6 +244,7 @@ namespace DebugTest
                     });
             ADLCustomConsoleConfig config = ADLCustomConsoleConfig.Standard;
             config.FontSize = 13;
+            config.FrameTime = 50;
             config.ColorCoding = colorCoding;
             ADL.CustomCMD.CMDUtils.SaveConfig(config);
         }

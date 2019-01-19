@@ -52,7 +52,7 @@ namespace ADL.CustomCMD
         /// <param name="FontSize">Font Size</param>
         /// <param name="colorCoding">Color Coding for the Tags</param>
         /// <returns>Reference to the Created Console.(Not Thread Save)</returns>
-        public static Form CreateCustomConsole(PipeStream ps, Color Background, Color FontColor, float FontSize = 8.25f, Dictionary<int, SerializableColor> colorCoding = null)
+        public static Form CreateCustomConsole(PipeStream ps, Color Background, Color FontColor, float FontSize = 8.25f, int FrameTime = 250, Dictionary<int, SerializableColor> colorCoding = null)
         {
             if (Debug.SendUpdateMessageOnFirstLog)
             {
@@ -65,7 +65,7 @@ namespace ADL.CustomCMD
                 InitWinForms();
 
             Form cmd;
-            cmd = new CustomCMDForm(ps, Background, FontColor, FontSize, colorCoding);
+            cmd = new CustomCMDForm(ps, Background, FontColor, FontSize, FrameTime, colorCoding);
             CreateCustomConsole(cmd);
             return cmd;
         }
@@ -78,7 +78,7 @@ namespace ADL.CustomCMD
         /// <returns></returns>
         public static Form CreateCustomConsole(PipeStream ps, ADLCustomConsoleConfig config)
         {
-            return CreateCustomConsole(ps, config.BackgroundColor, config.FontColor, config.FontSize, config.ColorCoding.ToDictionary());
+            return CreateCustomConsole(ps, config.BackgroundColor, config.FontColor, config.FontSize, config.FrameTime, config.ColorCoding.ToDictionary());
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace ADL.CustomCMD
         {
             //Fix readability later
 
-            CreateCustomConsole(CreateCustomConsole(ps as PipeStream, config.BackgroundColor , config.FontColor, config.FontSize, config.ColorCoding.ToDictionary()));
+            CreateCustomConsole(CreateCustomConsole(ps as PipeStream, config.BackgroundColor , config.FontColor, config.FontSize, config.FrameTime, config.ColorCoding.ToDictionary()));
         }
 
         /// <summary>

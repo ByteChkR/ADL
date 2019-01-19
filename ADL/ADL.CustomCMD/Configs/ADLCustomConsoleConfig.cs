@@ -25,6 +25,11 @@ namespace ADL.Configs
         /// The font size of the log window
         /// </summary>
         public float FontSize;
+
+        /// <summary>
+        /// The time in ms that console refreshes the log window
+        /// </summary>
+        public int FrameTime;
         /// <summary>
         /// The color coding of the log window
         /// </summary>
@@ -52,6 +57,7 @@ namespace ADL.Configs
                     BackgroundColor = Color.Black,
                     FontColor = Color.White,
                     FontSize = 8.5f,
+                    FrameTime = 250,
                     ColorCoding = new SerializableDictionary<int, SerializableColor>(new Dictionary<int, SerializableColor>())
                 };
                 return config;

@@ -42,6 +42,7 @@ namespace ADL
         /// Dictionary of Prefixes for the corresponding Masks
         /// </summary>
         private static Dictionary<int, string> _prefixes = new Dictionary<int, string>();
+        private static object PREFIX_LOCK = new object();
 
         /// <summary>
         /// The mask that gets used when _sendUpdateMessage is true
@@ -210,10 +211,14 @@ namespace ADL
             {
                 Log(_adlWarningMask, "AddPrefixForMask(" + mask + "): Adding Prefix: " + prefix + " for mask: " + mask + ". Mask is not unique.");
             }
-            if (_prefixes.ContainsKey(mask))
-                _prefixes[mask] = prefix;
-            else
-                _prefixes.Add(mask, prefix);
+            lock (PREFIX_LOCK)
+            {
+
+                if (_prefixes.ContainsKey(mask))
+                    _prefixes[mask] = prefix;
+                else
+                    _prefixes.Add(mask, prefix);
+            }
         }
 
         /// <summary>
@@ -226,8 +231,12 @@ namespace ADL
             {
                 Log(_adlWarningMask, "RemovePrefixForMask(" + mask + "): ADL is disabled, you are removing a prefix for a mask while ADL is disabled.");
             }
+
             if (!_prefixes.ContainsKey(mask)) return;
-            _prefixes.Remove(mask);
+            lock (PREFIX_LOCK)
+            {
+                _prefixes.Remove(mask);
+            }
         }
 
         /// <summary>
@@ -235,7 +244,10 @@ namespace ADL
         /// </summary>
         public static void RemoveAllPrefixes()
         {
-            _prefixes.Clear();
+            lock (PREFIX_LOCK)
+            {
+                _prefixes.Clear();
+            }
         }
 
         /// <summary>
@@ -316,11 +328,12 @@ namespace ADL
         /// <param name="message">Message</param>
         public static void LogGen<T>(T mask, string message) where T : struct
         {
-            if (!_adlEnabled && (!_sendWarnings || (BitMask)Convert.ToInt32(mask) != ADLWarningMask))
+            int _m = Convert.ToInt32(mask);
+            if (!_adlEnabled && (!_sendWarnings || _m != ADLWarningMask))
             {
                 return;
             }
-            Log(Convert.ToInt32(mask), message);
+            Log(_m, message);
         }
 
         /// <summary>
@@ -333,9 +346,12 @@ namespace ADL
         {
 
             mask = 0;
-            if (_prefixes.ContainsValue(prefix))
+            Dictionary<int, string> prefx;
+            lock (PREFIX_LOCK)
+                prefx = new Dictionary<int, string>(_prefixes);
+            if (prefx.ContainsValue(prefix))
             {
-                foreach (KeyValuePair<int, string> kvp in _prefixes)
+                foreach (KeyValuePair<int, string> kvp in prefx)
                 {
                     if (prefix == kvp.Value)
                     {
@@ -370,7 +386,7 @@ namespace ADL
                     if (_prefixes.ContainsKey(flags[i]))
                     {
                         _stringBuilder.Insert(0, _prefixes[flags[i]]);
-                        
+
                         if (_onlyone) break;
                     }
                     else //If still not in prefix lookup table, better have a prefix than having just plain text.
@@ -380,9 +396,12 @@ namespace ADL
                         if (_onlyone) break;
                     }
                 }
-                if(_bakePrefixes) //If we want to bake prefixes(adding constructed prefixes for faster lookup)
+                if (_bakePrefixes) //If we want to bake prefixes(adding constructed prefixes for faster lookup)
                 {
-                    _prefixes.Add(mask, _stringBuilder.ToString());//Create a "custom prefix" with the constructed mask.
+                    lock (PREFIX_LOCK)
+                    {
+                        _prefixes.Add(mask, _stringBuilder.ToString());//Create a "custom prefix" with the constructed mask.
+                    }
                     //Log(new BitMask(true), "Baked Prefix: "+_stringBuilder.ToString());
                 }
             }
