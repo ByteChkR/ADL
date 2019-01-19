@@ -59,7 +59,7 @@ namespace DebugTest
             for (int i = 1; i < 64; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
             {
                 int mask = i;
-                Debug.Log(mask, "Test with mask " + mask);
+                //Debug.Log(mask, "Test with mask " + mask);
             }
 
             Debug.LogGen<LoggingTypes>(LoggingTypes.LOG, "Finished the Console Out Test.");
@@ -157,7 +157,7 @@ namespace DebugTest
             for (int i = 1; i < 64; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
             {
                 int mask = i;
-                Debug.Log(mask, "Test with mask " + mask);
+                //Debug.Log(mask, "Test with mask " + mask);
             }
 
             Debug.LogGen<LoggingTypes>(LoggingTypes.LOG, "Finished the Logfile Out Test.");
@@ -177,10 +177,11 @@ namespace DebugTest
         static void Main(string[] args)
         {
             CreateADLConfig();
-            //CreateADLCustomCMDConfig();
+            CreateADLCustomCMDConfig();
             Debug.LoadConfig(); //Using the standard path
             //Runtime Config Changes(not Getting saved):
             Debug.SendWarnings = true;
+            Debug.SendUpdateMessageOnFirstLog = true;
             Debug.ADLEnabled = true;
             Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE | 
                                     PrefixLookupSettings.DECONSTRUCTMASKTOFIND | 
@@ -199,7 +200,7 @@ namespace DebugTest
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
             while (true)
             {
-                //System.Threading.Thread.Sleep(5);
+                System.Threading.Thread.Sleep(5);
                 mul = rnd.Next(int.MinValue, int.MaxValue); //Check the whole range of channels
                 sw.Start();
                 Debug.Log(mul, "Testing In Progress. LastTime: " + msLastTime + " AVG: " + avg);
@@ -207,6 +208,8 @@ namespace DebugTest
                 msLastTime = sw.ElapsedTicks;
                 avg = (avg + msLastTime) / 2;
                 sw.Reset();
+
+                
             }
 
 
@@ -221,11 +224,11 @@ namespace DebugTest
         private static void CreateADLConfig()
         {
             Debug.SetAllPrefixes("[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[ADL]");
-            Debug.AddPrefixForMask(new BitMask(true), "[GLOBAL]");
+            Debug.SendWarnings = false;
             Debug.ADLWarningMask = 4;
+            Debug.AddPrefixForMask(new BitMask(true), "[GLOBAL]");
             Debug.ADLEnabled = false;
             Debug.SendUpdateMessageOnFirstLog = true;
-            Debug.SendWarnings = false;
             Debug.UpdateMask = 32;
             Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
             Debug.SaveConfig(); //Not Needed to work, but for the next time we can just load the config

@@ -294,7 +294,7 @@ namespace ADL
         /// <param name="message">the message</param>
         public static void Log(int mask, string message)
         {
-            if (!_adlEnabled && (mask != ADLWarningMask || !_sendWarnings)) return;
+            if (!_adlEnabled || (mask == ADLWarningMask && !_sendWarnings)) return;
 
             if (_firstLog)
             {
