@@ -188,7 +188,23 @@ namespace ADL.CustomCMD
 
             if (_hasColorCoding)
             {
-                if (_colorCoding.ContainsKey(mask)) return _colorCoding[mask];
+                BitMask bm = new BitMask(mask);
+                if (_colorCoding.ContainsKey(mask))
+                {
+                    return _colorCoding[mask];
+                }
+                else if(BitMask.IsContainedInMask((int)Debug.PrefixLookupMode, (int)PrefixLookupSettings.DECONSTRUCTMASKTOFIND, true))
+                {
+                    foreach (int m in BitMask.GetUniqueMasksSet(mask))
+                    {
+
+                        if (_colorCoding.ContainsKey(m))
+                        {
+                            return _colorCoding[m];
+                        }
+                    }
+                    
+                }
             }
             return ret;
         }

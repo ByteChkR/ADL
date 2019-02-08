@@ -200,8 +200,8 @@ namespace DebugTest
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
             while (true)
             {
-                System.Threading.Thread.Sleep(5);
-                mul = rnd.Next(int.MinValue, int.MaxValue); //Check the whole range of channels
+                System.Threading.Thread.Sleep(500);
+                mul = rnd.Next(0, 64); //Check the whole range of channels
                 sw.Start();
                 Debug.Log(mul, "Testing In Progress. LastTime: " + msLastTime + " AVG: " + avg);
                 sw.Stop();
