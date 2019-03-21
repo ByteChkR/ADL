@@ -17,7 +17,8 @@ namespace DebugTest
             WARNING = 4,
             ERROR = 8,
             FATAL = 16,
-            ADL = 32
+            ADL = 32,
+            CSVLOGGING = 64
         }
 
 
@@ -140,15 +141,15 @@ namespace DebugTest
 
             //But you can do masks easier now.
             //This bitmask only lets through logs and errors
-            BitMask<LoggingTypes> bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.ERROR, LoggingTypes.LOG);
+            BitMask<LoggingTypes> bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.CSVLOGGING);
 
 
             //Then we want to create a LogStream that receives the Messages
             //Important: Its much easier to use CreateLogStreamFromFile than setting everything manually
             LogStream logStream = new LogTextStream(new System.IO.FileStream("test.log", System.IO.FileMode.OpenOrCreate),
                 bMaskGenericCustom, //Lets use the generic custom 
-                MatchType.MATCH_ONE, //We want to make the logs pass when there is at least one tag that is included in the filter.
-                true //Get that fancy timestamp infront of the log.
+                MatchType.MATCH_ALL, //We want to make the logs pass when there is at least one tag that is included in the filter.
+                false //Get that fancy timestamp infront of the log.
                 );
 
             Debug.AddOutputStream(logStream); //Now we have Created the stream, just add it to the system.
@@ -198,16 +199,18 @@ namespace DebugTest
             long msLastTime = 0;
             float avg = 0;
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            while (true)
+            for (int i = 0; i < 1000; i++)
             {
+
                 System.Threading.Thread.Sleep(500);
                 mul = rnd.Next(0, 64); //Check the whole range of channels
                 sw.Start();
-                Debug.Log(mul, "Testing In Progress. LastTime: " + msLastTime + " AVG: " + avg);
+                Debug.LogGen(LoggingTypes.CSVLOGGING, rnd.NextDouble().ToString() +",");
                 sw.Stop();
                 msLastTime = sw.ElapsedTicks;
                 avg = (avg + msLastTime) / 2;
                 sw.Reset();
+
 
                 
             }

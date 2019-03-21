@@ -6,7 +6,8 @@ var class_debug_test_1_1_program =
       [ "WARNING", "class_debug_test_1_1_program.html#a089211932d840b12e435553f833e5897a059e9861e0400dfbe05c98a841f3f96b", null ],
       [ "ERROR", "class_debug_test_1_1_program.html#a089211932d840b12e435553f833e5897abb1ca97ec761fc37101737ba0aa2e7c5", null ],
       [ "FATAL", "class_debug_test_1_1_program.html#a089211932d840b12e435553f833e5897a19da7170bea36556dde582519795f3fc", null ],
-      [ "ADL", "class_debug_test_1_1_program.html#a089211932d840b12e435553f833e5897a17ede1ef65aa6b14bf5899f32c313b9d", null ]
+      [ "ADL", "class_debug_test_1_1_program.html#a089211932d840b12e435553f833e5897a17ede1ef65aa6b14bf5899f32c313b9d", null ],
+      [ "CSVLOGGING", "class_debug_test_1_1_program.html#a089211932d840b12e435553f833e5897ae0ff9f0ddce008c3bd532bc1249812fd", null ]
     ] ],
     [ "CreateADLConfig", "class_debug_test_1_1_program.html#af34b2d951d8808300b1e6dd1e2081c9c", null ],
     [ "CreateADLCustomCMDConfig", "class_debug_test_1_1_program.html#a4995d90bde741328dbae8c540c433556", null ],

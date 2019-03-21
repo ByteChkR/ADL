@@ -117,7 +117,7 @@ namespace ADL
         /// <summary>
         /// The number of Streams that ADL writes to
         /// </summary>
-        public static int LogStreamCount { get { return _adlEnabled ? _streams.Count : 0; } }
+        public static int LogStreamCount { get { return _streams.Count; } }
 
         public static PrefixLookupSettings PrefixLookupMode
         {
@@ -131,6 +131,7 @@ namespace ADL
                 _bakePrefixes = BitMask.IsContainedInMask((int)value, (int)PrefixLookupSettings.BAKEPREFIXES, false);
             }
         }
+
         #endregion
 
         #region Streams
@@ -141,6 +142,11 @@ namespace ADL
         /// <param name="stream">The stream you want to add</param>
         public static void AddOutputStream(LogStream stream)
         {
+            if (stream == null)
+            {
+                Log(_adlWarningMask, "AddOutputStream(NULL): The Supplied stream is a nullpointer.");
+                return;
+            }
             if (!_adlEnabled)
             {
                 Log(_adlWarningMask, "AddOutputStream(" + stream.Mask + "): ADL is disabled, you are adding an Output Stream while ADL is disabled.");
@@ -161,14 +167,15 @@ namespace ADL
         /// /// <param name="CloseStream">If streams should be closed upon removal from the system</param>
         public static void RemoveOutputStream(LogStream stream, bool CloseStream = true)
         {
-            if (!_adlEnabled)
-            {
-                Log(_adlWarningMask, "RemoveOutputStream(" + stream.Mask + "): ADL is disabled, you are removing an Output Stream while while ADL is disabled.");
-            }
             if (!_streams.Contains(stream))
             {
                 Log(_adlWarningMask, "RemoveOutputStream(" + stream.Mask + "): Supplied stream is not in the list. Aborting!");
                 return;
+            }
+
+            if (!_adlEnabled)
+            {
+                Log(_adlWarningMask, "RemoveOutputStream(" + stream.Mask + "): ADL is disabled, you are removing an Output Stream while while ADL is disabled.");
             }
             _streams.Remove(stream);
             if (CloseStream) stream.Close();
@@ -387,13 +394,15 @@ namespace ADL
                     {
                         _stringBuilder.Insert(0, _prefixes[flags[i]]);
 
-                        if (_onlyone) break;
+                        if (_onlyone)
+                            break;
                     }
                     else //If still not in prefix lookup table, better have a prefix than having just plain text.
                     {
                         _stringBuilder.Insert(0, "[Log Mask:" + flags[i] + "]");
 
-                        if (_onlyone) break;
+                        if (_onlyone)
+                            break;
                     }
                 }
                 if (_bakePrefixes) //If we want to bake prefixes(adding constructed prefixes for faster lookup)
