@@ -31,11 +31,20 @@ namespace ADL.Streams
         /// </summary>
         private bool _streamClosed = false;
         /// <summary>
+        /// If true all the LogChannels/TimeStamp is ignored and only the message will get received.
+        /// </summary>
+        private bool _overrideLogChannels = false;
+        /// <summary>
         /// Base stream
         /// </summary>
         protected Stream _baseStream = null;
 
         #region Properties
+
+        /// <summary>
+        /// If true all the LogChannels/TimeStamp is ignored and only the message will get received.
+        /// </summary>
+        public bool OverrideChannelTag { get { return _overrideLogChannels; } set { _overrideLogChannels = value; } }
 
 
         /// <summary>

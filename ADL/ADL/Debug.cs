@@ -316,13 +316,17 @@ namespace ADL
                 }
             }
 
-            string _msg = GetMaskPrefix(mask) + message + Utils.NEW_LINE;
+            string _message = message + Utils.NEW_LINE;
+            string _msg = GetMaskPrefix(mask) + _message;
 
             foreach (LogStream logs in _streams)
             {
                 if (logs.IsContainedInMask(mask))
                 {
-                    logs.Write(new Log(mask, _msg));
+                    if (logs.OverrideChannelTag)
+                        logs.Write(new Log(mask, _message));
+                    else
+                        logs.Write(new Log(mask, _msg));
                 }
             }
         }

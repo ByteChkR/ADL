@@ -11,6 +11,8 @@ namespace ADL
         public static int Empty = 0;
         public static int WildCard = ~0;
 
+        protected int _mask = 0;
+
         #region MaskOperations
         /// <summary>
         /// Returns true if the specified flag is also set in the mask
@@ -127,8 +129,7 @@ namespace ADL
 
         #endregion
 
-        int _mask = 0;
-
+        #region Constructors
 
         /// <summary>
         /// Creates an Empty mask
@@ -154,6 +155,8 @@ namespace ADL
         /// <param name="flags">all the flags you want to be set.</param>
         public BitMask(params int[] flags) : this(CombineMasks(MaskCombineType.BIT_OR, flags)) { }
 
+
+        #endregion
 
         /// <summary>
         /// Sets all flags discarding the flags from before
@@ -209,7 +212,7 @@ namespace ADL
     /// Little Helper class to have less of a hassle with masks in int form
     /// </summary>
     /// <typeparam name="T">Type of enum you want to use</typeparam>
-    public class BitMask<T> where T : struct
+    public class BitMask<T> : BitMask where T : struct
     {
 
         #region MaskOperations
@@ -221,7 +224,7 @@ namespace ADL
         /// <returns></returns>
         public static int CombineMasks(MaskCombineType combineType = MaskCombineType.BIT_OR, params T[] masks)
         {
-            return BitMask.CombineMasks(combineType, masks.Select(x => Convert.ToInt32(x)).ToArray());
+            return CombineMasks(combineType, masks.Select(x => Convert.ToInt32(x)).ToArray());
         }
         #endregion
 
@@ -272,9 +275,8 @@ namespace ADL
         }
         #endregion
 
-        int _mask = 0;
 
-
+        #region Constructors
         /// <summary>
         /// Creates an Empty mask
         /// </summary>
@@ -298,16 +300,14 @@ namespace ADL
         {
             _mask = mask;
         }
-
-
-
-
+        
         /// <summary>
         /// Creates a mask based on flags supplied
         /// </summary>
         /// <param name="flags">Flags you want to be set</param>
         public BitMask(params T[] flags) : this(CombineMasks(MaskCombineType.BIT_OR, flags)) { }
 
+        #endregion
 
         /// <summary>
         /// Sets all flags discarding the flags from before
