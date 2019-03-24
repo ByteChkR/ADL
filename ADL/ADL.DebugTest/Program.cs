@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ADL;
 using ADL.Configs;
 using ADL.Streams;
 namespace ADL.DebugTest
@@ -151,6 +150,7 @@ namespace ADL.DebugTest
                 MatchType.MATCH_ALL, //We want to make the logs pass when there is at least one tag that is included in the filter.
                 false //Get that fancy timestamp infront of the log.
                 );
+            logStream.OverrideChannelTag = true; //Forces the LogStream to discard all Tag and timestamps and ONLY save the actual log.
 
             Debug.AddOutputStream(logStream); //Now we have Created the stream, just add it to the system.
 
@@ -199,11 +199,11 @@ namespace ADL.DebugTest
             long msLastTime = 0;
             float avg = 0;
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            for (int i = 0; i < 1000; i++)
+            
+            for (int i = 0; i < 100000; i++)
             {
 
-                System.Threading.Thread.Sleep(500);
-                mul = rnd.Next(0, 64); //Check the whole range of channels
+                System.Threading.Thread.Sleep(50);
                 sw.Start();
                 Debug.LogGen(LoggingTypes.CSVLOGGING, rnd.NextDouble().ToString() +",");
                 sw.Stop();
