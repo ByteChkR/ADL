@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ADL;
 using ADL.Configs;
 using ADL.Streams;
-namespace DebugTest
+namespace ADL.DebugTest
 {
     /// <summary>
     /// Test programm to verify.

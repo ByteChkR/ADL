@@ -24,6 +24,7 @@ var class_a_d_l_1_1_streams_1_1_log_stream =
     [ "_baseStream", "class_a_d_l_1_1_streams_1_1_log_stream.html#abb85405d3d32a6525884e453d6adbda4", null ],
     [ "_mask", "class_a_d_l_1_1_streams_1_1_log_stream.html#a0d636fea28097e8c3070a6482f160961", null ],
     [ "_matchType", "class_a_d_l_1_1_streams_1_1_log_stream.html#a5d1eb76ee06bb651ae532fb6ffe120a2", null ],
+    [ "_overrideLogChannels", "class_a_d_l_1_1_streams_1_1_log_stream.html#a183b5bdff03a7b6b97455be36a4bbda0", null ],
     [ "_setTimeStamp", "class_a_d_l_1_1_streams_1_1_log_stream.html#a933b97020d42dfabe28e9c24c9007984", null ],
     [ "_streamClosed", "class_a_d_l_1_1_streams_1_1_log_stream.html#a635f94985015ba00f409229b71a9ac5b", null ],
     [ "CanTimeout", "class_a_d_l_1_1_streams_1_1_log_stream.html#a2a0fd48f03105754ecba1888d5dda7dd", null ],
@@ -36,6 +37,7 @@ var class_a_d_l_1_1_streams_1_1_log_stream =
     [ "Length", "class_a_d_l_1_1_streams_1_1_log_stream.html#a944f5860773a4114d15758f174785f98", null ],
     [ "Mask", "class_a_d_l_1_1_streams_1_1_log_stream.html#a30d66691d1651c3c6554008996d05053", null ],
     [ "MatchType", "class_a_d_l_1_1_streams_1_1_log_stream.html#ae32413916e7b3a4dd9e18a4c6e3310ac", null ],
+    [ "OverrideChannelTag", "class_a_d_l_1_1_streams_1_1_log_stream.html#a08c3744705ff576751beff0dea9465ed", null ],
     [ "Position", "class_a_d_l_1_1_streams_1_1_log_stream.html#a9ef2ee10f05691f4d74583ae129c9d25", null ],
     [ "ReadTimeout", "class_a_d_l_1_1_streams_1_1_log_stream.html#ab2ea2e82b9643b46eb7c9ab975a74655", null ],
     [ "WriteTimeout", "class_a_d_l_1_1_streams_1_1_log_stream.html#a3f4d51f972921b8dfba042af7e0f7897", null ]

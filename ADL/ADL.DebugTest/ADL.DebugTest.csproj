@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>DebugTest.Program</StartupObject>
+    <StartupObject>ADL.DebugTest.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>icons8-code-100.ico</ApplicationIcon>

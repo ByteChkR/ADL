@@ -22,6 +22,7 @@ var searchData=
   ['_5fmflushed',['_mFlushed',['../class_a_d_l_1_1_streams_1_1_pipe_stream.html#a3daa2f56dfbfd3724df2cc433a7bad2b',1,'ADL::Streams::PipeStream']]],
   ['_5fmmaxbufferlength',['_mMaxBufferLength',['../class_a_d_l_1_1_streams_1_1_pipe_stream.html#ab2f526ccfaf98b738fd6e215d47aa9fc',1,'ADL::Streams::PipeStream']]],
   ['_5fonlyone',['_onlyone',['../class_a_d_l_1_1_debug.html#afa937f22719411689124a26361683d6a',1,'ADL::Debug']]],
+  ['_5foverridelogchannels',['_overrideLogChannels',['../class_a_d_l_1_1_streams_1_1_log_stream.html#a183b5bdff03a7b6b97455be36a4bbda0',1,'ADL::Streams::LogStream']]],
   ['_5fprefixes',['_prefixes',['../class_a_d_l_1_1_debug.html#ae158a8228eacba82054cb7b340153fe9',1,'ADL::Debug']]],
   ['_5frawlink',['_rawLink',['../class_a_d_l_1_1_update_data_object.html#a442cf449263c745d34b884f3d88d9e4d',1,'ADL::UpdateDataObject']]],
   ['_5fsendupdatemsg',['_sendUpdateMsg',['../class_a_d_l_1_1_debug.html#a418628d87d48258f4849c627308b0ca4',1,'ADL::Debug']]],

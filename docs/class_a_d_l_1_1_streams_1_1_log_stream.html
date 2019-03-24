@@ -193,6 +193,9 @@ Protected Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:a08c3744705ff576751beff0dea9465ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a08c3744705ff576751beff0dea9465ed">OverrideChannelTag</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a08c3744705ff576751beff0dea9465ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true all the LogChannels/TimeStamp is ignored and only the message will get received.  <a href="#a08c3744705ff576751beff0dea9465ed">More...</a><br /></td></tr>
+<tr class="separator:a08c3744705ff576751beff0dea9465ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30d66691d1651c3c6554008996d05053"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a30d66691d1651c3c6554008996d05053">Mask</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a30d66691d1651c3c6554008996d05053"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Mask that determines wether this stream will receive a log message  <a href="#a30d66691d1651c3c6554008996d05053">More...</a><br /></td></tr>
 <tr class="separator:a30d66691d1651c3c6554008996d05053"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -244,6 +247,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a635f94985015ba00f409229b71a9ac5b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a635f94985015ba00f409229b71a9ac5b">_streamClosed</a> = false</td></tr>
 <tr class="memdesc:a635f94985015ba00f409229b71a9ac5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the stream closed?  <a href="#a635f94985015ba00f409229b71a9ac5b">More...</a><br /></td></tr>
 <tr class="separator:a635f94985015ba00f409229b71a9ac5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a183b5bdff03a7b6b97455be36a4bbda0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a183b5bdff03a7b6b97455be36a4bbda0">_overrideLogChannels</a> = false</td></tr>
+<tr class="memdesc:a183b5bdff03a7b6b97455be36a4bbda0"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true all the LogChannels/TimeStamp is ignored and only the message will get received.  <a href="#a183b5bdff03a7b6b97455be36a4bbda0">More...</a><br /></td></tr>
+<tr class="separator:a183b5bdff03a7b6b97455be36a4bbda0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="struct_a_d_l_1_1_streams_1_1_log.html" title="Struct that can serialize and deserialize to be sent over a stream ">Log</a> stream class that you can use with virtually any stream(as long as you handle the multithreading on your own if used) This class wraps around your supplied stream and interacts with the system. Because the <a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html" title="Log stream class that you can use with virtually any stream(as long as you handle the multithreading ...">LogStream</a> implements every override and passes it to the base stream, you can use your created base stream itself instead of the <a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html" title="Log stream class that you can use with virtually any stream(as long as you handle the multithreading ...">LogStream</a>. </p>
@@ -436,6 +442,30 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a183b5bdff03a7b6b97455be36a4bbda0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a183b5bdff03a7b6b97455be36a4bbda0">&#9670;&nbsp;</a></span>_overrideLogChannels</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ADL.Streams.LogStream._overrideLogChannels = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>If true all the LogChannels/TimeStamp is ignored and only the message will get received. </p>
+
+</div>
+</div>
 <a id="a933b97020d42dfabe28e9c24c9007984"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a933b97020d42dfabe28e9c24c9007984">&#9670;&nbsp;</a></span>_setTimeStamp</h2>
 
@@ -578,6 +608,30 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The match type(how the mask gets compared) </p>
+
+</div>
+</div>
+<a id="a08c3744705ff576751beff0dea9465ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08c3744705ff576751beff0dea9465ed">&#9670;&nbsp;</a></span>OverrideChannelTag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ADL.Streams.LogStream.OverrideChannelTag</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>If true all the LogChannels/TimeStamp is ignored and only the message will get received. </p>
 
 </div>
 </div>
