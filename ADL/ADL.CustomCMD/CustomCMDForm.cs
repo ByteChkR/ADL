@@ -123,7 +123,7 @@ namespace ADL.CustomCMD
             }
         }
 
-        
+
 
         /// <summary>
         /// Creates a new CustomCMD.
@@ -167,7 +167,6 @@ namespace ADL.CustomCMD
         /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
-            Show();
 
             //while (true)
             //{
@@ -193,7 +192,7 @@ namespace ADL.CustomCMD
                 {
                     return _colorCoding[mask];
                 }
-                else if(BitMask.IsContainedInMask((int)Debug.PrefixLookupMode, (int)PrefixLookupSettings.DECONSTRUCTMASKTOFIND, true))
+                else if (BitMask.IsContainedInMask((int)Debug.PrefixLookupMode, (int)PrefixLookupSettings.DECONSTRUCTMASKTOFIND, true))
                 {
                     foreach (int m in BitMask.GetUniqueMasksSet(mask))
                     {
@@ -203,7 +202,7 @@ namespace ADL.CustomCMD
                             return _colorCoding[m];
                         }
                     }
-                    
+
                 }
             }
             return ret;

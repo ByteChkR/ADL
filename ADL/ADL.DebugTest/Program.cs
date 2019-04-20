@@ -100,7 +100,7 @@ namespace ADL.DebugTest
                 MatchType.MATCH_ONE, //We want to make the logs pass when all tags are included in the filter.
                 true //Get that fancy timestamp infront of the log.
                 );
-
+            //logStream.OverrideChannelTag = false;
             Debug.AddOutputStream(logStream); //Now we have Created the stream, just add it to the system.
 
 
@@ -150,7 +150,7 @@ namespace ADL.DebugTest
                 MatchType.MATCH_ALL, //We want to make the logs pass when there is at least one tag that is included in the filter.
                 false //Get that fancy timestamp infront of the log.
                 );
-            logStream.OverrideChannelTag = true; //Forces the LogStream to discard all Tag and timestamps and ONLY save the actual log.
+            //logStream.OverrideChannelTag = true; //Forces the LogStream to discard all Tag and timestamps and ONLY save the actual log.
 
             Debug.AddOutputStream(logStream); //Now we have Created the stream, just add it to the system.
 
@@ -177,12 +177,13 @@ namespace ADL.DebugTest
 
         static void Main(string[] args)
         {
-            CreateADLConfig();
-            CreateADLCustomCMDConfig();
+            //CreateADLConfig();
+            //CreateADLCustomCMDConfig();
             Debug.LoadConfig(); //Using the standard path
             //Runtime Config Changes(not Getting saved):
             Debug.SendWarnings = true;
             Debug.SendUpdateMessageOnFirstLog = true;
+            
             Debug.ADLEnabled = true;
             Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE | 
                                     PrefixLookupSettings.DECONSTRUCTMASKTOFIND | 
@@ -205,7 +206,7 @@ namespace ADL.DebugTest
 
                 System.Threading.Thread.Sleep(50);
                 sw.Start();
-                Debug.LogGen(LoggingTypes.CSVLOGGING, rnd.NextDouble().ToString() +",");
+                Debug.LogGen(LoggingTypes.LOG, rnd.NextDouble().ToString());
                 sw.Stop();
                 msLastTime = sw.ElapsedTicks;
                 avg = (avg + msLastTime) / 2;
