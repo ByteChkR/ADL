@@ -32,7 +32,9 @@ namespace ADL.Streams
     ///	OTHER DEALINGS IN THE SOFTWARE.
     /// </summary>
 
-    public class PipeStream : Stream
+    public class PipeStream : GenPipeStream<byte> { }
+
+    public class GenPipeStream<T> : Stream
     {
         #region Private Variables
 
@@ -41,7 +43,7 @@ namespace ADL.Streams
         /// input stream to an output stream.
         /// Possible more effecient ways to accomplish this.
         /// </summary>
-        private readonly Queue<byte> _mBuffer = new Queue<byte>();
+        private readonly Queue<T> _mBuffer = new Queue<T>();
 
         /// <summary>
         /// Indicates that the input stream has been flushed and that
@@ -201,7 +203,7 @@ namespace ADL.Streams
         ///When overridden in a derived class, sets the length of the current stream.
         ///</summary>
         ///<param name="value">The desired length of the current stream in bytes. </param>
-         public override void SetLength(long value)
+        public override void SetLength(long value)
         {
             throw new NotSupportedException();
         }
@@ -216,6 +218,23 @@ namespace ADL.Streams
         ///<param name="count">The maximum number of bytes to be read from the current stream. </param>
         ///<param name="buffer">An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count - 1) replaced by the bytes read from the current source. </param>
         public override int Read(byte[] buffer, int offset, int count)
+        {
+            if (typeof(T) != typeof(byte))
+                throw new NotSupportedException();
+            else
+                return ReadGen(buffer as T[], offset, count);
+        }
+
+        /// <summary>
+        /// When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.
+        ///</summary>
+        ///<returns>
+        ///The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached.
+        ///</returns>
+        ///<param name="offset">The zero-based byte offset in buffer at which to begin storing the data read from the current stream. </param>
+        ///<param name="count">The maximum number of bytes to be read from the current stream. </param>
+        ///<param name="buffer">An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count - 1) replaced by the bytes read from the current source. </param>
+        public int ReadGen(T[] buffer, int offset, int count)
         {
             if (offset != 0)
                 throw new NotSupportedException("Offsets with value of non-zero are not supported");
@@ -259,14 +278,7 @@ namespace ADL.Streams
             return (Length >= count || _mFlushed) &&
                    (Length >= (count + 1) || !BlockLastReadBuffer);
         }
-
-        ///<summary>
-        ///When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.
-        ///</summary>
-        ///<param name="offset">The zero-based byte offset in buffer at which to begin copying bytes to the current stream. </param>
-        ///<param name="count">The number of bytes to be written to the current stream. </param>
-        ///<param name="buffer">An array of bytes. This method copies count bytes from buffer to the current stream. </param>
-        public override void Write(byte[] buffer, int offset, int count)
+        public void WriteGen(T[] buffer, int offset, int count)
         {
             if (buffer == null)
                 throw new ArgumentException("Buffer is null");
@@ -294,8 +306,19 @@ namespace ADL.Streams
                 Monitor.Pulse(_mBuffer); // signal that write has occured
             }
         }
-
-        
+        ///<summary>
+        ///When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.
+        ///</summary>
+        ///<param name="offset">The zero-based byte offset in buffer at which to begin copying bytes to the current stream. </param>
+        ///<param name="count">The number of bytes to be written to the current stream. </param>
+        ///<param name="buffer">An array of bytes. This method copies count bytes from buffer to the current stream. </param>
+        public override void Write(byte[] buffer, int offset, int count)
+        {
+            if (typeof(T) != typeof(byte))
+                throw new NotSupportedException();
+            else
+                WriteGen(buffer as T[], offset, count);
+        }
 
         #endregion
     }

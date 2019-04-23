@@ -56,7 +56,7 @@ namespace ADL.UnitTests
         public void Test_RemovePrefixForMask()
         {
             BitMask bm = new BitMask(2 | 8);
-
+            Debug.SendUpdateMessageOnFirstLog = false;
             Debug.AddPrefixForMask(bm, "HELLO");
             Debug.RemovePrefixForMask(bm);
 
@@ -66,6 +66,8 @@ namespace ADL.UnitTests
             Debug.AddPrefixForMask(bm, "AAA");
             Debug.RemovePrefixForMask(bm);
             Debug.ADLEnabled = true;
+
+            Debug.SendUpdateMessageOnFirstLog = true;
             Assert.IsTrue(Debug.GetAllPrefixes().Count == 0);
         }
 
@@ -180,7 +182,7 @@ namespace ADL.UnitTests
             };
 
 
-
+            
             Debug.PrefixLookupMode = Configs.PrefixLookupSettings.NOPREFIX;
             Debug.SendUpdateMessageOnFirstLog = false;
             Assert.IsTrue(Debug.PrefixLookupMode == Configs.PrefixLookupSettings.NOPREFIX);
