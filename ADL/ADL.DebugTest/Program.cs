@@ -189,7 +189,21 @@ namespace ADL.DebugTest
                                     PrefixLookupSettings.DECONSTRUCTMASKTOFIND | 
                                     PrefixLookupSettings.BAKEPREFIXES; //If you have int.minvalue to int.maxvalue channels this is not really advisable. (Config files can be bloated by baked prefixes thus getting a huge size.)
 
-            TestCustomConsoleOut();
+            //DataObject<float> testf = new DataObject<float>(1, MatchType.MATCH_ONE);
+            //DataObject<string> tests = new DataObject<string>(1, MatchType.MATCH_ONE);
+            //testf.Add(1.234f);
+            //tests.Add("Hwllo");
+
+
+            //DataObject obj = testf.Cast();
+
+            //byte[] buf = DataObject.Serialize(obj);
+
+            //DataObject<float> r = DataObject.Deserialize<float>(buf);
+            //buf = DataObject.Serialize(tests.Cast());
+            //DataObject<string> r1 = DataObject.Deserialize(buf).Cast<string>();
+
+            //TestCustomConsoleOut();
 
             TestConsoleOut();
 

@@ -64,6 +64,11 @@ namespace ADL
         private static List<LogStream> _streams = new List<LogStream>();
 
         /// <summary>
+        /// List of Data Objects that are currently beeing filled.
+        /// </summary>
+        //private static List<DataObject<object>> _dataObjects = new List<DataObject<object>>();
+
+        /// <summary>
         /// Contains the flags that determine the way prefixes get looked up
         /// </summary>
         private static PrefixLookupSettings _lookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
@@ -293,6 +298,58 @@ namespace ADL
         #endregion
 
         #region Logging
+
+
+        /// <summary>
+        /// Logs the Data to the Data objects when registered with the mask and if the data type is the same.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="mask"></param>
+        /// <param name="data"></param>
+        //public static void LogData<T>(int mask, T data) where T: struct
+        //{
+        //    if (!_adlEnabled) return;
+
+        //    List<DataObject<T>> ret = GetDataObjects<T>(mask);
+
+        //    foreach (DataObject<T> dto in ret)
+        //    {
+        //        dto.Add(data);
+        //    }
+            
+        //}
+
+        /// <summary>
+        /// Generic Wrapper of LogData<T>
+        /// </summary>
+        /// <typeparam name="M"></typeparam>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="mask"></param>
+        /// <param name="data"></param>
+        //public static void LogDataGen<M, T>(M mask, T data) where M : struct where T: struct
+        //{
+
+        //    int _m = Convert.ToInt32(mask);
+        //    LogData<T>(_m, data);
+        //}
+
+        /// <summary>
+        /// Returns a list of Data objects that have the right mask and the right type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="mask"></param>
+        /// <returns></returns>
+        //public static List<DataObject<T>> GetDataObjects<T>(int mask) where T : struct
+        //{
+        //    List<DataObject<T>> ret = new List<DataObject<T>>();
+        //    for (int i = 0; i < _dataObjects.Count; i++)
+        //    {
+        //        if (_dataObjects[i].ShouldAdd(mask)) ret.Add(_dataObjects[i] as DataObject<T>);
+        //    }
+        //    return ret;
+        //}
+
+        
 
         /// <summary>
         /// Fire Log Messsage with desired level(flag) and message
