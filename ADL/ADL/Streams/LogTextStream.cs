@@ -23,6 +23,7 @@ namespace ADL.Streams
         /// <param name="value">Line</param>
         public override void Write(Log log)
         {
+            if (AddTimeStamp) log.Message = Utils.TimeStamp + log.Message;
             byte[] tmp = Encoding.ASCII.GetBytes(log.Message);
             _baseStream.Write(tmp, 0, tmp.Length);
             Flush();
