@@ -40,7 +40,7 @@ namespace ADL.Streams
         {
             var ret = BitConverter.GetBytes(Mask).ToList(); //Mask
             ret.AddRange(BitConverter.GetBytes(Message.Length)); //Message Length
-            ret.AddRange(Encoding.ASCII.GetBytes(Message)); //Message
+            ret.AddRange(Debug.TextEncoding.GetBytes(Message)); //Message
             return ret.ToArray();
         }
 
@@ -68,7 +68,7 @@ namespace ADL.Streams
             var message = "";
             if (msgLength > buffer.Length - startIndex - sizeof(int) * 2) return new Log();
 
-            message = Encoding.ASCII.GetString(buffer, startIndex + sizeof(int) * 2, msgLength);
+            message = Debug.TextEncoding.GetString(buffer, startIndex + sizeof(int) * 2, msgLength);
 
             bytesRead = sizeof(int) * 2 + msgLength;
 

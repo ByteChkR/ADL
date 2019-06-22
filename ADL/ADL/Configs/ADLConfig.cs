@@ -42,6 +42,8 @@ namespace ADL.Configs
         /// </summary>
         public SerializableDictionary<int, string> Prefixes;
 
+        public Encoding TextEncoding;
+
         /// <summary>
         /// Determines the Options on how much effort is put into finding the right tags
         /// </summary>
@@ -96,7 +98,9 @@ namespace ADL.Configs
                     SendWarnings = true,
                     Prefixes = new SerializableDictionary<int, string>(new Dictionary<int, string>()),
                     PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE |
-                                       PrefixLookupSettings.DECONSTRUCTMASKTOFIND
+                                       PrefixLookupSettings.DECONSTRUCTMASKTOFIND,
+                    TextEncoding = Encoding.ASCII
+
                 };
                 return std;
             }

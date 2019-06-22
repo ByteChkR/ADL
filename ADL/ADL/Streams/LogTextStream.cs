@@ -26,7 +26,7 @@ namespace ADL.Streams
         public override void Write(Log log)
         {
             if (AddTimeStamp) log.Message = Utils.TimeStamp + log.Message;
-            var tmp = Encoding.ASCII.GetBytes(log.Message);
+            var tmp = Debug.TextEncoding.GetBytes(log.Message);
             _baseStream.Write(tmp, 0, tmp.Length);
             Flush();
         }

@@ -96,6 +96,11 @@ namespace ADL
         /// </summary>
         private static bool _bakePrefixes;
 
+        /// <summary>
+        /// The Encoding that is going to be used by all text in ADL.
+        /// </summary>
+        public static Encoding TextEncoding = Encoding.ASCII;
+
         #endregion
 
         #region Public Properties
@@ -157,12 +162,12 @@ namespace ADL
             set
             {
                 _addPrefix =
-                    BitMask.IsContainedInMask((int) value, (int) PrefixLookupSettings.ADDPREFIXIFAVAILABLE, false);
-                _deconstructtofind = BitMask.IsContainedInMask((int) value,
-                    (int) PrefixLookupSettings.DECONSTRUCTMASKTOFIND, false);
-                _onlyone = BitMask.IsContainedInMask((int) value, (int) PrefixLookupSettings.ONLYONEPREFIX, false);
+                    BitMask.IsContainedInMask((int)value, (int)PrefixLookupSettings.ADDPREFIXIFAVAILABLE, false);
+                _deconstructtofind = BitMask.IsContainedInMask((int)value,
+                    (int)PrefixLookupSettings.DECONSTRUCTMASKTOFIND, false);
+                _onlyone = BitMask.IsContainedInMask((int)value, (int)PrefixLookupSettings.ONLYONEPREFIX, false);
                 _lookupMode = value;
-                _bakePrefixes = BitMask.IsContainedInMask((int) value, (int) PrefixLookupSettings.BAKEPREFIXES, false);
+                _bakePrefixes = BitMask.IsContainedInMask((int)value, (int)PrefixLookupSettings.BAKEPREFIXES, false);
             }
         }
 
@@ -511,6 +516,7 @@ namespace ADL
             SendWarnings = config.SendWarnings;
             _prefixes = config.Prefixes.ToDictionary();
             PrefixLookupMode = config.PrefixLookupMode;
+            TextEncoding = config.TextEncoding;
         }
 
         /// <summary>
@@ -548,6 +554,7 @@ namespace ADL
             config.SendWarnings = SendWarnings;
             config.Prefixes = new SerializableDictionary<int, string>(_prefixes);
             config.PrefixLookupMode = PrefixLookupMode;
+            config.TextEncoding = TextEncoding;
             SaveConfig(config, path);
         }
 
