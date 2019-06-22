@@ -52,6 +52,26 @@ namespace ADL.Streams
             return ret.ToArray();
         }
 
+        public static bool ReadBlock(Stream s, out LogPackage package)
+        {
+            List<byte> pack = new List<byte>();
+            byte[] buf = new byte[1024];
+            int i = s.Read(buf, 0, buf.Length);
+            bool hasData = i != 0;
+            while(i != 0)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    pack.Add(buf[j]);
+                }
+                s.Read(buf, 0, buf.Length);
+            }
+            package = hasData ? new LogPackage(buf) : new LogPackage(new byte[0]);
+            return hasData ? true : false;
+        }
+
+        
+
         public static LogPackage ReadBlock(Stream s, int length)
         {
             //Due to multithreading

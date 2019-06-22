@@ -181,22 +181,33 @@ namespace ADL.DebugTest
         //Server
         static void TestNetworkListen()
         {
-            NetworkListener nwl = new NetworkListener(100);
+            NetworkListener nwl = new NetworkListener(100, false);
             nwl.Start();
         }
 
 
 
-        static void TestNetworkOut()
+        static void TestNetworkOut(string mod)
         {
             TcpClient tcpC = new TcpClient("localhost", 1337);
+
             Debug.Log(-1, "Connecting to Network Listener");
             if (!tcpC.Connected)
             {
                 return;
             }
             Debug.Log(-1, "Connected.");
+
+            //Authentication
             Stream str = tcpC.GetStream();
+            AuthPacket ap = new AuthPacket();
+            ap.ID = 0;
+
+            ap.programHash = new byte[128];
+            byte[] l = ap.Serialize();
+            str.Write(l, 0, l.Length);
+            //Authentication End
+
             BitMask<LoggingTypes> mask = new BitMask<LoggingTypes>(true);
             LogStream ls = new LogStream(
                 str,
@@ -212,9 +223,10 @@ namespace ADL.DebugTest
 
             for (int i = 1; i < 64; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
             {
-                Debug.Log(i, "Net Test with mask " + i);
+                Debug.Log(i, mod + "Net Test with mask " + i);
             }
-
+            Debug.RemoveOutputStream(ls, false);
+            tcpC.Close();
         }
 
 
@@ -249,8 +261,19 @@ namespace ADL.DebugTest
             //TestCustomConsoleOut();
 
             //TestConsoleOut();
-            TestNetworkListen();
+            if (args.Length > 0)
+            {
+                if (args[0] == "-server")
+                    TestNetworkListen();
+                else if (args.Length > 1 && args[0] == "-client")
+                    TestNetworkOut(args[1]);
+                else while (true)
+                    {
+                        Console.ReadLine();
+                        TestNetworkOut(args[0]);
+                    }
 
+            }
             Console.Read();
 
 

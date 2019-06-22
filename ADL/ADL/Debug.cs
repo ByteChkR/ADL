@@ -516,7 +516,6 @@ namespace ADL
             SendWarnings = config.SendWarnings;
             _prefixes = config.Prefixes.ToDictionary();
             PrefixLookupMode = config.PrefixLookupMode;
-            TextEncoding = config.TextEncoding;
         }
 
         /// <summary>
@@ -554,7 +553,6 @@ namespace ADL
             config.SendWarnings = SendWarnings;
             config.Prefixes = new SerializableDictionary<int, string>(_prefixes);
             config.PrefixLookupMode = PrefixLookupMode;
-            config.TextEncoding = TextEncoding;
             SaveConfig(config, path);
         }
 
