@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 using ADL.Configs;
 using ADL.Streams;
 
@@ -12,58 +12,58 @@ using ADL.Streams;
 namespace ADL
 {
     /// <summary>
-    /// Main Debug Class. No instanciation needed.
+    ///     Main Debug Class. No instanciation needed.
     /// </summary>
     public static class Debug
     {
         #region Private Variables
 
         /// <summary>
-        /// On/Off switch
+        ///     On/Off switch
         /// </summary>
         private static bool _adlEnabled = true;
 
         /// <summary>
-        /// Flag to check wether this is the first execution.
+        ///     Flag to check wether this is the first execution.
         /// </summary>
         private static bool _firstLog = true;
 
         /// <summary>
-        /// Should ADL search for updates?
+        ///     Should ADL search for updates?
         /// </summary>
         private static bool _sendUpdateMsg = true;
 
         /// <summary>
-        /// Should ADL send warning of potential wrong use?
+        ///     Should ADL send warning of potential wrong use?
         /// </summary>
         private static bool _sendWarnings = true;
 
         /// <summary>
-        /// Dictionary of Prefixes for the corresponding Masks
+        ///     Dictionary of Prefixes for the corresponding Masks
         /// </summary>
         private static Dictionary<int, string> _prefixes = new Dictionary<int, string>();
 
-        private static object PREFIX_LOCK = new object();
+        private static readonly object PREFIX_LOCK = new object();
 
         /// <summary>
-        /// The mask that gets used when _sendUpdateMessage is true
+        ///     The mask that gets used when _sendUpdateMessage is true
         /// </summary>
         private static int _updateMask = new BitMask(true);
 
         /// <summary>
-        /// The mask that gets used when ADL is sending warnings
+        ///     The mask that gets used when ADL is sending warnings
         /// </summary>
         private static int _adlWarningMask = new BitMask(true);
 
         /// <summary>
-        /// String Builder to assemble the log
+        ///     String Builder to assemble the log
         /// </summary>
-        private static StringBuilder _stringBuilder = new StringBuilder();
+        private static readonly StringBuilder _stringBuilder = new StringBuilder();
 
         /// <summary>
-        /// List of LogStreams that are active
+        ///     List of LogStreams that are active
         /// </summary>
-        private static List<LogStream> _streams = new List<LogStream>();
+        private static readonly List<LogStream> _streams = new List<LogStream>();
 
         /// <summary>
         /// List of Data Objects that are currently beeing filled.
@@ -71,33 +71,34 @@ namespace ADL
         //private static List<DataObject<object>> _dataObjects = new List<DataObject<object>>();
 
         /// <summary>
-        /// Contains the flags that determine the way prefixes get looked up
+        ///     Contains the flags that determine the way prefixes get looked up
         /// </summary>
         private static PrefixLookupSettings _lookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
 
         /// <summary>
-        /// The extracted flag if we should put tags at all
+        ///     The extracted flag if we should put tags at all
         /// </summary>
         private static bool _addPrefix;
 
         /// <summary>
-        /// The extracted flag if we should deconstruct the mask to find potential tags
+        ///     The extracted flag if we should deconstruct the mask to find potential tags
         /// </summary>
         private static bool _deconstructtofind;
 
         /// <summary>
-        /// The extracted flag if we should end the lookup when one tag was found.(Does nothing if deconstruct flag is set to false)
+        ///     The extracted flag if we should end the lookup when one tag was found.(Does nothing if deconstruct flag is set to
+        ///     false)
         /// </summary>
         private static bool _onlyone;
 
         /// <summary>
-        /// The extracted flag if ADL should bake prefixes on the fly to archieve better lookup performance.
-        /// This makes every new flag that is not prefixed a new prefix entry with the combined mask.
+        ///     The extracted flag if ADL should bake prefixes on the fly to archieve better lookup performance.
+        ///     This makes every new flag that is not prefixed a new prefix entry with the combined mask.
         /// </summary>
         private static bool _bakePrefixes;
 
         /// <summary>
-        /// The Encoding that is going to be used by all text in ADL.
+        ///     The Encoding that is going to be used by all text in ADL.
         /// </summary>
         public static Encoding TextEncoding = Encoding.ASCII;
 
@@ -106,7 +107,7 @@ namespace ADL
         #region Public Properties
 
         /// <summary>
-        /// Public property, used to disable ADl
+        ///     Public property, used to disable ADl
         /// </summary>
         public static bool ADLEnabled
         {
@@ -115,7 +116,7 @@ namespace ADL
         }
 
         /// <summary>
-        /// Public property, used to disable update check.(Saves ~500ms)
+        ///     Public property, used to disable update check.(Saves ~500ms)
         /// </summary>
         public static bool SendUpdateMessageOnFirstLog
         {
@@ -124,7 +125,7 @@ namespace ADL
         }
 
         /// <summary>
-        /// Determines if ADL should send warnings about potential wrong use to the log streams
+        ///     Determines if ADL should send warnings about potential wrong use to the log streams
         /// </summary>
         public static bool SendWarnings
         {
@@ -133,8 +134,8 @@ namespace ADL
         }
 
         /// <summary>
-        /// Update Mask. This mask gets used when one of the ADL Components are checking for updates.
-        /// To disable the update messages, simly change the mask to new Bitmask(false)
+        ///     Update Mask. This mask gets used when one of the ADL Components are checking for updates.
+        ///     To disable the update messages, simly change the mask to new Bitmask(false)
         /// </summary>
         public static BitMask UpdateMask
         {
@@ -143,7 +144,7 @@ namespace ADL
         }
 
         /// <summary>
-        /// Warning Mask. This mask gets used when ADL sends warnings about (possible)wrong use.
+        ///     Warning Mask. This mask gets used when ADL sends warnings about (possible)wrong use.
         /// </summary>
         public static BitMask ADLWarningMask
         {
@@ -152,7 +153,7 @@ namespace ADL
         }
 
         /// <summary>
-        /// The number of Streams that ADL writes to
+        ///     The number of Streams that ADL writes to
         /// </summary>
         public static int LogStreamCount => _streams.Count;
 
@@ -162,12 +163,12 @@ namespace ADL
             set
             {
                 _addPrefix =
-                    BitMask.IsContainedInMask((int)value, (int)PrefixLookupSettings.ADDPREFIXIFAVAILABLE, false);
-                _deconstructtofind = BitMask.IsContainedInMask((int)value,
-                    (int)PrefixLookupSettings.DECONSTRUCTMASKTOFIND, false);
-                _onlyone = BitMask.IsContainedInMask((int)value, (int)PrefixLookupSettings.ONLYONEPREFIX, false);
+                    BitMask.IsContainedInMask((int) value, (int) PrefixLookupSettings.ADDPREFIXIFAVAILABLE, false);
+                _deconstructtofind = BitMask.IsContainedInMask((int) value,
+                    (int) PrefixLookupSettings.DECONSTRUCTMASKTOFIND, false);
+                _onlyone = BitMask.IsContainedInMask((int) value, (int) PrefixLookupSettings.ONLYONEPREFIX, false);
                 _lookupMode = value;
-                _bakePrefixes = BitMask.IsContainedInMask((int)value, (int)PrefixLookupSettings.BAKEPREFIXES, false);
+                _bakePrefixes = BitMask.IsContainedInMask((int) value, (int) PrefixLookupSettings.BAKEPREFIXES, false);
             }
         }
 
@@ -176,7 +177,7 @@ namespace ADL
         #region Streams
 
         /// <summary>
-        /// Adds another stream to the debug logs.
+        ///     Adds another stream to the debug logs.
         /// </summary>
         /// <param name="stream">The stream you want to add</param>
         public static void AddOutputStream(LogStream stream)
@@ -191,24 +192,40 @@ namespace ADL
                 Log(_adlWarningMask,
                     "AddOutputStream(" + stream.Mask +
                     "): ADL is disabled, you are adding an Output Stream while ADL is disabled.");
-            if (_streams.Contains(stream))
+            var contains = false;
+            lock (_streams)
+            {
+                contains = _streams.Contains(stream);
+            }
+
+            if (contains)
             {
                 Log(_adlWarningMask,
                     "AddOutputStream(" + stream.Mask + "): Supplied stream is already in the list. Aborting!");
                 return;
             }
 
-            _streams.Add(stream);
+            lock (_streams)
+            {
+                _streams.Add(stream);
+            }
         }
 
         /// <summary>
-        /// Removes the specified Stream.
+        ///     Removes the specified Stream.
         /// </summary>
         /// <param name="stream">The stream you want to remove</param>
-        /// /// <param name="CloseStream">If streams should be closed upon removal from the system</param>
+        /// ///
+        /// <param name="CloseStream">If streams should be closed upon removal from the system</param>
         public static void RemoveOutputStream(LogStream stream, bool CloseStream = true)
         {
-            if (!_streams.Contains(stream))
+            var contains = false;
+            lock (_streams)
+            {
+                contains = _streams.Contains(stream);
+            }
+
+            if (!contains)
             {
                 Log(_adlWarningMask,
                     "RemoveOutputStream(" + stream.Mask + "): Supplied stream is not in the list. Aborting!");
@@ -219,12 +236,16 @@ namespace ADL
                 Log(_adlWarningMask,
                     "RemoveOutputStream(" + stream.Mask +
                     "): ADL is disabled, you are removing an Output Stream while while ADL is disabled.");
-            _streams.Remove(stream);
+            lock (_streams)
+            {
+                _streams.Remove(stream);
+            }
+
             if (CloseStream) stream.Close();
         }
 
         /// <summary>
-        /// Removes all output streams from the list. Everything gets written to file.
+        ///     Removes all output streams from the list. Everything gets written to file.
         /// </summary>
         /// <param name="CloseStream">If streams should be closed upon removal from the system</param>
         public static void RemoveAllOutputStreams(bool CloseStream = true)
@@ -241,7 +262,7 @@ namespace ADL
         #region Prefixes
 
         /// <summary>
-        /// Adds a prefix for the specified level
+        ///     Adds a prefix for the specified level
         /// </summary>
         /// <param name="mask">flag combination</param>
         /// <param name="prefix">desired prefix</param>
@@ -265,7 +286,7 @@ namespace ADL
         }
 
         /// <summary>
-        /// Removes Prefix from prefix lookup table
+        ///     Removes Prefix from prefix lookup table
         /// </summary>
         /// <param name="mask"></param>
         public static void RemovePrefixForMask(BitMask mask)
@@ -283,7 +304,7 @@ namespace ADL
         }
 
         /// <summary>
-        /// Clears all Prefixes
+        ///     Clears all Prefixes
         /// </summary>
         public static void RemoveAllPrefixes()
         {
@@ -294,8 +315,9 @@ namespace ADL
         }
 
         /// <summary>
-        /// Sets all Prefixes from the list from low to high.
-        /// You can not specify the level, because it will fill the prefixes by power of 2. So prefixes[0] = level1 and prefixes[2] = level4 and so on
+        ///     Sets all Prefixes from the list from low to high.
+        ///     You can not specify the level, because it will fill the prefixes by power of 2. So prefixes[0] = level1 and
+        ///     prefixes[2] = level4 and so on
         /// </summary>
         /// <param name="prefixes">List of prefixes</param>
         public static void SetAllPrefixes(params string[] prefixes)
@@ -315,7 +337,7 @@ namespace ADL
         }
 
         /// <summary>
-        /// Gets all Tags with corresponding masks.
+        ///     Gets all Tags with corresponding masks.
         /// </summary>
         /// <returns></returns>
         public static Dictionary<int, string> GetAllPrefixes()
@@ -381,7 +403,7 @@ namespace ADL
 
 
         /// <summary>
-        /// Fire Log Messsage with desired level(flag) and message
+        ///     Fire Log Messsage with desired level(flag) and message
         /// </summary>
         /// <param name="mask">the flag</param>
         /// <param name="message">the message</param>
@@ -405,18 +427,21 @@ namespace ADL
             var _message = message + Utils.NEW_LINE;
             var _msg = GetMaskPrefix(mask) + _message;
 
-            foreach (var logs in _streams)
-                if (logs.IsContainedInMask(mask))
-                {
-                    if (logs.OverrideChannelTag)
-                        logs.Write(new Log(mask, _message));
-                    else
-                        logs.Write(new Log(mask, _msg));
-                }
+            lock (_streams)
+            {
+                foreach (var logs in _streams)
+                    if (logs.IsContainedInMask(mask))
+                    {
+                        if (logs.OverrideChannelTag)
+                            logs.Write(new Log(mask, _message));
+                        else
+                            logs.Write(new Log(mask, _msg));
+                    }
+            }
         }
 
         /// <summary>
-        /// Generic Version. T is your Enum
+        ///     Generic Version. T is your Enum
         /// </summary>
         /// <typeparam name="T">Enum</typeparam>
         /// <param name="mask">Enum Mask</param>
@@ -429,7 +454,7 @@ namespace ADL
         }
 
         /// <summary>
-        /// Gets the Mask of the Specified Prefix
+        ///     Gets the Mask of the Specified Prefix
         /// </summary>
         /// <param name="prefix">Prefix</param>
         /// <param name="mask">Mask returned by the function</param>
@@ -455,7 +480,7 @@ namespace ADL
         }
 
         /// <summary>
-        /// Returns the concatenated string of all the Prefixes that are fallin in that mask.
+        ///     Returns the concatenated string of all the Prefixes that are fallin in that mask.
         /// </summary>
         /// <param name="mask"></param>
         /// <returns>All Prefixes for specified mask</returns>
@@ -493,6 +518,7 @@ namespace ADL
                         _prefixes.Add(mask,
                             _stringBuilder.ToString()); //Create a "custom prefix" with the constructed mask.
                     }
+
                 //Log(new BitMask(true), "Baked Prefix: "+_stringBuilder.ToString());
             }
 
@@ -504,7 +530,7 @@ namespace ADL
         #region Config
 
         /// <summary>
-        /// Loads a supplied ADLConfig.
+        ///     Loads a supplied ADLConfig.
         /// </summary>
         /// <param name="config">Config to load</param>
         public static void LoadConfig(ADLConfig config)
@@ -519,7 +545,7 @@ namespace ADL
         }
 
         /// <summary>
-        /// Loads the ADL Config from the file at the supplied path
+        ///     Loads the ADL Config from the file at the supplied path
         /// </summary>
         /// <param name="path">file path</param>
         public static void LoadConfig(string path = "adl_config.xml")
@@ -529,7 +555,7 @@ namespace ADL
         }
 
         /// <summary>
-        /// Saves the configuration to the given file path
+        ///     Saves the configuration to the given file path
         /// </summary>
         /// <param name="config">config to save</param>
         /// <param name="path">file path</param>
@@ -540,7 +566,7 @@ namespace ADL
 
 
         /// <summary>
-        /// Saves the current configuration of ADL to the given file path
+        ///     Saves the current configuration of ADL to the given file path
         /// </summary>
         /// <param name="path">File path.</param>
         public static void SaveConfig(string path = "adl_config.xml")

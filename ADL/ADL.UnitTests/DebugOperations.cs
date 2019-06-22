@@ -1,5 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
+﻿using System.IO;
+using ADL.Configs;
+using ADL.Streams;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace ADL.UnitTests
 {
     [TestClass]
@@ -8,7 +11,6 @@ namespace ADL.UnitTests
         [TestMethod]
         public void Test_AddOutputStream()
         {
-
             Debug.SendUpdateMessageOnFirstLog = true;
             Debug.SendWarnings = false;
             Debug.ADLEnabled = false;
@@ -19,7 +21,7 @@ namespace ADL.UnitTests
 
             Debug.RemoveAllOutputStreams();
             Debug.ADLEnabled = false;
-            Streams.LogStream ls = new Streams.LogStream(new System.IO.MemoryStream());
+            var ls = new LogStream(new MemoryStream());
             Debug.AddOutputStream(ls);
             Debug.AddOutputStream(ls);
             Assert.AreEqual(1, Debug.LogStreamCount);
@@ -35,10 +37,11 @@ namespace ADL.UnitTests
         public void Test_AddPrefixForMask()
         {
             //Flag is required to find tags made up of unique masks(example: 2|8)
-            Debug.PrefixLookupMode = Configs.PrefixLookupSettings.ADDPREFIXIFAVAILABLE | Configs.PrefixLookupSettings.DECONSTRUCTMASKTOFIND;
+            Debug.PrefixLookupMode =
+                PrefixLookupSettings.ADDPREFIXIFAVAILABLE | PrefixLookupSettings.DECONSTRUCTMASKTOFIND;
 
 
-            BitMask bm = new BitMask(2 | 8);
+            var bm = new BitMask(2 | 8);
 
             Debug.ADLEnabled = false;
             Debug.AddPrefixForMask(bm | 4, "Test");
@@ -47,15 +50,14 @@ namespace ADL.UnitTests
 
             Debug.AddPrefixForMask(bm, "HELLO");
             Debug.ADLEnabled = true;
-            bool ret = Debug.GetMaskPrefix(bm) == "HELLO";
+            var ret = Debug.GetMaskPrefix(bm) == "HELLO";
             Assert.IsTrue(ret);
-
         }
 
         [TestMethod]
         public void Test_RemovePrefixForMask()
         {
-            BitMask bm = new BitMask(2 | 8);
+            var bm = new BitMask(2 | 8);
             Debug.SendUpdateMessageOnFirstLog = false;
             Debug.AddPrefixForMask(bm, "HELLO");
             Debug.RemovePrefixForMask(bm);
@@ -74,18 +76,17 @@ namespace ADL.UnitTests
         [TestMethod]
         public void Test_RemoveAllPrefixes()
         {
-            BitMask bm = new BitMask(2 | 8);
+            var bm = new BitMask(2 | 8);
             Debug.AddPrefixForMask(bm, "HELLO");
             Debug.RemoveAllPrefixes();
             Assert.IsTrue(Debug.GetAllPrefixes().Count == 0);
-
         }
 
         [TestMethod]
         public void Test_SetAllPrefixes()
         {
             //Flag is required to find tags made up of unique masks(example: 2|8)
-            Debug.PrefixLookupMode = Configs.PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
+            Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
 
 
             Debug.SetAllPrefixes("Hello", "HELLO1", "HOLA2");
@@ -103,14 +104,13 @@ namespace ADL.UnitTests
             Assert.IsTrue(Debug.GetMaskPrefix(2) == "HELLO1");
             Assert.IsTrue(Debug.GetMaskPrefix(4) == "HOLA2");
             Debug.ADLEnabled = true;
-
         }
 
         [TestMethod]
         public void Test_GetAllPrefixes()
         {
             //Flag is required to find tags made up of unique masks(example: 2|8)
-            Debug.PrefixLookupMode = Configs.PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
+            Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
 
 
             Debug.SetAllPrefixes("Hello", "HELLO1", "HOLA2");
@@ -130,73 +130,56 @@ namespace ADL.UnitTests
         [TestMethod]
         public void Test_GetPrefixMask()
         {
-
             Debug.SetAllPrefixes("Hello", "HELLO1", "HOLA2");
-            if (Debug.GetPrefixMask("Hello", out BitMask bm))
-            {
-                Assert.IsTrue(bm == 1);
-            }
-            if (Debug.GetPrefixMask("HELLO1", out bm))
-            {
-                Assert.IsTrue(bm == 2);
-            }
-            if (Debug.GetPrefixMask("HOLA2", out bm))
-            {
-                Assert.IsTrue(bm == 4);
-            }
+            if (Debug.GetPrefixMask("Hello", out var bm)) Assert.IsTrue(bm == 1);
+            if (Debug.GetPrefixMask("HELLO1", out bm)) Assert.IsTrue(bm == 2);
+            if (Debug.GetPrefixMask("HOLA2", out bm)) Assert.IsTrue(bm == 4);
         }
 
         [TestMethod]
         public void Test_GetMaskPrefix()
         {
             //Flag is required to find tags made up of unique masks(example: 2|8)
-            Debug.PrefixLookupMode = Configs.PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
+            Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
 
             Debug.SetAllPrefixes("Hello", "HELLO1", "HOLA2");
             BitMask bm = 2;
             Assert.IsTrue(Debug.GetMaskPrefix(bm) == "HELLO1");
 
-            Debug.PrefixLookupMode = Configs.PrefixLookupSettings.ADDPREFIXIFAVAILABLE | Configs.PrefixLookupSettings.ONLYONEPREFIX;
-            
+            Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE | PrefixLookupSettings.ONLYONEPREFIX;
+
             bm = 32;
             Assert.IsFalse(Debug.GetMaskPrefix(bm) == "HELLO1");
 
-            Debug.PrefixLookupMode = Configs.PrefixLookupSettings.ADDPREFIXIFAVAILABLE | Configs.PrefixLookupSettings.BAKEPREFIXES | Configs.PrefixLookupSettings.DECONSTRUCTMASKTOFIND;
-            
+            Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE | PrefixLookupSettings.BAKEPREFIXES |
+                                     PrefixLookupSettings.DECONSTRUCTMASKTOFIND;
+
             bm = 32;
             Assert.IsFalse(Debug.GetMaskPrefix(bm) == "HELLO1");
-
-
-
-           
-
         }
 
         [TestMethod]
         public void Test_Log()
         {
-
-            Streams.LogTextStream lts = new Streams.LogTextStream(new Streams.PipeStream())
+            var lts = new LogTextStream(new PipeStream())
             {
                 AddTimeStamp = false
             };
 
 
-            
-            Debug.PrefixLookupMode = Configs.PrefixLookupSettings.NOPREFIX;
+            Debug.PrefixLookupMode = PrefixLookupSettings.NOPREFIX;
             Debug.SendUpdateMessageOnFirstLog = false;
-            Assert.IsTrue(Debug.PrefixLookupMode == Configs.PrefixLookupSettings.NOPREFIX);
+            Assert.IsTrue(Debug.PrefixLookupMode == PrefixLookupSettings.NOPREFIX);
             Assert.IsFalse(Debug.SendUpdateMessageOnFirstLog);
             Debug.SendUpdateMessageOnFirstLog = true;
             Debug.AddOutputStream(lts);
             Debug.Log(1, "ffffffffff");
 
-            byte[] buf = new byte[lts.Length];
+            var buf = new byte[lts.Length];
             lts.Read(buf, 0, buf.Length);
-            string s = Debug.TextEncoding.GetString(buf);
+            var s = Debug.TextEncoding.GetString(buf);
 
             Assert.IsTrue(s.EndsWith("ffffffffff\n")); //ADL is appending the \n when using LogTextStreams
-
 
 
             Debug.LogGen(1, "ffffffffff");
@@ -210,19 +193,18 @@ namespace ADL.UnitTests
             Assert.IsTrue(s.EndsWith("ffffffffff\n")); //ADL is appending the \n when using LogTextStreams
 
 
-            Debug.PrefixLookupMode = Configs.PrefixLookupSettings.ADDPREFIXIFAVAILABLE | Configs.PrefixLookupSettings.BAKEPREFIXES;
+            Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE | PrefixLookupSettings.BAKEPREFIXES;
 
             Debug.Log(2 | 4, "CODE COVERAGE");
             Debug.Log(2 | 4, "CODE COVERAGE");
-
         }
 
         [TestMethod]
         public void Test_RemoveOutputStream()
         {
-            Streams.LogTextStream lts = new Streams.LogTextStream(new Streams.PipeStream());
+            var lts = new LogTextStream(new PipeStream());
             Debug.AddOutputStream(lts);
-            int newCount = Debug.LogStreamCount;
+            var newCount = Debug.LogStreamCount;
 
             Debug.ADLEnabled = false;
             Debug.RemoveOutputStream(lts);
@@ -237,13 +219,12 @@ namespace ADL.UnitTests
         [TestMethod]
         public void Test_LoadConfig()
         {
-            Debug.LoadConfig(Configs.ADLConfig.Standard);
-            Assert.IsTrue(Debug.ADLEnabled == Configs.ADLConfig.Standard.ADLEnabled);
-            Assert.IsTrue(Debug.ADLWarningMask == Configs.ADLConfig.Standard.WarningMask);
-            Assert.IsTrue(Debug.UpdateMask == Configs.ADLConfig.Standard.UpdateMask);
-            Assert.IsTrue(Debug.SendWarnings == Configs.ADLConfig.Standard.SendWarnings);
-            Assert.IsTrue(Debug.GetAllPrefixes().Count == Configs.ADLConfig.Standard.Prefixes.Keys.Count);
-
+            Debug.LoadConfig(ADLConfig.Standard);
+            Assert.IsTrue(Debug.ADLEnabled == ADLConfig.Standard.ADLEnabled);
+            Assert.IsTrue(Debug.ADLWarningMask == ADLConfig.Standard.WarningMask);
+            Assert.IsTrue(Debug.UpdateMask == ADLConfig.Standard.UpdateMask);
+            Assert.IsTrue(Debug.SendWarnings == ADLConfig.Standard.SendWarnings);
+            Assert.IsTrue(Debug.GetAllPrefixes().Count == ADLConfig.Standard.Prefixes.Keys.Count);
         }
     }
 }

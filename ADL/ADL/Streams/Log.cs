@@ -1,28 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ADL.Streams
 {
     /// <summary>
-    /// Struct that can serialize and deserialize to be sent over a stream
+    ///     Struct that can serialize and deserialize to be sent over a stream
     /// </summary>
     public struct Log
     {
         /// <summary>
-        /// The mask of the log.
+        ///     The mask of the log.
         /// </summary>
         public int Mask;
 
         /// <summary>
-        /// The message that has been sent
+        ///     The message that has been sent
         /// </summary>
         public string Message;
 
 
         /// <summary>
-        /// Creates a valid Log Struct
+        ///     Creates a valid Log Struct
         /// </summary>
         /// <param name="mask"></param>
         /// <param name="message"></param>
@@ -33,7 +31,7 @@ namespace ADL.Streams
         }
 
         /// <summary>
-        /// Turns this object in to a byte array.
+        ///     Turns this object in to a byte array.
         /// </summary>
         /// <returns></returns>
         public byte[] Serialize()
@@ -45,7 +43,7 @@ namespace ADL.Streams
         }
 
         /// <summary>
-        /// Creates an Log object from a byte stream.
+        ///     Creates an Log object from a byte stream.
         /// </summary>
         /// <param name="buffer">the buffer where the object is in</param>
         /// <param name="startIndex">e.g. offset</param>

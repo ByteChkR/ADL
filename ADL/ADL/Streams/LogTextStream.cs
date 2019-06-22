@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
+﻿using System.IO;
 
 namespace ADL.Streams
 {
     public class LogTextStream : LogStream
     {
         /// <summary>
-        /// Constructor, passing the parameters to log stream
+        ///     Constructor, passing the parameters to log stream
         /// </summary>
         /// <param name="baseStream"></param>
         /// <param name="mask"></param>
@@ -20,7 +17,7 @@ namespace ADL.Streams
         }
 
         /// <summary>
-        /// Fills Buffer with the string message only.(used when output is System.Console)
+        ///     Fills Buffer with the string message only.(used when output is System.Console)
         /// </summary>
         /// <param name="value">Line</param>
         public override void Write(Log log)

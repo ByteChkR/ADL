@@ -1,52 +1,93 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.Remoting;
 using System.Threading;
-using System.IO;
 
 namespace ADL.Streams
 {
     /// <summary>
-    /// Log stream class that you can use with virtually any stream(as long as you handle the multithreading on your own if used)
-    /// This class wraps around your supplied stream and interacts with the system. 
-    /// Because the LogStream implements every override and passes it to the base stream,
-    /// you can use your created base stream itself instead of the LogStream.
+    ///     Log stream class that you can use with virtually any stream(as long as you handle the multithreading on your own if
+    ///     used)
+    ///     This class wraps around your supplied stream and interacts with the system.
+    ///     Because the LogStream implements every override and passes it to the base stream,
+    ///     you can use your created base stream itself instead of the LogStream.
     /// </summary>
     public class LogStream : Stream
     {
         /// <summary>
-        /// Mask that the system uses to filter logs
+        ///     Base stream
+        /// </summary>
+        protected Stream _baseStream;
+
+        /// <summary>
+        ///     Mask that the system uses to filter logs
         /// </summary>
         private BitMask _mask = new BitMask(true);
 
         /// <summary>
-        /// The match type(how the mask gets compared)
+        ///     The match type(how the mask gets compared)
         /// </summary>
         private MatchType _matchType = MatchType.MATCH_ALL;
 
         /// <summary>
-        /// Put a timestamp infront of the log.
+        ///     If true all the LogChannels/TimeStamp is ignored and only the message will get received.
         /// </summary>
-        private bool _setTimeStamp = false;
+        private bool _overrideLogChannels;
 
         /// <summary>
-        /// Is the stream closed?
+        ///     Put a timestamp infront of the log.
         /// </summary>
-        private bool _streamClosed = false;
+        private bool _setTimeStamp;
 
         /// <summary>
-        /// If true all the LogChannels/TimeStamp is ignored and only the message will get received.
+        ///     Is the stream closed?
         /// </summary>
-        private bool _overrideLogChannels = false;
+        private bool _streamClosed;
+
 
         /// <summary>
-        /// Base stream
+        ///     Creates a Log stream based on the parameters supplied.
         /// </summary>
-        protected Stream _baseStream = null;
+        /// <param name="baseStream"></param>
+        /// <param name="mask"></param>
+        /// <param name="matchType"></param>
+        /// <param name="setTimeStamp"></param>
+        public LogStream(Stream baseStream, int mask = ~0, MatchType matchType = MatchType.MATCH_ALL,
+            bool setTimeStamp = false)
+        {
+            _mask = mask;
+            _matchType = matchType;
+            _setTimeStamp = setTimeStamp;
+            _baseStream = baseStream;
+        }
+
+        /// <summary>
+        ///     Writes a log to the stream.
+        /// </summary>
+        /// <param name="log">the log to send</param>
+        public virtual void Write(Log log)
+        {
+            if (_streamClosed) return;
+            if (_setTimeStamp) log.Message = Utils.TimeStamp + log.Message;
+            var buffer = log.Serialize();
+            _baseStream.Write(buffer, 0, buffer.Length);
+            Flush();
+        }
+
+        /// <summary>
+        ///     Wrapper to make code more readable
+        /// </summary>
+        /// <param name="mask"></param>
+        /// <returns></returns>
+        public bool IsContainedInMask(BitMask mask)
+        {
+            return BitMask.IsContainedInMask(_mask, mask, _matchType == MatchType.MATCH_ALL);
+        }
 
         #region Properties
 
         /// <summary>
-        /// If true all the LogChannels/TimeStamp is ignored and only the message will get received.
+        ///     If true all the LogChannels/TimeStamp is ignored and only the message will get received.
         /// </summary>
         public bool OverrideChannelTag
         {
@@ -56,7 +97,7 @@ namespace ADL.Streams
 
 
         /// <summary>
-        /// The Mask that determines wether this stream will receive a log message
+        ///     The Mask that determines wether this stream will receive a log message
         /// </summary>
         public int Mask
         {
@@ -65,7 +106,7 @@ namespace ADL.Streams
         }
 
         /// <summary>
-        /// The match type(how the mask gets compared)
+        ///     The match type(how the mask gets compared)
         /// </summary>
         public MatchType MatchType
         {
@@ -74,7 +115,7 @@ namespace ADL.Streams
         }
 
         /// <summary>
-        /// Put a timestamp infront of the log.
+        ///     Put a timestamp infront of the log.
         /// </summary>
         public bool AddTimeStamp
         {
@@ -83,7 +124,7 @@ namespace ADL.Streams
         }
 
         /// <summary>
-        /// If this is true the Underlying Stream is closed and the Whole Object was destroyed.
+        ///     If this is true the Underlying Stream is closed and the Whole Object was destroyed.
         /// </summary>
         public bool IsStreamClosed => _streamClosed;
 
@@ -230,45 +271,5 @@ namespace ADL.Streams
         }
 
         #endregion
-
-
-        /// <summary>
-        /// Creates a Log stream based on the parameters supplied.
-        /// </summary>
-        /// <param name="baseStream"></param>
-        /// <param name="mask"></param>
-        /// <param name="matchType"></param>
-        /// <param name="setTimeStamp"></param>
-        public LogStream(Stream baseStream, int mask = ~0, MatchType matchType = MatchType.MATCH_ALL,
-            bool setTimeStamp = false)
-        {
-            _mask = mask;
-            _matchType = matchType;
-            _setTimeStamp = setTimeStamp;
-            _baseStream = baseStream;
-        }
-
-        /// <summary>
-        /// Writes a log to the stream.
-        /// </summary>
-        /// <param name="log">the log to send</param>
-        public virtual void Write(Log log)
-        {
-            if (_streamClosed) return;
-            if (_setTimeStamp) log.Message = Utils.TimeStamp + log.Message;
-            var buffer = log.Serialize();
-            _baseStream.Write(buffer, 0, buffer.Length);
-            Flush();
-        }
-
-        /// <summary>
-        /// Wrapper to make code more readable
-        /// </summary>
-        /// <param name="mask"></param>
-        /// <returns></returns>
-        public bool IsContainedInMask(BitMask mask)
-        {
-            return BitMask.IsContainedInMask(_mask, mask, _matchType == MatchType.MATCH_ALL);
-        }
     }
 }

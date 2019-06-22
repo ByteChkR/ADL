@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using ADL.Configs;
 
 namespace ADL.Unity.UnityConfig
@@ -8,21 +7,32 @@ namespace ADL.Unity.UnityConfig
     [Serializable]
     public class SerializableDictionaryIntString : SerializableDictionary<int, string>
     {
-        public SerializableDictionaryIntString(Dictionary<int, string> dict) : base(dict) { }
-        public SerializableDictionaryIntString() { }
+        public SerializableDictionaryIntString(Dictionary<int, string> dict) : base(dict)
+        {
+        }
+
+        public SerializableDictionaryIntString()
+        {
+        }
     }
 
     [Serializable]
-    public class SerializableDictionaryIntColor:SerializableDictionary<int, SerializableColor>
+    public class SerializableDictionaryIntColor : SerializableDictionary<int, SerializableColor>
     {
-        public SerializableDictionaryIntColor(Dictionary<int, SerializableColor> dict) : base(dict) { }
-        public SerializableDictionaryIntColor() { }
+        public SerializableDictionaryIntColor(Dictionary<int, SerializableColor> dict) : base(dict)
+        {
+        }
+
+        public SerializableDictionaryIntColor()
+        {
+        }
     }
 
     [Serializable]
     public class UnityADLConfig : ADLConfig
     {
         public SerializableDictionaryIntString MaskPrefix;
+
         public void Prepare()
         {
             Prefixes = MaskPrefix;
@@ -33,10 +43,10 @@ namespace ADL.Unity.UnityConfig
     public class UnityADLCustomConsoleConfig : ADLCustomConsoleConfig
     {
         public SerializableDictionaryIntColor LogColorCoding;
+
         public void Prepare()
         {
-            ColorCoding = LogColorCoding;   
+            ColorCoding = LogColorCoding;
         }
     }
-
 }

@@ -6,13 +6,13 @@ namespace ADL
     public static class UpdateDataObject
     {
         /// <summary>
-        /// The Raw link to the location where i have my version files.
+        ///     The Raw link to the location where i have my version files.
         /// </summary>
         private static readonly string _rawLink =
             "https://raw.githubusercontent.com/ByteChkR/ADL/master/docs/versioning/{0}version.txt";
 
         /// <summary>
-        /// Creates the right link from the raw link and the package name
+        ///     Creates the right link from the raw link and the package name
         /// </summary>
         /// <param name="package">the package name</param>
         /// <returns>returns a valid link to the version file.</returns>
@@ -22,7 +22,7 @@ namespace ADL
         }
 
         /// <summary>
-        /// Checks For Updates for the specified package.
+        ///     Checks For Updates for the specified package.
         /// </summary>
         /// <param name="PackageName">Package name to search for</param>
         /// <param name="currentVer">The current assembly version of the package</param>
@@ -35,7 +35,7 @@ namespace ADL
             var webCli = new WebClient();
 
             msg = "Checking For Updates." + Utils.NEW_LINE + "Current " + PackageName + " Version(" +
-                  currentVer.ToString() + ")..." + Utils.NEW_LINE;
+                  currentVer + ")..." + Utils.NEW_LINE;
             try
             {
                 msg += "Downloading Version from Github Pages..." + Utils.NEW_LINE;
@@ -50,8 +50,8 @@ namespace ADL
                            " Version is higher than official release." + Utils.NEW_LINE;
                 else
                     msg += "Update Available!." + Utils.NEW_LINE + "Current " + PackageName + " Version: (" +
-                           currentVer.ToString() + ")" + Utils.NEW_LINE + "Online " + PackageName + " Version: (" +
-                           onlineVer.ToString() + ")." + Utils.NEW_LINE;
+                           currentVer + ")" + Utils.NEW_LINE + "Online " + PackageName + " Version: (" +
+                           onlineVer + ")." + Utils.NEW_LINE;
             }
             catch (Exception)
             {

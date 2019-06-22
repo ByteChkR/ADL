@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
 using System.IO;
+using System.Xml.Serialization;
 
 namespace ADL.Configs
 {
     /// <summary>
-    /// Contains the code for saving and loading Config files in this project
+    ///     Contains the code for saving and loading Config files in this project
     /// </summary>
     public static class ConfigManager
     {
         /// <summary>
-        /// The field of the serializer that gets used.
+        ///     The field of the serializer that gets used.
         /// </summary>
         private static XmlSerializer _serializer;
 
         /// <summary>
-        /// Reads a config of type T from file.
+        ///     Reads a config of type T from file.
         /// </summary>
         /// <typeparam name="T">Type of Config</typeparam>
         /// <param name="path">Path to config</param>
@@ -49,7 +47,7 @@ namespace ADL.Configs
         }
 
         /// <summary>
-        /// Saves the specified Config File of type T at the supplied filepath
+        ///     Saves the specified Config File of type T at the supplied filepath
         /// </summary>
         /// <typeparam name="T">Type of config</typeparam>
         /// <param name="path">path to config file.</param>

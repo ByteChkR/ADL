@@ -1,37 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Sockets;
 using System.Net;
-using System.Runtime.InteropServices;
+using System.Net.Sockets;
 using System.Threading;
+using ADL.Configs;
 using ADL.Streams;
 
 namespace ADL.Network
 {
     public class NetworkListener
     {
-        private readonly object _stopLock = new object();
-        private bool _stop = true;
-        private readonly object _stopListenLock = new object();
-        private bool _stopListen = true;
+        public static NetworkConfig Config;
         private readonly int _refreshMillis;
-        private Thread _listenerThread = null;
-        private Thread _serverThread = null;
-        private bool _multiThread = false;
-        private List<ClientSession> _clients = new List<ClientSession>();
-        private ADL.Streams.GenPipeStream<ClientSession> _pendingClients = new GenPipeStream<ClientSession>();
-        public NetworkListener(int refreshMillis, bool multiThread = true)
+        private readonly object _stopListenLock = new object();
+
+
+        private readonly object _stopLock = new object();
+        private readonly List<ClientSession> _clients = new List<ClientSession>();
+        private Thread _listenerThread;
+        private LogTextStream _lts;
+        private readonly bool _multiThread;
+        private readonly GenPipeStream<ClientSession> _pendingClients = new GenPipeStream<ClientSession>();
+        private Thread _serverThread;
+        private bool _stop = true;
+        private bool _stopListen = true;
+
+        public NetworkListener(int refreshMillis, string config = "", bool multiThread = true)
         {
+            Config = NetworkConfig.Load(config);
             _multiThread = multiThread;
             _refreshMillis = refreshMillis;
         }
 
+
         public void Start()
         {
+            _lts = new LogTextStream(Console.OpenStandardOutput(), 0);
+            Debug.AddOutputStream(_lts);
 
-
-
-            Console.WriteLine("Starting Network Listener...");
+            Debug.Log(0, "Starting Network Listener...");
             lock (_stopListenLock)
             {
                 if (_stopListen)
@@ -43,7 +50,7 @@ namespace ADL.Network
             }
 
 
-            Console.WriteLine("Starting Server...");
+            Debug.Log(0, "Starting Server...");
             lock (_stopLock)
             {
                 if (_stop)
@@ -51,11 +58,13 @@ namespace ADL.Network
                     _stop = false;
                     if (_multiThread)
                     {
-
                         _serverThread = new Thread(Run);
                         _serverThread.Start();
                     }
-                    else Run();
+                    else
+                    {
+                        Run();
+                    }
                 }
             }
         }
@@ -64,79 +73,81 @@ namespace ADL.Network
         {
             lock (_stopLock)
             {
-                if (!_stop)
-                {
-                    _stop = true;
-                }
+                if (!_stop) _stop = true;
             }
+
             lock (_stopListenLock)
             {
                 if (!_stopListen) _stopListen = true;
             }
+
+            Debug.RemoveOutputStream(_lts);
         }
 
 
-        void ListenerThread()
+        private void ListenerThread()
         {
-            TcpListener tcpL = new TcpListener(IPAddress.Any, 1337);
+            var tcpL = new TcpListener(IPAddress.Any, Config.Port);
 
             tcpL.Start();
 
             while (true)
             {
-                lock (_stopListenLock) if (_stopListen) break;
-                TcpClient cl = tcpL.AcceptTcpClient();
+                lock (_stopListenLock)
+                {
+                    if (_stopListen) break;
+                }
 
-                if (cl == null) continue;
-                ClientSession cs = new ClientSession(cl);
+                var cs = new ClientSession(tcpL.AcceptTcpClient());
                 if (cs.Authenticate())
                 {
-                    ClientSession[] cla = new ClientSession[] { cs };
+                    cs.Initialize();
+
+
+                    ClientSession[] cla = {cs};
                     _pendingClients.WriteGen(cla, 0, 1);
                 }
-                else cs.CloseSession();
-
-
+                else
+                {
+                    cs.CloseSession();
+                }
             }
+
+            tcpL.Stop();
         }
 
 
-        void Run()
+        private void Run()
         {
-
-            LogTextStream ls = new LogTextStream(Console.OpenStandardOutput(), -1, MatchType.MATCH_ALL, true);
-            Debug.AddOutputStream(ls);
-
             while (true)
             {
                 Thread.Sleep(_refreshMillis);
                 lock (_stopLock)
+                {
                     if (_stop)
                     {
-                        for (int i = _clients.Count - 1; i >= 0; i--)
-                        {
-                            _clients[i].CloseSession();
-                        }
+                        for (var i = _clients.Count - 1; i >= 0; i--) _clients[i].CloseSession();
                         _clients.Clear();
                         break;
                     }
+                }
 
-                int pendingClientsCount = (int)_pendingClients.Length;
+                var pendingClientsCount = (int) _pendingClients.Length;
                 if (pendingClientsCount > 0)
                 {
-
-                    Console.WriteLine("Accepting " + pendingClientsCount + " Clients");
-                    ClientSession[] clients = new ClientSession[pendingClientsCount];
+                    Debug.Log(0, "Accepting " + pendingClientsCount + " Clients");
+                    var clients = new ClientSession[pendingClientsCount];
                     _pendingClients.ReadGen(clients, 0, pendingClientsCount);
 
                     _clients.AddRange(clients);
+                    Debug.Log(0, "Total Clients:  " + _clients.Count + " Clients");
                 }
 
-                List<ClientSession> removeList = new List<ClientSession>();
+                var removeList = new List<ClientSession>();
 
-                for (int i = _clients.Count - 1; i >= 0; i--) //Serve each client
+                for (var i = _clients.Count - 1; i >= 0; i--) //Serve each client
                 {
-                    ClientSession clientSession = _clients[i];
+                    var clientSession = _clients[i];
 
                     if (!clientSession.Connected)
                     {
@@ -145,31 +156,38 @@ namespace ADL.Network
                     }
                     else
                     {
-
-                        LogPackage lp = clientSession.GetPackage(out bool dc);
+                        var lp = clientSession.GetPackage(out var dc);
 
                         if (!dc)
-                            foreach (Log log in lp.Logs)
-                            {
-                                Debug.Log(log.Mask, log.Message.Trim());
-                            }
+                        {
+                            if (lp.Logs.Count > 0)
+                                //Debug.Log(0, "Logs: " + lp.Logs.Count);
+                                for (var j = 0; j < lp.Logs.Count; j++)
+                                    Debug.Log(clientSession.instanceID, lp.Logs[j].Message.Trim());
+                        }
                         else
                         {
                             removeList.Add(clientSession); //Remove when disconnected.
                             clientSession.CloseSession();
                         }
-
-
                     }
                 }
 
-                for (int i = 0; i < removeList.Count; i++)
+                for (var i = 0; i < removeList.Count; i++)
                 {
-                    Console.WriteLine("Removing Client :" + i);
+                    Debug.Log(0, "Removing Client :" + i);
                     _clients.Remove(removeList[i]);
                 }
             }
-        }
 
+
+            for (var i = 0; i < _clients.Count; i++)
+            {
+                Debug.Log(0, "Removing Client :" + i);
+                _clients[i].CloseSession();
+            }
+
+            _clients.Clear();
+        }
     }
 }

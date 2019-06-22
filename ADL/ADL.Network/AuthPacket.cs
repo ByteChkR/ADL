@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace ADL.Network
 {
     public struct AuthPacket
     {
-
         public int ID;
-        public byte[] programHash;
-        public const int PACKET_SIZE = sizeof(int) + 128;
+        public byte[] programAssembly;
+        public const int PACKET_SIZE = sizeof(int) + ASSEMBLY_SIZE;
+        public const int ASSEMBLY_SIZE = sizeof(short) * 4;
 
 
         public byte[] Serialize()
         {
-            List<byte> ret = new List<byte>();
+            var ret = new List<byte>();
             ret.AddRange(BitConverter.GetBytes(ID));
-            ret.AddRange(programHash);
+            ret.AddRange(programAssembly);
             return ret.ToArray();
         }
 
@@ -26,14 +24,32 @@ namespace ADL.Network
         {
             packet = new AuthPacket();
             if (length < PACKET_SIZE) return false;
-            byte[] buf = new byte[sizeof(int)];
+            var buf = new byte[sizeof(int)];
             s.Read(buf, 0, buf.Length);
             packet.ID = BitConverter.ToInt32(buf, 0);
-            packet.programHash = new byte[128];
-            s.Read(packet.programHash, 0, 128);
+            packet.programAssembly = new byte[ASSEMBLY_SIZE];
+            s.Read(packet.programAssembly, 0, ASSEMBLY_SIZE);
             return true;
         }
 
+        public static AuthPacket Create(int id, Version asm)
+        {
+            var ver = asm.ToString();
+            var buf = new List<byte>();
+            var nr = "";
+            for (var i = 0; i < ver.Length; i++)
+                if (ver[i] == '.')
+                {
+                    buf.AddRange(BitConverter.GetBytes(short.Parse(nr)));
+                    nr = "";
+                }
+                else
+                {
+                    nr += ver[i];
+                }
 
+            buf.AddRange(BitConverter.GetBytes(short.Parse(nr)));
+            return new AuthPacket {ID = id, programAssembly = buf.ToArray()};
+        }
     }
 }

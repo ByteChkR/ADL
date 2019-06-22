@@ -1,16 +1,11 @@
 ﻿using UnityEngine;
+
 namespace ADL.Unity
 {
     /// <summary>
-    /// Custom Arrtibute for unity inspector
+    ///     Custom Arrtibute for unity inspector
     /// </summary>
-    public  class EnumFlagsAttribute : PropertyAttribute
+    public class EnumFlagsAttribute : PropertyAttribute
     {
-        /// <summary>
-        /// Empty public constructor
-        /// </summary>
-        public EnumFlagsAttribute() { }
     }
-
-    
 }

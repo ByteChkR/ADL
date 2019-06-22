@@ -1,29 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ADL.Configs
 {
     /// <summary>
-    /// A Serializable Dictionary that splits up the dictionary in two lists(while giving up the dictionaries functionality) to make it serializable
+    ///     A Serializable Dictionary that splits up the dictionary in two lists(while giving up the dictionaries
+    ///     functionality) to make it serializable
     /// </summary>
     /// <typeparam name="T1">Key</typeparam>
     /// <typeparam name="T2">Value</typeparam>
     public class SerializableDictionary<T1, T2>
     {
         /// <summary>
-        /// The Stored Keys
+        ///     The Stored Keys
         /// </summary>
         public List<T1> Keys;
 
         /// <summary>
-        /// The Stored Values
+        ///     The Stored Values
         /// </summary>
         public List<T2> Values;
 
         /// <summary>
-        /// Converts dict into a Serializable Dictionary
+        ///     Converts dict into a Serializable Dictionary
         /// </summary>
         /// <param name="dict">The Dictionary you want to serialize</param>
         public SerializableDictionary(Dictionary<T1, T2> dict)
@@ -44,7 +42,7 @@ namespace ADL.Configs
         }
 
         /// <summary>
-        /// Creates a Dictionary and puts the content of this into it.
+        ///     Creates a Dictionary and puts the content of this into it.
         /// </summary>
         /// <returns>The dictionary with the content of the key and value lists.</returns>
         public Dictionary<T1, T2> ToDictionary()

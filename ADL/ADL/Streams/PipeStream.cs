@@ -6,29 +6,27 @@ using System.Threading;
 namespace ADL.Streams
 {
     /// <summary>
-    /// PipeStream is a thread-safe read/write data stream for use between two threads in a 
-    /// single-producer/single-consumer type problem.
-    /// Version: 2014/12/15 1.2
-    /// Initial Version 2006/10/13 1.0 - initial version.
-    /// Update on 2008/10/9 1.1 - uses Monitor instead of Manual Reset events for more elegant synchronicity.
-    /// Update on 2014/12/15 1.2 - bugfix for read method not using offset - thanks Jörgen Sigvardsson, replace NotImplementedExceptions with NotSupportedException
-    ///	Copyright (c) 2006 James Kolpack (james dot kolpack at google mail)
-    ///	
-    ///	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
-    ///	associated documentation files (the "Software"), to deal in the Software without restriction, 
-    ///	including without limitation the rights to use, copy, modify, merge, publish, distribute, 
-    ///	sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is 
-    ///	furnished to do so, subject to the following conditions:
-    ///	
-    ///	The above copyright notice and this permission notice shall be included in all copies or 
-    ///	substantial portions of the Software.
-    ///	
-    ///	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
-    ///	INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
-    ///	PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
-    ///	LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT 
-    ///	OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
-    ///	OTHER DEALINGS IN THE SOFTWARE.
+    ///     PipeStream is a thread-safe read/write data stream for use between two threads in a
+    ///     single-producer/single-consumer type problem.
+    ///     Version: 2014/12/15 1.2
+    ///     Initial Version 2006/10/13 1.0 - initial version.
+    ///     Update on 2008/10/9 1.1 - uses Monitor instead of Manual Reset events for more elegant synchronicity.
+    ///     Update on 2014/12/15 1.2 - bugfix for read method not using offset - thanks Jörgen Sigvardsson, replace
+    ///     NotImplementedExceptions with NotSupportedException
+    ///     Copyright (c) 2006 James Kolpack (james dot kolpack at google mail)
+    ///     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+    ///     associated documentation files (the "Software"), to deal in the Software without restriction,
+    ///     including without limitation the rights to use, copy, modify, merge, publish, distribute,
+    ///     sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+    ///     furnished to do so, subject to the following conditions:
+    ///     The above copyright notice and this permission notice shall be included in all copies or
+    ///     substantial portions of the Software.
+    ///     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+    ///     INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+    ///     PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+    ///     LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
+    ///     OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+    ///     OTHER DEALINGS IN THE SOFTWARE.
     /// </summary>
     public class PipeStream : GenPipeStream<byte>
     {
@@ -39,36 +37,36 @@ namespace ADL.Streams
         #region Private Variables
 
         /// <summary>
-        /// Queue of bytes provides the datastructure for transmitting from an
-        /// input stream to an output stream.
-        /// Possible more effecient ways to accomplish this.
+        ///     Queue of bytes provides the datastructure for transmitting from an
+        ///     input stream to an output stream.
+        ///     Possible more effecient ways to accomplish this.
         /// </summary>
         private readonly Queue<T> _mBuffer = new Queue<T>();
 
         /// <summary>
-        /// Indicates that the input stream has been flushed and that
-        /// all remaining data should be written to the output stream.
+        ///     Indicates that the input stream has been flushed and that
+        ///     all remaining data should be written to the output stream.
         /// </summary>
         private bool _mFlushed;
 
         /// <summary>
-        /// Maximum number of bytes to store in the buffer.
+        ///     Maximum number of bytes to store in the buffer.
         /// </summary>
         private long _mMaxBufferLength = 200 * _MB;
 
         /// <summary>
-        /// Setting this to true will cause Read() to block if it appears
-        /// that it will run out of data.
+        ///     Setting this to true will cause Read() to block if it appears
+        ///     that it will run out of data.
         /// </summary>
         private bool _mBlockLastRead;
 
         /// <summary>
-        /// Number of bytes in a kilobyte
+        ///     Number of bytes in a kilobyte
         /// </summary>
         private const long _KB = 1024;
 
         /// <summary>
-        /// Number of bytes in a megabyte
+        ///     Number of bytes in a megabyte
         /// </summary>
         private const long _MB = _KB * 1024;
 
@@ -77,7 +75,7 @@ namespace ADL.Streams
         #region Public Properties
 
         /// <summary>
-        /// Gets or sets the maximum number of bytes to store in the buffer.
+        ///     Gets or sets the maximum number of bytes to store in the buffer.
         /// </summary>
         public long MaxBufferLength
         {
@@ -86,10 +84,10 @@ namespace ADL.Streams
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether to block last read method before the buffer is empty.
-        /// When true, Read() will block until it can fill the passed in buffer and count.
-        /// When false, Read() will not block, returning all the available buffer data.
-        /// Setting to true will remove the possibility of ending a stream reader prematurely.
+        ///     Gets or sets a value indicating whether to block last read method before the buffer is empty.
+        ///     When true, Read() will block until it can fill the passed in buffer and count.
+        ///     When false, Read() will not block, returning all the available buffer data.
+        ///     Setting to true will remove the possibility of ending a stream reader prematurely.
         /// </summary>
         public bool BlockLastReadBuffer
         {
@@ -109,44 +107,44 @@ namespace ADL.Streams
 
         #region Overrides
 
-        ///<summary>
-        ///When overridden in a derived class, gets a value indicating whether the current stream supports reading.
-        ///</summary>
-        ///<returns>
-        ///true if the stream supports reading; otherwise, false.
-        ///</returns>
+        /// <summary>
+        ///     When overridden in a derived class, gets a value indicating whether the current stream supports reading.
+        /// </summary>
+        /// <returns>
+        ///     true if the stream supports reading; otherwise, false.
+        /// </returns>
         public override bool CanRead => true;
 
-        ///<summary>
-        ///When overridden in a derived class, gets a value indicating whether the current stream supports seeking.
-        ///</summary>
-        ///<returns>
-        ///true if the stream supports seeking; otherwise, false.
-        ///</returns>
+        /// <summary>
+        ///     When overridden in a derived class, gets a value indicating whether the current stream supports seeking.
+        /// </summary>
+        /// <returns>
+        ///     true if the stream supports seeking; otherwise, false.
+        /// </returns>
         public override bool CanSeek => false;
 
-        ///<summary>
-        ///When overridden in a derived class, gets a value indicating whether the current stream supports writing.
-        ///</summary>
-        ///<returns>
-        ///true if the stream supports writing; otherwise, false.
-        ///</returns>
+        /// <summary>
+        ///     When overridden in a derived class, gets a value indicating whether the current stream supports writing.
+        /// </summary>
+        /// <returns>
+        ///     true if the stream supports writing; otherwise, false.
+        /// </returns>
         public override bool CanWrite => true;
 
-        ///<summary>
-        ///When overridden in a derived class, gets the length in bytes of the stream.
-        ///</summary>
-        ///<returns>
-        ///A long value representing the length of the stream in bytes.
-        ///</returns>
+        /// <summary>
+        ///     When overridden in a derived class, gets the length in bytes of the stream.
+        /// </summary>
+        /// <returns>
+        ///     A long value representing the length of the stream in bytes.
+        /// </returns>
         public override long Length => _mBuffer.Count;
 
-        ///<summary>
-        ///When overridden in a derived class, gets or sets the position within the current stream.
-        ///</summary>
-        ///<returns>
-        ///The current position within the stream.
-        ///</returns>
+        /// <summary>
+        ///     When overridden in a derived class, gets or sets the position within the current stream.
+        /// </summary>
+        /// <returns>
+        ///     The current position within the stream.
+        /// </returns>
         public override long Position
         {
             get => 0;
@@ -160,7 +158,7 @@ namespace ADL.Streams
         #region Stream overide methods
 
         /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         public new void Dispose()
         {
@@ -168,9 +166,10 @@ namespace ADL.Streams
             _mBuffer.Clear();
         }
 
-        ///<summary>
-        ///When overridden in a derived class, clears all buffers for this stream and causes any buffered data to be written to the underlying device.
-        ///</summary>
+        /// <summary>
+        ///     When overridden in a derived class, clears all buffers for this stream and causes any buffered data to be written
+        ///     to the underlying device.
+        /// </summary>
         public override void Flush()
         {
             _mFlushed = true;
@@ -180,54 +179,72 @@ namespace ADL.Streams
             }
         }
 
-        ///<summary>
-        ///When overridden in a derived class, sets the position within the current stream.
-        ///</summary>
-        ///<param name="offset">A byte offset relative to the origin parameter. </param>
-        ///<param name="origin">A value of type System.IO.SeekOrigin indicating the reference point used to obtain the new position. </param>
-        ///<returns>
-        ///The new position within the current stream.
-        ///</returns>
+        /// <summary>
+        ///     When overridden in a derived class, sets the position within the current stream.
+        /// </summary>
+        /// <param name="offset">A byte offset relative to the origin parameter. </param>
+        /// <param name="origin">
+        ///     A value of type System.IO.SeekOrigin indicating the reference point used to obtain the new
+        ///     position.
+        /// </param>
+        /// <returns>
+        ///     The new position within the current stream.
+        /// </returns>
         public override long Seek(long offset, SeekOrigin origin)
         {
             throw new NotSupportedException();
         }
 
-        ///<summary>
-        ///When overridden in a derived class, sets the length of the current stream.
-        ///</summary>
-        ///<param name="value">The desired length of the current stream in bytes. </param>
+        /// <summary>
+        ///     When overridden in a derived class, sets the length of the current stream.
+        /// </summary>
+        /// <param name="value">The desired length of the current stream in bytes. </param>
         public override void SetLength(long value)
         {
             throw new NotSupportedException();
         }
 
         /// <summary>
-        /// When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.
-        ///</summary>
-        ///<returns>
-        ///The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached.
-        ///</returns>
-        ///<param name="offset">The zero-based byte offset in buffer at which to begin storing the data read from the current stream. </param>
-        ///<param name="count">The maximum number of bytes to be read from the current stream. </param>
-        ///<param name="buffer">An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count - 1) replaced by the bytes read from the current source. </param>
+        ///     When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position
+        ///     within the stream by the number of bytes read.
+        /// </summary>
+        /// <returns>
+        ///     The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many
+        ///     bytes are not currently available, or zero (0) if the end of the stream has been reached.
+        /// </returns>
+        /// <param name="offset">
+        ///     The zero-based byte offset in buffer at which to begin storing the data read from the current
+        ///     stream.
+        /// </param>
+        /// <param name="count">The maximum number of bytes to be read from the current stream. </param>
+        /// <param name="buffer">
+        ///     An array of bytes. When this method returns, the buffer contains the specified byte array with the
+        ///     values between offset and (offset + count - 1) replaced by the bytes read from the current source.
+        /// </param>
         public override int Read(byte[] buffer, int offset, int count)
         {
             if (typeof(T) != typeof(byte))
                 throw new NotSupportedException();
-            else
-                return ReadGen(buffer as T[], offset, count);
+            return ReadGen(buffer as T[], offset, count);
         }
 
         /// <summary>
-        /// When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.
-        ///</summary>
-        ///<returns>
-        ///The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached.
-        ///</returns>
-        ///<param name="offset">The zero-based byte offset in buffer at which to begin storing the data read from the current stream. </param>
-        ///<param name="count">The maximum number of bytes to be read from the current stream. </param>
-        ///<param name="buffer">An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count - 1) replaced by the bytes read from the current source. </param>
+        ///     When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position
+        ///     within the stream by the number of bytes read.
+        /// </summary>
+        /// <returns>
+        ///     The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many
+        ///     bytes are not currently available, or zero (0) if the end of the stream has been reached.
+        /// </returns>
+        /// <param name="offset">
+        ///     The zero-based byte offset in buffer at which to begin storing the data read from the current
+        ///     stream.
+        /// </param>
+        /// <param name="count">The maximum number of bytes to be read from the current stream. </param>
+        /// <param name="buffer">
+        ///     An array of bytes. When this method returns, the buffer contains the specified byte array with the
+        ///     values between offset and (offset + count - 1) replaced by the bytes read from the current source.
+        /// </param>
         public int ReadGen(T[] buffer, int offset, int count)
         {
             if (offset != 0)
@@ -262,7 +279,7 @@ namespace ADL.Streams
         }
 
         /// <summary>
-        /// Returns true if there are 
+        ///     Returns true if there are
         /// </summary>
         /// <param name="count"></param>
         /// <returns></returns>
@@ -298,18 +315,18 @@ namespace ADL.Streams
             }
         }
 
-        ///<summary>
-        ///When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.
-        ///</summary>
-        ///<param name="offset">The zero-based byte offset in buffer at which to begin copying bytes to the current stream. </param>
-        ///<param name="count">The number of bytes to be written to the current stream. </param>
-        ///<param name="buffer">An array of bytes. This method copies count bytes from buffer to the current stream. </param>
+        /// <summary>
+        ///     When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current
+        ///     position within this stream by the number of bytes written.
+        /// </summary>
+        /// <param name="offset">The zero-based byte offset in buffer at which to begin copying bytes to the current stream. </param>
+        /// <param name="count">The number of bytes to be written to the current stream. </param>
+        /// <param name="buffer">An array of bytes. This method copies count bytes from buffer to the current stream. </param>
         public override void Write(byte[] buffer, int offset, int count)
         {
             if (typeof(T) != typeof(byte))
                 throw new NotSupportedException();
-            else
-                WriteGen(buffer as T[], offset, count);
+            WriteGen(buffer as T[], offset, count);
         }
 
         #endregion

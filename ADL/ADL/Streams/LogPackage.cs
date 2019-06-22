@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace ADL.Streams
 {
     /// <summary>
-    /// Object to wrap all received logs into one object.
+    ///     Object to wrap all received logs into one object.
     /// </summary>
     public struct LogPackage
     {
         /// <summary>
-        /// Logs that were deserialized
+        ///     Logs that were deserialized
         /// </summary>
         public List<Log> Logs;
 
         /// <summary>
-        /// Constructor that takes the output of the stream.
+        ///     Constructor that takes the output of the stream.
         /// </summary>
         /// <param name="buffer"></param>
         public LogPackage(byte[] buffer)
@@ -52,30 +49,11 @@ namespace ADL.Streams
             return ret.ToArray();
         }
 
-        public static bool ReadBlock(Stream s, out LogPackage package)
-        {
-            List<byte> pack = new List<byte>();
-            byte[] buf = new byte[1024];
-            int i = s.Read(buf, 0, buf.Length);
-            bool hasData = i != 0;
-            while(i != 0)
-            {
-                for (int j = 0; j < i; j++)
-                {
-                    pack.Add(buf[j]);
-                }
-                s.Read(buf, 0, buf.Length);
-            }
-            package = hasData ? new LogPackage(buf) : new LogPackage(new byte[0]);
-            return hasData ? true : false;
-        }
-
-        
 
         public static LogPackage ReadBlock(Stream s, int length)
         {
             //Due to multithreading
-            byte[] buffer = new byte[length];
+            var buffer = new byte[length];
             s.Read(buffer, 0, length);
             return new LogPackage(buffer);
         }
