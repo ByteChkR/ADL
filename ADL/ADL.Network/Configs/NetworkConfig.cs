@@ -7,6 +7,9 @@ namespace ADL.Configs
     {
 
 
+        public bool UseNetwork = true;
+        
+
         /// <summary>
         /// The map that maps the ids the clients send to names that make sense.
         /// </summary>
