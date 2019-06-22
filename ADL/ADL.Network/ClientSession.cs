@@ -7,13 +7,40 @@ namespace ADL.Network
 {
     public class ClientSession
     {
+        /// <summary>
+        /// Static int to keep track who receives what logs.
+        /// </summary>
         private static int instanceCount = 1;
+
+        /// <summary>
+        /// Client that is used to communicate
+        /// </summary>
         private readonly TcpClient _client;
+
+        /// <summary>
+        /// The Stream that is writing the Logs to disk
+        /// </summary>
         private Stream _fileStream;
+
+        /// <summary>
+        /// Reference to the LogStream to be able to remove it from ADL again.
+        /// </summary>
         private LogTextStream _lts;
+
+        /// <summary>
+        /// The Program ID
+        /// </summary>
         public int ID;
+
+        /// <summary>
+        /// Assembly version of the Program
+        /// </summary>
         public string Version;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="client"></param>
         public ClientSession(TcpClient client)
         {
             instanceID = instanceCount;
@@ -22,12 +49,25 @@ namespace ADL.Network
             _client = client;
         }
 
+        /// <summary>
+        /// Instance ID that gets used as a mask to write the logs into the right file.
+        /// </summary>
         public int instanceID { get; }
 
+        /// <summary>
+        /// Wrapper that wraps around the TcpClient.Connected Property
+        /// </summary>
         public bool Connected => _client.Connected;
 
+        /// <summary>
+        /// A Flag that gets set when the client authenticates himself
+        /// </summary>
         public bool Authenticated { get; }
 
+        /// <summary>
+        /// Returns the path of the log file for this Client Session
+        /// </summary>
+        /// <returns></returns>
         private string GetLogPath()
         {
             var Path = "logs/";
@@ -38,6 +78,10 @@ namespace ADL.Network
                    ".log";
         }
 
+        /// <summary>
+        /// Initialization
+        /// Gets the File Stream and the Logstream ready.
+        /// </summary>
         public void Initialize()
         {
             var str = GetLogPath();
@@ -47,6 +91,10 @@ namespace ADL.Network
             Debug.AddOutputStream(_lts);
         }
 
+        /// <summary>
+        /// Starts the Authentication routine
+        /// </summary>
+        /// <returns></returns>
         public bool Authenticate()
         {
             Stream s = _client.GetStream();
@@ -61,6 +109,13 @@ namespace ADL.Network
         }
 
 
+        /// <summary>
+        /// Internal function that converts the Hash to a valid assembly version, stores the ID
+        /// and checks if the client is authorized to connect to this server.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="hash"></param>
+        /// <returns></returns>
         private bool Auth(int id, byte[] hash)
         {
             ID = id;
@@ -72,10 +127,13 @@ namespace ADL.Network
                 if (i != 3) Version += '.';
             }
 
-            return true;
+            return true; //Really strict security settings ;)
         }
 
 
+        /// <summary>
+        /// Closes this session TcpClient and File Stream
+        /// </summary>
         public void CloseSession()
         {
             _client.Close();
@@ -84,6 +142,11 @@ namespace ADL.Network
         }
 
 
+
+        /// <summary>
+        /// Hacky way of checking if the client has dropped the connection
+        /// </summary>
+        /// <returns></returns>
         private bool IsConnectionUp()
         {
             var testBuffer = new byte[1];
@@ -99,6 +162,14 @@ namespace ADL.Network
             }
         }
 
+
+
+        /// <summary>
+        /// Returns the Log Package that was sent by the client.
+        /// Empty Packet when disconnected or empty.
+        /// </summary>
+        /// <param name="disconnect"></param>
+        /// <returns></returns>
         public LogPackage GetPackage(out bool disconnect)
         {
             var availableRead = _client.Available;

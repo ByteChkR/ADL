@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['length',['Length',['../class_a_d_l_1_1_streams_1_1_pipe_stream.html#a7b4a2a88c9019091c8ac28fdc559fe65',1,'ADL::Streams::PipeStream']]],
+  ['length',['Length',['../class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a7783a5e514cadbd6a3c85699cdc86477',1,'ADL::Streams::GenPipeStream']]],
+  ['load',['Load',['../class_a_d_l_1_1_configs_1_1_network_config.html#ab95ca9fbc8cc728338fe8c77689a23e8',1,'ADL::Configs::NetworkConfig']]],
   ['loadconfig',['LoadConfig',['../class_a_d_l_1_1_debug.html#a5f2fd8123023fc5f0aee45bd08624a84',1,'ADL.Debug.LoadConfig(ADLConfig config)'],['../class_a_d_l_1_1_debug.html#ad667cd3a1e313c2bca7a2d915160efbf',1,'ADL.Debug.LoadConfig(string path=&quot;adl_config.xml&quot;)']]],
   ['log',['Log',['../struct_a_d_l_1_1_streams_1_1_log.html',1,'ADL.Streams.Log'],['../class_a_d_l_1_1_debug.html#a169452dbed965a360a23e112ed9956c3',1,'ADL.Debug.Log()'],['../struct_a_d_l_1_1_streams_1_1_log.html#ab8b9c6ff593b243fa9c5885ee0183d3d',1,'ADL.Streams.Log.Log()']]],
   ['loggen_3c_20t_20_3e',['LogGen&lt; T &gt;',['../class_a_d_l_1_1_debug.html#a48d533c99e06fbda419aed07360c6f9a',1,'ADL::Debug']]],

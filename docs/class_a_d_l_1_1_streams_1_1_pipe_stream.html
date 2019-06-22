@@ -86,17 +86,13 @@ $(document).ready(function(){initNavTree('class_a_d_l_1_1_streams_1_1_pipe_strea
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#properties">Properties</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_a_d_l_1_1_streams_1_1_pipe_stream-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ADL.Streams.PipeStream Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html" title="PipeStream is a thread-safe read/write data stream for use between two threads in a single-producer/s...">PipeStream</a> is a thread-safe read/write data stream for use between two threads in a single-producer/single-consumer type problem. Version: 2014/12/15 1.2 Initial Version 2006/10/13 1.0 - initial version. Update on 2008/10/9 1.1 - uses Monitor instead of Manual Reset events for more elegant synchronicity. Update on 2014/12/15 1.2 - bugfix for read method not using offset - thanks Jörgen Sigvardsson, replace NotImplementedExceptions with NotSupportedException Copyright (c) 2006 James Kolpack (james dot kolpack at google mail)  
+<p><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html" title="PipeStream is a thread-safe read/write data stream for use between two threads in a single-producer/s...">PipeStream</a> is a thread-safe read/write data stream for use between two threads in a single-producer/single-consumer type problem. Version: 2014/12/15 1.2 Initial Version 2006/10/13 1.0 - initial version. Update on 2008/10/9 1.1 - uses Monitor instead of Manual Reset events for more elegant synchronicity. Update on 2014/12/15 1.2 - bugfix for read method not using offset - thanks Jörgen Sigvardsson, replace NotImplementedExceptions with NotSupportedException Copyright (c) 2006 James Kolpack (james dot kolpack at google mail) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.  
  <a href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for ADL.Streams.PipeStream:</div>
@@ -104,477 +100,64 @@ Inheritance diagram for ADL.Streams.PipeStream:</div>
  <div class="center">
   <img src="class_a_d_l_1_1_streams_1_1_pipe_stream.png" usemap="#ADL.Streams.PipeStream_map" alt=""/>
   <map id="ADL.Streams.PipeStream_map" name="ADL.Streams.PipeStream_map">
+<area href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html" alt="ADL.Streams.GenPipeStream&lt; byte &gt;" shape="rect" coords="0,0,225,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:aa1c2bb73398b604d19ea2964877e48a5"><td class="memItemLeft" align="right" valign="top">new void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#aa1c2bb73398b604d19ea2964877e48a5">Dispose</a> ()</td></tr>
-<tr class="memdesc:aa1c2bb73398b604d19ea2964877e48a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.  <a href="#aa1c2bb73398b604d19ea2964877e48a5">More...</a><br /></td></tr>
-<tr class="separator:aa1c2bb73398b604d19ea2964877e48a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a729ae5fb0f19e7cc791f1d88ba572fdf"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#a729ae5fb0f19e7cc791f1d88ba572fdf">Flush</a> ()</td></tr>
-<tr class="separator:a729ae5fb0f19e7cc791f1d88ba572fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05518cb1662f33087cd3bfd2402b79e4"><td class="memItemLeft" align="right" valign="top">override long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#a05518cb1662f33087cd3bfd2402b79e4">Seek</a> (long offset, SeekOrigin origin)</td></tr>
-<tr class="separator:a05518cb1662f33087cd3bfd2402b79e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29ff29309ee6d37fdb968f5e1e3ccf3a"><td class="memItemLeft" align="right" valign="top"><a id="a29ff29309ee6d37fdb968f5e1e3ccf3a"></a>
-override void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLength</b> (long value)</td></tr>
-<tr class="separator:a29ff29309ee6d37fdb968f5e1e3ccf3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab6e79fca3863325043d394971c6c5d3"><td class="memItemLeft" align="right" valign="top"><a id="aab6e79fca3863325043d394971c6c5d3"></a>
-override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#aab6e79fca3863325043d394971c6c5d3">Read</a> (byte[] buffer, int offset, int count)</td></tr>
-<tr class="memdesc:aab6e79fca3863325043d394971c6c5d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read. /summary&gt; returns&gt; The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached. /returns&gt; param name="offset"&gt;The zero-based byte offset in buffer at which to begin storing the data read from the current stream. param name="count"&gt;The maximum number of bytes to be read from the current stream. param name="buffer"&gt;An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count - 1) replaced by the bytes read from the current source. <br /></td></tr>
-<tr class="separator:aab6e79fca3863325043d394971c6c5d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96938a36483b1ad8ecc2a447b719fa63"><td class="memItemLeft" align="right" valign="top"><a id="a96938a36483b1ad8ecc2a447b719fa63"></a>
-override void&#160;</td><td class="memItemRight" valign="bottom"><b>Write</b> (byte[] buffer, int offset, int count)</td></tr>
-<tr class="separator:a96938a36483b1ad8ecc2a447b719fa63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
-Properties</h2></td></tr>
-<tr class="memitem:a0f1de911affe601ae2234b5c0ea75890"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#a0f1de911affe601ae2234b5c0ea75890">MaxBufferLength</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a0f1de911affe601ae2234b5c0ea75890"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the maximum number of bytes to store in the buffer.  <a href="#a0f1de911affe601ae2234b5c0ea75890">More...</a><br /></td></tr>
-<tr class="separator:a0f1de911affe601ae2234b5c0ea75890"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20575e5c3a518e2aad6036ddf237c841"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#a20575e5c3a518e2aad6036ddf237c841">BlockLastReadBuffer</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a20575e5c3a518e2aad6036ddf237c841"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets a value indicating whether to block last read method before the buffer is empty. When true, <a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#aab6e79fca3863325043d394971c6c5d3" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> will block until it can fill the passed in buffer and count. When false, <a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#aab6e79fca3863325043d394971c6c5d3" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> will not block, returning all the available buffer data. Setting to true will remove the possibility of ending a stream reader prematurely.  <a href="#a20575e5c3a518e2aad6036ddf237c841">More...</a><br /></td></tr>
-<tr class="separator:a20575e5c3a518e2aad6036ddf237c841"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8af5a77778fd65953409875a94c5ace8"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#a8af5a77778fd65953409875a94c5ace8">CanRead</a><code> [get]</code></td></tr>
-<tr class="separator:a8af5a77778fd65953409875a94c5ace8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ba9fe27666132221777a8fdab7da4ed"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#a1ba9fe27666132221777a8fdab7da4ed">CanSeek</a><code> [get]</code></td></tr>
-<tr class="separator:a1ba9fe27666132221777a8fdab7da4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44cefc6186cc10419030a17fd5a2ed60"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#a44cefc6186cc10419030a17fd5a2ed60">CanWrite</a><code> [get]</code></td></tr>
-<tr class="separator:a44cefc6186cc10419030a17fd5a2ed60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b4a2a88c9019091c8ac28fdc559fe65"><td class="memItemLeft" align="right" valign="top">override long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#a7b4a2a88c9019091c8ac28fdc559fe65">Length</a><code> [get]</code></td></tr>
-<tr class="separator:a7b4a2a88c9019091c8ac28fdc559fe65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab94c6951b9843aee51955e77314336a1"><td class="memItemLeft" align="right" valign="top"><a id="ab94c6951b9843aee51955e77314336a1"></a>
-override long&#160;</td><td class="memItemRight" valign="bottom"><b>Position</b><code> [get, set]</code></td></tr>
-<tr class="separator:ab94c6951b9843aee51955e77314336a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a3d7c91851f832a5497b2f674d7de2e61"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#a3d7c91851f832a5497b2f674d7de2e61">ReadAvailable</a> (int count)</td></tr>
-<tr class="memdesc:a3d7c91851f832a5497b2f674d7de2e61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if there are  <a href="#a3d7c91851f832a5497b2f674d7de2e61">More...</a><br /></td></tr>
-<tr class="separator:a3d7c91851f832a5497b2f674d7de2e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:aef9a3cdb6f36745cbff66d70bc05730d"><td class="memItemLeft" align="right" valign="top">readonly Queue&lt; byte &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#aef9a3cdb6f36745cbff66d70bc05730d">_mBuffer</a> = new Queue&lt;byte&gt;()</td></tr>
-<tr class="memdesc:aef9a3cdb6f36745cbff66d70bc05730d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue of bytes provides the datastructure for transmitting from an input stream to an output stream. Possible more effecient ways to accomplish this.  <a href="#aef9a3cdb6f36745cbff66d70bc05730d">More...</a><br /></td></tr>
-<tr class="separator:aef9a3cdb6f36745cbff66d70bc05730d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3daa2f56dfbfd3724df2cc433a7bad2b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#a3daa2f56dfbfd3724df2cc433a7bad2b">_mFlushed</a></td></tr>
-<tr class="memdesc:a3daa2f56dfbfd3724df2cc433a7bad2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates that the input stream has been flushed and that all remaining data should be written to the output stream.  <a href="#a3daa2f56dfbfd3724df2cc433a7bad2b">More...</a><br /></td></tr>
-<tr class="separator:a3daa2f56dfbfd3724df2cc433a7bad2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2f526ccfaf98b738fd6e215d47aa9fc"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#ab2f526ccfaf98b738fd6e215d47aa9fc">_mMaxBufferLength</a> = 200 * <a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#a6ba017941b335dc09382b412de8e7cdf">_MB</a></td></tr>
-<tr class="memdesc:ab2f526ccfaf98b738fd6e215d47aa9fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of bytes to store in the buffer.  <a href="#ab2f526ccfaf98b738fd6e215d47aa9fc">More...</a><br /></td></tr>
-<tr class="separator:ab2f526ccfaf98b738fd6e215d47aa9fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade46a554383d18a7022b99636e135697"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#ade46a554383d18a7022b99636e135697">_mBlockLastRead</a></td></tr>
-<tr class="memdesc:ade46a554383d18a7022b99636e135697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setting this to true will cause <a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#aab6e79fca3863325043d394971c6c5d3" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> to block if it appears that it will run out of data.  <a href="#ade46a554383d18a7022b99636e135697">More...</a><br /></td></tr>
-<tr class="separator:ade46a554383d18a7022b99636e135697"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa916b05eea90b0939e6fb4cb730b11ac"><td class="memItemLeft" align="right" valign="top">const long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#aa916b05eea90b0939e6fb4cb730b11ac">_KB</a> = 1024</td></tr>
-<tr class="memdesc:aa916b05eea90b0939e6fb4cb730b11ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes in a kilobyte  <a href="#aa916b05eea90b0939e6fb4cb730b11ac">More...</a><br /></td></tr>
-<tr class="separator:aa916b05eea90b0939e6fb4cb730b11ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ba017941b335dc09382b412de8e7cdf"><td class="memItemLeft" align="right" valign="top">const long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#a6ba017941b335dc09382b412de8e7cdf">_MB</a> = <a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#aa916b05eea90b0939e6fb4cb730b11ac">_KB</a> * 1024</td></tr>
-<tr class="memdesc:a6ba017941b335dc09382b412de8e7cdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes in a megabyte  <a href="#a6ba017941b335dc09382b412de8e7cdf">More...</a><br /></td></tr>
-<tr class="separator:a6ba017941b335dc09382b412de8e7cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">ADL.Streams.GenPipeStream&lt; byte &gt;</a></td></tr>
+<tr class="memitem:a79214e44a510fe15c13c420d268d284a inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">new void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a79214e44a510fe15c13c420d268d284a">Dispose</a> ()</td></tr>
+<tr class="memdesc:a79214e44a510fe15c13c420d268d284a inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a79214e44a510fe15c13c420d268d284a">More...</a><br /></td></tr>
+<tr class="separator:a79214e44a510fe15c13c420d268d284a inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c4b5c231a667ccd62bdec66bd55bbf1 inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a9c4b5c231a667ccd62bdec66bd55bbf1">Flush</a> ()</td></tr>
+<tr class="memdesc:a9c4b5c231a667ccd62bdec66bd55bbf1 inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, clears all buffers for this stream and causes any buffered data to be written to the underlying device.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a9c4b5c231a667ccd62bdec66bd55bbf1">More...</a><br /></td></tr>
+<tr class="separator:a9c4b5c231a667ccd62bdec66bd55bbf1 inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42d3e7ccffd52b77aa18f003bbbb357f inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">override long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a42d3e7ccffd52b77aa18f003bbbb357f">Seek</a> (long offset, SeekOrigin origin)</td></tr>
+<tr class="memdesc:a42d3e7ccffd52b77aa18f003bbbb357f inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, sets the position within the current stream.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a42d3e7ccffd52b77aa18f003bbbb357f">More...</a><br /></td></tr>
+<tr class="separator:a42d3e7ccffd52b77aa18f003bbbb357f inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d192544501da7ead52ccffaed327427 inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a9d192544501da7ead52ccffaed327427">SetLength</a> (long value)</td></tr>
+<tr class="memdesc:a9d192544501da7ead52ccffaed327427 inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, sets the length of the current stream.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a9d192544501da7ead52ccffaed327427">More...</a><br /></td></tr>
+<tr class="separator:a9d192544501da7ead52ccffaed327427 inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a619d4084c6cc78c9aa20f432364f2a6f inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a619d4084c6cc78c9aa20f432364f2a6f">Read</a> (byte[] buffer, int offset, int count)</td></tr>
+<tr class="memdesc:a619d4084c6cc78c9aa20f432364f2a6f inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a619d4084c6cc78c9aa20f432364f2a6f">More...</a><br /></td></tr>
+<tr class="separator:a619d4084c6cc78c9aa20f432364f2a6f inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0528cf3ff0ab6c867635e9cb575729b inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#af0528cf3ff0ab6c867635e9cb575729b">ReadGen</a> (T[] buffer, int offset, int count)</td></tr>
+<tr class="memdesc:af0528cf3ff0ab6c867635e9cb575729b inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#af0528cf3ff0ab6c867635e9cb575729b">More...</a><br /></td></tr>
+<tr class="separator:af0528cf3ff0ab6c867635e9cb575729b inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae53b2879d7b2ed822f6d6886be9d643a inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top"><a id="ae53b2879d7b2ed822f6d6886be9d643a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>WriteGen</b> (T[] buffer, int offset, int count)</td></tr>
+<tr class="separator:ae53b2879d7b2ed822f6d6886be9d643a inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee241dd7044c7f1483553f6692af11d4 inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#aee241dd7044c7f1483553f6692af11d4">Write</a> (byte[] buffer, int offset, int count)</td></tr>
+<tr class="memdesc:aee241dd7044c7f1483553f6692af11d4 inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#aee241dd7044c7f1483553f6692af11d4">More...</a><br /></td></tr>
+<tr class="separator:aee241dd7044c7f1483553f6692af11d4 inherit pub_methods_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">ADL.Streams.GenPipeStream&lt; byte &gt;</a></td></tr>
+<tr class="memitem:a568dc5b8482319f38729d16717597357 inherit pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a568dc5b8482319f38729d16717597357">CanRead</a></td></tr>
+<tr class="memdesc:a568dc5b8482319f38729d16717597357 inherit pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, gets a value indicating whether the current stream supports reading.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a568dc5b8482319f38729d16717597357">More...</a><br /></td></tr>
+<tr class="separator:a568dc5b8482319f38729d16717597357 inherit pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dd49eda3f1e1792b465ba671cf22447 inherit pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a8dd49eda3f1e1792b465ba671cf22447">CanSeek</a></td></tr>
+<tr class="memdesc:a8dd49eda3f1e1792b465ba671cf22447 inherit pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, gets a value indicating whether the current stream supports seeking.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a8dd49eda3f1e1792b465ba671cf22447">More...</a><br /></td></tr>
+<tr class="separator:a8dd49eda3f1e1792b465ba671cf22447 inherit pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28e0c10da3d7ddde5601218cb704eb08 inherit pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a28e0c10da3d7ddde5601218cb704eb08">CanWrite</a></td></tr>
+<tr class="memdesc:a28e0c10da3d7ddde5601218cb704eb08 inherit pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, gets a value indicating whether the current stream supports writing.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a28e0c10da3d7ddde5601218cb704eb08">More...</a><br /></td></tr>
+<tr class="separator:a28e0c10da3d7ddde5601218cb704eb08 inherit pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7783a5e514cadbd6a3c85699cdc86477 inherit pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">override long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a7783a5e514cadbd6a3c85699cdc86477">Length</a></td></tr>
+<tr class="memdesc:a7783a5e514cadbd6a3c85699cdc86477 inherit pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, gets the length in bytes of the stream.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a7783a5e514cadbd6a3c85699cdc86477">More...</a><br /></td></tr>
+<tr class="separator:a7783a5e514cadbd6a3c85699cdc86477 inherit pub_attribs_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td colspan="2" onclick="javascript:toggleInherit('properties_class_a_d_l_1_1_streams_1_1_gen_pipe_stream')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">ADL.Streams.GenPipeStream&lt; byte &gt;</a></td></tr>
+<tr class="memitem:a527e009dd4f268b28de9ae2b44862253 inherit properties_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a527e009dd4f268b28de9ae2b44862253">MaxBufferLength</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a527e009dd4f268b28de9ae2b44862253 inherit properties_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the maximum number of bytes to store in the buffer.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a527e009dd4f268b28de9ae2b44862253">More...</a><br /></td></tr>
+<tr class="separator:a527e009dd4f268b28de9ae2b44862253 inherit properties_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1d1c0c668d0da56006223b55c3ef01a inherit properties_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#af1d1c0c668d0da56006223b55c3ef01a">BlockLastReadBuffer</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:af1d1c0c668d0da56006223b55c3ef01a inherit properties_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets a value indicating whether to block last read method before the buffer is empty. When true, <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a619d4084c6cc78c9aa20f432364f2a6f" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> will block until it can fill the passed in buffer and count. When false, <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a619d4084c6cc78c9aa20f432364f2a6f" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> will not block, returning all the available buffer data. Setting to true will remove the possibility of ending a stream reader prematurely.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#af1d1c0c668d0da56006223b55c3ef01a">More...</a><br /></td></tr>
+<tr class="separator:af1d1c0c668d0da56006223b55c3ef01a inherit properties_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec129c71ebdae27c787f96237ae49bef inherit properties_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memItemLeft" align="right" valign="top">override long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#aec129c71ebdae27c787f96237ae49bef">Position</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aec129c71ebdae27c787f96237ae49bef inherit properties_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="mdescLeft">&#160;</td><td class="mdescRight">When overridden in a derived class, gets or sets the position within the current stream.  <a href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#aec129c71ebdae27c787f96237ae49bef">More...</a><br /></td></tr>
+<tr class="separator:aec129c71ebdae27c787f96237ae49bef inherit properties_class_a_d_l_1_1_streams_1_1_gen_pipe_stream"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html" title="PipeStream is a thread-safe read/write data stream for use between two threads in a single-producer/s...">PipeStream</a> is a thread-safe read/write data stream for use between two threads in a single-producer/single-consumer type problem. Version: 2014/12/15 1.2 Initial Version 2006/10/13 1.0 - initial version. Update on 2008/10/9 1.1 - uses Monitor instead of Manual Reset events for more elegant synchronicity. Update on 2014/12/15 1.2 - bugfix for read method not using offset - thanks Jörgen Sigvardsson, replace NotImplementedExceptions with NotSupportedException Copyright (c) 2006 James Kolpack (james dot kolpack at google mail) </p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa1c2bb73398b604d19ea2964877e48a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1c2bb73398b604d19ea2964877e48a5">&#9670;&nbsp;</a></span>Dispose()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">new void ADL.Streams.PipeStream.Dispose </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </p>
-<p>summary&gt; When overridden in a derived class, clears all buffers for this stream and causes any buffered data to be written to the underlying device. /summary&gt; </p>
-
-</div>
-</div>
-<a id="a729ae5fb0f19e7cc791f1d88ba572fdf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a729ae5fb0f19e7cc791f1d88ba572fdf">&#9670;&nbsp;</a></span>Flush()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void ADL.Streams.PipeStream.Flush </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>summary&gt; When overridden in a derived class, sets the position within the current stream. /summary&gt; param name="offset"&gt;A byte offset relative to the origin parameter. </p>
-<p>param name="origin"&gt;A value of type System.IO.SeekOrigin indicating the reference point used to obtain the new position. </p>
-<p>returns&gt; The new position within the current stream. /returns&gt; </p>
-
-</div>
-</div>
-<a id="a3d7c91851f832a5497b2f674d7de2e61"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d7c91851f832a5497b2f674d7de2e61">&#9670;&nbsp;</a></span>ReadAvailable()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool ADL.Streams.PipeStream.ReadAvailable </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>count</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns true if there are </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">count</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
-<p>summary&gt; When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written. /summary&gt; param name="offset"&gt;The zero-based byte offset in buffer at which to begin copying bytes to the current stream. </p>
-<p>param name="count"&gt;The number of bytes to be written to the current stream. </p>
-<p>param name="buffer"&gt;An array of bytes. This method copies count bytes from buffer to the current stream. </p>
-
-</div>
-</div>
-<a id="a05518cb1662f33087cd3bfd2402b79e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05518cb1662f33087cd3bfd2402b79e4">&#9670;&nbsp;</a></span>Seek()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override long ADL.Streams.PipeStream.Seek </td>
-          <td>(</td>
-          <td class="paramtype">long&#160;</td>
-          <td class="paramname"><em>offset</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SeekOrigin&#160;</td>
-          <td class="paramname"><em>origin</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>summary&gt; When overridden in a derived class, sets the length of the current stream. /summary&gt; param name="value"&gt;The desired length of the current stream in bytes. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="aa916b05eea90b0939e6fb4cb730b11ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa916b05eea90b0939e6fb4cb730b11ac">&#9670;&nbsp;</a></span>_KB</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const long ADL.Streams.PipeStream._KB = 1024</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Number of bytes in a kilobyte </p>
-
-</div>
-</div>
-<a id="a6ba017941b335dc09382b412de8e7cdf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ba017941b335dc09382b412de8e7cdf">&#9670;&nbsp;</a></span>_MB</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const long ADL.Streams.PipeStream._MB = <a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#aa916b05eea90b0939e6fb4cb730b11ac">_KB</a> * 1024</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Number of bytes in a megabyte </p>
-
-</div>
-</div>
-<a id="ade46a554383d18a7022b99636e135697"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade46a554383d18a7022b99636e135697">&#9670;&nbsp;</a></span>_mBlockLastRead</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool ADL.Streams.PipeStream._mBlockLastRead</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Setting this to true will cause <a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#aab6e79fca3863325043d394971c6c5d3" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> to block if it appears that it will run out of data. </p>
-
-</div>
-</div>
-<a id="aef9a3cdb6f36745cbff66d70bc05730d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef9a3cdb6f36745cbff66d70bc05730d">&#9670;&nbsp;</a></span>_mBuffer</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly Queue&lt;byte&gt; ADL.Streams.PipeStream._mBuffer = new Queue&lt;byte&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Queue of bytes provides the datastructure for transmitting from an input stream to an output stream. Possible more effecient ways to accomplish this. </p>
-
-</div>
-</div>
-<a id="a3daa2f56dfbfd3724df2cc433a7bad2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3daa2f56dfbfd3724df2cc433a7bad2b">&#9670;&nbsp;</a></span>_mFlushed</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool ADL.Streams.PipeStream._mFlushed</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Indicates that the input stream has been flushed and that all remaining data should be written to the output stream. </p>
-
-</div>
-</div>
-<a id="ab2f526ccfaf98b738fd6e215d47aa9fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2f526ccfaf98b738fd6e215d47aa9fc">&#9670;&nbsp;</a></span>_mMaxBufferLength</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">long ADL.Streams.PipeStream._mMaxBufferLength = 200 * <a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#a6ba017941b335dc09382b412de8e7cdf">_MB</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Maximum number of bytes to store in the buffer. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Property Documentation</h2>
-<a id="a20575e5c3a518e2aad6036ddf237c841"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20575e5c3a518e2aad6036ddf237c841">&#9670;&nbsp;</a></span>BlockLastReadBuffer</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool ADL.Streams.PipeStream.BlockLastReadBuffer</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets or sets a value indicating whether to block last read method before the buffer is empty. When true, <a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#aab6e79fca3863325043d394971c6c5d3" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> will block until it can fill the passed in buffer and count. When false, <a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html#aab6e79fca3863325043d394971c6c5d3" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> will not block, returning all the available buffer data. Setting to true will remove the possibility of ending a stream reader prematurely. </p>
-<p>summary&gt; When overridden in a derived class, gets a value indicating whether the current stream supports reading. /summary&gt; returns&gt; true if the stream supports reading; otherwise, false. /returns&gt; </p>
-
-</div>
-</div>
-<a id="a8af5a77778fd65953409875a94c5ace8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8af5a77778fd65953409875a94c5ace8">&#9670;&nbsp;</a></span>CanRead</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override bool ADL.Streams.PipeStream.CanRead</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>summary&gt; When overridden in a derived class, gets a value indicating whether the current stream supports seeking. /summary&gt; returns&gt; true if the stream supports seeking; otherwise, false. /returns&gt; </p>
-
-</div>
-</div>
-<a id="a1ba9fe27666132221777a8fdab7da4ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ba9fe27666132221777a8fdab7da4ed">&#9670;&nbsp;</a></span>CanSeek</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override bool ADL.Streams.PipeStream.CanSeek</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>summary&gt; When overridden in a derived class, gets a value indicating whether the current stream supports writing. /summary&gt; returns&gt; true if the stream supports writing; otherwise, false. /returns&gt; </p>
-
-</div>
-</div>
-<a id="a44cefc6186cc10419030a17fd5a2ed60"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44cefc6186cc10419030a17fd5a2ed60">&#9670;&nbsp;</a></span>CanWrite</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override bool ADL.Streams.PipeStream.CanWrite</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>summary&gt; When overridden in a derived class, gets the length in bytes of the stream. /summary&gt; returns&gt; A long value representing the length of the stream in bytes. /returns&gt; </p>
-
-</div>
-</div>
-<a id="a7b4a2a88c9019091c8ac28fdc559fe65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b4a2a88c9019091c8ac28fdc559fe65">&#9670;&nbsp;</a></span>Length</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override long ADL.Streams.PipeStream.Length</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>summary&gt; When overridden in a derived class, gets or sets the position within the current stream. /summary&gt; returns&gt; The current position within the stream. /returns&gt; </p>
-
-</div>
-</div>
-<a id="a0f1de911affe601ae2234b5c0ea75890"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f1de911affe601ae2234b5c0ea75890">&#9670;&nbsp;</a></span>MaxBufferLength</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">long ADL.Streams.PipeStream.MaxBufferLength</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets or sets the maximum number of bytes to store in the buffer. </p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p><a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html" title="PipeStream is a thread-safe read/write data stream for use between two threads in a single-producer/s...">PipeStream</a> is a thread-safe read/write data stream for use between two threads in a single-producer/single-consumer type problem. Version: 2014/12/15 1.2 Initial Version 2006/10/13 1.0 - initial version. Update on 2008/10/9 1.1 - uses Monitor instead of Manual Reset events for more elegant synchronicity. Update on 2014/12/15 1.2 - bugfix for read method not using offset - thanks Jörgen Sigvardsson, replace NotImplementedExceptions with NotSupportedException Copyright (c) 2006 James Kolpack (james dot kolpack at google mail) Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>ADL/ADL/Streams/PipeStream.cs</li>
 </ul>
 </div><!-- contents -->

@@ -123,13 +123,13 @@ Protected Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a9ea382a860fccedd6684ecb1dfbfbe61"><td class="memItemLeft" align="right" valign="top"><a id="a9ea382a860fccedd6684ecb1dfbfbe61"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxConsoleLogCount</b><code> [get, set]</code></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxConsoleLogCount</b> = 500<code> [get, set]</code></td></tr>
 <tr class="separator:a9ea382a860fccedd6684ecb1dfbfbe61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a075b0e48c5f784fed8b31de2ec455b9d"><td class="memItemLeft" align="right" valign="top"><a id="a075b0e48c5f784fed8b31de2ec455b9d"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxLogCountPerBlock</b><code> [get, set]</code></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxLogCountPerBlock</b> = 200<code> [get, set]</code></td></tr>
 <tr class="separator:a075b0e48c5f784fed8b31de2ec455b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5324b1c712616b7040096fc718b4e342"><td class="memItemLeft" align="right" valign="top"><a id="a5324b1c712616b7040096fc718b4e342"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>MinConsoleLogCount</b><code> [get, set]</code></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>MinConsoleLogCount</b> = 23<code> [get, set]</code></td></tr>
 <tr class="separator:a5324b1c712616b7040096fc718b4e342"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab63ece45d90e2f013b4792f28e3bd3b3"><td class="memItemLeft" align="right" valign="top"><a id="ab63ece45d90e2f013b4792f28e3bd3b3"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>MaxLogCountPerFrame</b><code> [get, set]</code></td></tr>
@@ -179,54 +179,44 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a06985a62c3c6b4e05b0f78a6a576695d"><td class="memItemLeft" align="right" valign="top"><a id="a06985a62c3c6b4e05b0f78a6a576695d"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxConsoleLogCount</b> = 500</td></tr>
-<tr class="separator:a06985a62c3c6b4e05b0f78a6a576695d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad76af202e119b4346565859ecaf40395"><td class="memItemLeft" align="right" valign="top"><a id="ad76af202e119b4346565859ecaf40395"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_minConsoleLogCount</b> = 23</td></tr>
-<tr class="separator:ad76af202e119b4346565859ecaf40395"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1a2fb56c082758c41a73f2fe3fba815"><td class="memItemLeft" align="right" valign="top"><a id="ab1a2fb56c082758c41a73f2fe3fba815"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxLogCountPerFrame</b> = 200</td></tr>
-<tr class="separator:ab1a2fb56c082758c41a73f2fe3fba815"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7fdf812dcb500e42a6813bcc3998244"><td class="memItemLeft" align="right" valign="top"><a id="aa7fdf812dcb500e42a6813bcc3998244"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxLogCountPerBlock</b> = 500</td></tr>
-<tr class="separator:aa7fdf812dcb500e42a6813bcc3998244"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a232ba288f707c6d63fa19e0b538c7daf"><td class="memItemLeft" align="right" valign="top"><a id="a232ba288f707c6d63fa19e0b538c7daf"></a>
-<a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html">PipeStream</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ps</b></td></tr>
-<tr class="separator:a232ba288f707c6d63fa19e0b538c7daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b693fad7b2ef96af9fc30da2062aacb"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a4b693fad7b2ef96af9fc30da2062aacb">_colorCoding</a> = null</td></tr>
-<tr class="memdesc:a4b693fad7b2ef96af9fc30da2062aacb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Tags and their corresponding colors  <a href="#a4b693fad7b2ef96af9fc30da2062aacb">More...</a><br /></td></tr>
-<tr class="separator:a4b693fad7b2ef96af9fc30da2062aacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55c77dfaef33d120690074e8625d72fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a55c77dfaef33d120690074e8625d72fc">_hasColorCoding</a></td></tr>
-<tr class="memdesc:a55c77dfaef33d120690074e8625d72fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to check if running the color coding algorithm is useful  <a href="#a55c77dfaef33d120690074e8625d72fc">More...</a><br /></td></tr>
-<tr class="separator:a55c77dfaef33d120690074e8625d72fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa042d971f1d68d501b6f78d7ed53e6d3"><td class="memItemLeft" align="right" valign="top"><a id="aa042d971f1d68d501b6f78d7ed53e6d3"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>ConsoleTitleInfo</b> = &quot;ADL : Custom Console : Logs Received {0} : Logs Written {1} : Blocks Writen {2}(1:{3}) : Text Cleared {4}&quot;</td></tr>
-<tr class="separator:aa042d971f1d68d501b6f78d7ed53e6d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad308303ac30d0309a4eeaafb459b009b"><td class="memItemLeft" align="right" valign="top"><a id="ad308303ac30d0309a4eeaafb459b009b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_totalLogsReceived</b> = 0</td></tr>
-<tr class="separator:ad308303ac30d0309a4eeaafb459b009b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46cb84a81ba221a872b5b18efb6f89b0"><td class="memItemLeft" align="right" valign="top"><a id="a46cb84a81ba221a872b5b18efb6f89b0"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_logsWritten</b> = 0</td></tr>
-<tr class="separator:a46cb84a81ba221a872b5b18efb6f89b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b016881bee76e0f411ceb4ee4e555fc"><td class="memItemLeft" align="right" valign="top"><a id="a2b016881bee76e0f411ceb4ee4e555fc"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_blocksWritten</b> = 0</td></tr>
-<tr class="separator:a2b016881bee76e0f411ceb4ee4e555fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c008630b4cfde18de53b7f38344f07c"><td class="memItemLeft" align="right" valign="top"><a id="a5c008630b4cfde18de53b7f38344f07c"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_consoleCleared</b> = 0</td></tr>
-<tr class="separator:a5c008630b4cfde18de53b7f38344f07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6f4ba99c7cb1751c52594efff4e9b34"><td class="memItemLeft" align="right" valign="top"><a id="ad6f4ba99c7cb1751c52594efff4e9b34"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>_avgLogsPerBlock</b> = 0</td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>_avgLogsPerBlock</b></td></tr>
 <tr class="separator:ad6f4ba99c7cb1751c52594efff4e9b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc7ac9dcfe6b54bca7ed6a6d079aa00f"><td class="memItemLeft" align="right" valign="top"><a id="afc7ac9dcfe6b54bca7ed6a6d079aa00f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_totalLogsWrittenInBlocks</b> = 0</td></tr>
-<tr class="separator:afc7ac9dcfe6b54bca7ed6a6d079aa00f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b016881bee76e0f411ceb4ee4e555fc"><td class="memItemLeft" align="right" valign="top"><a id="a2b016881bee76e0f411ceb4ee4e555fc"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_blocksWritten</b></td></tr>
+<tr class="separator:a2b016881bee76e0f411ceb4ee4e555fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8f497a5a939f1fd91f28c7252480d51"><td class="memItemLeft" align="right" valign="top">readonly Dictionary&lt; int, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#ab8f497a5a939f1fd91f28c7252480d51">_colorCoding</a></td></tr>
+<tr class="memdesc:ab8f497a5a939f1fd91f28c7252480d51"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Tags and their corresponding colors  <a href="#ab8f497a5a939f1fd91f28c7252480d51">More...</a><br /></td></tr>
+<tr class="separator:ab8f497a5a939f1fd91f28c7252480d51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c008630b4cfde18de53b7f38344f07c"><td class="memItemLeft" align="right" valign="top"><a id="a5c008630b4cfde18de53b7f38344f07c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_consoleCleared</b></td></tr>
+<tr class="separator:a5c008630b4cfde18de53b7f38344f07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1695b9893a9fb7a928ae83b3220e930a"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a1695b9893a9fb7a928ae83b3220e930a">_hasColorCoding</a></td></tr>
+<tr class="memdesc:a1695b9893a9fb7a928ae83b3220e930a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to check if running the color coding algorithm is useful  <a href="#a1695b9893a9fb7a928ae83b3220e930a">More...</a><br /></td></tr>
+<tr class="separator:a1695b9893a9fb7a928ae83b3220e930a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0dfeefeb41ba5c65eafe3b9323a8b0c"><td class="memItemLeft" align="right" valign="top"><a id="ad0dfeefeb41ba5c65eafe3b9323a8b0c"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_logCount</b> = 0</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_logCount</b></td></tr>
 <tr class="separator:ad0dfeefeb41ba5c65eafe3b9323a8b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affe15c9f17424dcd6a65bc70d65af1e7"><td class="memItemLeft" align="right" valign="top"><a id="affe15c9f17424dcd6a65bc70d65af1e7"></a>
-Queue&lt; <a class="el" href="struct_a_d_l_1_1_streams_1_1_log.html">Log</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lastLogs</b> = new Queue&lt;<a class="el" href="struct_a_d_l_1_1_streams_1_1_log.html">Log</a>&gt;()</td></tr>
-<tr class="separator:affe15c9f17424dcd6a65bc70d65af1e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46cb84a81ba221a872b5b18efb6f89b0"><td class="memItemLeft" align="right" valign="top"><a id="a46cb84a81ba221a872b5b18efb6f89b0"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_logsWritten</b></td></tr>
+<tr class="separator:a46cb84a81ba221a872b5b18efb6f89b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bd47fc05e1184d9c681010b99671e46"><td class="memItemLeft" align="right" valign="top"><a id="a2bd47fc05e1184d9c681010b99671e46"></a>
+readonly int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxLogCountPerBlock</b> = 500</td></tr>
+<tr class="separator:a2bd47fc05e1184d9c681010b99671e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad308303ac30d0309a4eeaafb459b009b"><td class="memItemLeft" align="right" valign="top"><a id="ad308303ac30d0309a4eeaafb459b009b"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_totalLogsReceived</b></td></tr>
+<tr class="separator:ad308303ac30d0309a4eeaafb459b009b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc7ac9dcfe6b54bca7ed6a6d079aa00f"><td class="memItemLeft" align="right" valign="top"><a id="afc7ac9dcfe6b54bca7ed6a6d079aa00f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_totalLogsWrittenInBlocks</b></td></tr>
+<tr class="separator:afc7ac9dcfe6b54bca7ed6a6d079aa00f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a052acedffce782e73c380c213cdce799"><td class="memItemLeft" align="right" valign="top">readonly string&#160;</td><td class="memItemRight" valign="bottom"><b>ConsoleTitleInfo</b></td></tr>
+<tr class="separator:a052acedffce782e73c380c213cdce799"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c7ab0d6fc00952b9119fa22bcf55738"><td class="memItemLeft" align="right" valign="top"><a id="a4c7ab0d6fc00952b9119fa22bcf55738"></a>
+readonly Queue&lt; <a class="el" href="struct_a_d_l_1_1_streams_1_1_log.html">Log</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lastLogs</b> = new Queue&lt;<a class="el" href="struct_a_d_l_1_1_streams_1_1_log.html">Log</a>&gt;()</td></tr>
+<tr class="separator:a4c7ab0d6fc00952b9119fa22bcf55738"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad488ffb24274634a22f31a5ef20878f6"><td class="memItemLeft" align="right" valign="top"><a id="ad488ffb24274634a22f31a5ef20878f6"></a>
+readonly <a class="el" href="class_a_d_l_1_1_streams_1_1_pipe_stream.html">PipeStream</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ps</b></td></tr>
+<tr class="separator:ad488ffb24274634a22f31a5ef20878f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e6d11d5b23133dffd23871d74bb4978"><td class="memItemLeft" align="right" valign="top">System.ComponentModel.IContainer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html#a9e6d11d5b23133dffd23871d74bb4978">components</a> = null</td></tr>
 <tr class="memdesc:a9e6d11d5b23133dffd23871d74bb4978"><td class="mdescLeft">&#160;</td><td class="mdescRight">Required designer variable.  <a href="#a9e6d11d5b23133dffd23871d74bb4978">More...</a><br /></td></tr>
 <tr class="separator:a9e6d11d5b23133dffd23871d74bb4978"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -673,8 +663,8 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a4b693fad7b2ef96af9fc30da2062aacb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b693fad7b2ef96af9fc30da2062aacb">&#9670;&nbsp;</a></span>_colorCoding</h2>
+<a id="ab8f497a5a939f1fd91f28c7252480d51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8f497a5a939f1fd91f28c7252480d51">&#9670;&nbsp;</a></span>_colorCoding</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -683,7 +673,7 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Dictionary&lt;int, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a>&gt; ADL.CustomCMD.CustomCMDForm._colorCoding = null</td>
+          <td class="memname">readonly Dictionary&lt;int, <a class="el" href="struct_a_d_l_1_1_configs_1_1_serializable_color.html">SerializableColor</a>&gt; ADL.CustomCMD.CustomCMDForm._colorCoding</td>
         </tr>
       </table>
   </td>
@@ -697,8 +687,8 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
 
 </div>
 </div>
-<a id="a55c77dfaef33d120690074e8625d72fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55c77dfaef33d120690074e8625d72fc">&#9670;&nbsp;</a></span>_hasColorCoding</h2>
+<a id="a1695b9893a9fb7a928ae83b3220e930a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1695b9893a9fb7a928ae83b3220e930a">&#9670;&nbsp;</a></span>_hasColorCoding</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -707,7 +697,7 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ADL.CustomCMD.CustomCMDForm._hasColorCoding</td>
+          <td class="memname">readonly bool ADL.CustomCMD.CustomCMDForm._hasColorCoding</td>
         </tr>
       </table>
   </td>
@@ -743,6 +733,28 @@ System.Windows.Forms.SplitContainer&#160;</td><td class="memItemRight" valign="b
 
 <p>Required designer variable. </p>
 
+</div>
+</div>
+<a id="a052acedffce782e73c380c213cdce799"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a052acedffce782e73c380c213cdce799">&#9670;&nbsp;</a></span>ConsoleTitleInfo</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly string ADL.CustomCMD.CustomCMDForm.ConsoleTitleInfo</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div><div class="line">            <span class="stringliteral">&quot;ADL : Custom Console : Logs Received {0} : Logs Written {1} : Blocks Writen {2}(1:{3}) : Text Cleared {4}&quot;</span></div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>

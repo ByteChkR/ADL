@@ -195,7 +195,6 @@ namespace ADL.DebugTest
                 j < 64;
                 j++) //63 because its the highest value the current enum can take(every bit beeing 1)
             {
-                Thread.Sleep(50);
                 Debug.Log(j, "Net Test with mask " + j);
             }
         }

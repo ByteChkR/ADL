@@ -112,6 +112,15 @@ Inheritance diagram for ADL.Streams.LogStream:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:acd760bcd95ee2cb141c302650a8bb1f2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#acd760bcd95ee2cb141c302650a8bb1f2">LogStream</a> (Stream baseStream, int mask=~0, <a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bdde">MatchType</a> matchType=<a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bddea627c7991c5d0265194247e92fcf120b0">MatchType.MATCH_ALL</a>, bool setTimeStamp=false)</td></tr>
+<tr class="memdesc:acd760bcd95ee2cb141c302650a8bb1f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="struct_a_d_l_1_1_streams_1_1_log.html" title="Struct that can serialize and deserialize to be sent over a stream ">Log</a> stream based on the parameters supplied.  <a href="#acd760bcd95ee2cb141c302650a8bb1f2">More...</a><br /></td></tr>
+<tr class="separator:acd760bcd95ee2cb141c302650a8bb1f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b5e5471a57e93b6c0aeeb4c822a3dad"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a0b5e5471a57e93b6c0aeeb4c822a3dad">Write</a> (<a class="el" href="struct_a_d_l_1_1_streams_1_1_log.html">Log</a> log)</td></tr>
+<tr class="memdesc:a0b5e5471a57e93b6c0aeeb4c822a3dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a log to the stream.  <a href="#a0b5e5471a57e93b6c0aeeb4c822a3dad">More...</a><br /></td></tr>
+<tr class="separator:a0b5e5471a57e93b6c0aeeb4c822a3dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acafb799fd0f7ff2586ee7e66f86e64a1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#acafb799fd0f7ff2586ee7e66f86e64a1">IsContainedInMask</a> (<a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a> mask)</td></tr>
+<tr class="memdesc:acafb799fd0f7ff2586ee7e66f86e64a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper to make code more readable  <a href="#acafb799fd0f7ff2586ee7e66f86e64a1">More...</a><br /></td></tr>
+<tr class="separator:acafb799fd0f7ff2586ee7e66f86e64a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadc799a614c55952f9302ceb0e80e29b"><td class="memItemLeft" align="right" valign="top"><a id="aadc799a614c55952f9302ceb0e80e29b"></a>
 override void&#160;</td><td class="memItemRight" valign="bottom"><b>Write</b> (byte[] value, int start, int count)</td></tr>
 <tr class="separator:aadc799a614c55952f9302ceb0e80e29b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,18 +172,27 @@ override long&#160;</td><td class="memItemRight" valign="bottom"><b>Seek</b> (lo
 <tr class="memitem:af7668682cfd4220a7a999a5fd2b804a9"><td class="memItemLeft" align="right" valign="top"><a id="af7668682cfd4220a7a999a5fd2b804a9"></a>
 override void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLength</b> (long value)</td></tr>
 <tr class="separator:af7668682cfd4220a7a999a5fd2b804a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd760bcd95ee2cb141c302650a8bb1f2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#acd760bcd95ee2cb141c302650a8bb1f2">LogStream</a> (Stream baseStream, int mask=~0, <a class="el" href="namespace_a_d_l.html#af6334296dbae0383a652317263f0bc05">MatchType</a> matchType=<a class="el" href="namespace_a_d_l.html#af6334296dbae0383a652317263f0bc05a627c7991c5d0265194247e92fcf120b0">MatchType.MATCH_ALL</a>, bool setTimeStamp=false)</td></tr>
-<tr class="memdesc:acd760bcd95ee2cb141c302650a8bb1f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="struct_a_d_l_1_1_streams_1_1_log.html" title="Struct that can serialize and deserialize to be sent over a stream ">Log</a> stream based on the parameters supplied.  <a href="#acd760bcd95ee2cb141c302650a8bb1f2">More...</a><br /></td></tr>
-<tr class="separator:acd760bcd95ee2cb141c302650a8bb1f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b5e5471a57e93b6c0aeeb4c822a3dad"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a0b5e5471a57e93b6c0aeeb4c822a3dad">Write</a> (<a class="el" href="struct_a_d_l_1_1_streams_1_1_log.html">Log</a> log)</td></tr>
-<tr class="memdesc:a0b5e5471a57e93b6c0aeeb4c822a3dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a log to the stream.  <a href="#a0b5e5471a57e93b6c0aeeb4c822a3dad">More...</a><br /></td></tr>
-<tr class="separator:a0b5e5471a57e93b6c0aeeb4c822a3dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acafb799fd0f7ff2586ee7e66f86e64a1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#acafb799fd0f7ff2586ee7e66f86e64a1">IsContainedInMask</a> (<a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a> mask)</td></tr>
-<tr class="memdesc:acafb799fd0f7ff2586ee7e66f86e64a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper to make code more readable  <a href="#acafb799fd0f7ff2586ee7e66f86e64a1">More...</a><br /></td></tr>
-<tr class="separator:acafb799fd0f7ff2586ee7e66f86e64a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a65cef4d30e8d01d323eb3db56eef7782"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a65cef4d30e8d01d323eb3db56eef7782">IsStreamClosed</a> =&gt; <a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a635f94985015ba00f409229b71a9ac5b">_streamClosed</a></td></tr>
+<tr class="memdesc:a65cef4d30e8d01d323eb3db56eef7782"><td class="mdescLeft">&#160;</td><td class="mdescRight">If this is true the Underlying Stream is closed and the Whole Object was destroyed.  <a href="#a65cef4d30e8d01d323eb3db56eef7782">More...</a><br /></td></tr>
+<tr class="separator:a65cef4d30e8d01d323eb3db56eef7782"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc2cdd6c5e42b7f078890ee72a3b6a0b"><td class="memItemLeft" align="right" valign="top"><a id="acc2cdd6c5e42b7f078890ee72a3b6a0b"></a>
+Stream&#160;</td><td class="memItemRight" valign="bottom"><b>BaseStream</b> =&gt; <a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#abb85405d3d32a6525884e453d6adbda4">_baseStream</a></td></tr>
+<tr class="separator:acc2cdd6c5e42b7f078890ee72a3b6a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbe057d21eda597e2e24d3cff016f2f4"><td class="memItemLeft" align="right" valign="top"><a id="adbe057d21eda597e2e24d3cff016f2f4"></a>
+override bool&#160;</td><td class="memItemRight" valign="bottom"><b>CanRead</b> =&gt; _baseStream.CanRead</td></tr>
+<tr class="separator:adbe057d21eda597e2e24d3cff016f2f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5abce0f6cddf69c1fac7017939cf992"><td class="memItemLeft" align="right" valign="top"><a id="ac5abce0f6cddf69c1fac7017939cf992"></a>
+override bool&#160;</td><td class="memItemRight" valign="bottom"><b>CanSeek</b> =&gt; _baseStream.CanSeek</td></tr>
+<tr class="separator:ac5abce0f6cddf69c1fac7017939cf992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22e32df786f24d95210a1af32fdcd4e2"><td class="memItemLeft" align="right" valign="top"><a id="a22e32df786f24d95210a1af32fdcd4e2"></a>
+override bool&#160;</td><td class="memItemRight" valign="bottom"><b>CanWrite</b> =&gt; _baseStream.CanWrite</td></tr>
+<tr class="separator:a22e32df786f24d95210a1af32fdcd4e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a944f5860773a4114d15758f174785f98"><td class="memItemLeft" align="right" valign="top"><a id="a944f5860773a4114d15758f174785f98"></a>
+override long&#160;</td><td class="memItemRight" valign="bottom"><b>Length</b> =&gt; _baseStream.Length</td></tr>
+<tr class="separator:a944f5860773a4114d15758f174785f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a0fd48f03105754ecba1888d5dda7dd"><td class="memItemLeft" align="right" valign="top"><a id="a2a0fd48f03105754ecba1888d5dda7dd"></a>
 override bool&#160;</td><td class="memItemRight" valign="bottom"><b>CanTimeout</b> =&gt; _baseStream.CanTimeout</td></tr>
 <tr class="separator:a2a0fd48f03105754ecba1888d5dda7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,7 +205,7 @@ override WaitHandle&#160;</td><td class="memItemRight" valign="bottom"><b>Create
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:abb85405d3d32a6525884e453d6adbda4"><td class="memItemLeft" align="right" valign="top">Stream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#abb85405d3d32a6525884e453d6adbda4">_baseStream</a> = null</td></tr>
+<tr class="memitem:abb85405d3d32a6525884e453d6adbda4"><td class="memItemLeft" align="right" valign="top">Stream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#abb85405d3d32a6525884e453d6adbda4">_baseStream</a></td></tr>
 <tr class="memdesc:abb85405d3d32a6525884e453d6adbda4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base stream  <a href="#abb85405d3d32a6525884e453d6adbda4">More...</a><br /></td></tr>
 <tr class="separator:abb85405d3d32a6525884e453d6adbda4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -199,30 +217,12 @@ Properties</h2></td></tr>
 <tr class="memitem:a30d66691d1651c3c6554008996d05053"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a30d66691d1651c3c6554008996d05053">Mask</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a30d66691d1651c3c6554008996d05053"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Mask that determines wether this stream will receive a log message  <a href="#a30d66691d1651c3c6554008996d05053">More...</a><br /></td></tr>
 <tr class="separator:a30d66691d1651c3c6554008996d05053"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae32413916e7b3a4dd9e18a4c6e3310ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_a_d_l.html#af6334296dbae0383a652317263f0bc05">MatchType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#ae32413916e7b3a4dd9e18a4c6e3310ac">MatchType</a><code> [get, set]</code></td></tr>
+<tr class="memitem:ae32413916e7b3a4dd9e18a4c6e3310ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bdde">MatchType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#ae32413916e7b3a4dd9e18a4c6e3310ac">MatchType</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:ae32413916e7b3a4dd9e18a4c6e3310ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">The match type(how the mask gets compared)  <a href="#ae32413916e7b3a4dd9e18a4c6e3310ac">More...</a><br /></td></tr>
 <tr class="separator:ae32413916e7b3a4dd9e18a4c6e3310ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a823b105ac24365376838f276a1bba514"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a823b105ac24365376838f276a1bba514">AddTimeStamp</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a823b105ac24365376838f276a1bba514"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put a timestamp infront of the log.  <a href="#a823b105ac24365376838f276a1bba514">More...</a><br /></td></tr>
 <tr class="separator:a823b105ac24365376838f276a1bba514"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65cef4d30e8d01d323eb3db56eef7782"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a65cef4d30e8d01d323eb3db56eef7782">IsStreamClosed</a><code> [get]</code></td></tr>
-<tr class="memdesc:a65cef4d30e8d01d323eb3db56eef7782"><td class="mdescLeft">&#160;</td><td class="mdescRight">If this is true the Underlying Stream is closed and the Whole Object was destroyed.  <a href="#a65cef4d30e8d01d323eb3db56eef7782">More...</a><br /></td></tr>
-<tr class="separator:a65cef4d30e8d01d323eb3db56eef7782"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc2cdd6c5e42b7f078890ee72a3b6a0b"><td class="memItemLeft" align="right" valign="top"><a id="acc2cdd6c5e42b7f078890ee72a3b6a0b"></a>
-Stream&#160;</td><td class="memItemRight" valign="bottom"><b>BaseStream</b><code> [get]</code></td></tr>
-<tr class="separator:acc2cdd6c5e42b7f078890ee72a3b6a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbe057d21eda597e2e24d3cff016f2f4"><td class="memItemLeft" align="right" valign="top"><a id="adbe057d21eda597e2e24d3cff016f2f4"></a>
-override bool&#160;</td><td class="memItemRight" valign="bottom"><b>CanRead</b><code> [get]</code></td></tr>
-<tr class="separator:adbe057d21eda597e2e24d3cff016f2f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5abce0f6cddf69c1fac7017939cf992"><td class="memItemLeft" align="right" valign="top"><a id="ac5abce0f6cddf69c1fac7017939cf992"></a>
-override bool&#160;</td><td class="memItemRight" valign="bottom"><b>CanSeek</b><code> [get]</code></td></tr>
-<tr class="separator:ac5abce0f6cddf69c1fac7017939cf992"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22e32df786f24d95210a1af32fdcd4e2"><td class="memItemLeft" align="right" valign="top"><a id="a22e32df786f24d95210a1af32fdcd4e2"></a>
-override bool&#160;</td><td class="memItemRight" valign="bottom"><b>CanWrite</b><code> [get]</code></td></tr>
-<tr class="separator:a22e32df786f24d95210a1af32fdcd4e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a944f5860773a4114d15758f174785f98"><td class="memItemLeft" align="right" valign="top"><a id="a944f5860773a4114d15758f174785f98"></a>
-override long&#160;</td><td class="memItemRight" valign="bottom"><b>Length</b><code> [get]</code></td></tr>
-<tr class="separator:a944f5860773a4114d15758f174785f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ef2ee10f05691f4d74583ae129c9d25"><td class="memItemLeft" align="right" valign="top"><a id="a9ef2ee10f05691f4d74583ae129c9d25"></a>
 override long&#160;</td><td class="memItemRight" valign="bottom"><b>Position</b><code> [get, set]</code></td></tr>
 <tr class="separator:a9ef2ee10f05691f4d74583ae129c9d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,18 +238,18 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a0d636fea28097e8c3070a6482f160961"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a0d636fea28097e8c3070a6482f160961">_mask</a> = new <a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a>(true)</td></tr>
 <tr class="memdesc:a0d636fea28097e8c3070a6482f160961"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mask that the system uses to filter logs  <a href="#a0d636fea28097e8c3070a6482f160961">More...</a><br /></td></tr>
 <tr class="separator:a0d636fea28097e8c3070a6482f160961"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d1eb76ee06bb651ae532fb6ffe120a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_a_d_l.html#af6334296dbae0383a652317263f0bc05">MatchType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a5d1eb76ee06bb651ae532fb6ffe120a2">_matchType</a> = <a class="el" href="namespace_a_d_l.html#af6334296dbae0383a652317263f0bc05a627c7991c5d0265194247e92fcf120b0">MatchType.MATCH_ALL</a></td></tr>
+<tr class="memitem:a5d1eb76ee06bb651ae532fb6ffe120a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bdde">MatchType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a5d1eb76ee06bb651ae532fb6ffe120a2">_matchType</a> = <a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bddea627c7991c5d0265194247e92fcf120b0">MatchType.MATCH_ALL</a></td></tr>
 <tr class="memdesc:a5d1eb76ee06bb651ae532fb6ffe120a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The match type(how the mask gets compared)  <a href="#a5d1eb76ee06bb651ae532fb6ffe120a2">More...</a><br /></td></tr>
 <tr class="separator:a5d1eb76ee06bb651ae532fb6ffe120a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a933b97020d42dfabe28e9c24c9007984"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a933b97020d42dfabe28e9c24c9007984">_setTimeStamp</a> = false</td></tr>
-<tr class="memdesc:a933b97020d42dfabe28e9c24c9007984"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put a timestamp infront of the log.  <a href="#a933b97020d42dfabe28e9c24c9007984">More...</a><br /></td></tr>
-<tr class="separator:a933b97020d42dfabe28e9c24c9007984"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a635f94985015ba00f409229b71a9ac5b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a635f94985015ba00f409229b71a9ac5b">_streamClosed</a> = false</td></tr>
-<tr class="memdesc:a635f94985015ba00f409229b71a9ac5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the stream closed?  <a href="#a635f94985015ba00f409229b71a9ac5b">More...</a><br /></td></tr>
-<tr class="separator:a635f94985015ba00f409229b71a9ac5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a183b5bdff03a7b6b97455be36a4bbda0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a183b5bdff03a7b6b97455be36a4bbda0">_overrideLogChannels</a> = false</td></tr>
+<tr class="memitem:a183b5bdff03a7b6b97455be36a4bbda0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a183b5bdff03a7b6b97455be36a4bbda0">_overrideLogChannels</a></td></tr>
 <tr class="memdesc:a183b5bdff03a7b6b97455be36a4bbda0"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true all the LogChannels/TimeStamp is ignored and only the message will get received.  <a href="#a183b5bdff03a7b6b97455be36a4bbda0">More...</a><br /></td></tr>
 <tr class="separator:a183b5bdff03a7b6b97455be36a4bbda0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a933b97020d42dfabe28e9c24c9007984"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a933b97020d42dfabe28e9c24c9007984">_setTimeStamp</a></td></tr>
+<tr class="memdesc:a933b97020d42dfabe28e9c24c9007984"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put a timestamp infront of the log.  <a href="#a933b97020d42dfabe28e9c24c9007984">More...</a><br /></td></tr>
+<tr class="separator:a933b97020d42dfabe28e9c24c9007984"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a635f94985015ba00f409229b71a9ac5b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a635f94985015ba00f409229b71a9ac5b">_streamClosed</a></td></tr>
+<tr class="memdesc:a635f94985015ba00f409229b71a9ac5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the stream closed?  <a href="#a635f94985015ba00f409229b71a9ac5b">More...</a><br /></td></tr>
+<tr class="separator:a635f94985015ba00f409229b71a9ac5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="struct_a_d_l_1_1_streams_1_1_log.html" title="Struct that can serialize and deserialize to be sent over a stream ">Log</a> stream class that you can use with virtually any stream(as long as you handle the multithreading on your own if used) This class wraps around your supplied stream and interacts with the system. Because the <a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html" title="Log stream class that you can use with virtually any stream(as long as you handle the multithreading ...">LogStream</a> implements every override and passes it to the base stream, you can use your created base stream itself instead of the <a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html" title="Log stream class that you can use with virtually any stream(as long as you handle the multithreading ...">LogStream</a>. </p>
@@ -275,8 +275,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespace_a_d_l.html#af6334296dbae0383a652317263f0bc05">MatchType</a>&#160;</td>
-          <td class="paramname"><em>matchType</em> = <code><a class="el" href="namespace_a_d_l.html#af6334296dbae0383a652317263f0bc05a627c7991c5d0265194247e92fcf120b0">MatchType.MATCH_ALL</a></code>, </td>
+          <td class="paramtype"><a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bdde">MatchType</a>&#160;</td>
+          <td class="paramname"><em>matchType</em> = <code><a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bddea627c7991c5d0265194247e92fcf120b0">MatchType.MATCH_ALL</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -380,7 +380,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Stream ADL.Streams.LogStream._baseStream = null</td>
+          <td class="memname">Stream ADL.Streams.LogStream._baseStream</td>
         </tr>
       </table>
   </td>
@@ -428,7 +428,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespace_a_d_l.html#af6334296dbae0383a652317263f0bc05">MatchType</a> ADL.Streams.LogStream._matchType = <a class="el" href="namespace_a_d_l.html#af6334296dbae0383a652317263f0bc05a627c7991c5d0265194247e92fcf120b0">MatchType.MATCH_ALL</a></td>
+          <td class="memname"><a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bdde">MatchType</a> ADL.Streams.LogStream._matchType = <a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bddea627c7991c5d0265194247e92fcf120b0">MatchType.MATCH_ALL</a></td>
         </tr>
       </table>
   </td>
@@ -452,7 +452,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ADL.Streams.LogStream._overrideLogChannels = false</td>
+          <td class="memname">bool ADL.Streams.LogStream._overrideLogChannels</td>
         </tr>
       </table>
   </td>
@@ -476,7 +476,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ADL.Streams.LogStream._setTimeStamp = false</td>
+          <td class="memname">bool ADL.Streams.LogStream._setTimeStamp</td>
         </tr>
       </table>
   </td>
@@ -500,7 +500,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ADL.Streams.LogStream._streamClosed = false</td>
+          <td class="memname">bool ADL.Streams.LogStream._streamClosed</td>
         </tr>
       </table>
   </td>
@@ -511,6 +511,22 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Is the stream closed? </p>
+
+</div>
+</div>
+<a id="a65cef4d30e8d01d323eb3db56eef7782"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65cef4d30e8d01d323eb3db56eef7782">&#9670;&nbsp;</a></span>IsStreamClosed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ADL.Streams.LogStream.IsStreamClosed =&gt; <a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a635f94985015ba00f409229b71a9ac5b">_streamClosed</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If this is true the Underlying Stream is closed and the Whole Object was destroyed. </p>
 
 </div>
 </div>
@@ -536,30 +552,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Put a timestamp infront of the log. </p>
-
-</div>
-</div>
-<a id="a65cef4d30e8d01d323eb3db56eef7782"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65cef4d30e8d01d323eb3db56eef7782">&#9670;&nbsp;</a></span>IsStreamClosed</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool ADL.Streams.LogStream.IsStreamClosed</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>If this is true the Underlying Stream is closed and the Whole Object was destroyed. </p>
 
 </div>
 </div>
@@ -597,7 +589,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespace_a_d_l.html#af6334296dbae0383a652317263f0bc05">MatchType</a> ADL.Streams.LogStream.MatchType</td>
+          <td class="memname"><a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bdde">MatchType</a> ADL.Streams.LogStream.MatchType</td>
         </tr>
       </table>
   </td>

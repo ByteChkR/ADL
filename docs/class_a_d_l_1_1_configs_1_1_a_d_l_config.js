@@ -11,6 +11,7 @@ var class_a_d_l_1_1_configs_1_1_a_d_l_config =
     [ "PrefixLookupMode", "class_a_d_l_1_1_configs_1_1_a_d_l_config.html#a29976120c45f6af6b4174a0f946152da", null ],
     [ "SendUpdateMessageOnFirstLog", "class_a_d_l_1_1_configs_1_1_a_d_l_config.html#ab1ecae8eba61f84b8271cea27ba70e9d", null ],
     [ "SendWarnings", "class_a_d_l_1_1_configs_1_1_a_d_l_config.html#af43900540c2324ecc9084ed8c65e08f7", null ],
+    [ "TextEncoding", "class_a_d_l_1_1_configs_1_1_a_d_l_config.html#aa79d716efc667c2900539966631fb7be", null ],
     [ "UpdateMask", "class_a_d_l_1_1_configs_1_1_a_d_l_config.html#a4a744bbb3cf89c14686e341d27464cc2", null ],
     [ "WarningMask", "class_a_d_l_1_1_configs_1_1_a_d_l_config.html#ad9474a92521e77437beea94382701dbb", null ],
     [ "Standard", "class_a_d_l_1_1_configs_1_1_a_d_l_config.html#ab289b70ad72c9ba5464b10a78b022f0d", null ]

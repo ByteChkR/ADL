@@ -38,6 +38,11 @@ namespace ADL
             return ret;
         }
 
+        /// <summary>
+        /// Converts a Byte Array to a Hexadecimal Encoded String for representation
+        /// </summary>
+        /// <param name="Bytes"></param>
+        /// <returns></returns>
         public static string ByteArrayToHexString(byte[] Bytes)
         {
             var Result = new StringBuilder(Bytes.Length * 2);
@@ -52,6 +57,11 @@ namespace ADL
             return Result.ToString();
         }
 
+        /// <summary>
+        /// Converts a Hexadecimal Encoded String into a byte array.
+        /// </summary>
+        /// <param name="Hex"></param>
+        /// <returns></returns>
         public static byte[] HexStringToByteArray(string Hex)
         {
             var Bytes = new byte[Hex.Length / 2];

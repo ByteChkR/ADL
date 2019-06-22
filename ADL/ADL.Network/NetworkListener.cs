@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
+using System.Reflection;
 using System.Threading;
 using ADL.Configs;
 using ADL.Streams;
@@ -24,12 +25,14 @@ namespace ADL.Network
         private Thread _serverThread;
         private bool _stop = true;
         private bool _stopListen = true;
-
-        public NetworkListener(int refreshMillis, string config = "", bool multiThread = true)
+        private bool _noUpdateCheck = false;
+        public NetworkListener(int refreshMillis, string config = "", bool multiThread = true, bool noUpdateCheck = false)
         {
+            _noUpdateCheck = noUpdateCheck;
             Config = NetworkConfig.Load(config);
             _multiThread = multiThread;
             _refreshMillis = refreshMillis;
+            
         }
 
 
@@ -37,6 +40,11 @@ namespace ADL.Network
         {
             _lts = new LogTextStream(Console.OpenStandardOutput(), 0);
             Debug.AddOutputStream(_lts);
+
+            var msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name,
+                Assembly.GetExecutingAssembly().GetName().Version);
+
+            Debug.Log(0, msg);
 
             Debug.Log(0, "Starting Network Listener...");
             lock (_stopListenLock)

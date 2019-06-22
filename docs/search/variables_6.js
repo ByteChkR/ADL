@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logs',['Logs',['../struct_a_d_l_1_1_streams_1_1_log_package.html#ad0cc75b0b2dbf8075d0494a1bc0b091b',1,'ADL::Streams::LogPackage']]]
+  ['keys',['Keys',['../class_a_d_l_1_1_configs_1_1_serializable_dictionary.html#aae81bea5f4c878f967e8d8a94d68afe2',1,'ADL::Configs::SerializableDictionary']]]
 ];

@@ -6,7 +6,7 @@ var class_a_d_l_1_1_unity_1_1_unity_text_writer =
     [ "Seek", "class_a_d_l_1_1_unity_1_1_unity_text_writer.html#ac1433e1a8fea0b44cbc90d1250c5cad3", null ],
     [ "SetLength", "class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a04ec5542e040a8601dc860b34dad5e13", null ],
     [ "Write", "class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a377c14675ccab471ee103871f1a9782d", null ],
-    [ "_buffer", "class_a_d_l_1_1_unity_1_1_unity_text_writer.html#ac4a80742ff977c59d01cd2d06c2df379", null ],
+    [ "_buffer", "class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a71bc361ecfd0aff6e661df3d096ec6ff", null ],
     [ "_errorMask", "class_a_d_l_1_1_unity_1_1_unity_text_writer.html#afd218089c35e95bbb5be6b008fc8803c", null ],
     [ "_warnMask", "class_a_d_l_1_1_unity_1_1_unity_text_writer.html#aa985465017bf1ccf3c7f121fd4b8e136", null ],
     [ "CanRead", "class_a_d_l_1_1_unity_1_1_unity_text_writer.html#aee01d4ddb0385399382a59d981c8a6d1", null ],

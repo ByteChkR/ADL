@@ -5,16 +5,35 @@ namespace ADL.Configs
 {
     public class NetworkConfig
     {
+
+
+        /// <summary>
+        /// The map that maps the ids the clients send to names that make sense.
+        /// </summary>
         public string[] ID2NameMap =
         {
             "Test"
         };
 
+        /// <summary>
+        /// IP where the Client Connects to
+        /// </summary>
         public string IP = "localhost";
+        /// <summary>
+        /// Port for server and client.
+        /// </summary>
         public int Port = 1337;
 
+        /// <summary>
+        /// Determines how the time stamp in the log files looks like.
+        /// </summary>
         public string TimeFormatString = "MM-dd-yyyy-H-mm-ss";
 
+        /// <summary>
+        /// Loads the Network Config from the specified path.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static NetworkConfig Load(string path = "")
         {
             var ret = new NetworkConfig();
@@ -28,6 +47,11 @@ namespace ADL.Configs
             return ret;
         }
 
+        /// <summary>
+        /// Saves the Network Config to the specififed path
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="conf"></param>
         public static void Save(string path, NetworkConfig conf)
         {
             if (File.Exists(path))

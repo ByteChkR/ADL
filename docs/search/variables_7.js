@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['mask',['Mask',['../struct_a_d_l_1_1_streams_1_1_log.html#a42805119923b6062ad95fa4f43a78e5e',1,'ADL::Streams::Log']]],
-  ['message',['Message',['../struct_a_d_l_1_1_streams_1_1_log.html#a787df5f83352fb89db73e317f2735c46',1,'ADL::Streams::Log']]]
+  ['length',['Length',['../class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a7783a5e514cadbd6a3c85699cdc86477',1,'ADL::Streams::GenPipeStream']]],
+  ['logs',['Logs',['../struct_a_d_l_1_1_streams_1_1_log_package.html#ad0cc75b0b2dbf8075d0494a1bc0b091b',1,'ADL::Streams::LogPackage']]],
+  ['logstreamcount',['LogStreamCount',['../class_a_d_l_1_1_debug.html#a5a63093ff8ac05237224edcce57396c4',1,'ADL::Debug']]]
 ];

@@ -88,7 +88,6 @@ $(document).ready(function(){initNavTree('class_a_d_l_1_1_utils.html','');});
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#properties">Properties</a> &#124;
 <a href="class_a_d_l_1_1_utils-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ADL.Utils Class Reference</div>  </div>
@@ -106,6 +105,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ac921cfeea8d73d9ac4298802e2594504"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_utils.html#ac921cfeea8d73d9ac4298802e2594504">IntPow</a> (int basis, int exp)</td></tr>
 <tr class="memdesc:ac921cfeea8d73d9ac4298802e2594504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes basis by the power of exp  <a href="#ac921cfeea8d73d9ac4298802e2594504">More...</a><br /></td></tr>
 <tr class="separator:ac921cfeea8d73d9ac4298802e2594504"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a802e583c9cee7dc2822cdabfc91a28f0"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_utils.html#a802e583c9cee7dc2822cdabfc91a28f0">ByteArrayToHexString</a> (byte[] Bytes)</td></tr>
+<tr class="memdesc:a802e583c9cee7dc2822cdabfc91a28f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a Byte Array to a Hexadecimal Encoded String for representation  <a href="#a802e583c9cee7dc2822cdabfc91a28f0">More...</a><br /></td></tr>
+<tr class="separator:a802e583c9cee7dc2822cdabfc91a28f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3bffa261a690a16f83df69053edb6a9"><td class="memItemLeft" align="right" valign="top">static byte []&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_utils.html#af3bffa261a690a16f83df69053edb6a9">HexStringToByteArray</a> (string Hex)</td></tr>
+<tr class="memdesc:af3bffa261a690a16f83df69053edb6a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a Hexadecimal Encoded String into a byte array.  <a href="#af3bffa261a690a16f83df69053edb6a9">More...</a><br /></td></tr>
+<tr class="separator:af3bffa261a690a16f83df69053edb6a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f8a756ce7c6c8d4cfe7126ef534e151"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_utils.html#a7f8a756ce7c6c8d4cfe7126ef534e151">NumToTimeFormat</a> (int time)</td></tr>
 <tr class="memdesc:a7f8a756ce7c6c8d4cfe7126ef534e151"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes 1-9 =&gt; 01-09  <a href="#a7f8a756ce7c6c8d4cfe7126ef534e151">More...</a><br /></td></tr>
 <tr class="separator:a7f8a756ce7c6c8d4cfe7126ef534e151"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,16 +123,48 @@ static readonly int&#160;</td><td class="memItemRight" valign="bottom"><b>BYTE_S
 <tr class="memitem:a3b4911ed5911876ed4d4b771d02b7617"><td class="memItemLeft" align="right" valign="top"><a id="a3b4911ed5911876ed4d4b771d02b7617"></a>
 static readonly char&#160;</td><td class="memItemRight" valign="bottom"><b>NEW_LINE</b> = '\n'</td></tr>
 <tr class="separator:a3b4911ed5911876ed4d4b771d02b7617"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
-Properties</h2></td></tr>
-<tr class="memitem:a93a1013d16031cf968a4383b56f4b24f"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_utils.html#a93a1013d16031cf968a4383b56f4b24f">TimeStamp</a><code> [get]</code></td></tr>
+<tr class="memitem:a93a1013d16031cf968a4383b56f4b24f"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_utils.html#a93a1013d16031cf968a4383b56f4b24f">TimeStamp</a></td></tr>
 <tr class="memdesc:a93a1013d16031cf968a4383b56f4b24f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current Time Stamp based on DateTime.Now  <a href="#a93a1013d16031cf968a4383b56f4b24f">More...</a><br /></td></tr>
 <tr class="separator:a93a1013d16031cf968a4383b56f4b24f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Helpful functions are stored here. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a802e583c9cee7dc2822cdabfc91a28f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a802e583c9cee7dc2822cdabfc91a28f0">&#9670;&nbsp;</a></span>ByteArrayToHexString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string ADL.Utils.ByteArrayToHexString </td>
+          <td>(</td>
+          <td class="paramtype">byte []&#160;</td>
+          <td class="paramname"><em>Bytes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts a Byte Array to a Hexadecimal Encoded String for representation </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Bytes</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
 <a id="a2440a02543f713bece0b2feede4f9eae"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2440a02543f713bece0b2feede4f9eae">&#9670;&nbsp;</a></span>GetEnumSize()</h2>
 
@@ -160,6 +197,41 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>bitwise length of enum.</dd></dl>
+
+</div>
+</div>
+<a id="af3bffa261a690a16f83df69053edb6a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3bffa261a690a16f83df69053edb6a9">&#9670;&nbsp;</a></span>HexStringToByteArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static byte [] ADL.Utils.HexStringToByteArray </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>Hex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts a Hexadecimal Encoded String into a byte array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Hex</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -244,7 +316,7 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Property Documentation</h2>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="a93a1013d16031cf968a4383b56f4b24f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a93a1013d16031cf968a4383b56f4b24f">&#9670;&nbsp;</a></span>TimeStamp</h2>
 
@@ -260,11 +332,11 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">=&gt; <span class="stringliteral">&quot;[&quot;</span> + <a class="code" href="class_a_d_l_1_1_utils.html#a7f8a756ce7c6c8d4cfe7126ef534e151">NumToTimeFormat</a>(DateTime.Now.Hour) + <span class="stringliteral">&quot;:&quot;</span> +</div><div class="line">                                          <a class="code" href="class_a_d_l_1_1_utils.html#a7f8a756ce7c6c8d4cfe7126ef534e151">NumToTimeFormat</a>(DateTime.Now.Minute) + <span class="stringliteral">&quot;:&quot;</span> +</div><div class="line">                                          <a class="code" href="class_a_d_l_1_1_utils.html#a7f8a756ce7c6c8d4cfe7126ef534e151">NumToTimeFormat</a>(DateTime.Now.Second) + <span class="stringliteral">&quot;]&quot;</span></div></div><!-- fragment -->
 <p>Current Time Stamp based on DateTime.Now </p>
 
 </div>

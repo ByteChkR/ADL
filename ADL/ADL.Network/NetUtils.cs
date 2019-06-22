@@ -1,15 +1,28 @@
 ﻿using System;
 using System.IO;
 using System.Net.Sockets;
+using System.Reflection;
 using ADL.Streams;
 
 namespace ADL.Network
 {
     public static class NetUtils
     {
+        /// <summary>
+        /// Wrapper to create a network log stream.
+        /// </summary>
+        /// <param name="id">Program ID</param>
+        /// <param name="asmVersion">Assembly Version</param>
+        /// <param name="ip">IP Address to connect to</param>
+        /// <param name="port">Port of the service</param>
+        /// <param name="mask">Mask</param>
+        /// <param name="matchType">Match Type</param>
+        /// <param name="setTimestamp">Timestamp</param>
+        /// <returns></returns>
         public static LogStream CreateNetworkTextStream(int id, Version asmVersion, string ip, int port, int mask,
             MatchType matchType, bool setTimestamp = false)
         {
+
             var tcpC = new TcpClient(ip, port);
 
             Debug.Log(-1, "Connecting to Network Listener");

@@ -2,7 +2,7 @@ var namespace_a_d_l =
 [
     [ "Configs", "namespace_a_d_l_1_1_configs.html", "namespace_a_d_l_1_1_configs" ],
     [ "CustomCMD", "namespace_a_d_l_1_1_custom_c_m_d.html", "namespace_a_d_l_1_1_custom_c_m_d" ],
-    [ "DebugTest", "namespace_a_d_l_1_1_debug_test.html", "namespace_a_d_l_1_1_debug_test" ],
+    [ "Network", "namespace_a_d_l_1_1_network.html", "namespace_a_d_l_1_1_network" ],
     [ "Streams", "namespace_a_d_l_1_1_streams.html", "namespace_a_d_l_1_1_streams" ],
     [ "UnitTests", "namespace_a_d_l_1_1_unit_tests.html", "namespace_a_d_l_1_1_unit_tests" ],
     [ "Unity", "namespace_a_d_l_1_1_unity.html", "namespace_a_d_l_1_1_unity" ],

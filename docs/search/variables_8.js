@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['prefixes',['Prefixes',['../class_a_d_l_1_1_configs_1_1_a_d_l_config.html#a4a9327c643eed1e775d1109d9da4706f',1,'ADL::Configs::ADLConfig']]],
-  ['prefixlookupmode',['PrefixLookupMode',['../class_a_d_l_1_1_configs_1_1_a_d_l_config.html#a29976120c45f6af6b4174a0f946152da',1,'ADL::Configs::ADLConfig']]]
+  ['mask',['Mask',['../struct_a_d_l_1_1_streams_1_1_log.html#a42805119923b6062ad95fa4f43a78e5e',1,'ADL::Streams::Log']]],
+  ['message',['Message',['../struct_a_d_l_1_1_streams_1_1_log.html#a787df5f83352fb89db73e317f2735c46',1,'ADL::Streams::Log']]]
 ];
