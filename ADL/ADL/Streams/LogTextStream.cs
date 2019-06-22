@@ -7,7 +7,6 @@ namespace ADL.Streams
 {
     public class LogTextStream : LogStream
     {
-
         /// <summary>
         /// Constructor, passing the parameters to log stream
         /// </summary>
@@ -15,7 +14,10 @@ namespace ADL.Streams
         /// <param name="mask"></param>
         /// <param name="matchType"></param>
         /// <param name="setTimeStamp"></param>
-        public LogTextStream(Stream baseStream, int mask = ~0, MatchType matchType = MatchType.MATCH_ALL, bool setTimeStamp = false) : base(baseStream, mask, matchType, setTimeStamp) { }
+        public LogTextStream(Stream baseStream, int mask = ~0, MatchType matchType = MatchType.MATCH_ALL,
+            bool setTimeStamp = false) : base(baseStream, mask, matchType, setTimeStamp)
+        {
+        }
 
         /// <summary>
         /// Fills Buffer with the string message only.(used when output is System.Console)
@@ -24,10 +26,9 @@ namespace ADL.Streams
         public override void Write(Log log)
         {
             if (AddTimeStamp) log.Message = Utils.TimeStamp + log.Message;
-            byte[] tmp = Encoding.ASCII.GetBytes(log.Message);
+            var tmp = Encoding.ASCII.GetBytes(log.Message);
             _baseStream.Write(tmp, 0, tmp.Length);
             Flush();
         }
-
     }
 }

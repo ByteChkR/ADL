@@ -14,6 +14,7 @@ namespace ADL.Streams
         /// The mask of the log.
         /// </summary>
         public int Mask;
+
         /// <summary>
         /// The message that has been sent
         /// </summary>
@@ -37,8 +38,8 @@ namespace ADL.Streams
         /// <returns></returns>
         public byte[] Serialize()
         {
-            List<byte> ret = BitConverter.GetBytes(Mask).ToList(); //Mask
-            ret.AddRange(BitConverter.GetBytes(Message.Length));//Message Length
+            var ret = BitConverter.GetBytes(Mask).ToList(); //Mask
+            ret.AddRange(BitConverter.GetBytes(Message.Length)); //Message Length
             ret.AddRange(Encoding.ASCII.GetBytes(Message)); //Message
             return ret.ToArray();
         }
@@ -56,18 +57,16 @@ namespace ADL.Streams
             if (buffer.Length < startIndex + sizeof(int) * 2 + 1) return new Log();
 
 
-            int mask = BitConverter.ToInt32(buffer, startIndex);
-            int msgLength = BitConverter.ToInt32(buffer, startIndex + sizeof(int));
+            var mask = BitConverter.ToInt32(buffer, startIndex);
+            var msgLength = BitConverter.ToInt32(buffer, startIndex + sizeof(int));
             if (msgLength == 0)
             {
                 bytesRead = -1;
                 return new Log();
             }
-            string message = "";
-            if (msgLength > buffer.Length - startIndex - sizeof(int) * 2)
-            {
-                return new Log();
-            }
+
+            var message = "";
+            if (msgLength > buffer.Length - startIndex - sizeof(int) * 2) return new Log();
 
             message = Encoding.ASCII.GetString(buffer, startIndex + sizeof(int) * 2, msgLength);
 
@@ -77,4 +76,3 @@ namespace ADL.Streams
         }
     }
 }
-

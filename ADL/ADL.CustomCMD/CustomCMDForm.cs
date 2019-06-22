@@ -237,11 +237,7 @@ namespace ADL.CustomCMD
 
         private LogPackage ReadBlock()
         {
-            int length = (int)ps.Length; //Save it because between next and next+1 line there can still be added something to the stream
-            //Due to multithreading
-            byte[] buffer = new byte[length];
-            ps.Read(buffer, 0, length);
-            return new LogPackage(buffer);
+            return LogPackage.ReadBlock(ps, (int)ps.Length);
         }
 
 

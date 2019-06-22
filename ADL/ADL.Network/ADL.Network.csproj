@@ -4,18 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DAE6445D-6F2B-4C3B-BEED-F04CA2332F97}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>DebugLoggingTest</RootNamespace>
-    <AssemblyName>AdvancedDebugLoggingTest</AssemblyName>
+    <ProjectGuid>{C13C9D27-8221-42F8-8EC9-86869DCCCE0A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ADL.Network</RootNamespace>
+    <AssemblyName>m</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,7 +24,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,49 +31,23 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>ADL.DebugTest.Program</StartupObject>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>icons8-code-100.ico</ApplicationIcon>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="NetworkListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ADL.Network\ADL.Network.csproj">
-      <Project>{c13c9d27-8221-42f8-8ec9-86869dccce0a}</Project>
-      <Name>ADL.Network</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ADL.Unity\ADL.Unity.csproj">
-      <Project>{91132b0f-9dfb-4b0a-a30c-a47a1c94764a}</Project>
-      <Name>ADL.Unity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ADL\ADL.csproj">
       <Project>{a6217f9e-bb25-4acc-8c90-209d3af80dc4}</Project>
       <Name>ADL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ADL.CustomCMD\ADL.CustomCMD.csproj">
-      <Project>{7e8c8892-86a6-46af-ac32-bc632613b288}</Project>
-      <Name>ADL.CustomCMD</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="icons8-code-100.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

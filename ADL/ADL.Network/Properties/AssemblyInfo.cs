@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Advanced Debug Logging")]
-[assembly: AssemblyDescription("ADL")]
+[assembly: AssemblyTitle("ADL.Network")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ByteDev")]
-[assembly: AssemblyProduct("Advanced Debug Logging")]
-[assembly: AssemblyCopyright("Copyright ByteDev©  2018")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ADL.Network")]
+[assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a6217f9e-bb25-4acc-8c90-209d3af80dc4")]
+[assembly: Guid("c13c9d27-8221-42f8-8ec9-86869dccce0a")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.0.2.3")]
-[assembly: AssemblyFileVersion("0.0.2.3")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

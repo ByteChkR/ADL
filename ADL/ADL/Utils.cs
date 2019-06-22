@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+
 namespace ADL
 {
     /// <summary>
@@ -7,9 +8,9 @@ namespace ADL
     /// </summary>
     public static class Utils
     {
-
         public static readonly int BYTE_SIZE = 8;
         public static readonly char NEW_LINE = '\n';
+
         /// <summary>
         /// Returns the Enum Size for the specified enum
         /// </summary>
@@ -17,7 +18,7 @@ namespace ADL
         /// <returns>bitwise length of enum.</returns>
         public static int GetEnumSize(Type enumType)
         {
-            int i = Enum.GetValues(enumType).Cast<int>().Max(); //Maximum Value (32 for LoggingTypes)
+            var i = Enum.GetValues(enumType).Cast<int>().Max(); //Maximum Value (32 for LoggingTypes)
             return i + i - 1; //Actual Bitwise Maximal value. from 000000(0) to 111111(63)
         }
 
@@ -31,25 +32,19 @@ namespace ADL
         public static int IntPow(int basis, int exp)
         {
             if (exp == 0) return 1;
-            int ret = basis;
-            for (int i = 1; i < exp; i++)
-            {
-                ret *= basis;
-            }
+            var ret = basis;
+            for (var i = 1; i < exp; i++) ret *= basis;
             return ret;
         }
 
         #region TimeStamp
+
         /// <summary>
         /// Current Time Stamp based on DateTime.Now
         /// </summary>
-        public static string TimeStamp
-        {
-            get
-            {
-                return "[" + NumToTimeFormat(DateTime.Now.Hour) + ":" + NumToTimeFormat(DateTime.Now.Minute) + ":" + NumToTimeFormat(DateTime.Now.Second) + "]";
-            }
-        }
+        public static string TimeStamp => "[" + NumToTimeFormat(DateTime.Now.Hour) + ":" +
+                                          NumToTimeFormat(DateTime.Now.Minute) + ":" +
+                                          NumToTimeFormat(DateTime.Now.Second) + "]";
 
         /// <summary>
         /// Makes 1-9 => 01-09
@@ -58,10 +53,9 @@ namespace ADL
         /// <returns></returns>
         public static string NumToTimeFormat(int time)
         {
-            return (time < 10) ? "0" + time : time.ToString();
+            return time < 10 ? "0" + time : time.ToString();
         }
 
         #endregion
-
     }
 }

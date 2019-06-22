@@ -29,18 +29,20 @@ namespace ADL.Configs
             if (!File.Exists(path))
             {
                 Debug.Log(BitMask.WildCard, "Config Manager: File" + path + "does not exist");
-                return (T)Activator.CreateInstance<T>().GetStandard();
+                return (T) Activator.CreateInstance<T>().GetStandard();
             }
+
             try
             {
-                FileStream fs = File.Open(path, FileMode.Open, FileAccess.Read);
-                ret = (T)_serializer.Deserialize(fs);
+                var fs = File.Open(path, FileMode.Open, FileAccess.Read);
+                ret = (T) _serializer.Deserialize(fs);
                 fs.Close();
             }
             catch (Exception)
             {
-                ret = (T)Activator.CreateInstance<T>().GetStandard();
-                Debug.Log(BitMask.WildCard, "Config Manager: Failed to deserialize XML file. Either XML file is corrupted or file access is denied.");
+                ret = (T) Activator.CreateInstance<T>().GetStandard();
+                Debug.Log(BitMask.WildCard,
+                    "Config Manager: Failed to deserialize XML file. Either XML file is corrupted or file access is denied.");
             }
 
             return ret;
@@ -57,13 +59,14 @@ namespace ADL.Configs
             try
             {
                 _serializer = new XmlSerializer(typeof(T));
-                FileStream fs = File.Open(path, FileMode.OpenOrCreate, FileAccess.Write);
+                var fs = File.Open(path, FileMode.OpenOrCreate, FileAccess.Write);
                 _serializer.Serialize(fs, data);
                 fs.Close();
             }
             catch (Exception)
             {
-                Debug.Log(BitMask.WildCard, "Config Manager: Failed to save xml file. Directory exists? Access to Write to directory?");
+                Debug.Log(BitMask.WildCard,
+                    "Config Manager: Failed to save xml file. Directory exists? Access to Write to directory?");
             }
         }
     }

@@ -5,7 +5,6 @@ using System.Threading;
 
 namespace ADL.Streams
 {
-
     /// <summary>
     /// PipeStream is a thread-safe read/write data stream for use between two threads in a 
     /// single-producer/single-consumer type problem.
@@ -31,8 +30,9 @@ namespace ADL.Streams
     ///	OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
     ///	OTHER DEALINGS IN THE SOFTWARE.
     /// </summary>
-
-    public class PipeStream : GenPipeStream<byte> { }
+    public class PipeStream : GenPipeStream<byte>
+    {
+    }
 
     public class GenPipeStream<T> : Stream
     {
@@ -81,8 +81,8 @@ namespace ADL.Streams
         /// </summary>
         public long MaxBufferLength
         {
-            get { return _mMaxBufferLength; }
-            set { _mMaxBufferLength = value; }
+            get => _mMaxBufferLength;
+            set => _mMaxBufferLength = value;
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace ADL.Streams
         /// </summary>
         public bool BlockLastReadBuffer
         {
-            get { return _mBlockLastRead; }
+            get => _mBlockLastRead;
             set
             {
                 _mBlockLastRead = value;
@@ -101,21 +101,21 @@ namespace ADL.Streams
                 // when turning off the block last read, signal Read() that it may now read the rest of the buffer.
                 if (!_mBlockLastRead)
                     lock (_mBuffer)
+                    {
                         Monitor.Pulse(_mBuffer);
+                    }
             }
         }
 
         #region Overrides
+
         ///<summary>
         ///When overridden in a derived class, gets a value indicating whether the current stream supports reading.
         ///</summary>
         ///<returns>
         ///true if the stream supports reading; otherwise, false.
         ///</returns>
-        public override bool CanRead
-        {
-            get { return true; }
-        }
+        public override bool CanRead => true;
 
         ///<summary>
         ///When overridden in a derived class, gets a value indicating whether the current stream supports seeking.
@@ -123,10 +123,7 @@ namespace ADL.Streams
         ///<returns>
         ///true if the stream supports seeking; otherwise, false.
         ///</returns>
-        public override bool CanSeek
-        {
-            get { return false; }
-        }
+        public override bool CanSeek => false;
 
         ///<summary>
         ///When overridden in a derived class, gets a value indicating whether the current stream supports writing.
@@ -134,10 +131,7 @@ namespace ADL.Streams
         ///<returns>
         ///true if the stream supports writing; otherwise, false.
         ///</returns>
-        public override bool CanWrite
-        {
-            get { return true; }
-        }
+        public override bool CanWrite => true;
 
         ///<summary>
         ///When overridden in a derived class, gets the length in bytes of the stream.
@@ -145,10 +139,7 @@ namespace ADL.Streams
         ///<returns>
         ///A long value representing the length of the stream in bytes.
         ///</returns>
-        public override long Length
-        {
-            get { return _mBuffer.Count; }
-        }
+        public override long Length => _mBuffer.Count;
 
         ///<summary>
         ///When overridden in a derived class, gets or sets the position within the current stream.
@@ -158,9 +149,10 @@ namespace ADL.Streams
         ///</returns>
         public override long Position
         {
-            get { return 0; }
-            set { throw new NotSupportedException(); }
+            get => 0;
+            set => throw new NotSupportedException();
         }
+
         #endregion
 
         #endregion
@@ -183,7 +175,9 @@ namespace ADL.Streams
         {
             _mFlushed = true;
             lock (_mBuffer)
+            {
                 Monitor.Pulse(_mBuffer);
+            }
         }
 
         ///<summary>
@@ -245,12 +239,13 @@ namespace ADL.Streams
             if (offset < 0 || count < 0)
                 throw new ArgumentOutOfRangeException("offset", "offset or count is negative.");
             if (BlockLastReadBuffer && count >= _mMaxBufferLength)
-                throw new ArgumentException(String.Format("count({0}) > mMaxBufferLength({1})", count, _mMaxBufferLength));
+                throw new ArgumentException(string.Format("count({0}) > mMaxBufferLength({1})", count,
+                    _mMaxBufferLength));
 
             if (count == 0)
                 return 0;
 
-            int readLength = 0;
+            var readLength = 0;
 
             lock (_mBuffer)
             {
@@ -258,13 +253,11 @@ namespace ADL.Streams
                     Monitor.Wait(_mBuffer);
 
                 // fill the read buffer
-                for (; readLength < count && Length > 0; readLength++)
-                {
-                    buffer[offset + readLength] = _mBuffer.Dequeue();
-                }
+                for (; readLength < count && Length > 0; readLength++) buffer[offset + readLength] = _mBuffer.Dequeue();
 
                 Monitor.Pulse(_mBuffer);
             }
+
             return readLength;
         }
 
@@ -276,8 +269,9 @@ namespace ADL.Streams
         private bool ReadAvailable(int count)
         {
             return (Length >= count || _mFlushed) &&
-                   (Length >= (count + 1) || !BlockLastReadBuffer);
+                   (Length >= count + 1 || !BlockLastReadBuffer);
         }
+
         public void WriteGen(T[] buffer, int offset, int count)
         {
             if (buffer == null)
@@ -298,14 +292,12 @@ namespace ADL.Streams
                 _mFlushed = false; // if it were flushed before, it soon will not be.
 
                 // queue up the buffer data
-                for (int i = offset; i < offset + count; i++)
-                {
-                    _mBuffer.Enqueue(buffer[i]);
-                }
+                for (var i = offset; i < offset + count; i++) _mBuffer.Enqueue(buffer[i]);
 
                 Monitor.Pulse(_mBuffer); // signal that write has occured
             }
         }
+
         ///<summary>
         ///When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.
         ///</summary>
@@ -322,6 +314,4 @@ namespace ADL.Streams
 
         #endregion
     }
-
-
 }

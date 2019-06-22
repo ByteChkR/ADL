@@ -15,15 +15,18 @@ namespace ADL.Configs
         /// Is ADL enabled when this config is loaded?
         /// </summary>
         public bool ADLEnabled;
+
         /// <summary>
         /// Should ADL Search for updates when the first log message gets writen to the streams.
         /// It will take ~300ms to communicate with the github server.
         /// </summary>
         public bool SendUpdateMessageOnFirstLog;
+
         /// <summary>
         /// The mask that gets used to give information about the Update Check
         /// </summary>
         public int UpdateMask;
+
         /// <summary>
         /// The mask that ADL uses to write warnings
         /// </summary>
@@ -33,10 +36,10 @@ namespace ADL.Configs
         /// A flag to switch if adl should send warnings at all.
         /// </summary>
         public bool SendWarnings;
+
         /// <summary>
         /// The prefixes that are used when a log in a specific mask gets sent.
         /// </summary>
-       
         public SerializableDictionary<int, string> Prefixes;
 
         /// <summary>
@@ -63,7 +66,7 @@ namespace ADL.Configs
         public static PrefixLookupSettings HighPerformance =
             PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
 
-        public static PrefixLookupSettings HighestPerformance = 
+        public static PrefixLookupSettings HighestPerformance =
             PrefixLookupSettings.NOPREFIX;
 
         #endregion
@@ -84,7 +87,7 @@ namespace ADL.Configs
         {
             get
             {
-                ADLConfig std = new ADLConfig
+                var std = new ADLConfig
                 {
                     ADLEnabled = true,
                     SendUpdateMessageOnFirstLog = true,
@@ -92,7 +95,8 @@ namespace ADL.Configs
                     WarningMask = new BitMask(true),
                     SendWarnings = true,
                     Prefixes = new SerializableDictionary<int, string>(new Dictionary<int, string>()),
-                    PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE | PrefixLookupSettings.DECONSTRUCTMASKTOFIND
+                    PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE |
+                                       PrefixLookupSettings.DECONSTRUCTMASKTOFIND
                 };
                 return std;
             }

@@ -13,27 +13,31 @@ namespace ADL.Streams
     /// </summary>
     public class LogStream : Stream
     {
-
         /// <summary>
         /// Mask that the system uses to filter logs
         /// </summary>
         private BitMask _mask = new BitMask(true);
+
         /// <summary>
         /// The match type(how the mask gets compared)
         /// </summary>
         private MatchType _matchType = MatchType.MATCH_ALL;
+
         /// <summary>
         /// Put a timestamp infront of the log.
         /// </summary>
         private bool _setTimeStamp = false;
+
         /// <summary>
         /// Is the stream closed?
         /// </summary>
         private bool _streamClosed = false;
+
         /// <summary>
         /// If true all the LogChannels/TimeStamp is ignored and only the message will get received.
         /// </summary>
         private bool _overrideLogChannels = false;
+
         /// <summary>
         /// Base stream
         /// </summary>
@@ -44,7 +48,11 @@ namespace ADL.Streams
         /// <summary>
         /// If true all the LogChannels/TimeStamp is ignored and only the message will get received.
         /// </summary>
-        public bool OverrideChannelTag { get { return _overrideLogChannels; } set { _overrideLogChannels = value; } }
+        public bool OverrideChannelTag
+        {
+            get => _overrideLogChannels;
+            set => _overrideLogChannels = value;
+        }
 
 
         /// <summary>
@@ -52,28 +60,17 @@ namespace ADL.Streams
         /// </summary>
         public int Mask
         {
-            get
-            {
-                return _mask;
-            }
-            set
-            {
-                _mask = value;
-            }
+            get => _mask;
+            set => _mask = value;
         }
+
         /// <summary>
         /// The match type(how the mask gets compared)
         /// </summary>
         public MatchType MatchType
         {
-            get
-            {
-                return _matchType;
-            }
-            set
-            {
-                _matchType = value;
-            }
+            get => _matchType;
+            set => _matchType = value;
         }
 
         /// <summary>
@@ -81,34 +78,16 @@ namespace ADL.Streams
         /// </summary>
         public bool AddTimeStamp
         {
-            get
-            {
-                return _setTimeStamp;
-            }
-            set
-            {
-                _setTimeStamp = value;
-            }
+            get => _setTimeStamp;
+            set => _setTimeStamp = value;
         }
 
         /// <summary>
         /// If this is true the Underlying Stream is closed and the Whole Object was destroyed.
         /// </summary>
-        public bool IsStreamClosed
-        {
-            get
-            {
-                return _streamClosed;
-            }
-        }
+        public bool IsStreamClosed => _streamClosed;
 
-        public Stream BaseStream
-        {
-            get
-            {
-                return _baseStream;
-            }
-        }
+        public Stream BaseStream => _baseStream;
 
         #endregion
 
@@ -116,10 +95,9 @@ namespace ADL.Streams
 
         #region Methods
 
-
         public override void Write(byte[] value, int start, int count)
         {
-            byte[] tmp = new byte[count];
+            var tmp = new byte[count];
             Array.Copy(value, 0, tmp, 0, count);
             _baseStream.Write(tmp, 0, count);
             Flush();
@@ -130,12 +108,14 @@ namespace ADL.Streams
             _baseStream.Flush();
         }
 
-        public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
+        public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback,
+            object state)
         {
             return _baseStream.BeginRead(buffer, offset, count, callback, state);
         }
 
-        public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
+        public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback,
+            object state)
         {
             return _baseStream.BeginWrite(buffer, offset, count, callback, state);
         }
@@ -205,31 +185,37 @@ namespace ADL.Streams
             return _baseStream.Read(buffer, offset, count);
         }
 
-
         #endregion
 
         #region Properties
 
-        public override bool CanRead
+        public override bool CanRead => _baseStream.CanRead;
+
+        public override bool CanSeek => _baseStream.CanSeek;
+        public override bool CanWrite => _baseStream.CanWrite;
+
+        public override long Length => _baseStream.Length;
+
+        public override long Position
         {
-            get { return _baseStream.CanRead; }
+            get => _baseStream.Position;
+            set => _baseStream.Position = value;
         }
-
-        public override bool CanSeek { get { return _baseStream.CanSeek; } }
-        public override bool CanWrite { get { return _baseStream.CanWrite; } }
-
-        public override long Length { get { return _baseStream.Length; } }
-
-        public override long Position { get => _baseStream.Position; set => _baseStream.Position = value; }
 
         public override bool CanTimeout => _baseStream.CanTimeout;
 
-        public override int ReadTimeout { get => _baseStream.ReadTimeout; set => _baseStream.ReadTimeout = value; }
+        public override int ReadTimeout
+        {
+            get => _baseStream.ReadTimeout;
+            set => _baseStream.ReadTimeout = value;
+        }
 
 
-        public override int WriteTimeout { get => _baseStream.WriteTimeout; set => _baseStream.WriteTimeout = value; }
-
-
+        public override int WriteTimeout
+        {
+            get => _baseStream.WriteTimeout;
+            set => _baseStream.WriteTimeout = value;
+        }
 
         #endregion
 
@@ -243,7 +229,6 @@ namespace ADL.Streams
             _baseStream.SetLength(value);
         }
 
-
         #endregion
 
 
@@ -254,7 +239,8 @@ namespace ADL.Streams
         /// <param name="mask"></param>
         /// <param name="matchType"></param>
         /// <param name="setTimeStamp"></param>
-        public LogStream(Stream baseStream, int mask = ~0, MatchType matchType = MatchType.MATCH_ALL, bool setTimeStamp = false )
+        public LogStream(Stream baseStream, int mask = ~0, MatchType matchType = MatchType.MATCH_ALL,
+            bool setTimeStamp = false)
         {
             _mask = mask;
             _matchType = matchType;
@@ -270,7 +256,7 @@ namespace ADL.Streams
         {
             if (_streamClosed) return;
             if (_setTimeStamp) log.Message = Utils.TimeStamp + log.Message;
-            byte[] buffer = log.Serialize();
+            var buffer = log.Serialize();
             _baseStream.Write(buffer, 0, buffer.Length);
             Flush();
         }
@@ -284,6 +270,5 @@ namespace ADL.Streams
         {
             return BitMask.IsContainedInMask(_mask, mask, _matchType == MatchType.MATCH_ALL);
         }
-
     }
 }

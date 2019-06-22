@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.CustomCMD", "ADL.Custom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.UnitTests", "ADL.UnitTests\ADL.UnitTests.csproj", "{F64CD928-7247-4D1E-8310-245E6EE95093}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.Network", "ADL.Network\ADL.Network.csproj", "{C13C9D27-8221-42F8-8EC9-86869DCCCE0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F64CD928-7247-4D1E-8310-245E6EE95093}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F64CD928-7247-4D1E-8310-245E6EE95093}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F64CD928-7247-4D1E-8310-245E6EE95093}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C13C9D27-8221-42F8-8EC9-86869DCCCE0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C13C9D27-8221-42F8-8EC9-86869DCCCE0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C13C9D27-8221-42F8-8EC9-86869DCCCE0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C13C9D27-8221-42F8-8EC9-86869DCCCE0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

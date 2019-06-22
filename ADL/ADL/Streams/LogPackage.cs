@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -21,35 +22,42 @@ namespace ADL.Streams
         /// <param name="buffer"></param>
         public LogPackage(byte[] buffer)
         {
-            List<Log> logs = new List<Log>();
-            int bytesRead = 0;
-            int totalBytes = 0;
+            var logs = new List<Log>();
+            var bytesRead = 0;
+            var totalBytes = 0;
             Log l;
             do
             {
                 l = Log.Deserialize(buffer, totalBytes, out bytesRead);
                 if (bytesRead == -1) break; //Break manually when the logs end before the end of the buffer was reached.
                 if (bytesRead != 0) logs.Add(l);
-                
+
                 totalBytes += bytesRead;
             } while (bytesRead != 0);
+
             Logs = logs;
         }
 
         public byte[] GetSerialized(bool setTimestamp)
         {
-            List<byte> ret = new List<byte>();
+            var ret = new List<byte>();
             Log l;
-            for(int i = 0; i < Logs.Count; i++)
+            for (var i = 0; i < Logs.Count; i++)
             {
                 l = Logs[i];
                 if (setTimestamp) l.Message = Utils.TimeStamp + l.Message;
                 ret.AddRange(l.Serialize());
             }
+
             return ret.ToArray();
+        }
+
+        public static LogPackage ReadBlock(Stream s, int length)
+        {
+            //Due to multithreading
+            byte[] buffer = new byte[length];
+            s.Read(buffer, 0, length);
+            return new LogPackage(buffer);
         }
     }
 }
-
-
-    

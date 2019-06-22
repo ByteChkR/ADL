@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Runtime.Remoting.Messaging;
 using ADL.Configs;
+using ADL.Network;
 using ADL.Streams;
 namespace ADL.DebugTest
 {
@@ -173,6 +178,44 @@ namespace ADL.DebugTest
             //System.IO.File.Delete("test.log");
         }
 
+        //Server
+        static void TestNetworkListen()
+        {
+            NetworkListener nwl = new NetworkListener(100);
+            nwl.Start();
+        }
+
+
+
+        static void TestNetworkOut()
+        {
+            TcpClient tcpC = new TcpClient("localhost", 1337);
+            Debug.Log(-1, "Connecting to Network Listener");
+            if (!tcpC.Connected)
+            {
+                return;
+            }
+            Debug.Log(-1, "Connected.");
+            Stream str = tcpC.GetStream();
+            BitMask<LoggingTypes> mask = new BitMask<LoggingTypes>(true);
+            LogStream ls = new LogStream(
+                str,
+                mask,
+                MatchType.MATCH_ALL,
+                true
+                );
+            ls.OverrideChannelTag = true;
+            ls.AddTimeStamp = false;
+            Debug.Log(-1, "Adding Stream.");
+            Debug.AddOutputStream(ls);
+
+
+            for (int i = 1; i < 64; i++) //63 because its the highest value the current enum can take(every bit beeing 1)
+            {
+                Debug.Log(i, "Net Test with mask " + i);
+            }
+
+        }
 
 
         static void Main(string[] args)
@@ -183,10 +226,10 @@ namespace ADL.DebugTest
             //Runtime Config Changes(not Getting saved):
             Debug.SendWarnings = true;
             Debug.SendUpdateMessageOnFirstLog = true;
-            
+
             Debug.ADLEnabled = true;
-            Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE | 
-                                    PrefixLookupSettings.DECONSTRUCTMASKTOFIND | 
+            Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE |
+                                    PrefixLookupSettings.DECONSTRUCTMASKTOFIND |
                                     PrefixLookupSettings.BAKEPREFIXES; //If you have int.minvalue to int.maxvalue channels this is not really advisable. (Config files can be bloated by baked prefixes thus getting a huge size.)
 
             //DataObject<float> testf = new DataObject<float>(1, MatchType.MATCH_ONE);
@@ -205,16 +248,19 @@ namespace ADL.DebugTest
 
             //TestCustomConsoleOut();
 
-            TestConsoleOut();
+            //TestConsoleOut();
+            TestNetworkListen();
 
-            TestLogFileOut();
+            Console.Read();
+
+
+            //TestLogFileOut();
 
             Random rnd = new Random();
-            int mul;
             long msLastTime = 0;
             float avg = 0;
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            
+
             for (int i = 0; i < 100000; i++)
             {
 
@@ -227,7 +273,7 @@ namespace ADL.DebugTest
                 sw.Reset();
 
 
-                
+
             }
 
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 namespace ADL
 {
     /// <summary>
@@ -14,6 +15,7 @@ namespace ADL
         protected int _mask = 0;
 
         #region MaskOperations
+
         /// <summary>
         /// Returns true if the specified flag is also set in the mask
         /// </summary>
@@ -30,12 +32,12 @@ namespace ADL
             }
             else //if Match all is false, extract every single flag and compare them with the mask one by one and return true if there is at least one flag.
             {
-                List<int> a = GetUniqueMasksSet(flag);
-                foreach (int f in a)
-                {
-                    if ((mask & f) == f) return true;
-                }
+                var a = GetUniqueMasksSet(flag);
+                foreach (var f in a)
+                    if ((mask & f) == f)
+                        return true;
             }
+
             return false;
         }
 
@@ -46,16 +48,14 @@ namespace ADL
         /// <returns></returns>
         public static List<int> GetUniqueMasksSet(int mask)
         {
-            if (IsUniqueMask(mask)) return new List<int>() { mask };
-            List<int> ret = new List<int>();
-            for (int i = 0; i < sizeof(int) * Utils.BYTE_SIZE; i++)
+            if (IsUniqueMask(mask)) return new List<int>() {mask};
+            var ret = new List<int>();
+            for (var i = 0; i < sizeof(int) * Utils.BYTE_SIZE; i++)
             {
-                int f = 1 << i;
-                if (IsContainedInMask(mask, f, true))
-                {
-                    ret.Add(f);
-                }
+                var f = 1 << i;
+                if (IsContainedInMask(mask, f, true)) ret.Add(f);
             }
+
             return ret;
         }
 
@@ -77,11 +77,9 @@ namespace ADL
         public static int CombineMasks(MaskCombineType combineType = MaskCombineType.BIT_OR, params int[] masks)
         {
             if (masks.Length == 0) return 0;
-            int mask = masks[0];
-            for (int i = 1; i < masks.Length; i++)
-            {
+            var mask = masks[0];
+            for (var i = 1; i < masks.Length; i++)
                 mask = combineType == MaskCombineType.BIT_OR ? mask | masks[i] : mask & masks[i];
-            }
             return mask;
         }
 
@@ -109,6 +107,7 @@ namespace ADL
         #endregion
 
         #region Operator Overrides
+
         /// <summary>
         /// Auto Convert to Int
         /// </summary>
@@ -153,8 +152,9 @@ namespace ADL
         /// Creates a mask based on flags supplied
         /// </summary>
         /// <param name="flags">all the flags you want to be set.</param>
-        public BitMask(params int[] flags) : this(CombineMasks(MaskCombineType.BIT_OR, flags)) { }
-
+        public BitMask(params int[] flags) : this(CombineMasks(MaskCombineType.BIT_OR, flags))
+        {
+        }
 
         #endregion
 
@@ -176,13 +176,9 @@ namespace ADL
         public void SetFlag(int flag, bool yes)
         {
             if (yes)
-            {
                 _mask = CombineMasks(MaskCombineType.BIT_OR, _mask, flag);
-            }
             else
-            {
                 _mask = RemoveFlags(_mask, flag);
-            }
         }
 
         /// <summary>
@@ -206,16 +202,14 @@ namespace ADL
     }
 
 
-
-
     /// <summary>
     /// Little Helper class to have less of a hassle with masks in int form
     /// </summary>
     /// <typeparam name="T">Type of enum you want to use</typeparam>
     public class BitMask<T> : BitMask where T : struct
     {
-
         #region MaskOperations
+
         /// <summary>
         /// Generic Version. T is your Enum.
         /// </summary>
@@ -226,10 +220,12 @@ namespace ADL
         {
             return CombineMasks(combineType, masks.Select(x => Convert.ToInt32(x)).ToArray());
         }
+
         #endregion
 
 
         #region Operator Overrides
+
         /// <summary>
         /// Auto Convert to Int
         /// </summary>
@@ -273,10 +269,12 @@ namespace ADL
         {
             return new BitMask<T>(mask);
         }
+
         #endregion
 
 
         #region Constructors
+
         /// <summary>
         /// Creates an Empty mask
         /// </summary>
@@ -290,7 +288,9 @@ namespace ADL
         /// Creates a mask based on mask supplied
         /// </summary>
         /// <param name="mask">Enum Values you want to Cast</param>
-        public BitMask(T mask) : this(Convert.ToInt32(mask)) { }
+        public BitMask(T mask) : this(Convert.ToInt32(mask))
+        {
+        }
 
         /// <summary>
         /// Creates a mask based on mask supplied
@@ -300,12 +300,14 @@ namespace ADL
         {
             _mask = mask;
         }
-        
+
         /// <summary>
         /// Creates a mask based on flags supplied
         /// </summary>
         /// <param name="flags">Flags you want to be set</param>
-        public BitMask(params T[] flags) : this(CombineMasks(MaskCombineType.BIT_OR, flags)) { }
+        public BitMask(params T[] flags) : this(CombineMasks(MaskCombineType.BIT_OR, flags))
+        {
+        }
 
         #endregion
 
@@ -326,15 +328,11 @@ namespace ADL
         /// <param name="yes">Value you want to set</param>
         public void SetFlag(T flag, bool yes)
         {
-            int f = Convert.ToInt32(flag);
+            var f = Convert.ToInt32(flag);
             if (yes)
-            {
                 BitMask.CombineMasks(MaskCombineType.BIT_OR, _mask, f);
-            }
             else
-            {
-                BitMask.RemoveFlags(_mask, f);
-            }
+                RemoveFlags(_mask, f);
         }
 
         /// <summary>
@@ -345,8 +343,7 @@ namespace ADL
         /// <returns></returns>
         public bool HasFlag(T flags, MatchType matchType)
         {
-            return BitMask.IsContainedInMask(_mask, Convert.ToInt32(flags), matchType == MatchType.MATCH_ALL);
+            return IsContainedInMask(_mask, Convert.ToInt32(flags), matchType == MatchType.MATCH_ALL);
         }
     }
-
 }
