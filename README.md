@@ -5,7 +5,7 @@ ___
 
 ## Code of Conduct [here](CODE_OF_CONDUCT.md)
 
-## Documentation can be found [here](docs/index.html)
+## Documentation can be found [here](https://bytechkr.github.io/ADL/)
 
 ## Development Branch [here](https://github.com/ByteChkR/ADL/tree/develop)
 	Warning. This is not stable, not documented, and sometimes not working.
