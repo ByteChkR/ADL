@@ -3,55 +3,57 @@ using System.Xml.Serialization;
 
 namespace ADL.Configs
 {
+    /// <summary>
+    ///     Config Object for the Network Extensions of ADL
+    /// </summary>
     public class NetworkConfig
     {
-
-
-        public bool UseNetwork = true;
-        
-
         /// <summary>
-        /// The map that maps the ids the clients send to names that make sense.
+        ///     The map that maps the ids the clients send to names that make sense.
         /// </summary>
-        public string[] ID2NameMap =
+        public string[] Id2NameMap =
         {
             "Test"
         };
 
         /// <summary>
-        /// IP where the Client Connects to
+        ///     IP where the Client Connects to
         /// </summary>
-        public string IP = "localhost";
+        public string Ip = "localhost";
+
         /// <summary>
-        /// Port for server and client.
+        ///     Port for server and client.
         /// </summary>
         public int Port = 1337;
 
         /// <summary>
-        /// Determines how the time stamp in the log files looks like.
+        ///     Determines how the time stamp in the log files looks like.
         /// </summary>
         public string TimeFormatString = "MM-dd-yyyy-H-mm-ss";
 
         /// <summary>
-        /// Loads the Network Config from the specified path.
+        ///     Flag that can be used to skip checking for updates.
+        /// </summary>
+        public bool UseNetwork = true;
+
+        /// <summary>
+        ///     Loads the Network Config from the specified path.
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
         public static NetworkConfig Load(string path = "")
         {
             var ret = new NetworkConfig();
-            if (File.Exists(path))
-            {
-                var cs = new XmlSerializer(typeof(NetworkConfig));
-                var fs = new FileStream(path, FileMode.Open);
-                ret = (NetworkConfig) cs.Deserialize(fs);
-            }
+            if (!File.Exists(path)) return ret;
+            var cs = new XmlSerializer(typeof(NetworkConfig));
+            var fs = new FileStream(path, FileMode.Open);
+            ret = (NetworkConfig) cs.Deserialize(fs);
 
             return ret;
         }
 
         /// <summary>
-        /// Saves the Network Config to the specififed path
+        ///     Saves the Network Config to the specififed path
         /// </summary>
         /// <param name="path"></param>
         /// <param name="conf"></param>

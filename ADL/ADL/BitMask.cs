@@ -12,7 +12,7 @@ namespace ADL
         public static int Empty = 0;
         public static int WildCard = ~0;
 
-        protected int _mask;
+        protected int Mask;
 
         /// <summary>
         ///     Sets all flags discarding the flags from before
@@ -20,7 +20,7 @@ namespace ADL
         /// <param name="newMask">new Mask</param>
         public void SetAllFlags(int newMask)
         {
-            _mask = newMask;
+            Mask = newMask;
         }
 
 
@@ -31,10 +31,7 @@ namespace ADL
         /// <param name="yes">value you want to assign</param>
         public void SetFlag(int flag, bool yes)
         {
-            if (yes)
-                _mask = CombineMasks(MaskCombineType.BIT_OR, _mask, flag);
-            else
-                _mask = RemoveFlags(_mask, flag);
+            Mask = yes ? CombineMasks(MaskCombineType.BitOr, Mask, flag) : RemoveFlags(Mask, flag);
         }
 
         /// <summary>
@@ -45,7 +42,7 @@ namespace ADL
         /// <returns></returns>
         public bool HasFlag(int flags, MatchType matchType)
         {
-            return IsContainedInMask(_mask, flags, matchType == MatchType.MATCH_ALL);
+            return IsContainedInMask(Mask, flags, matchType == MatchType.MatchAll);
         }
 
         /// <summary>
@@ -53,7 +50,7 @@ namespace ADL
         /// </summary>
         public void Flip()
         {
-            _mask = FlipMask(_mask);
+            Mask = FlipMask(Mask);
         }
 
         #region MaskOperations
@@ -63,7 +60,7 @@ namespace ADL
         /// </summary>
         /// <param name="mask">the mask</param>
         /// <param name="flag">the flag</param>
-        /// <param name="MatchAll">if false, it will return true if ANY flag is set on both sides.</param>
+        /// <param name="matchType">if false, it will return true if ANY flag is set on both sides.</param>
         /// <returns></returns>
         public static bool IsContainedInMask(int mask, int flag, bool matchType)
         {
@@ -90,7 +87,7 @@ namespace ADL
         {
             if (IsUniqueMask(mask)) return new List<int> {mask};
             var ret = new List<int>();
-            for (var i = 0; i < sizeof(int) * Utils.BYTE_SIZE; i++)
+            for (var i = 0; i < sizeof(int) * Utils.ByteSize; i++)
             {
                 var f = 1 << i;
                 if (IsContainedInMask(mask, f, true)) ret.Add(f);
@@ -112,14 +109,15 @@ namespace ADL
         /// <summary>
         ///     Combines the specified masks together
         /// </summary>
+        /// <param name="combineType">How the Masks should be compared with each other</param>
         /// <param name="masks">the array of masks. SHOULD BE POWER OF 2 NUMBERS</param>
         /// <returns></returns>
-        public static int CombineMasks(MaskCombineType combineType = MaskCombineType.BIT_OR, params int[] masks)
+        public static int CombineMasks(MaskCombineType combineType = MaskCombineType.BitOr, params int[] masks)
         {
             if (masks.Length == 0) return 0;
             var mask = masks[0];
             for (var i = 1; i < masks.Length; i++)
-                mask = combineType == MaskCombineType.BIT_OR ? mask | masks[i] : mask & masks[i];
+                mask = combineType == MaskCombineType.BitOr ? mask | masks[i] : mask & masks[i];
             return mask;
         }
 
@@ -154,7 +152,7 @@ namespace ADL
         /// <param name="mask">This object</param>
         public static implicit operator int(BitMask mask)
         {
-            return mask._mask;
+            return mask.Mask;
         }
 
         /// <summary>
@@ -176,7 +174,7 @@ namespace ADL
         /// <param name="wildcard">If true, its a wildcard mask(everything)</param>
         public BitMask(bool wildcard = false)
         {
-            if (wildcard) _mask = ~0;
+            if (wildcard) Mask = ~0;
         }
 
         /// <summary>
@@ -185,14 +183,14 @@ namespace ADL
         /// <param name="mask">Mask to create a bitmask obj around.</param>
         public BitMask(int mask)
         {
-            _mask = mask;
+            Mask = mask;
         }
 
         /// <summary>
         ///     Creates a mask based on flags supplied
         /// </summary>
         /// <param name="flags">all the flags you want to be set.</param>
-        public BitMask(params int[] flags) : this(CombineMasks(MaskCombineType.BIT_OR, flags))
+        public BitMask(params int[] flags) : this(CombineMasks(MaskCombineType.BitOr, flags))
         {
         }
 
@@ -212,9 +210,10 @@ namespace ADL
         ///     Generic Version. T is your Enum.
         /// </summary>
         /// <typeparam name="T">Enum Type</typeparam>
-        /// <param name="masks">Enum Values</param>
+        /// <param name="combineType">The way how the masks are combined</param>
+        /// <param name="masks">the masks to combine</param>
         /// <returns></returns>
-        public static int CombineMasks(MaskCombineType combineType = MaskCombineType.BIT_OR, params T[] masks)
+        public static int CombineMasks(MaskCombineType combineType = MaskCombineType.BitOr, params T[] masks)
         {
             return CombineMasks(combineType, masks.Select(x => Convert.ToInt32(x)).ToArray());
         }
@@ -227,7 +226,7 @@ namespace ADL
         /// <param name="newFlags">New Flags</param>
         public void SetAllFlags(T newFlags)
         {
-            _mask = Convert.ToInt32(newFlags);
+            Mask = Convert.ToInt32(newFlags);
         }
 
 
@@ -240,9 +239,9 @@ namespace ADL
         {
             var f = Convert.ToInt32(flag);
             if (yes)
-                CombineMasks(MaskCombineType.BIT_OR, _mask, f);
+                CombineMasks(MaskCombineType.BitOr, Mask, f);
             else
-                RemoveFlags(_mask, f);
+                RemoveFlags(Mask, f);
         }
 
         /// <summary>
@@ -253,7 +252,7 @@ namespace ADL
         /// <returns></returns>
         public bool HasFlag(T flags, MatchType matchType)
         {
-            return IsContainedInMask(_mask, Convert.ToInt32(flags), matchType == MatchType.MATCH_ALL);
+            return IsContainedInMask(Mask, Convert.ToInt32(flags), matchType == MatchType.MatchAll);
         }
 
 
@@ -265,7 +264,7 @@ namespace ADL
         /// <param name="mask">This Object</param>
         public static implicit operator int(BitMask<T> mask)
         {
-            return mask._mask;
+            return mask.Mask;
         }
 
         /// <summary>
@@ -314,7 +313,7 @@ namespace ADL
         /// <param name="wildcard">If true, its a wildcard mask(everything)</param>
         public BitMask(bool wildcard = false)
         {
-            if (wildcard) _mask = ~0;
+            if (wildcard) Mask = ~0;
         }
 
         /// <summary>
@@ -331,14 +330,14 @@ namespace ADL
         /// <param name="mask">Integer Mask</param>
         public BitMask(int mask)
         {
-            _mask = mask;
+            Mask = mask;
         }
 
         /// <summary>
         ///     Creates a mask based on flags supplied
         /// </summary>
         /// <param name="flags">Flags you want to be set</param>
-        public BitMask(params T[] flags) : this(CombineMasks(MaskCombineType.BIT_OR, flags))
+        public BitMask(params T[] flags) : this(CombineMasks(MaskCombineType.BitOr, flags))
         {
         }
 

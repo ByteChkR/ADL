@@ -10,11 +10,11 @@ var class_a_d_l_1_1_network_1_1_client_session =
     [ "IsConnectionUp", "class_a_d_l_1_1_network_1_1_client_session.html#a6d403c6715b5cc357ae018d95544ef28", null ],
     [ "_client", "class_a_d_l_1_1_network_1_1_client_session.html#a420cc00ee2885aa1b3b15c7f8b9a4316", null ],
     [ "_fileStream", "class_a_d_l_1_1_network_1_1_client_session.html#a0b2d1a8da1a154bcc2549113464e514e", null ],
+    [ "_instanceCount", "class_a_d_l_1_1_network_1_1_client_session.html#aabb2fdff56075a534b2ba5d14b2270cb", null ],
     [ "_lts", "class_a_d_l_1_1_network_1_1_client_session.html#a375418a93ff8e40cb02feb8a31870905", null ],
     [ "Connected", "class_a_d_l_1_1_network_1_1_client_session.html#a97c838cdb8171e58cec19835b8ada033", null ],
-    [ "ID", "class_a_d_l_1_1_network_1_1_client_session.html#ae39c40ad4663723ab873b404945af34d", null ],
-    [ "instanceCount", "class_a_d_l_1_1_network_1_1_client_session.html#a10af69fb75f8f591d8b3cd21e69bc52b", null ],
+    [ "Id", "class_a_d_l_1_1_network_1_1_client_session.html#aae8ed5f3dede82dce4c51dee2cbe737f", null ],
     [ "Version", "class_a_d_l_1_1_network_1_1_client_session.html#acc41b7267bc90f60a0101f0f47c97277", null ],
     [ "Authenticated", "class_a_d_l_1_1_network_1_1_client_session.html#a752ca9a98790b418f142b1d7e8daae9f", null ],
-    [ "instanceID", "class_a_d_l_1_1_network_1_1_client_session.html#ab8a128ea4ce27b48a0f96a29933f99ba", null ]
+    [ "InstanceId", "class_a_d_l_1_1_network_1_1_client_session.html#a2cffa6cb50d55874029c9831487d0dd9", null ]
 ];

@@ -8,7 +8,7 @@ namespace ADL.Configs
     ///     Contains all fields that are configurable in the component CustomCMD
     /// </summary>
     [Serializable]
-    public class ADLCustomConsoleConfig : IADLConfig
+    public class AdlCustomConsoleConfig : IAdlConfig
     {
         /// <summary>
         ///     The background color of the log window
@@ -38,11 +38,11 @@ namespace ADL.Configs
         /// <summary>
         ///     The standard configuration of ADLCustomConsoleConfig
         /// </summary>
-        public static ADLCustomConsoleConfig Standard
+        public static AdlCustomConsoleConfig Standard
         {
             get
             {
-                var config = new ADLCustomConsoleConfig
+                var config = new AdlCustomConsoleConfig
                 {
                     BackgroundColor = Color.Black,
                     FontColor = Color.White,
@@ -60,7 +60,7 @@ namespace ADL.Configs
         ///     Returns the standard configuration
         /// </summary>
         /// <returns></returns>
-        public IADLConfig GetStandard()
+        public IAdlConfig GetStandard()
         {
             return Standard;
         }

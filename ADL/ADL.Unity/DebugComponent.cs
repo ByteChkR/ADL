@@ -11,9 +11,9 @@ namespace ADL.Unity
     /// </summary>
     public class DebugComponent : MonoBehaviour
     {
-        public static string[] _DebugLevel = new string[0];
+        public static string[] DebugLevel = new string[0];
 
-        [Tooltip("Configuration of ADL")] public UnityADLConfig Configuration = new UnityADLConfig();
+        [Tooltip("Configuration of ADL")] public UnityAdlConfig Configuration = new UnityAdlConfig();
 
         [Tooltip("On What prefixes should the unity console log an Error")] [EnumFlagsAttribute]
         public int ConsoleErrorMask = 0;
@@ -25,7 +25,7 @@ namespace ADL.Unity
         public int ConsoleWarningMask = 0;
 
         [Tooltip("Configuration of ADL")]
-        public UnityADLCustomConsoleConfig CustomCMDConfig = new UnityADLCustomConsoleConfig();
+        public UnityAdlCustomConsoleConfig CustomCmdConfig = new UnityAdlCustomConsoleConfig();
 
 
         [Tooltip("The streams that get hooked up to the debug when the game starts")]
@@ -37,7 +37,7 @@ namespace ADL.Unity
         private void Awake()
         {
             Configuration.Prepare();
-            CustomCMDConfig.Prepare();
+            CustomCmdConfig.Prepare();
             Debug.LoadConfig(Configuration);
 
 
@@ -49,8 +49,8 @@ namespace ADL.Unity
                 if (lsp.CreateCustomConsole)
                 {
                     ls = lsp.ToLogStream(new PipeStream());
-                    CMDUtils.CreateCustomConsoleNoReturn(ls.BaseStream as PipeStream,
-                        CustomCMDConfig); // Currently not working due to referencing problems with my compiled code(using System.Windows.Forms)
+                    CmdUtils.CreateCustomConsoleNoReturn(ls.PBaseStream as PipeStream,
+                        CustomCmdConfig); // Currently not working due to referencing problems with my compiled code(using System.Windows.Forms)
                     //Apparently Unity Editor dll loading capabilities were never meant to load system resources.(The error is that the windows forms code is not able to find System.Runtime.Interopservices.Marshal.ReadInt16)
                     //Probably dumb mistake by me. Otherwise i manage to poke some super old 16 bit code that is not supported on my 64bit machine.
                 }
@@ -68,7 +68,7 @@ namespace ADL.Unity
                 {
                     var ls = ConsoleParams.ToLogStream(new PipeStream());
                     Debug.AddOutputStream(ls);
-                    CMDUtils.CreateCustomConsoleNoReturn(ls.BaseStream as PipeStream, CustomCMDConfig);
+                    CmdUtils.CreateCustomConsoleNoReturn(ls.PBaseStream as PipeStream, CustomCmdConfig);
                 }
                 else
                 {

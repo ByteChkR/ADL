@@ -95,73 +95,536 @@ $(document).ready(function(){initNavTree('class_a_d_l_1_1_network_1_1_network_li
 <div class="title">ADL.Network.NetworkListener Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="namespace_a_d_l_1_1_network.html">Network</a> Listener is acting as the server that receives logs from a client  
+ <a href="class_a_d_l_1_1_network_1_1_network_listener.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8de319355363212aa8547316a57ae423"><td class="memItemLeft" align="right" valign="top"><a id="a8de319355363212aa8547316a57ae423"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>NetworkListener</b> (int refreshMillis, string config=&quot;&quot;, bool multiThread=true, bool noUpdateCheck=false)</td></tr>
+<tr class="memitem:a8de319355363212aa8547316a57ae423"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#a8de319355363212aa8547316a57ae423">NetworkListener</a> (int refreshMillis, string config=&quot;&quot;, bool multiThread=true, bool noUpdateCheck=false)</td></tr>
+<tr class="memdesc:a8de319355363212aa8547316a57ae423"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="namespace_a_d_l_1_1_network.html">Network</a> Listener that can be started with .Start  <a href="#a8de319355363212aa8547316a57ae423">More...</a><br /></td></tr>
 <tr class="separator:a8de319355363212aa8547316a57ae423"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f5a8677c35c4e2841344cfa3f85b745"><td class="memItemLeft" align="right" valign="top"><a id="a9f5a8677c35c4e2841344cfa3f85b745"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> ()</td></tr>
+<tr class="memitem:a9f5a8677c35c4e2841344cfa3f85b745"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#a9f5a8677c35c4e2841344cfa3f85b745">Start</a> ()</td></tr>
+<tr class="memdesc:a9f5a8677c35c4e2841344cfa3f85b745"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the Server threads  <a href="#a9f5a8677c35c4e2841344cfa3f85b745">More...</a><br /></td></tr>
 <tr class="separator:a9f5a8677c35c4e2841344cfa3f85b745"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a638f17f8280720d21a978feb1dfa250d"><td class="memItemLeft" align="right" valign="top"><a id="a638f17f8280720d21a978feb1dfa250d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> ()</td></tr>
+<tr class="memitem:a638f17f8280720d21a978feb1dfa250d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#a638f17f8280720d21a978feb1dfa250d">Stop</a> ()</td></tr>
+<tr class="memdesc:a638f17f8280720d21a978feb1dfa250d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stopping server threads.  <a href="#a638f17f8280720d21a978feb1dfa250d">More...</a><br /></td></tr>
 <tr class="separator:a638f17f8280720d21a978feb1dfa250d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:af47fc6c09b59d5d281bb145892c9d996"><td class="memItemLeft" align="right" valign="top"><a id="af47fc6c09b59d5d281bb145892c9d996"></a>
-static <a class="el" href="class_a_d_l_1_1_configs_1_1_network_config.html">NetworkConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Config</b></td></tr>
+<tr class="memitem:af47fc6c09b59d5d281bb145892c9d996"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_a_d_l_1_1_configs_1_1_network_config.html">NetworkConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#af47fc6c09b59d5d281bb145892c9d996">Config</a></td></tr>
+<tr class="memdesc:af47fc6c09b59d5d281bb145892c9d996"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client/Server Config  <a href="#af47fc6c09b59d5d281bb145892c9d996">More...</a><br /></td></tr>
 <tr class="separator:af47fc6c09b59d5d281bb145892c9d996"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a2128329e348d64b1bc0a8adbd54b6524"><td class="memItemLeft" align="right" valign="top"><a id="a2128329e348d64b1bc0a8adbd54b6524"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ListenerThread</b> ()</td></tr>
+<tr class="memitem:a2128329e348d64b1bc0a8adbd54b6524"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#a2128329e348d64b1bc0a8adbd54b6524">ListenerThread</a> ()</td></tr>
+<tr class="memdesc:a2128329e348d64b1bc0a8adbd54b6524"><td class="mdescLeft">&#160;</td><td class="mdescRight">Listener thread Handles Auth/Init of Client sessions  <a href="#a2128329e348d64b1bc0a8adbd54b6524">More...</a><br /></td></tr>
 <tr class="separator:a2128329e348d64b1bc0a8adbd54b6524"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af03e3f118e81bae327bc3df6fa330407"><td class="memItemLeft" align="right" valign="top"><a id="af03e3f118e81bae327bc3df6fa330407"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Run</b> ()</td></tr>
+<tr class="memitem:af03e3f118e81bae327bc3df6fa330407"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#af03e3f118e81bae327bc3df6fa330407">Run</a> ()</td></tr>
+<tr class="memdesc:af03e3f118e81bae327bc3df6fa330407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main Server loop Handles saving/logging the incoming messages  <a href="#af03e3f118e81bae327bc3df6fa330407">More...</a><br /></td></tr>
 <tr class="separator:af03e3f118e81bae327bc3df6fa330407"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:aa9529d9365c71503a23ca86784c502d3"><td class="memItemLeft" align="right" valign="top"><a id="aa9529d9365c71503a23ca86784c502d3"></a>
-readonly int&#160;</td><td class="memItemRight" valign="bottom"><b>_refreshMillis</b></td></tr>
-<tr class="separator:aa9529d9365c71503a23ca86784c502d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afafd10cab3701b496937e7d20c1f0441"><td class="memItemLeft" align="right" valign="top"><a id="afafd10cab3701b496937e7d20c1f0441"></a>
-readonly object&#160;</td><td class="memItemRight" valign="bottom"><b>_stopListenLock</b> = new object()</td></tr>
-<tr class="separator:afafd10cab3701b496937e7d20c1f0441"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2ff2027fa7bc2443639f1997e091fe1"><td class="memItemLeft" align="right" valign="top"><a id="aa2ff2027fa7bc2443639f1997e091fe1"></a>
-readonly object&#160;</td><td class="memItemRight" valign="bottom"><b>_stopLock</b> = new object()</td></tr>
-<tr class="separator:aa2ff2027fa7bc2443639f1997e091fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0eb1a77d3b7a2f938e3c3334616d90b6"><td class="memItemLeft" align="right" valign="top"><a id="a0eb1a77d3b7a2f938e3c3334616d90b6"></a>
-readonly List&lt; <a class="el" href="class_a_d_l_1_1_network_1_1_client_session.html">ClientSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_clients</b> = new List&lt;<a class="el" href="class_a_d_l_1_1_network_1_1_client_session.html">ClientSession</a>&gt;()</td></tr>
+<tr class="memitem:a0eb1a77d3b7a2f938e3c3334616d90b6"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="class_a_d_l_1_1_network_1_1_client_session.html">ClientSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#a0eb1a77d3b7a2f938e3c3334616d90b6">_clients</a> = new List&lt;<a class="el" href="class_a_d_l_1_1_network_1_1_client_session.html">ClientSession</a>&gt;()</td></tr>
+<tr class="memdesc:a0eb1a77d3b7a2f938e3c3334616d90b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of all active and connected clients  <a href="#a0eb1a77d3b7a2f938e3c3334616d90b6">More...</a><br /></td></tr>
 <tr class="separator:a0eb1a77d3b7a2f938e3c3334616d90b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ef417f6744cf7eabbdb2c2cda2bbcbf"><td class="memItemLeft" align="right" valign="top"><a id="a5ef417f6744cf7eabbdb2c2cda2bbcbf"></a>
-Thread&#160;</td><td class="memItemRight" valign="bottom"><b>_listenerThread</b></td></tr>
-<tr class="separator:a5ef417f6744cf7eabbdb2c2cda2bbcbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75be2a725f52031dc920a12e79ebe9ab"><td class="memItemLeft" align="right" valign="top"><a id="a75be2a725f52031dc920a12e79ebe9ab"></a>
-<a class="el" href="class_a_d_l_1_1_streams_1_1_log_text_stream.html">LogTextStream</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_lts</b></td></tr>
-<tr class="separator:a75be2a725f52031dc920a12e79ebe9ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa01b904a4bed34a2420d9406937fe36d"><td class="memItemLeft" align="right" valign="top"><a id="aa01b904a4bed34a2420d9406937fe36d"></a>
-readonly bool&#160;</td><td class="memItemRight" valign="bottom"><b>_multiThread</b></td></tr>
+<tr class="memitem:aa01b904a4bed34a2420d9406937fe36d"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#aa01b904a4bed34a2420d9406937fe36d">_multiThread</a></td></tr>
+<tr class="memdesc:aa01b904a4bed34a2420d9406937fe36d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to optionally turn multithreading off Will execute the Main loop on the current thread.  <a href="#aa01b904a4bed34a2420d9406937fe36d">More...</a><br /></td></tr>
 <tr class="separator:aa01b904a4bed34a2420d9406937fe36d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a136fe76d605a67d6965ae6f7cb288116"><td class="memItemLeft" align="right" valign="top"><a id="a136fe76d605a67d6965ae6f7cb288116"></a>
-readonly <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">GenPipeStream</a>&lt; <a class="el" href="class_a_d_l_1_1_network_1_1_client_session.html">ClientSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_pendingClients</b> = new <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">GenPipeStream</a>&lt;<a class="el" href="class_a_d_l_1_1_network_1_1_client_session.html">ClientSession</a>&gt;()</td></tr>
+<tr class="memitem:a136fe76d605a67d6965ae6f7cb288116"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">GenPipeStream</a>&lt; <a class="el" href="class_a_d_l_1_1_network_1_1_client_session.html">ClientSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#a136fe76d605a67d6965ae6f7cb288116">_pendingClients</a> = new <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">GenPipeStream</a>&lt;<a class="el" href="class_a_d_l_1_1_network_1_1_client_session.html">ClientSession</a>&gt;()</td></tr>
+<tr class="memdesc:a136fe76d605a67d6965ae6f7cb288116"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue of all accepted clients that are waiting to be served.  <a href="#a136fe76d605a67d6965ae6f7cb288116">More...</a><br /></td></tr>
 <tr class="separator:a136fe76d605a67d6965ae6f7cb288116"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bd84b31026eb538ad11c17979b6959f"><td class="memItemLeft" align="right" valign="top"><a id="a3bd84b31026eb538ad11c17979b6959f"></a>
-Thread&#160;</td><td class="memItemRight" valign="bottom"><b>_serverThread</b></td></tr>
+<tr class="memitem:aa9529d9365c71503a23ca86784c502d3"><td class="memItemLeft" align="right" valign="top">readonly int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#aa9529d9365c71503a23ca86784c502d3">_refreshMillis</a></td></tr>
+<tr class="memdesc:aa9529d9365c71503a23ca86784c502d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main Loop Slowdown  <a href="#aa9529d9365c71503a23ca86784c502d3">More...</a><br /></td></tr>
+<tr class="separator:aa9529d9365c71503a23ca86784c502d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afafd10cab3701b496937e7d20c1f0441"><td class="memItemLeft" align="right" valign="top">readonly object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#afafd10cab3701b496937e7d20c1f0441">_stopListenLock</a> = new object()</td></tr>
+<tr class="memdesc:afafd10cab3701b496937e7d20c1f0441"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread lock object  <a href="#afafd10cab3701b496937e7d20c1f0441">More...</a><br /></td></tr>
+<tr class="separator:afafd10cab3701b496937e7d20c1f0441"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2ff2027fa7bc2443639f1997e091fe1"><td class="memItemLeft" align="right" valign="top">readonly object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#aa2ff2027fa7bc2443639f1997e091fe1">_stopLock</a> = new object()</td></tr>
+<tr class="memdesc:aa2ff2027fa7bc2443639f1997e091fe1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread lock object  <a href="#aa2ff2027fa7bc2443639f1997e091fe1">More...</a><br /></td></tr>
+<tr class="separator:aa2ff2027fa7bc2443639f1997e091fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ef417f6744cf7eabbdb2c2cda2bbcbf"><td class="memItemLeft" align="right" valign="top">Thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#a5ef417f6744cf7eabbdb2c2cda2bbcbf">_listenerThread</a></td></tr>
+<tr class="memdesc:a5ef417f6744cf7eabbdb2c2cda2bbcbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread of the TCP Listener  <a href="#a5ef417f6744cf7eabbdb2c2cda2bbcbf">More...</a><br /></td></tr>
+<tr class="separator:a5ef417f6744cf7eabbdb2c2cda2bbcbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75be2a725f52031dc920a12e79ebe9ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_text_stream.html">LogTextStream</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#a75be2a725f52031dc920a12e79ebe9ab">_lts</a></td></tr>
+<tr class="memdesc:a75be2a725f52031dc920a12e79ebe9ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream that will save all the incoming logs from one client into a file.  <a href="#a75be2a725f52031dc920a12e79ebe9ab">More...</a><br /></td></tr>
+<tr class="separator:a75be2a725f52031dc920a12e79ebe9ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd352bee9c53d59be507278532e56d48"><td class="memItemLeft" align="right" valign="top">readonly bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#abd352bee9c53d59be507278532e56d48">_noUpdateCheck</a></td></tr>
+<tr class="memdesc:abd352bee9c53d59be507278532e56d48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag that indicates if the <a class="el" href="namespace_a_d_l_1_1_network.html">Network</a> listener should search the Github pages for the version  <a href="#abd352bee9c53d59be507278532e56d48">More...</a><br /></td></tr>
+<tr class="separator:abd352bee9c53d59be507278532e56d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bd84b31026eb538ad11c17979b6959f"><td class="memItemLeft" align="right" valign="top">Thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#a3bd84b31026eb538ad11c17979b6959f">_serverThread</a></td></tr>
+<tr class="memdesc:a3bd84b31026eb538ad11c17979b6959f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread of the main server loop  <a href="#a3bd84b31026eb538ad11c17979b6959f">More...</a><br /></td></tr>
 <tr class="separator:a3bd84b31026eb538ad11c17979b6959f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5879da5ed1f8f6133472f60560beed01"><td class="memItemLeft" align="right" valign="top"><a id="a5879da5ed1f8f6133472f60560beed01"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>_stop</b> = true</td></tr>
+<tr class="memitem:a5879da5ed1f8f6133472f60560beed01"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#a5879da5ed1f8f6133472f60560beed01">_stop</a> = true</td></tr>
+<tr class="memdesc:a5879da5ed1f8f6133472f60560beed01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to stop the main loop  <a href="#a5879da5ed1f8f6133472f60560beed01">More...</a><br /></td></tr>
 <tr class="separator:a5879da5ed1f8f6133472f60560beed01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2ecc15c01a6b55b1e35f7aee3cf446e"><td class="memItemLeft" align="right" valign="top"><a id="aa2ecc15c01a6b55b1e35f7aee3cf446e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>_stopListen</b> = true</td></tr>
+<tr class="memitem:aa2ecc15c01a6b55b1e35f7aee3cf446e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_network_listener.html#aa2ecc15c01a6b55b1e35f7aee3cf446e">_stopListen</a> = true</td></tr>
+<tr class="memdesc:aa2ecc15c01a6b55b1e35f7aee3cf446e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to stop the TCPListener Loop  <a href="#aa2ecc15c01a6b55b1e35f7aee3cf446e">More...</a><br /></td></tr>
 <tr class="separator:aa2ecc15c01a6b55b1e35f7aee3cf446e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af66dc4cd45091c1594c7e52f9a2044e9"><td class="memItemLeft" align="right" valign="top"><a id="af66dc4cd45091c1594c7e52f9a2044e9"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>_noUpdateCheck</b> = false</td></tr>
-<tr class="separator:af66dc4cd45091c1594c7e52f9a2044e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="namespace_a_d_l_1_1_network.html">Network</a> Listener is acting as the server that receives logs from a client </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8de319355363212aa8547316a57ae423"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8de319355363212aa8547316a57ae423">&#9670;&nbsp;</a></span>NetworkListener()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ADL.Network.NetworkListener.NetworkListener </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>refreshMillis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>config</em> = <code>&quot;&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>multiThread</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>noUpdateCheck</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates a <a class="el" href="namespace_a_d_l_1_1_network.html">Network</a> Listener that can be started with .Start </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">refreshMillis</td><td>Main Loop Delay</td></tr>
+    <tr><td class="paramname">config</td><td>Path to NetworkConfig file</td></tr>
+    <tr><td class="paramname">multiThread</td><td>flag to enable multithreading</td></tr>
+    <tr><td class="paramname">noUpdateCheck</td><td>flag to disable checking for updates</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2128329e348d64b1bc0a8adbd54b6524"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2128329e348d64b1bc0a8adbd54b6524">&#9670;&nbsp;</a></span>ListenerThread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADL.Network.NetworkListener.ListenerThread </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Listener thread Handles Auth/Init of Client sessions </p>
+
+</div>
+</div>
+<a id="af03e3f118e81bae327bc3df6fa330407"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af03e3f118e81bae327bc3df6fa330407">&#9670;&nbsp;</a></span>Run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADL.Network.NetworkListener.Run </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Main Server loop Handles saving/logging the incoming messages </p>
+
+</div>
+</div>
+<a id="a9f5a8677c35c4e2841344cfa3f85b745"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f5a8677c35c4e2841344cfa3f85b745">&#9670;&nbsp;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADL.Network.NetworkListener.Start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts the Server threads </p>
+
+</div>
+</div>
+<a id="a638f17f8280720d21a978feb1dfa250d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a638f17f8280720d21a978feb1dfa250d">&#9670;&nbsp;</a></span>Stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADL.Network.NetworkListener.Stop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stopping server threads. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a0eb1a77d3b7a2f938e3c3334616d90b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eb1a77d3b7a2f938e3c3334616d90b6">&#9670;&nbsp;</a></span>_clients</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly List&lt;<a class="el" href="class_a_d_l_1_1_network_1_1_client_session.html">ClientSession</a>&gt; ADL.Network.NetworkListener._clients = new List&lt;<a class="el" href="class_a_d_l_1_1_network_1_1_client_session.html">ClientSession</a>&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>List of all active and connected clients </p>
+
+</div>
+</div>
+<a id="a5ef417f6744cf7eabbdb2c2cda2bbcbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ef417f6744cf7eabbdb2c2cda2bbcbf">&#9670;&nbsp;</a></span>_listenerThread</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Thread ADL.Network.NetworkListener._listenerThread</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Thread of the TCP Listener </p>
+
+</div>
+</div>
+<a id="a75be2a725f52031dc920a12e79ebe9ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75be2a725f52031dc920a12e79ebe9ab">&#9670;&nbsp;</a></span>_lts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_text_stream.html">LogTextStream</a> ADL.Network.NetworkListener._lts</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stream that will save all the incoming logs from one client into a file. </p>
+
+</div>
+</div>
+<a id="aa01b904a4bed34a2420d9406937fe36d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa01b904a4bed34a2420d9406937fe36d">&#9670;&nbsp;</a></span>_multiThread</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly bool ADL.Network.NetworkListener._multiThread</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flag to optionally turn multithreading off Will execute the Main loop on the current thread. </p>
+
+</div>
+</div>
+<a id="abd352bee9c53d59be507278532e56d48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd352bee9c53d59be507278532e56d48">&#9670;&nbsp;</a></span>_noUpdateCheck</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly bool ADL.Network.NetworkListener._noUpdateCheck</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flag that indicates if the <a class="el" href="namespace_a_d_l_1_1_network.html">Network</a> listener should search the Github pages for the version </p>
+
+</div>
+</div>
+<a id="a136fe76d605a67d6965ae6f7cb288116"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a136fe76d605a67d6965ae6f7cb288116">&#9670;&nbsp;</a></span>_pendingClients</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">GenPipeStream</a>&lt;<a class="el" href="class_a_d_l_1_1_network_1_1_client_session.html">ClientSession</a>&gt; ADL.Network.NetworkListener._pendingClients = new <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">GenPipeStream</a>&lt;<a class="el" href="class_a_d_l_1_1_network_1_1_client_session.html">ClientSession</a>&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Queue of all accepted clients that are waiting to be served. </p>
+
+</div>
+</div>
+<a id="aa9529d9365c71503a23ca86784c502d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9529d9365c71503a23ca86784c502d3">&#9670;&nbsp;</a></span>_refreshMillis</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly int ADL.Network.NetworkListener._refreshMillis</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Main Loop Slowdown </p>
+
+</div>
+</div>
+<a id="a3bd84b31026eb538ad11c17979b6959f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bd84b31026eb538ad11c17979b6959f">&#9670;&nbsp;</a></span>_serverThread</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Thread ADL.Network.NetworkListener._serverThread</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Thread of the main server loop </p>
+
+</div>
+</div>
+<a id="a5879da5ed1f8f6133472f60560beed01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5879da5ed1f8f6133472f60560beed01">&#9670;&nbsp;</a></span>_stop</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ADL.Network.NetworkListener._stop = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flag to stop the main loop </p>
+
+</div>
+</div>
+<a id="aa2ecc15c01a6b55b1e35f7aee3cf446e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2ecc15c01a6b55b1e35f7aee3cf446e">&#9670;&nbsp;</a></span>_stopListen</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ADL.Network.NetworkListener._stopListen = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flag to stop the TCPListener Loop </p>
+
+</div>
+</div>
+<a id="afafd10cab3701b496937e7d20c1f0441"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afafd10cab3701b496937e7d20c1f0441">&#9670;&nbsp;</a></span>_stopListenLock</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly object ADL.Network.NetworkListener._stopListenLock = new object()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Thread lock object </p>
+
+</div>
+</div>
+<a id="aa2ff2027fa7bc2443639f1997e091fe1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2ff2027fa7bc2443639f1997e091fe1">&#9670;&nbsp;</a></span>_stopLock</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly object ADL.Network.NetworkListener._stopLock = new object()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Thread lock object </p>
+
+</div>
+</div>
+<a id="af47fc6c09b59d5d281bb145892c9d996"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af47fc6c09b59d5d281bb145892c9d996">&#9670;&nbsp;</a></span>Config</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_a_d_l_1_1_configs_1_1_network_config.html">NetworkConfig</a> ADL.Network.NetworkListener.Config</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Client/Server Config </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>ADL/ADL.Network/NetworkListener.cs</li>
 </ul>

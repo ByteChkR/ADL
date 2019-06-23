@@ -11,7 +11,7 @@ namespace ADL.Streams
         /// <param name="mask"></param>
         /// <param name="matchType"></param>
         /// <param name="setTimeStamp"></param>
-        public LogTextStream(Stream baseStream, int mask = ~0, MatchType matchType = MatchType.MATCH_ALL,
+        public LogTextStream(Stream baseStream, int mask = ~0, MatchType matchType = MatchType.MatchAll,
             bool setTimeStamp = false) : base(baseStream, mask, matchType, setTimeStamp)
         {
         }
@@ -19,12 +19,12 @@ namespace ADL.Streams
         /// <summary>
         ///     Fills Buffer with the string message only.(used when output is System.Console)
         /// </summary>
-        /// <param name="value">Line</param>
+        /// <param name="log">Log</param>
         public override void Write(Log log)
         {
             if (AddTimeStamp) log.Message = Utils.TimeStamp + log.Message;
             var tmp = Debug.TextEncoding.GetBytes(log.Message);
-            _baseStream.Write(tmp, 0, tmp.Length);
+            BaseStream.Write(tmp, 0, tmp.Length);
             Flush();
         }
     }

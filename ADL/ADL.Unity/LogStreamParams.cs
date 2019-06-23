@@ -20,7 +20,7 @@ namespace ADL.Unity
         public int Mask = new BitMask(true);
 
         [Tooltip("How should the System treat the Mask?")]
-        public MatchType MatchType = MatchType.MATCH_ALL;
+        public MatchType MatchType = MatchType.MatchAll;
 
         [Tooltip("Adds Timestamps([hh:mm:ss]) to the Logs")]
         public bool SetTimeStamp = false;
@@ -33,8 +33,7 @@ namespace ADL.Unity
         /// <returns></returns>
         public LogStream ToLogStream()
         {
-            if (CreateCustomConsole) return new LogStream(new PipeStream(), Mask, MatchType, SetTimeStamp);
-            return new LogTextStream(new FileStream(FilePath, FileMode.OpenOrCreate), Mask, MatchType, SetTimeStamp);
+            return CreateCustomConsole ? new LogStream(new PipeStream(), Mask, MatchType, SetTimeStamp) : new LogTextStream(new FileStream(FilePath, FileMode.OpenOrCreate), Mask, MatchType, SetTimeStamp);
         }
 
         /// <summary>

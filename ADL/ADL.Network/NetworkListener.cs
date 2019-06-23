@@ -9,42 +9,110 @@ using ADL.Streams;
 
 namespace ADL.Network
 {
+    /// <summary>
+    ///     Network Listener is acting as the server that receives logs from a client
+    /// </summary>
     public class NetworkListener
     {
+        /// <summary>
+        ///     Client/Server Config
+        /// </summary>
         public static NetworkConfig Config;
+
+        /// <summary>
+        ///     List of all active and connected clients
+        /// </summary>
+        private readonly List<ClientSession> _clients = new List<ClientSession>();
+
+        /// <summary>
+        ///     Flag to optionally turn multithreading off
+        ///     Will execute the Main loop on the current thread.
+        /// </summary>
+        private readonly bool _multiThread;
+
+        /// <summary>
+        ///     Queue of all accepted clients that are waiting to be served.
+        /// </summary>
+        private readonly GenPipeStream<ClientSession> _pendingClients = new GenPipeStream<ClientSession>();
+
+        /// <summary>
+        ///     Main Loop Slowdown
+        /// </summary>
         private readonly int _refreshMillis;
+
+        /// <summary>
+        ///     Thread lock object
+        /// </summary>
         private readonly object _stopListenLock = new object();
 
-
+        /// <summary>
+        ///     Thread lock object
+        /// </summary>
         private readonly object _stopLock = new object();
-        private readonly List<ClientSession> _clients = new List<ClientSession>();
+
+        /// <summary>
+        ///     Thread of the TCP Listener
+        /// </summary>
         private Thread _listenerThread;
+
+        /// <summary>
+        ///     Stream that will save all the incoming logs from one client into a file.
+        /// </summary>
         private LogTextStream _lts;
-        private readonly bool _multiThread;
-        private readonly GenPipeStream<ClientSession> _pendingClients = new GenPipeStream<ClientSession>();
+
+        /// <summary>
+        ///     Flag that indicates if the Network listener should search the Github pages for the version
+        /// </summary>
+        private readonly bool _noUpdateCheck;
+
+        /// <summary>
+        ///     Thread of the main server loop
+        /// </summary>
         private Thread _serverThread;
+
+        /// <summary>
+        ///     Flag to stop the main loop
+        /// </summary>
         private bool _stop = true;
+
+        /// <summary>
+        ///     Flag to stop the TCPListener Loop
+        /// </summary>
         private bool _stopListen = true;
-        private bool _noUpdateCheck = false;
-        public NetworkListener(int refreshMillis, string config = "", bool multiThread = true, bool noUpdateCheck = false)
+
+        /// <summary>
+        ///     Creates a Network Listener that can be started with .Start
+        /// </summary>
+        /// <param name="refreshMillis">Main Loop Delay</param>
+        /// <param name="config">Path to NetworkConfig file</param>
+        /// <param name="multiThread">flag to enable multithreading</param>
+        /// <param name="noUpdateCheck">flag to disable checking for updates</param>
+        public NetworkListener(int refreshMillis, string config = "", bool multiThread = true,
+            bool noUpdateCheck = false)
         {
             _noUpdateCheck = noUpdateCheck;
             Config = NetworkConfig.Load(config);
             _multiThread = multiThread;
             _refreshMillis = refreshMillis;
-            
         }
 
 
+        /// <summary>
+        ///     Starts the Server threads
+        /// </summary>
         public void Start()
         {
             _lts = new LogTextStream(Console.OpenStandardOutput(), 0);
             Debug.AddOutputStream(_lts);
 
-            var msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name,
-                Assembly.GetExecutingAssembly().GetName().Version);
 
-            Debug.Log(0, msg);
+            if (!_noUpdateCheck)
+            {
+                var msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name,
+                    Assembly.GetExecutingAssembly().GetName().Version);
+
+                Debug.Log(0, msg);
+            }
 
             Debug.Log(0, "Starting Network Listener...");
             lock (_stopListenLock)
@@ -52,7 +120,7 @@ namespace ADL.Network
                 if (_stopListen)
                 {
                     _stopListen = false;
-                    _listenerThread = new Thread(ListenerThread);
+                    _listenerThread = new Thread(ListenerThread) {IsBackground = true};
                     _listenerThread.Start();
                 }
             }
@@ -61,22 +129,23 @@ namespace ADL.Network
             Debug.Log(0, "Starting Server...");
             lock (_stopLock)
             {
-                if (_stop)
+                if (!_stop) return;
+                _stop = false;
+                if (_multiThread)
                 {
-                    _stop = false;
-                    if (_multiThread)
-                    {
-                        _serverThread = new Thread(Run);
-                        _serverThread.Start();
-                    }
-                    else
-                    {
-                        Run();
-                    }
+                    _serverThread = new Thread(Run) {IsBackground = true};
+                    _serverThread.Start();
+                }
+                else
+                {
+                    Run();
                 }
             }
         }
 
+        /// <summary>
+        ///     Stopping server threads.
+        /// </summary>
         public void Stop()
         {
             lock (_stopLock)
@@ -92,7 +161,10 @@ namespace ADL.Network
             Debug.RemoveOutputStream(_lts);
         }
 
-
+        /// <summary>
+        ///     Listener thread
+        ///     Handles Auth/Init of Client sessions
+        /// </summary>
         private void ListenerThread()
         {
             var tcpL = new TcpListener(IPAddress.Any, Config.Port);
@@ -124,7 +196,10 @@ namespace ADL.Network
             tcpL.Stop();
         }
 
-
+        /// <summary>
+        ///     Main Server loop
+        ///     Handles saving/logging the incoming messages
+        /// </summary>
         private void Run()
         {
             while (true)
@@ -168,10 +243,9 @@ namespace ADL.Network
 
                         if (!dc)
                         {
-                            if (lp.Logs.Count > 0)
-                                //Debug.Log(0, "Logs: " + lp.Logs.Count);
-                                for (var j = 0; j < lp.Logs.Count; j++)
-                                    Debug.Log(clientSession.instanceID, lp.Logs[j].Message.Trim());
+                            if (lp.Logs.Count <= 0) continue;
+                            for (var j = 0; j < lp.Logs.Count; j++)
+                                Debug.Log(clientSession.InstanceId, lp.Logs[j].Message.Trim());
                         }
                         else
                         {

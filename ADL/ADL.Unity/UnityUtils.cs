@@ -12,11 +12,11 @@ namespace ADL.Unity
         ///     stream
         /// </summary>
         /// <param name="param">Log Stream Parameter</param>
-        /// <param name="WarningMask">Warning Mask(What is a warning)</param>
-        /// <param name="ErrorMask">Error Mask (What is an error)</param>
-        public static void CreateUnityConsole(LogStreamParams param, int WarningMask = 0, int ErrorMask = 0)
+        /// <param name="warningMask">Warning Mask(What is a warning)</param>
+        /// <param name="errorMask">Error Mask (What is an error)</param>
+        public static void CreateUnityConsole(LogStreamParams param, int warningMask = 0, int errorMask = 0)
         {
-            var utw = new UnityTextWriter(WarningMask, ErrorMask);
+            var utw = new UnityTextWriter(warningMask, errorMask);
             Debug.AddOutputStream(ToUnityConsoleLogStream(utw, param));
         }
 

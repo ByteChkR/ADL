@@ -8,12 +8,12 @@ namespace ADL.Configs
     ///     Contains the Configurations of the main ADL.Debug class.
     /// </summary>
     [Serializable]
-    public class ADLConfig : IADLConfig
+    public class AdlConfig : IAdlConfig
     {
         /// <summary>
         ///     Is ADL enabled when this config is loaded?
         /// </summary>
-        public bool ADLEnabled;
+        public bool AdlEnabled;
 
         /// <summary>
         ///     The prefixes that are used when a log in a specific mask gets sent.
@@ -51,20 +51,20 @@ namespace ADL.Configs
         /// <summary>
         ///     The standard configuration of ADL
         /// </summary>
-        public static ADLConfig Standard
+        public static AdlConfig Standard
         {
             get
             {
-                var std = new ADLConfig
+                var std = new AdlConfig
                 {
-                    ADLEnabled = true,
+                    AdlEnabled = true,
                     SendUpdateMessageOnFirstLog = true,
                     UpdateMask = new BitMask(true),
                     WarningMask = new BitMask(true),
                     SendWarnings = true,
                     Prefixes = new SerializableDictionary<int, string>(new Dictionary<int, string>()),
-                    PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE |
-                                       PrefixLookupSettings.DECONSTRUCTMASKTOFIND,
+                    PrefixLookupMode = PrefixLookupSettings.Addprefixifavailable |
+                                       PrefixLookupSettings.Deconstructmasktofind,
                     TextEncoding = Encoding.ASCII
                 };
                 return std;
@@ -75,7 +75,7 @@ namespace ADL.Configs
         ///     Standard Confuguration
         /// </summary>
         /// <returns>The standard configuration of ADL</returns>
-        public IADLConfig GetStandard()
+        public IAdlConfig GetStandard()
         {
             return Standard;
         }
@@ -83,24 +83,24 @@ namespace ADL.Configs
         #region Lookup Presets
 
         public static PrefixLookupSettings LowestPerformance =
-            PrefixLookupSettings.ADDPREFIXIFAVAILABLE |
-            PrefixLookupSettings.DECONSTRUCTMASKTOFIND;
+            PrefixLookupSettings.Addprefixifavailable |
+            PrefixLookupSettings.Deconstructmasktofind;
 
         public static PrefixLookupSettings LowPerformance =
-            PrefixLookupSettings.ADDPREFIXIFAVAILABLE |
-            PrefixLookupSettings.DECONSTRUCTMASKTOFIND |
-            PrefixLookupSettings.ONLYONEPREFIX;
+            PrefixLookupSettings.Addprefixifavailable |
+            PrefixLookupSettings.Deconstructmasktofind |
+            PrefixLookupSettings.Onlyoneprefix;
 
         public static PrefixLookupSettings MediumPerformance =
-            PrefixLookupSettings.ADDPREFIXIFAVAILABLE |
-            PrefixLookupSettings.DECONSTRUCTMASKTOFIND |
-            PrefixLookupSettings.BAKEPREFIXES;
+            PrefixLookupSettings.Addprefixifavailable |
+            PrefixLookupSettings.Deconstructmasktofind |
+            PrefixLookupSettings.Bakeprefixes;
 
         public static PrefixLookupSettings HighPerformance =
-            PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
+            PrefixLookupSettings.Addprefixifavailable;
 
         public static PrefixLookupSettings HighestPerformance =
-            PrefixLookupSettings.NOPREFIX;
+            PrefixLookupSettings.Noprefix;
 
         #endregion
     }

@@ -9,13 +9,13 @@ namespace ADL.Unity
     [CustomPropertyDrawer(typeof(EnumFlagsAttribute))]
     public class EnumFlagsAttributeDrawer : PropertyDrawer
     {
-        public override void OnGUI(Rect _position, SerializedProperty _property, GUIContent _label)
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var debuglevels = _property.serializedObject.FindProperty("DebugLevel");
+            var debuglevels = property.serializedObject.FindProperty("DebugLevel");
 
-            if (DebugComponent._DebugLevel.Length > 0)
-                _property.intValue =
-                    EditorGUI.MaskField(_position, _label, _property.intValue, DebugComponent._DebugLevel);
+            if (DebugComponent.DebugLevel.Length > 0)
+                property.intValue =
+                    EditorGUI.MaskField(position, label, property.intValue, DebugComponent.DebugLevel);
         }
     }
 }

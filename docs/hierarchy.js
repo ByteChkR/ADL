@@ -5,26 +5,23 @@ var hierarchy =
       [ "ADL.BitMask< T >", "class_a_d_l_1_1_bit_mask.html", null ]
     ] ],
     [ "ADL.Network.ClientSession", "class_a_d_l_1_1_network_1_1_client_session.html", null ],
-    [ "ADL.CustomCMD.CMDUtils", "class_a_d_l_1_1_custom_c_m_d_1_1_c_m_d_utils.html", null ],
+    [ "ADL.CustomCMD.CmdUtils", "class_a_d_l_1_1_custom_c_m_d_1_1_cmd_utils.html", null ],
     [ "ADL.Configs.ConfigManager", "class_a_d_l_1_1_configs_1_1_config_manager.html", null ],
     [ "ADL.Debug", "class_a_d_l_1_1_debug.html", null ],
     [ "ADL.UnitTests.DebugOperations", "class_a_d_l_1_1_unit_tests_1_1_debug_operations.html", null ],
     [ "Editor", null, [
       [ "ADL.Unity.DebugEditorWindow", "class_a_d_l_1_1_unity_1_1_debug_editor_window.html", null ]
     ] ],
-    [ "Form", null, [
-      [ "ADL.CustomCMD.CustomCMDForm", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_c_m_d_form.html", null ]
-    ] ],
     [ "ADL.Streams.GenPipeStream< ADL.Network.ClientSession >", "class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html", null ],
     [ "ADL.Streams.GenPipeStream< byte >", "class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html", [
       [ "ADL.Streams.PipeStream", "class_a_d_l_1_1_streams_1_1_pipe_stream.html", null ]
     ] ],
-    [ "ADL.Configs.IADLConfig", "interface_a_d_l_1_1_configs_1_1_i_a_d_l_config.html", [
-      [ "ADL.Configs.ADLConfig", "class_a_d_l_1_1_configs_1_1_a_d_l_config.html", [
-        [ "ADL.Unity.UnityConfig.UnityADLConfig", "class_a_d_l_1_1_unity_1_1_unity_config_1_1_unity_a_d_l_config.html", null ]
+    [ "ADL.Configs.IAdlConfig", "interface_a_d_l_1_1_configs_1_1_i_adl_config.html", [
+      [ "ADL.Configs.AdlConfig", "class_a_d_l_1_1_configs_1_1_adl_config.html", [
+        [ "ADL.Unity.UnityConfig.UnityAdlConfig", "class_a_d_l_1_1_unity_1_1_unity_config_1_1_unity_adl_config.html", null ]
       ] ],
-      [ "ADL.Configs.ADLCustomConsoleConfig", "class_a_d_l_1_1_configs_1_1_a_d_l_custom_console_config.html", [
-        [ "ADL.Unity.UnityConfig.UnityADLCustomConsoleConfig", "class_a_d_l_1_1_unity_1_1_unity_config_1_1_unity_a_d_l_custom_console_config.html", null ]
+      [ "ADL.Configs.AdlCustomConsoleConfig", "class_a_d_l_1_1_configs_1_1_adl_custom_console_config.html", [
+        [ "ADL.Unity.UnityConfig.UnityAdlCustomConsoleConfig", "class_a_d_l_1_1_unity_1_1_unity_config_1_1_unity_adl_custom_console_config.html", null ]
       ] ]
     ] ],
     [ "ADL.Streams.Log", "struct_a_d_l_1_1_streams_1_1_log.html", null ],
@@ -56,6 +53,7 @@ var hierarchy =
     [ "Stream", null, [
       [ "ADL.Streams.GenPipeStream< T >", "class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html", null ],
       [ "ADL.Streams.LogStream", "class_a_d_l_1_1_streams_1_1_log_stream.html", [
+        [ "ADL.Network.Streams.NetLogStream", "class_a_d_l_1_1_network_1_1_streams_1_1_net_log_stream.html", null ],
         [ "ADL.Streams.LogTextStream", "class_a_d_l_1_1_streams_1_1_log_text_stream.html", null ]
       ] ],
       [ "ADL.Unity.UnityTextWriter", "class_a_d_l_1_1_unity_1_1_unity_text_writer.html", null ]

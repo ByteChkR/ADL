@@ -103,14 +103,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae293f94268ffc38bbc94bfcb0ee324ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html#ae293f94268ffc38bbc94bfcb0ee324ca">LogPackage</a> (byte[] buffer)</td></tr>
 <tr class="memdesc:ae293f94268ffc38bbc94bfcb0ee324ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that takes the output of the stream.  <a href="#ae293f94268ffc38bbc94bfcb0ee324ca">More...</a><br /></td></tr>
 <tr class="separator:ae293f94268ffc38bbc94bfcb0ee324ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1693b0ad65e94e92e1a612fe1321c621"><td class="memItemLeft" align="right" valign="top"><a id="a1693b0ad65e94e92e1a612fe1321c621"></a>
-byte []&#160;</td><td class="memItemRight" valign="bottom"><b>GetSerialized</b> (bool setTimestamp)</td></tr>
+<tr class="memitem:a1693b0ad65e94e92e1a612fe1321c621"><td class="memItemLeft" align="right" valign="top">byte []&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html#a1693b0ad65e94e92e1a612fe1321c621">GetSerialized</a> (bool setTimestamp)</td></tr>
+<tr class="memdesc:a1693b0ad65e94e92e1a612fe1321c621"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns this log package to a serialized byte buffer.  <a href="#a1693b0ad65e94e92e1a612fe1321c621">More...</a><br /></td></tr>
 <tr class="separator:a1693b0ad65e94e92e1a612fe1321c621"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a4a7d102a42593f23361d0da7bffa1530"><td class="memItemLeft" align="right" valign="top"><a id="a4a7d102a42593f23361d0da7bffa1530"></a>
-static <a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html">LogPackage</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ReadBlock</b> (Stream s, int length)</td></tr>
+<tr class="memitem:a4a7d102a42593f23361d0da7bffa1530"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html">LogPackage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html#a4a7d102a42593f23361d0da7bffa1530">ReadBlock</a> (Stream s, int length)</td></tr>
+<tr class="memdesc:a4a7d102a42593f23361d0da7bffa1530"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a block of Binary Data and turns it into a <a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html" title="Object to wrap all received logs into one object. ">LogPackage</a>  <a href="#a4a7d102a42593f23361d0da7bffa1530">More...</a><br /></td></tr>
 <tr class="separator:a4a7d102a42593f23361d0da7bffa1530"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -145,6 +145,80 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1693b0ad65e94e92e1a612fe1321c621"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1693b0ad65e94e92e1a612fe1321c621">&#9670;&nbsp;</a></span>GetSerialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">byte [] ADL.Streams.LogPackage.GetSerialized </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>setTimestamp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Turns this log package to a serialized byte buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">setTimestamp</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a4a7d102a42593f23361d0da7bffa1530"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a7d102a42593f23361d0da7bffa1530">&#9670;&nbsp;</a></span>ReadBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html">LogPackage</a> ADL.Streams.LogPackage.ReadBlock </td>
+          <td>(</td>
+          <td class="paramtype">Stream&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a block of Binary Data and turns it into a <a class="el" href="struct_a_d_l_1_1_streams_1_1_log_package.html" title="Object to wrap all received logs into one object. ">LogPackage</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td></td></tr>
+    <tr><td class="paramname">length</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>

@@ -63,10 +63,9 @@ namespace ADL.Streams
                 return new Log();
             }
 
-            var message = "";
             if (msgLength > buffer.Length - startIndex - sizeof(int) * 2) return new Log();
 
-            message = Debug.TextEncoding.GetString(buffer, startIndex + sizeof(int) * 2, msgLength);
+            var message = Debug.TextEncoding.GetString(buffer, startIndex + sizeof(int) * 2, msgLength);
 
             bytesRead = sizeof(int) * 2 + msgLength;
 

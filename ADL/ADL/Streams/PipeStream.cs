@@ -50,11 +50,6 @@ namespace ADL.Streams
         private bool _mFlushed;
 
         /// <summary>
-        ///     Maximum number of bytes to store in the buffer.
-        /// </summary>
-        private long _mMaxBufferLength = 200 * _MB;
-
-        /// <summary>
         ///     Setting this to true will cause Read() to block if it appears
         ///     that it will run out of data.
         /// </summary>
@@ -63,12 +58,12 @@ namespace ADL.Streams
         /// <summary>
         ///     Number of bytes in a kilobyte
         /// </summary>
-        private const long _KB = 1024;
+        private const long Kb = 1024;
 
         /// <summary>
         ///     Number of bytes in a megabyte
         /// </summary>
-        private const long _MB = _KB * 1024;
+        private const long Mb = Kb * 1024;
 
         #endregion
 
@@ -77,11 +72,7 @@ namespace ADL.Streams
         /// <summary>
         ///     Gets or sets the maximum number of bytes to store in the buffer.
         /// </summary>
-        public long MaxBufferLength
-        {
-            get => _mMaxBufferLength;
-            set => _mMaxBufferLength = value;
-        }
+        public long MaxBufferLength { get; set; } = 200 * Mb;
 
         /// <summary>
         ///     Gets or sets a value indicating whether to block last read method before the buffer is empty.
@@ -97,11 +88,11 @@ namespace ADL.Streams
                 _mBlockLastRead = value;
 
                 // when turning off the block last read, signal Read() that it may now read the rest of the buffer.
-                if (!_mBlockLastRead)
-                    lock (_mBuffer)
-                    {
-                        Monitor.Pulse(_mBuffer);
-                    }
+                if (_mBlockLastRead) return;
+                lock (_mBuffer)
+                {
+                    Monitor.Pulse(_mBuffer);
+                }
             }
         }
 
@@ -254,10 +245,9 @@ namespace ADL.Streams
             if (offset + count > buffer.Length)
                 throw new ArgumentException("The sum of offset and count is greater than the buffer length. ");
             if (offset < 0 || count < 0)
-                throw new ArgumentOutOfRangeException("offset", "offset or count is negative.");
-            if (BlockLastReadBuffer && count >= _mMaxBufferLength)
-                throw new ArgumentException(string.Format("count({0}) > mMaxBufferLength({1})", count,
-                    _mMaxBufferLength));
+                throw new ArgumentOutOfRangeException(nameof(offset), "offset or count is negative.");
+            if (BlockLastReadBuffer && count >= MaxBufferLength)
+                throw new ArgumentException($"count({count}) > mMaxBufferLength({MaxBufferLength})");
 
             if (count == 0)
                 return 0;
@@ -296,14 +286,14 @@ namespace ADL.Streams
             if (offset + count > buffer.Length)
                 throw new ArgumentException("The sum of offset and count is greater than the buffer length. ");
             if (offset < 0 || count < 0)
-                throw new ArgumentOutOfRangeException("offset", "offset or count is negative.");
+                throw new ArgumentOutOfRangeException(nameof(offset), "offset or count is negative.");
             if (count == 0)
                 return;
 
             lock (_mBuffer)
             {
                 // wait until the buffer isn't full
-                while (Length >= _mMaxBufferLength)
+                while (Length >= MaxBufferLength)
                     Monitor.Wait(_mBuffer);
 
                 _mFlushed = false; // if it were flushed before, it soon will not be.

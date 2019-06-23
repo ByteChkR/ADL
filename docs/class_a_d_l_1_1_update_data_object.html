@@ -87,7 +87,7 @@ $(document).ready(function(){initNavTree('class_a_d_l_1_1_update_data_object.htm
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_a_d_l_1_1_update_data_object-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ADL.UpdateDataObject Class Reference</div>  </div>
@@ -99,19 +99,19 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:abc9b067a31d0c30eca12c8c49b092ee5"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_update_data_object.html#abc9b067a31d0c30eca12c8c49b092ee5">GenerateLink</a> (string package)</td></tr>
 <tr class="memdesc:abc9b067a31d0c30eca12c8c49b092ee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the right link from the raw link and the package name  <a href="#abc9b067a31d0c30eca12c8c49b092ee5">More...</a><br /></td></tr>
 <tr class="separator:abc9b067a31d0c30eca12c8c49b092ee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6262d46b371390dca1bdf07ba813331d"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_update_data_object.html#a6262d46b371390dca1bdf07ba813331d">CheckUpdate</a> (string PackageName, Version currentVer)</td></tr>
-<tr class="memdesc:a6262d46b371390dca1bdf07ba813331d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks For Updates for the specified package.  <a href="#a6262d46b371390dca1bdf07ba813331d">More...</a><br /></td></tr>
-<tr class="separator:a6262d46b371390dca1bdf07ba813331d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab891c58a98eeea5be1cd65326a829800"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_update_data_object.html#ab891c58a98eeea5be1cd65326a829800">CheckUpdate</a> (string packageName, Version currentVer)</td></tr>
+<tr class="memdesc:ab891c58a98eeea5be1cd65326a829800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks For Updates for the specified package.  <a href="#ab891c58a98eeea5be1cd65326a829800">More...</a><br /></td></tr>
+<tr class="separator:ab891c58a98eeea5be1cd65326a829800"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a442cf449263c745d34b884f3d88d9e4d"><td class="memItemLeft" align="right" valign="top">static readonly string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_update_data_object.html#a442cf449263c745d34b884f3d88d9e4d">_rawLink</a></td></tr>
-<tr class="memdesc:a442cf449263c745d34b884f3d88d9e4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Raw link to the location where i have my version files.  <a href="#a442cf449263c745d34b884f3d88d9e4d">More...</a><br /></td></tr>
-<tr class="separator:a442cf449263c745d34b884f3d88d9e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ab585d70789e5b10331c02350daf6e97f"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_update_data_object.html#ab585d70789e5b10331c02350daf6e97f">RawLink</a> = &quot;https://raw.githubusercontent.com/ByteChkR/ADL/master/docs/versioning/{0}version.txt&quot;</td></tr>
+<tr class="memdesc:ab585d70789e5b10331c02350daf6e97f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Raw link to the location where i have my version files.  <a href="#ab585d70789e5b10331c02350daf6e97f">More...</a><br /></td></tr>
+<tr class="separator:ab585d70789e5b10331c02350daf6e97f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6262d46b371390dca1bdf07ba813331d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6262d46b371390dca1bdf07ba813331d">&#9670;&nbsp;</a></span>CheckUpdate()</h2>
+<a id="ab891c58a98eeea5be1cd65326a829800"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab891c58a98eeea5be1cd65326a829800">&#9670;&nbsp;</a></span>CheckUpdate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -123,7 +123,7 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">static string ADL.UpdateDataObject.CheckUpdate </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>PackageName</em>, </td>
+          <td class="paramname"><em>packageName</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -147,7 +147,7 @@ Static Private Attributes</h2></td></tr>
 <p>Checks For Updates for the specified package. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">PackageName</td><td>Package name to search for</td></tr>
+    <tr><td class="paramname">packageName</td><td>Package name to search for</td></tr>
     <tr><td class="paramname">currentVer</td><td>The current assembly version of the package</td></tr>
   </table>
   </dd>
@@ -192,8 +192,8 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a442cf449263c745d34b884f3d88d9e4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a442cf449263c745d34b884f3d88d9e4d">&#9670;&nbsp;</a></span>_rawLink</h2>
+<a id="ab585d70789e5b10331c02350daf6e97f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab585d70789e5b10331c02350daf6e97f">&#9670;&nbsp;</a></span>RawLink</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,16 +202,16 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">readonly string ADL.UpdateDataObject._rawLink</td>
+          <td class="memname">const string ADL.UpdateDataObject.RawLink = &quot;https://raw.githubusercontent.com/ByteChkR/ADL/master/docs/versioning/{0}version.txt&quot;</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div><div class="line">            <span class="stringliteral">&quot;https://raw.githubusercontent.com/ByteChkR/ADL/master/docs/versioning/{0}version.txt&quot;</span></div></div><!-- fragment -->
+
 <p>The Raw link to the location where i have my version files. </p>
 
 </div>

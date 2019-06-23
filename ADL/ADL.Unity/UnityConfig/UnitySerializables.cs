@@ -29,7 +29,7 @@ namespace ADL.Unity.UnityConfig
     }
 
     [Serializable]
-    public class UnityADLConfig : ADLConfig
+    public class UnityAdlConfig : AdlConfig
     {
         public SerializableDictionaryIntString MaskPrefix;
 
@@ -40,7 +40,7 @@ namespace ADL.Unity.UnityConfig
     }
 
     [Serializable]
-    public class UnityADLCustomConsoleConfig : ADLCustomConsoleConfig
+    public class UnityAdlCustomConsoleConfig : AdlCustomConsoleConfig
     {
         public SerializableDictionaryIntColor LogColorCoding;
 

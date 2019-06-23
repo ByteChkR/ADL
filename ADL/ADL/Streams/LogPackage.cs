@@ -20,12 +20,11 @@ namespace ADL.Streams
         public LogPackage(byte[] buffer)
         {
             var logs = new List<Log>();
-            var bytesRead = 0;
+            int bytesRead;
             var totalBytes = 0;
-            Log l;
             do
             {
-                l = Log.Deserialize(buffer, totalBytes, out bytesRead);
+                var l = Log.Deserialize(buffer, totalBytes, out bytesRead);
                 if (bytesRead == -1) break; //Break manually when the logs end before the end of the buffer was reached.
                 if (bytesRead != 0) logs.Add(l);
 
@@ -35,13 +34,18 @@ namespace ADL.Streams
             Logs = logs;
         }
 
+
+        /// <summary>
+        ///     Turns this log package to a serialized byte buffer.
+        /// </summary>
+        /// <param name="setTimestamp"></param>
+        /// <returns></returns>
         public byte[] GetSerialized(bool setTimestamp)
         {
             var ret = new List<byte>();
-            Log l;
-            for (var i = 0; i < Logs.Count; i++)
+            foreach (var t in Logs)
             {
-                l = Logs[i];
+                var l = t;
                 if (setTimestamp) l.Message = Utils.TimeStamp + l.Message;
                 ret.AddRange(l.Serialize());
             }
@@ -49,7 +53,12 @@ namespace ADL.Streams
             return ret.ToArray();
         }
 
-
+        /// <summary>
+        ///     Reads a block of Binary Data and turns it into a LogPackage
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
         public static LogPackage ReadBlock(Stream s, int length)
         {
             //Due to multithreading

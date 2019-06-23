@@ -8,11 +8,11 @@
         /// <summary>
         ///     Add everything that both "tables" have
         /// </summary>
-        BIT_OR = 0,
+        BitOr = 0,
 
         /// <summary>
         ///     Add only flags that is represented in both tables
         /// </summary>
-        BIT_AND = 1
+        BitAnd = 1
     }
 }

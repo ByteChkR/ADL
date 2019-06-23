@@ -116,13 +116,13 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a887d1db091d273083278875e32842128"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_a_d_l.html#a887d1db091d273083278875e32842128">MaskCombineType</a> { <a class="el" href="namespace_a_d_l.html#a887d1db091d273083278875e32842128a377da01fa3eaa9e9d6a69a2fa415fe7b">MaskCombineType.BIT_OR</a> = 0, 
-<a class="el" href="namespace_a_d_l.html#a887d1db091d273083278875e32842128a4bece6f4e59c0e3f185e3003dfd37b1d">MaskCombineType.BIT_AND</a> = 1
+<tr class="memitem:a887d1db091d273083278875e32842128"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_a_d_l.html#a887d1db091d273083278875e32842128">MaskCombineType</a> { <a class="el" href="namespace_a_d_l.html#a887d1db091d273083278875e32842128a04306ca0b4b3ed9a5cedc16d4acbc2b8">MaskCombineType.BitOr</a> = 0, 
+<a class="el" href="namespace_a_d_l.html#a887d1db091d273083278875e32842128ae5c7b3dc6fa17e0c1d0586d1a169c77d">MaskCombineType.BitAnd</a> = 1
  }</td></tr>
 <tr class="memdesc:a887d1db091d273083278875e32842128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specifies the way the program should combine masks  <a href="namespace_a_d_l.html#a887d1db091d273083278875e32842128">More...</a><br /></td></tr>
 <tr class="separator:a887d1db091d273083278875e32842128"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3d2a408e3189a4080566c282d09bdde"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bdde">MatchType</a> { <a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bddea627c7991c5d0265194247e92fcf120b0">MatchType.MATCH_ALL</a> = 0, 
-<a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bddeae732aeff37126a99228f0e497f1beb04">MatchType.MATCH_ONE</a> = 1
+<tr class="memitem:aa3d2a408e3189a4080566c282d09bdde"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bdde">MatchType</a> { <a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bddea9f0b169d4598df6b4325177393e01b9c">MatchType.MatchAll</a> = 0, 
+<a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bddea92025e72f0ee3115c6362153a6f4be23">MatchType.MatchOne</a> = 1
  }</td></tr>
 <tr class="memdesc:aa3d2a408e3189a4080566c282d09bdde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specifies how the LogStream Masks react to flags.  <a href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bdde">More...</a><br /></td></tr>
 <tr class="separator:aa3d2a408e3189a4080566c282d09bdde"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,9 +152,9 @@ Enumerations</h2></td></tr>
 
 <p>Specifies the way the program should combine masks </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a887d1db091d273083278875e32842128a377da01fa3eaa9e9d6a69a2fa415fe7b"></a>BIT_OR&#160;</td><td class="fielddoc"><p>Add everything that both "tables" have </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a887d1db091d273083278875e32842128a04306ca0b4b3ed9a5cedc16d4acbc2b8"></a>BitOr&#160;</td><td class="fielddoc"><p>Add everything that both "tables" have </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a887d1db091d273083278875e32842128a4bece6f4e59c0e3f185e3003dfd37b1d"></a>BIT_AND&#160;</td><td class="fielddoc"><p>Add only flags that is represented in both tables </p>
+<tr><td class="fieldname"><a id="a887d1db091d273083278875e32842128ae5c7b3dc6fa17e0c1d0586d1a169c77d"></a>BitAnd&#160;</td><td class="fielddoc"><p>Add only flags that is represented in both tables </p>
 </td></tr>
 </table>
 
@@ -182,9 +182,9 @@ Enumerations</h2></td></tr>
 
 <p>Specifies how the LogStream Masks react to flags. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa3d2a408e3189a4080566c282d09bddea627c7991c5d0265194247e92fcf120b0"></a>MATCH_ALL&#160;</td><td class="fielddoc"><p>If one flag is not in the logstream mask, return false </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa3d2a408e3189a4080566c282d09bddea9f0b169d4598df6b4325177393e01b9c"></a>MatchAll&#160;</td><td class="fielddoc"><p>If one flag is not in the logstream mask, return false </p>
 </td></tr>
-<tr><td class="fieldname"><a id="aa3d2a408e3189a4080566c282d09bddeae732aeff37126a99228f0e497f1beb04"></a>MATCH_ONE&#160;</td><td class="fielddoc"><p>If there is at least one flag in the mask </p>
+<tr><td class="fieldname"><a id="aa3d2a408e3189a4080566c282d09bddea92025e72f0ee3115c6362153a6f4be23"></a>MatchOne&#160;</td><td class="fielddoc"><p>If there is at least one flag in the mask </p>
 </td></tr>
 </table>
 

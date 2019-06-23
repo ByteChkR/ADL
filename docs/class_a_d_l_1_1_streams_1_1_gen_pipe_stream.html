@@ -149,7 +149,7 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a527e009dd4f268b28de9ae2b44862253"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a527e009dd4f268b28de9ae2b44862253">MaxBufferLength</a><code> [get, set]</code></td></tr>
+<tr class="memitem:a527e009dd4f268b28de9ae2b44862253"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a527e009dd4f268b28de9ae2b44862253">MaxBufferLength</a> = 200 * <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#ad82192466c8c6c6f61e3ccb33ffbe12a">Mb</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a527e009dd4f268b28de9ae2b44862253"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the maximum number of bytes to store in the buffer.  <a href="#a527e009dd4f268b28de9ae2b44862253">More...</a><br /></td></tr>
 <tr class="separator:a527e009dd4f268b28de9ae2b44862253"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1d1c0c668d0da56006223b55c3ef01a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#af1d1c0c668d0da56006223b55c3ef01a">BlockLastReadBuffer</a><code> [get, set]</code></td></tr>
@@ -173,18 +173,15 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:af1b4515f2f288e42c167ad5d83868ad6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#af1b4515f2f288e42c167ad5d83868ad6">_mFlushed</a></td></tr>
 <tr class="memdesc:af1b4515f2f288e42c167ad5d83868ad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates that the input stream has been flushed and that all remaining data should be written to the output stream.  <a href="#af1b4515f2f288e42c167ad5d83868ad6">More...</a><br /></td></tr>
 <tr class="separator:af1b4515f2f288e42c167ad5d83868ad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56efa8dda1ab7d3277516e34e2df5cbc"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a56efa8dda1ab7d3277516e34e2df5cbc">_mMaxBufferLength</a> = 200 * <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a4e6a895b06e064cf5dc9c1b6971eb6ff">_MB</a></td></tr>
-<tr class="memdesc:a56efa8dda1ab7d3277516e34e2df5cbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of bytes to store in the buffer.  <a href="#a56efa8dda1ab7d3277516e34e2df5cbc">More...</a><br /></td></tr>
-<tr class="separator:a56efa8dda1ab7d3277516e34e2df5cbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2686053fb03036ad86a06889efe6955b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a2686053fb03036ad86a06889efe6955b">_mBlockLastRead</a></td></tr>
 <tr class="memdesc:a2686053fb03036ad86a06889efe6955b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setting this to true will cause <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a619d4084c6cc78c9aa20f432364f2a6f" title="When overridden in a derived class, reads a sequence of bytes from the current stream and advances th...">Read()</a> to block if it appears that it will run out of data.  <a href="#a2686053fb03036ad86a06889efe6955b">More...</a><br /></td></tr>
 <tr class="separator:a2686053fb03036ad86a06889efe6955b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ad0700c0130bb8541119c9837ea6e36"><td class="memItemLeft" align="right" valign="top">const long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a9ad0700c0130bb8541119c9837ea6e36">_KB</a> = 1024</td></tr>
-<tr class="memdesc:a9ad0700c0130bb8541119c9837ea6e36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes in a kilobyte  <a href="#a9ad0700c0130bb8541119c9837ea6e36">More...</a><br /></td></tr>
-<tr class="separator:a9ad0700c0130bb8541119c9837ea6e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e6a895b06e064cf5dc9c1b6971eb6ff"><td class="memItemLeft" align="right" valign="top">const long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a4e6a895b06e064cf5dc9c1b6971eb6ff">_MB</a> = <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a9ad0700c0130bb8541119c9837ea6e36">_KB</a> * 1024</td></tr>
-<tr class="memdesc:a4e6a895b06e064cf5dc9c1b6971eb6ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes in a megabyte  <a href="#a4e6a895b06e064cf5dc9c1b6971eb6ff">More...</a><br /></td></tr>
-<tr class="separator:a4e6a895b06e064cf5dc9c1b6971eb6ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fc6a1868c27be1a0253929ef856d397"><td class="memItemLeft" align="right" valign="top">const long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a9fc6a1868c27be1a0253929ef856d397">Kb</a> = 1024</td></tr>
+<tr class="memdesc:a9fc6a1868c27be1a0253929ef856d397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes in a kilobyte  <a href="#a9fc6a1868c27be1a0253929ef856d397">More...</a><br /></td></tr>
+<tr class="separator:a9fc6a1868c27be1a0253929ef856d397"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad82192466c8c6c6f61e3ccb33ffbe12a"><td class="memItemLeft" align="right" valign="top">const long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#ad82192466c8c6c6f61e3ccb33ffbe12a">Mb</a> = <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a9fc6a1868c27be1a0253929ef856d397">Kb</a> * 1024</td></tr>
+<tr class="memdesc:ad82192466c8c6c6f61e3ccb33ffbe12a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes in a megabyte  <a href="#ad82192466c8c6c6f61e3ccb33ffbe12a">More...</a><br /></td></tr>
+<tr class="separator:ad82192466c8c6c6f61e3ccb33ffbe12a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a79214e44a510fe15c13c420d268d284a"></a>
@@ -459,54 +456,6 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a9ad0700c0130bb8541119c9837ea6e36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ad0700c0130bb8541119c9837ea6e36">&#9670;&nbsp;</a></span>_KB</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const long <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">ADL.Streams.GenPipeStream</a>&lt; T &gt;._KB = 1024</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Number of bytes in a kilobyte </p>
-
-</div>
-</div>
-<a id="a4e6a895b06e064cf5dc9c1b6971eb6ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e6a895b06e064cf5dc9c1b6971eb6ff">&#9670;&nbsp;</a></span>_MB</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const long <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">ADL.Streams.GenPipeStream</a>&lt; T &gt;._MB = <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a9ad0700c0130bb8541119c9837ea6e36">_KB</a> * 1024</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Number of bytes in a megabyte </p>
-
-</div>
-</div>
 <a id="a2686053fb03036ad86a06889efe6955b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2686053fb03036ad86a06889efe6955b">&#9670;&nbsp;</a></span>_mBlockLastRead</h2>
 
@@ -579,30 +528,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a56efa8dda1ab7d3277516e34e2df5cbc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56efa8dda1ab7d3277516e34e2df5cbc">&#9670;&nbsp;</a></span>_mMaxBufferLength</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">long <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">ADL.Streams.GenPipeStream</a>&lt; T &gt;._mMaxBufferLength = 200 * <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a4e6a895b06e064cf5dc9c1b6971eb6ff">_MB</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Maximum number of bytes to store in the buffer. </p>
-
-</div>
-</div>
 <a id="a568dc5b8482319f38729d16717597357"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a568dc5b8482319f38729d16717597357">&#9670;&nbsp;</a></span>CanRead</h2>
 
@@ -654,6 +579,30 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a9fc6a1868c27be1a0253929ef856d397"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fc6a1868c27be1a0253929ef856d397">&#9670;&nbsp;</a></span>Kb</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const long <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">ADL.Streams.GenPipeStream</a>&lt; T &gt;.Kb = 1024</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of bytes in a kilobyte </p>
+
+</div>
+</div>
 <a id="a7783a5e514cadbd6a3c85699cdc86477"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7783a5e514cadbd6a3c85699cdc86477">&#9670;&nbsp;</a></span>Length</h2>
 
@@ -668,6 +617,30 @@ Private Attributes</h2></td></tr>
 
 <p>When overridden in a derived class, gets the length in bytes of the stream. </p>
 <dl class="section return"><dt>Returns</dt><dd>A long value representing the length of the stream in bytes. </dd></dl>
+
+</div>
+</div>
+<a id="ad82192466c8c6c6f61e3ccb33ffbe12a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad82192466c8c6c6f61e3ccb33ffbe12a">&#9670;&nbsp;</a></span>Mb</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const long <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">ADL.Streams.GenPipeStream</a>&lt; T &gt;.Mb = <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a9fc6a1868c27be1a0253929ef856d397">Kb</a> * 1024</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of bytes in a megabyte </p>
 
 </div>
 </div>
@@ -706,7 +679,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">long <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">ADL.Streams.GenPipeStream</a>&lt; T &gt;.MaxBufferLength</td>
+          <td class="memname">long <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html">ADL.Streams.GenPipeStream</a>&lt; T &gt;.MaxBufferLength = 200 * <a class="el" href="class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#ad82192466c8c6c6f61e3ccb33ffbe12a">Mb</a></td>
         </tr>
       </table>
   </td>

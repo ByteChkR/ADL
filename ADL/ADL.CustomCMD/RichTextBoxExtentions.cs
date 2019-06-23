@@ -10,8 +10,8 @@ namespace ADL.CustomCMD
     /// </summary>
     public static class RichTextBoxExtensions
     {
-        private const int WM_VSCROLL = 277;
-        private const int SB_PAGEBOTTOM = 7;
+        private const int WmVscroll = 277;
+        private const int SbPagebottom = 7;
 
         /// <summary>
         ///     Appends text in a specified color.
@@ -49,10 +49,10 @@ namespace ADL.CustomCMD
         /// <summary>
         ///     Since winforms issues an Access violation exception I implemented a external function to cope with this
         /// </summary>
-        /// <param name="MyRichTextBox">The textbox that should be scrolled down</param>
-        public static void ScrollToBtm(RichTextBox MyRichTextBox)
+        /// <param name="myRichTextBox">The textbox that should be scrolled down</param>
+        public static void ScrollToBtm(RichTextBox myRichTextBox)
         {
-            SendMessage(MyRichTextBox.Handle, WM_VSCROLL, (IntPtr) SB_PAGEBOTTOM, IntPtr.Zero);
+            SendMessage(myRichTextBox.Handle, WmVscroll, (IntPtr) SbPagebottom, IntPtr.Zero);
         }
     }
 }

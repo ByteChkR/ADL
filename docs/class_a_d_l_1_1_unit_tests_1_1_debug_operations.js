@@ -10,6 +10,7 @@ var class_a_d_l_1_1_unit_tests_1_1_debug_operations =
     [ "Test_GetPrefixMask", "class_a_d_l_1_1_unit_tests_1_1_debug_operations.html#a0e383e0116f37fec3dca4e4eb2a9d993", null ],
     [ "Test_LoadConfig", "class_a_d_l_1_1_unit_tests_1_1_debug_operations.html#aa12d4d82fbe4841b5fcbf949e537273d", null ],
     [ "Test_Log", "class_a_d_l_1_1_unit_tests_1_1_debug_operations.html#a8c90d7cb1fb0d8fd11047626aa1e771f", null ],
+    [ "Test_LogSerialization", "class_a_d_l_1_1_unit_tests_1_1_debug_operations.html#a26957e1c9d4ece05ae92e77457c88ffe", null ],
     [ "Test_RemoveAllPrefixes", "class_a_d_l_1_1_unit_tests_1_1_debug_operations.html#a8c33de6f9426af9a0d106f3286faa863", null ],
     [ "Test_RemoveAllPrefixes", "class_a_d_l_1_1_unit_tests_1_1_debug_operations.html#a8c33de6f9426af9a0d106f3286faa863", null ],
     [ "Test_RemoveOutputStream", "class_a_d_l_1_1_unit_tests_1_1_debug_operations.html#aaa6cb9de5196880fba902ce0126d5a11", null ],

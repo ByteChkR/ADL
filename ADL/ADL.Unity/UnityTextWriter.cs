@@ -13,12 +13,12 @@ namespace ADL.Unity
         /// <summary>
         ///     Constructor that needs masks
         /// </summary>
-        /// <param name="WarnMask">everything satisfying this mask will be printed as a UnityWarning</param>
-        /// <param name="ErrorMask">everything satisfying this mask will be printed as a UnityError</param>
-        public UnityTextWriter(BitMask WarnMask, BitMask ErrorMask)
+        /// <param name="warnMask">everything satisfying this mask will be printed as a UnityWarning</param>
+        /// <param name="errorMask">everything satisfying this mask will be printed as a UnityError</param>
+        public UnityTextWriter(BitMask warnMask, BitMask errorMask)
         {
-            _warnMask = WarnMask;
-            _errorMask = ErrorMask;
+            _warnMask = warnMask;
+            _errorMask = errorMask;
         }
 
         /// <summary>
@@ -43,6 +43,8 @@ namespace ADL.Unity
         ///     Fills Buffer
         /// </summary>
         /// <param name="value">Line</param>
+        /// <param name="start">Start index</param>
+        /// <param name="count">Bytes to write</param>
         public override void Write(byte[] value, int start, int count)
         {
             var tmp = new byte[count];

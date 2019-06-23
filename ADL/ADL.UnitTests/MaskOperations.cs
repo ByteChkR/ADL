@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ADL.UnitTests
 {
@@ -47,9 +48,9 @@ namespace ADL.UnitTests
         {
             var bm1 = new BitMask<TestEnum>(TestEnum.B | TestEnum.D | TestEnum.F);
             var bm2 = new BitMask<TestEnum>(TestEnum.B | TestEnum.E | TestEnum.G);
-            BitMask ret = BitMask.CombineMasks(MaskCombineType.BIT_AND, bm1, bm2);
+            BitMask ret = BitMask.CombineMasks(MaskCombineType.BitAnd, bm1, bm2);
             Assert.IsTrue(ret == 2);
-            ret = BitMask.CombineMasks(MaskCombineType.BIT_OR, bm1, bm2);
+            ret = BitMask.CombineMasks(MaskCombineType.BitOr, bm1, bm2);
             Assert.IsTrue(BitMask.IsContainedInMask(ret, 16, false));
             Assert.IsTrue(BitMask.IsContainedInMask(ret, 2, false));
         }
@@ -68,8 +69,7 @@ namespace ADL.UnitTests
         {
             var bm = new BitMask(2, 8, 16);
             var bm1 = new BitMask(2 | 8 | 16);
-            var gbm = new BitMask<TestEnum>(true);
-            gbm = new BitMask<TestEnum>();
+
 
             Assert.AreEqual((int) bm, (int) bm1);
         }
@@ -86,34 +86,35 @@ namespace ADL.UnitTests
             Assert.AreEqual((int) bm, 16 | 8);
 
 
-            Assert.IsTrue(bm.HasFlag(16, MatchType.MATCH_ONE));
-            Assert.IsFalse(bm.HasFlag(24 | 4, MatchType.MATCH_ALL));
+            Assert.IsTrue(bm.HasFlag(16, MatchType.MatchOne));
+            Assert.IsFalse(bm.HasFlag(24 | 4, MatchType.MatchAll));
             bm.SetAllFlags(0);
             bm.Flip();
             Assert.IsTrue(-1 == bm);
 
-            Assert.IsTrue(BitMask.CombineMasks(MaskCombineType.BIT_AND) == 0);
+            Assert.IsTrue(BitMask.CombineMasks(MaskCombineType.BitAnd) == 0);
             Assert.IsTrue(BitMask.IsUniqueMask(2));
             Assert.IsFalse(BitMask.IsUniqueMask(3));
             Assert.IsFalse(BitMask.IsUniqueMask(0));
             var gbm = new BitMask<TestEnum>(TestEnum.A, TestEnum.B);
             Assert.IsFalse(BitMask.IsUniqueMask(bm));
-            Assert.IsTrue(gbm.HasFlag(TestEnum.A, MatchType.MATCH_ONE));
+            Assert.IsTrue(gbm.HasFlag(TestEnum.A, MatchType.MatchOne));
 
             gbm.SetFlag(TestEnum.C, true);
 
-            BitMask<TestEnum> gbm1 = TestEnum.C;
+            //BitMask<TestEnum> gbm1 = TestEnum.C;
 
-            Assert.IsFalse(gbm.HasFlag(TestEnum.C, MatchType.MATCH_ONE));
+            Assert.IsFalse(gbm.HasFlag(TestEnum.C, MatchType.MatchOne));
 
             gbm.SetFlag(TestEnum.C, false);
 
-            Assert.IsFalse(gbm.HasFlag(TestEnum.C, MatchType.MATCH_ONE));
+            Assert.IsFalse(gbm.HasFlag(TestEnum.C, MatchType.MatchOne));
 
             gbm.SetAllFlags(TestEnum.C | TestEnum.A);
-            Assert.IsTrue(gbm.HasFlag(TestEnum.C | TestEnum.A, MatchType.MATCH_ALL));
+            Assert.IsTrue(gbm.HasFlag(TestEnum.C | TestEnum.A, MatchType.MatchAll));
         }
 
+        [Flags]
         private enum TestEnum
         {
             A = 1,

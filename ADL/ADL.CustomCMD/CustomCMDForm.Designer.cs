@@ -1,6 +1,6 @@
 ﻿namespace ADL.CustomCMD
 {
-    partial class CustomCMDForm
+    internal partial class CustomCmdForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomCMDForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomCmdForm));
             this.rtb_LogOutput = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.clb_TagFilter = new System.Windows.Forms.CheckedListBox();
@@ -93,7 +93,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "CustomCMDForm";
+            this.Name = "CustomCmdForm";
             this.Text = "ADL : Custom Console";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);

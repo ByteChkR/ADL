@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Threading;
@@ -33,7 +34,7 @@ namespace ADL.DebugTest
 
             //But you can do masks easier now.
             //This bitmask only lets through logs and errors
-            var bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.ERROR, LoggingTypes.LOG);
+            var bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.Error, LoggingTypes.Log);
 
 
             //Then we want to create a LogStream that receives the Messages
@@ -41,7 +42,7 @@ namespace ADL.DebugTest
             LogStream logStream = new LogTextStream(
                 Console.OpenStandardOutput(),
                 bMaskGenericCustom, //Lets use the generic custom 
-                MatchType.MATCH_ONE, //We want to make the logs pass when there is at least one tag that is included in the filter.
+                MatchType.MatchOne, //We want to make the logs pass when there is at least one tag that is included in the filter.
                 true //Get that fancy timestamp infront of the log.
             );
 
@@ -57,7 +58,7 @@ namespace ADL.DebugTest
                 //Debug.Log(mask, "Test with mask " + mask);
             }
 
-            Debug.LogGen(LoggingTypes.LOG, "Finished the Console Out Test.");
+            Debug.LogGen(LoggingTypes.Log, "Finished the Console Out Test.");
 
             //Now we want to remove the stream from the system.
             //Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
@@ -80,7 +81,7 @@ namespace ADL.DebugTest
 
             //But you can do masks easier now.
             //This bitmask only lets through logs and errors
-            var bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.ERROR, LoggingTypes.LOG);
+            var bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.Error, LoggingTypes.Log);
 
             //We want to Create a PipeStream that our logstream is basing on(pipe streams are threadsave streams in a single sender/single receiver situation)
             var pipeStream = new PipeStream(); //Create a new instance
@@ -91,7 +92,7 @@ namespace ADL.DebugTest
             var logStream = new LogStream(
                 pipeStream, //The Stream we want to send the Logs to.
                 bMaskGenericWildcard, //Lets use the generic wildcard(you can set the mask dynamically when using a custom console.
-                MatchType.MATCH_ONE, //We want to make the logs pass when all tags are included in the filter.
+                MatchType.MatchOne, //We want to make the logs pass when all tags are included in the filter.
                 true //Get that fancy timestamp infront of the log.
             );
             //logStream.OverrideChannelTag = false;
@@ -101,7 +102,7 @@ namespace ADL.DebugTest
             //After Creating the log Stream we want to create a custom Cmd window
             var ccmd
                 = //ADL.CustomCMD.CMDUtils.CreateCustomConsole(pipeStream); //Creates a basic Custom cmd with no visual adjustments
-                CMDUtils.CreateCustomConsole(pipeStream); //Creates a custom cmd with color coding and custom font size.
+                CmdUtils.CreateCustomConsole(pipeStream); //Creates a custom cmd with color coding and custom font size.
 
             //This is a test.
             for (var i = 1;
@@ -112,7 +113,7 @@ namespace ADL.DebugTest
                 //Debug.Log(mask, "Test with mask " + mask);
             }
 
-            Debug.LogGen(LoggingTypes.LOG, "Finished the CustomConsole Out Test.");
+            Debug.LogGen(LoggingTypes.Log, "Finished the CustomConsole Out Test.");
 
             //Now we want to remove the stream from the system.
             //Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
@@ -135,7 +136,7 @@ namespace ADL.DebugTest
 
             //But you can do masks easier now.
             //This bitmask only lets through logs and errors
-            var bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.CSVLOGGING);
+            var bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.Csvlogging);
 
 
             //Then we want to create a LogStream that receives the Messages
@@ -156,7 +157,7 @@ namespace ADL.DebugTest
                 //Debug.Log(mask, "Test with mask " + mask);
             }
 
-            Debug.LogGen(LoggingTypes.LOG, "Finished the Logfile Out Test.");
+            Debug.LogGen(LoggingTypes.Log, "Finished the Logfile Out Test.");
             Console.WriteLine("Finished the Logfile Out Test.");
 
             //Now we want to remove the stream from the system.
@@ -179,7 +180,7 @@ namespace ADL.DebugTest
 
         private static void TestNetworkOut()
         {
-            NetworkConfig nc = NetworkConfig.Load("adl_network_config.xml");
+            var nc = NetworkConfig.Load("adl_network_config.xml");
             var lts = NetLogStream.CreateNetLogStream(nc, 1, Assembly.GetExecutingAssembly().GetName().Version);
 
             if (lts == null)
@@ -195,9 +196,7 @@ namespace ADL.DebugTest
             for (var j = 1;
                 j < 64;
                 j++) //63 because its the highest value the current enum can take(every bit beeing 1)
-            {
                 Debug.Log(j, "Net Test with mask " + j);
-            }
         }
 
 
@@ -210,11 +209,11 @@ namespace ADL.DebugTest
             Debug.SendWarnings = true;
             Debug.SendUpdateMessageOnFirstLog = true;
 
-            Debug.ADLEnabled = true;
-            Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE |
-                                     PrefixLookupSettings.DECONSTRUCTMASKTOFIND |
+            Debug.AdlEnabled = true;
+            Debug.PrefixLookupMode = PrefixLookupSettings.Addprefixifavailable |
+                                     PrefixLookupSettings.Deconstructmasktofind |
                                      PrefixLookupSettings
-                                         .BAKEPREFIXES; //If you have int.minvalue to int.maxvalue channels this is not really advisable. (Config files can be bloated by baked prefixes thus getting a huge size.)
+                                         .Bakeprefixes; //If you have int.minvalue to int.maxvalue channels this is not really advisable. (Config files can be bloated by baked prefixes thus getting a huge size.)
 
             //DataObject<float> testf = new DataObject<float>(1, MatchType.MATCH_ONE);
             //DataObject<string> tests = new DataObject<string>(1, MatchType.MATCH_ONE);
@@ -263,7 +262,6 @@ namespace ADL.DebugTest
             //TestLogFileOut();
 
             var rnd = new Random();
-            long msLastTime = 0;
             float avg = 0;
             var sw = new Stopwatch();
 
@@ -271,9 +269,9 @@ namespace ADL.DebugTest
             {
                 Thread.Sleep(50);
                 sw.Start();
-                Debug.LogGen(LoggingTypes.LOG, rnd.NextDouble().ToString());
+                Debug.LogGen(LoggingTypes.Log, rnd.NextDouble().ToString(CultureInfo.CurrentCulture));
                 sw.Stop();
-                msLastTime = sw.ElapsedTicks;
+                var msLastTime = sw.ElapsedTicks;
                 avg = (avg + msLastTime) / 2;
                 sw.Reset();
             }
@@ -285,20 +283,20 @@ namespace ADL.DebugTest
         /// <summary>
         ///     How to set up ADL.
         /// </summary>
-        private static void CreateADLConfig()
+        private static void CreateAdlConfig()
         {
             Debug.SetAllPrefixes("[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[ADL]");
             Debug.SendWarnings = false;
-            Debug.ADLWarningMask = 4;
+            Debug.AdlWarningMask = 4;
             Debug.AddPrefixForMask(new BitMask(true), "[GLOBAL]");
-            Debug.ADLEnabled = false;
+            Debug.AdlEnabled = false;
             Debug.SendUpdateMessageOnFirstLog = true;
             Debug.UpdateMask = 32;
-            Debug.PrefixLookupMode = PrefixLookupSettings.ADDPREFIXIFAVAILABLE;
+            Debug.PrefixLookupMode = PrefixLookupSettings.Addprefixifavailable;
             Debug.SaveConfig(); //Not Needed to work, but for the next time we can just load the config
         }
 
-        private static void CreateADLCustomCMDConfig()
+        private static void CreateAdlCustomCmdConfig()
         {
             var colorCoding =
                 new SerializableDictionary<int, SerializableColor>(
@@ -308,22 +306,22 @@ namespace ADL.DebugTest
                         {4, Color.Orange}, //Every warning is painted in orange
                         {32, Color.Green}
                     });
-            var config = ADLCustomConsoleConfig.Standard;
+            var config = AdlCustomConsoleConfig.Standard;
             config.FontSize = 13;
             config.FrameTime = 50;
             config.ColorCoding = colorCoding;
-            CMDUtils.SaveConfig(config);
+            CmdUtils.SaveConfig(config);
         }
 
         private enum LoggingTypes
         {
-            GENERAL = 1,
-            LOG = 2,
-            WARNING = 4,
-            ERROR = 8,
-            FATAL = 16,
-            ADL = 32,
-            CSVLOGGING = 64
+            General = 1,
+            Log = 2,
+            Warning = 4,
+            Error = 8,
+            Fatal = 16,
+            Adl = 32,
+            Csvlogging = 64
         }
     }
 }

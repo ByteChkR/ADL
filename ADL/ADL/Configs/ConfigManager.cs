@@ -20,7 +20,7 @@ namespace ADL.Configs
         /// <typeparam name="T">Type of Config</typeparam>
         /// <param name="path">Path to config</param>
         /// <returns>Deserialized Config File.</returns>
-        public static T ReadFromFile<T>(string path) where T : IADLConfig
+        public static T ReadFromFile<T>(string path) where T : IAdlConfig
         {
             T ret;
             _serializer = new XmlSerializer(typeof(T));
@@ -52,7 +52,7 @@ namespace ADL.Configs
         /// <typeparam name="T">Type of config</typeparam>
         /// <param name="path">path to config file.</param>
         /// <param name="data">config object></param>
-        public static void SaveToFile<T>(string path, T data) where T : IADLConfig
+        public static void SaveToFile<T>(string path, T data) where T : IAdlConfig
         {
             try
             {

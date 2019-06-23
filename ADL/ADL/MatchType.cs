@@ -8,11 +8,11 @@
         /// <summary>
         ///     If one flag is not in the logstream mask, return false
         /// </summary>
-        MATCH_ALL = 0,
+        MatchAll = 0,
 
         /// <summary>
         ///     If there is at least one flag in the mask
         /// </summary>
-        MATCH_ONE = 1
+        MatchOne = 1
     }
 }

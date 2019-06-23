@@ -9,8 +9,8 @@ namespace ADL
     /// </summary>
     public static class Utils
     {
-        public static readonly int BYTE_SIZE = 8;
-        public static readonly char NEW_LINE = '\n';
+        public static readonly int ByteSize = 8;
+        public static readonly char NewLine = '\n';
 
         /// <summary>
         ///     Returns the Enum Size for the specified enum
@@ -39,44 +39,44 @@ namespace ADL
         }
 
         /// <summary>
-        /// Converts a Byte Array to a Hexadecimal Encoded String for representation
+        ///     Converts a Byte Array to a Hexadecimal Encoded String for representation
         /// </summary>
-        /// <param name="Bytes"></param>
+        /// <param name="bytes"></param>
         /// <returns></returns>
-        public static string ByteArrayToHexString(byte[] Bytes)
+        public static string ByteArrayToHexString(byte[] bytes)
         {
-            var Result = new StringBuilder(Bytes.Length * 2);
-            var HexAlphabet = "0123456789ABCDEF";
+            var result = new StringBuilder(bytes.Length * 2);
+            const string hexAlphabet = "0123456789ABCDEF";
 
-            foreach (var B in Bytes)
+            foreach (var b in bytes)
             {
-                Result.Append(HexAlphabet[B >> 4]);
-                Result.Append(HexAlphabet[B & 0xF]);
+                result.Append(hexAlphabet[b >> 4]);
+                result.Append(hexAlphabet[b & 0xF]);
             }
 
-            return Result.ToString();
+            return result.ToString();
         }
 
         /// <summary>
-        /// Converts a Hexadecimal Encoded String into a byte array.
+        ///     Converts a Hexadecimal Encoded String into a byte array.
         /// </summary>
-        /// <param name="Hex"></param>
+        /// <param name="hex"></param>
         /// <returns></returns>
-        public static byte[] HexStringToByteArray(string Hex)
+        public static byte[] HexStringToByteArray(string hex)
         {
-            var Bytes = new byte[Hex.Length / 2];
-            int[] HexValue =
+            var bytes = new byte[hex.Length / 2];
+            int[] hexValue =
             {
                 0x00, 0x01, 0x02, 0x03, 0x04, 0x05,
                 0x06, 0x07, 0x08, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F
             };
 
-            for (int x = 0, i = 0; i < Hex.Length; i += 2, x += 1)
-                Bytes[x] = (byte) ((HexValue[char.ToUpper(Hex[i + 0]) - '0'] << 4) |
-                                   HexValue[char.ToUpper(Hex[i + 1]) - '0']);
+            for (int x = 0, i = 0; i < hex.Length; i += 2, x += 1)
+                bytes[x] = (byte) ((hexValue[char.ToUpper(hex[i + 0]) - '0'] << 4) |
+                                   hexValue[char.ToUpper(hex[i + 1]) - '0']);
 
-            return Bytes;
+            return bytes;
         }
 
         #region TimeStamp

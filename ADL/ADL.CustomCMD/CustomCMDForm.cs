@@ -12,17 +12,12 @@ namespace ADL.CustomCMD
     ///     Form to Display the Content of a LogStream.
     ///     Color coding supported.
     /// </summary>
-    public partial class CustomCMDForm : Form
+    internal partial class CustomCmdForm : Form
     {
-        private float _avgLogsPerBlock;
-        private int _blocksWritten;
-
         /// <summary>
         ///     The Tags and their corresponding colors
         /// </summary>
         private readonly Dictionary<int, SerializableColor> _colorCoding;
-
-        private int _consoleCleared;
 
         ///// <summary>
         ///// Copies the Prefix Array from the Debug Class to the new thread of the CustomCMD
@@ -35,34 +30,39 @@ namespace ADL.CustomCMD
         /// </summary>
         private readonly bool _hasColorCoding;
 
+        private const int MaxLogCountPerBlock = 500;
+
+
+        private const string ConsoleTitleInfo = "ADL : Custom Console : Logs Received {0} : Logs Written {1} : Blocks Writen {2}(1:{3}) : Text Cleared {4}";
+
+
+        private readonly Queue<Log> _lastLogs = new Queue<Log>();
+        private readonly PipeStream _ps;
+        private float _avgLogsPerBlock;
+        private int _blocksWritten;
+
+        private int _consoleCleared;
+
         private int _logCount;
         private int _logsWritten;
-        private readonly int _maxLogCountPerBlock = 500;
         private int _totalLogsReceived;
         private int _totalLogsWrittenInBlocks;
-
-
-        private readonly string ConsoleTitleInfo =
-            "ADL : Custom Console : Logs Received {0} : Logs Written {1} : Blocks Writen {2}(1:{3}) : Text Cleared {4}";
-
-
-        private readonly Queue<Log> lastLogs = new Queue<Log>();
-        private readonly PipeStream ps;
 
 
         /// <summary>
         ///     Creates a new CustomCMD.
         /// </summary>
         /// <param name="ps">Pipe Stream to read from</param>
-        /// <param name="Background">Background Color</param>
-        /// <param name="BaseFontColor">Base Font Color. Acts as fallback if no color coding or tag not found</param>
+        /// <param name="background">Background Color</param>
+        /// <param name="baseFontColor">Base Font Color. Acts as fallback if no color coding or tag not found</param>
         /// <param name="fontSize">font size of the logs</param>
+        /// <param name="frameTime">the millseconds between checking for logs.</param>
         /// <param name="colorCoding">colorcoding</param>
-        public CustomCMDForm(PipeStream ps, Color Background, Color BaseFontColor, float fontSize, int frameTime,
+        public CustomCmdForm(PipeStream ps, Color background, Color baseFontColor, float fontSize, int frameTime,
             Dictionary<int, SerializableColor> colorCoding = null)
         {
             InitializeComponent();
-            this.ps = ps;
+            _ps = ps;
             foreach (var kvp in Debug.GetAllPrefixes()) //Copy all tags to the form. To Mitigate some access violation.
             {
                 clb_TagFilter.Items.Add(kvp.Value);
@@ -74,28 +74,27 @@ namespace ADL.CustomCMD
             timer1.Interval = frameTime;
 
             //Visual elements
-            BackColor = Background;
-            FontColor = BaseFontColor;
+            BackColor = background;
+            FontColor = baseFontColor;
             FontSize = fontSize;
 
-            if (colorCoding != null && colorCoding.Count != 0)
-            {
-                _colorCoding = colorCoding;
-                _hasColorCoding = true;
-            }
+            if (colorCoding == null || colorCoding.Count == 0) return;
+            _colorCoding = colorCoding;
+            _hasColorCoding = true;
+        }
+
+        public sealed override Color BackColor
+        {
+            get => base.BackColor;
+            set => base.BackColor = value;
         }
 
         public int MaxConsoleLogCount { get; set; } = 500;
 
-        public int MaxLogCountPerBlock { get; set; } = 200;
+        //public int MaxLogCountPerBlock { get; set; } = 200;
 
         public int MinConsoleLogCount { get; set; } = 23;
 
-        public int MaxLogCountPerFrame
-        {
-            get => MaxLogCountPerBlock;
-            set => MaxLogCountPerBlock = value;
-        }
 
         /// <summary>
         ///     Basis color. If no colorcoding or tag is not found
@@ -141,23 +140,20 @@ namespace ADL.CustomCMD
         /// <summary>
         ///     Filters the Tags and returns the right color
         /// </summary>
-        /// <param name="line">entire log line</param>
+        /// <param name="mask">Mask</param>
         /// <returns></returns>
         private Color GetColorFromMask(int mask)
         {
             var ret = FontColor;
 
-            if (_hasColorCoding)
-            {
-                var bm = new BitMask(mask);
-                if (_colorCoding.ContainsKey(mask))
-                    return _colorCoding[mask];
-                if (BitMask.IsContainedInMask((int) Debug.PrefixLookupMode,
-                    (int) PrefixLookupSettings.DECONSTRUCTMASKTOFIND, true))
-                    foreach (var m in BitMask.GetUniqueMasksSet(mask))
-                        if (_colorCoding.ContainsKey(m))
-                            return _colorCoding[m];
-            }
+            if (!_hasColorCoding) return ret;
+            if (_colorCoding.ContainsKey(mask))
+                return _colorCoding[mask];
+            if (!BitMask.IsContainedInMask((int) Debug.PrefixLookupMode,
+                (int) PrefixLookupSettings.Deconstructmasktofind, true)) return ret;
+            foreach (var m in BitMask.GetUniqueMasksSet(mask))
+                if (_colorCoding.ContainsKey(m))
+                    return _colorCoding[m];
 
             return ret;
         }
@@ -172,7 +168,7 @@ namespace ADL.CustomCMD
             if (block.Logs.Count == 0) return;
 
             if (MaxConsoleLogCount < _logCount)
-                ClearConsole(block.Logs.Count());
+                ClearConsole();
             _logCount += block.Logs.Count;
             ShowInConsole(block);
             Text = string.Format(ConsoleTitleInfo, _totalLogsReceived, _logsWritten, _blocksWritten,
@@ -182,7 +178,7 @@ namespace ADL.CustomCMD
 
         private LogPackage ReadBlock()
         {
-            return LogPackage.ReadBlock(ps, (int) ps.Length);
+            return LogPackage.ReadBlock(_ps, (int) _ps.Length);
         }
 
 
@@ -194,13 +190,12 @@ namespace ADL.CustomCMD
         private LogPackage FilterLogs(LogPackage logPackage)
         {
             var result = new bool[logPackage.Logs.Count];
-            var containsOne = false;
             for (var i = 0; i < logPackage.Logs.Count; i++)
             {
-                containsOne = false;
-                for (var j = 0; j < clb_TagFilter.CheckedItems.Count; j++)
+                var containsOne=false;
+                foreach (var t in clb_TagFilter.CheckedItems)
                 {
-                    if (!Debug.GetPrefixMask(clb_TagFilter.CheckedItems[j].ToString(), out var mask)) continue;
+                    if (!Debug.GetPrefixMask(t.ToString(), out var mask)) continue;
                     if (BitMask.IsContainedInMask(mask, logPackage.Logs[i].Mask, false)) containsOne = true;
                 }
 
@@ -212,8 +207,7 @@ namespace ADL.CustomCMD
                 if (result[i]) continue;
                 logPackage.Logs.RemoveAt(i);
             }
-
-            result = null;
+            
             return logPackage;
         }
 
@@ -227,13 +221,13 @@ namespace ADL.CustomCMD
             var llogs = logs; //FilterLogs(logs);
             if (llogs.Logs.Count == 0) return;
             _totalLogsReceived += llogs.Logs.Count;
-            if (llogs.Logs.Count > MaxLogCountPerFrame
-            ) //Can not keep up with the amount of logs. Writing this whole block without color support and at one piece.
+            if (llogs.Logs.Count > MaxLogCountPerBlock)
+                //Can not keep up with the amount of logs. Writing this whole block without color support and at one piece.
             {
-                if (_maxLogCountPerBlock < llogs.Logs.Count)
+                if (MaxLogCountPerBlock < llogs.Logs.Count)
                     return; // Thats not worth it. there is no way to write all of that in the console.
                 llogs = FilterLogs(llogs); //If we write in blocks filter out the wrong logs
-                Debug.Log(Debug.ADLWarningMask,
+                Debug.Log(Debug.AdlWarningMask,
                     "CustomCMDForm.ShowInConsole(Logpackage Logs) : You are outputting to much logs. the Console can not keep up in that pace. Consider changing the mask for the console to achieve better performance.");
                 _totalLogsWrittenInBlocks += llogs.Logs.Count;
                 _blocksWritten++;
@@ -244,25 +238,24 @@ namespace ADL.CustomCMD
             else
             {
                 _logsWritten += llogs.Logs.Count;
-                Color fontColor;
                 foreach (var l in llogs.Logs)
                 {
                     //Do the FilterLogs() code in this loop to prevent another 2 for loops.
                     var containsOne = false;
                     for (var j = 0; j < clb_TagFilter.CheckedItems.Count; j++)
                     {
-                        if (!Debug.GetPrefixMask(clb_TagFilter.CheckedItems[j].ToString(), out var mask)) continue;
+                        if (!Debug.GetPrefixMask(j.ToString(), out var mask)) continue;
                         if (BitMask.IsContainedInMask(mask, l.Mask, false)) containsOne = true;
                     }
 
                     if (!containsOne) break;
 
 
-                    fontColor = GetColorFromMask(l.Mask);
+                    var fontColor = GetColorFromMask(l.Mask);
 
-                    lastLogs.Enqueue(l);
-                    if (lastLogs.Count > MinConsoleLogCount)
-                        lastLogs.Dequeue();
+                    _lastLogs.Enqueue(l);
+                    if (_lastLogs.Count > MinConsoleLogCount)
+                        _lastLogs.Dequeue();
                     WriteToConsole(l.Message, fontColor);
                 }
             }
@@ -284,12 +277,11 @@ namespace ADL.CustomCMD
         /// <summary>
         ///     Clears the RichTextBox.Text part that is not on screen.
         /// </summary>
-        /// <param name="nextLength"></param>
-        private void ClearConsole(int nextLength)
+        private void ClearConsole()
         {
             _consoleCleared++;
-            var logs = lastLogs.ToList();
-            lastLogs.Clear();
+            var logs = _lastLogs.ToList();
+            _lastLogs.Clear();
             _logCount = 0;
             rtb_LogOutput.Clear();
 

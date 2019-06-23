@@ -27,7 +27,7 @@ namespace ADL.Unity
             base.OnInspectorGUI();
             var names = new string[_debugLevel.arraySize];
             for (var i = 0; i < names.Length; i++) names[i] = _debugLevel.GetArrayElementAtIndex(i).stringValue;
-            DebugComponent._DebugLevel = names;
+            DebugComponent.DebugLevel = names;
         }
     }
 }

@@ -109,9 +109,9 @@ Inheritance diagram for ADL.Unity.UnityTextWriter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a57d9eed679dbab0551e2b3865085718a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a57d9eed679dbab0551e2b3865085718a">UnityTextWriter</a> (<a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a> WarnMask, <a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a> ErrorMask)</td></tr>
-<tr class="memdesc:a57d9eed679dbab0551e2b3865085718a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that needs masks  <a href="#a57d9eed679dbab0551e2b3865085718a">More...</a><br /></td></tr>
-<tr class="separator:a57d9eed679dbab0551e2b3865085718a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a668d545d1a2a8194e5aa35ff89965470"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a668d545d1a2a8194e5aa35ff89965470">UnityTextWriter</a> (<a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a> warnMask, <a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a> errorMask)</td></tr>
+<tr class="memdesc:a668d545d1a2a8194e5aa35ff89965470"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor that needs masks  <a href="#a668d545d1a2a8194e5aa35ff89965470">More...</a><br /></td></tr>
+<tr class="separator:a668d545d1a2a8194e5aa35ff89965470"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad62666e8a12f473f34780dbfdbc71975"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html#ad62666e8a12f473f34780dbfdbc71975">Flush</a> ()</td></tr>
 <tr class="memdesc:ad62666e8a12f473f34780dbfdbc71975"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the Log to the UnityConsole.  <a href="#ad62666e8a12f473f34780dbfdbc71975">More...</a><br /></td></tr>
 <tr class="separator:ad62666e8a12f473f34780dbfdbc71975"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,8 +164,8 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Textwriter derived <a class="el" href="class_a_d_l_1_1_unity_1_1_unity_text_writer.html" title="Textwriter derived UnityTextWriter, Supporting Wanring/Error mask. ">UnityTextWriter</a>, Supporting Wanring/Error mask. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a57d9eed679dbab0551e2b3865085718a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57d9eed679dbab0551e2b3865085718a">&#9670;&nbsp;</a></span>UnityTextWriter()</h2>
+<a id="a668d545d1a2a8194e5aa35ff89965470"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a668d545d1a2a8194e5aa35ff89965470">&#9670;&nbsp;</a></span>UnityTextWriter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,13 +174,13 @@ Private Attributes</h2></td></tr>
           <td class="memname">ADL.Unity.UnityTextWriter.UnityTextWriter </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a>&#160;</td>
-          <td class="paramname"><em>WarnMask</em>, </td>
+          <td class="paramname"><em>warnMask</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_a_d_l_1_1_bit_mask.html">BitMask</a>&#160;</td>
-          <td class="paramname"><em>ErrorMask</em>&#160;</td>
+          <td class="paramname"><em>errorMask</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -193,8 +193,8 @@ Private Attributes</h2></td></tr>
 <p>Constructor that needs masks </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">WarnMask</td><td>everything satisfying this mask will be printed as a UnityWarning</td></tr>
-    <tr><td class="paramname">ErrorMask</td><td>everything satisfying this mask will be printed as a UnityError</td></tr>
+    <tr><td class="paramname">warnMask</td><td>everything satisfying this mask will be printed as a UnityWarning</td></tr>
+    <tr><td class="paramname">errorMask</td><td>everything satisfying this mask will be printed as a UnityError</td></tr>
   </table>
   </dd>
 </dl>
@@ -321,6 +321,8 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td>Line</td></tr>
+    <tr><td class="paramname">start</td><td>Start index</td></tr>
+    <tr><td class="paramname">count</td><td>Bytes to write</td></tr>
   </table>
   </dd>
 </dl>
