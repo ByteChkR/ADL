@@ -8,6 +8,7 @@ using System.Threading;
 using ADL.Configs;
 using ADL.CustomCMD;
 using ADL.Network;
+using ADL.Network.Streams;
 using ADL.Streams;
 
 namespace ADL.DebugTest
@@ -178,8 +179,8 @@ namespace ADL.DebugTest
 
         private static void TestNetworkOut()
         {
-            var lts = NetUtils.CreateNetworkTextStream(1, Assembly.GetExecutingAssembly().GetName().Version,
-                "localhost", 1337, -1, MatchType.MATCH_ALL, true);
+            NetworkConfig nc = NetworkConfig.Load("adl_network_config.xml");
+            var lts = NetLogStream.CreateNetLogStream(nc, 1, Assembly.GetExecutingAssembly().GetName().Version);
 
             if (lts == null)
             {
