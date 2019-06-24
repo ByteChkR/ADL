@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['save',['Save',['../class_a_d_l_1_1_configs_1_1_network_config.html#a9023a1d87e44c1d6469d203b6aa0a12a',1,'ADL::Configs::NetworkConfig']]],
+  ['save',['Save',['../class_a_d_l_1_1_configs_1_1_network_config.html#a9023a1d87e44c1d6469d203b6aa0a12a',1,'ADL.Configs.NetworkConfig.Save()'],['../class_a_d_l_1_1_configs_1_1_network_server_config.html#a1e496b83b5771c8f6336a88a7693827b',1,'ADL.Configs.NetworkServerConfig.Save()']]],
   ['saveconfig',['SaveConfig',['../class_a_d_l_1_1_debug.html#a3e2b51e8f58e3df200d22a78cf1806c5',1,'ADL.Debug.SaveConfig(AdlConfig config, string path=&quot;adl_config.xml&quot;)'],['../class_a_d_l_1_1_debug.html#a97509c5ce2e79d902d388bea0854a382',1,'ADL.Debug.SaveConfig(string path=&quot;adl_config.xml&quot;)'],['../class_a_d_l_1_1_custom_c_m_d_1_1_cmd_utils.html#a53969b6bc0be164547bc198228dc0d8e',1,'ADL.CustomCMD.CmdUtils.SaveConfig(AdlCustomConsoleConfig config, string path=&quot;adl_customcmd_config.xml&quot;)'],['../class_a_d_l_1_1_custom_c_m_d_1_1_cmd_utils.html#aadeb1ddd1b8b69ee31f6ed1621bc977f',1,'ADL.CustomCMD.CmdUtils.SaveConfig(Color background, Color fontColor, float fontSize, Dictionary&lt; int, SerializableColor &gt; colorCoding, string path=&quot;adl_customcmd_config.xml&quot;)']]],
   ['savetofile_3c_20t_20_3e',['SaveToFile&lt; T &gt;',['../class_a_d_l_1_1_configs_1_1_config_manager.html#a6b904fb26f8cf01f1192a801590f2796',1,'ADL::Configs::ConfigManager']]],
   ['scrolltobottom',['ScrollToBottom',['../class_a_d_l_1_1_custom_c_m_d_1_1_rich_text_box_extensions.html#a095b66f980833aed876bc583744b36fb',1,'ADL::CustomCMD::RichTextBoxExtensions']]],
@@ -15,7 +15,7 @@ var searchData=
   ['serializabledictionary_3c_20int_2c_20string_20_3e',['SerializableDictionary&lt; int, string &gt;',['../class_a_d_l_1_1_configs_1_1_serializable_dictionary.html',1,'ADL::Configs']]],
   ['serializabledictionaryintcolor',['SerializableDictionaryIntColor',['../class_a_d_l_1_1_unity_1_1_unity_config_1_1_serializable_dictionary_int_color.html',1,'ADL::Unity::UnityConfig']]],
   ['serializabledictionaryintstring',['SerializableDictionaryIntString',['../class_a_d_l_1_1_unity_1_1_unity_config_1_1_serializable_dictionary_int_string.html',1,'ADL::Unity::UnityConfig']]],
-  ['serialize',['Serialize',['../struct_a_d_l_1_1_streams_1_1_log.html#ab1c919b25b86148564ff5440ae608205',1,'ADL.Streams.Log.Serialize()'],['../struct_a_d_l_1_1_network_1_1_auth_packet.html#a12379e8a38dfd3873576c0b43f40b957',1,'ADL.Network.AuthPacket.Serialize()']]],
+  ['serialize',['Serialize',['../struct_a_d_l_1_1_streams_1_1_log.html#ab1c919b25b86148564ff5440ae608205',1,'ADL.Streams.Log.Serialize()'],['../struct_a_d_l_1_1_network_1_1_shared_1_1_auth_packet.html#a72415f66a12afb2de46e59e9d193d142',1,'ADL.Network.Shared.AuthPacket.Serialize()']]],
   ['serverconsole',['ServerConsole',['../class_a_d_l_1_1_network_1_1_server_1_1_server_console.html',1,'ADL::Network::Server']]],
   ['setallflags',['SetAllFlags',['../class_a_d_l_1_1_bit_mask.html#a025f039a81b7439fcc85a0ddff1a7502',1,'ADL.BitMask.SetAllFlags(int newMask)'],['../class_a_d_l_1_1_bit_mask.html#adbdf89842cde61d787eddde9f1699eec',1,'ADL.BitMask.SetAllFlags(T newFlags)']]],
   ['setallprefixes',['SetAllPrefixes',['../class_a_d_l_1_1_debug.html#aeee052b6bc6759222ce6ed32dd9763a1',1,'ADL::Debug']]],

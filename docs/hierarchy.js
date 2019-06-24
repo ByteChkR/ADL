@@ -1,6 +1,6 @@
 var hierarchy =
 [
-    [ "ADL.Network.AuthPacket", "struct_a_d_l_1_1_network_1_1_auth_packet.html", null ],
+    [ "ADL.Network.Shared.AuthPacket", "struct_a_d_l_1_1_network_1_1_shared_1_1_auth_packet.html", null ],
     [ "ADL.BitMask", "class_a_d_l_1_1_bit_mask.html", [
       [ "ADL.BitMask< T >", "class_a_d_l_1_1_bit_mask.html", null ]
     ] ],
@@ -37,6 +37,7 @@ var hierarchy =
     [ "ADL.Network.NetUtils", "class_a_d_l_1_1_network_1_1_net_utils.html", null ],
     [ "ADL.Configs.NetworkConfig", "class_a_d_l_1_1_configs_1_1_network_config.html", null ],
     [ "ADL.Network.Server.NetworkListener", "class_a_d_l_1_1_network_1_1_server_1_1_network_listener.html", null ],
+    [ "ADL.Configs.NetworkServerConfig", "class_a_d_l_1_1_configs_1_1_network_server_config.html", null ],
     [ "PropertyAttribute", null, [
       [ "ADL.Unity.EnumFlagsAttribute", "class_a_d_l_1_1_unity_1_1_enum_flags_attribute.html", null ]
     ] ],
