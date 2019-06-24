@@ -5,7 +5,7 @@ ___
 
 ## Code of Conduct [here](CODE_OF_CONDUCT.md)
 
-## Quick Start <a href="https://bytechkr.github.io/ADL/quick_start/quick_start_contents.html" target="_blank">[here]</a>
+## Quick Start <a href="https://bytechkr.github.io/ADL/quick_start/quick_start_contents.html" target="_blank">here</a>
 
 ## Documentation can be found [here](https://bytechkr.github.io/ADL/)
 
