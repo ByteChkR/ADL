@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['main',['Main',['../class_a_d_l_1_1_network_1_1_server_1_1_server_console.html#ad536691132e3079d6dcf62ec538352fe',1,'ADL::Network::Server::ServerConsole']]],
   ['mask',['Mask',['../struct_a_d_l_1_1_streams_1_1_log.html#a42805119923b6062ad95fa4f43a78e5e',1,'ADL.Streams.Log.Mask()'],['../class_a_d_l_1_1_streams_1_1_log_stream.html#a30d66691d1651c3c6554008996d05053',1,'ADL.Streams.LogStream.Mask()']]],
   ['maskcombinetype',['MaskCombineType',['../namespace_a_d_l.html#a887d1db091d273083278875e32842128',1,'ADL']]],
   ['maskoperations',['MaskOperations',['../class_a_d_l_1_1_unit_tests_1_1_mask_operations.html',1,'ADL::UnitTests']]],

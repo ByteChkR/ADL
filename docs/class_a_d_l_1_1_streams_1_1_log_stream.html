@@ -209,6 +209,9 @@ Protected Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:ad6c6eb547d1c7fa87807a514a7337e32"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#ad6c6eb547d1c7fa87807a514a7337e32">IsClosed</a><code> [get, protected set]</code></td></tr>
+<tr class="memdesc:ad6c6eb547d1c7fa87807a514a7337e32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the stream closed?  <a href="#ad6c6eb547d1c7fa87807a514a7337e32">More...</a><br /></td></tr>
+<tr class="separator:ad6c6eb547d1c7fa87807a514a7337e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08c3744705ff576751beff0dea9465ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a08c3744705ff576751beff0dea9465ed">OverrideChannelTag</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a08c3744705ff576751beff0dea9465ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true all the LogChannels/TimeStamp is ignored and only the message will get received.  <a href="#a08c3744705ff576751beff0dea9465ed">More...</a><br /></td></tr>
 <tr class="separator:a08c3744705ff576751beff0dea9465ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -236,9 +239,6 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:af72c5653605185b6c55af0c5540bd10e"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bdde">MatchType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#af72c5653605185b6c55af0c5540bd10e">_matchType</a></td></tr>
 <tr class="memdesc:af72c5653605185b6c55af0c5540bd10e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The match type(how the mask gets compared)  <a href="#af72c5653605185b6c55af0c5540bd10e">More...</a><br /></td></tr>
 <tr class="separator:af72c5653605185b6c55af0c5540bd10e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a635f94985015ba00f409229b71a9ac5b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html#a635f94985015ba00f409229b71a9ac5b">_streamClosed</a></td></tr>
-<tr class="memdesc:a635f94985015ba00f409229b71a9ac5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the stream closed?  <a href="#a635f94985015ba00f409229b71a9ac5b">More...</a><br /></td></tr>
-<tr class="separator:a635f94985015ba00f409229b71a9ac5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="struct_a_d_l_1_1_streams_1_1_log.html" title="Struct that can serialize and deserialize to be sent over a stream ">Log</a> stream class that you can use with virtually any stream(as long as you handle the multithreading on your own if used) This class wraps around your supplied stream and interacts with the system. Because the <a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html" title="Log stream class that you can use with virtually any stream(as long as you handle the multithreading ...">LogStream</a> implements every override and passes it to the base stream, you can use your created base stream itself instead of the <a class="el" href="class_a_d_l_1_1_streams_1_1_log_stream.html" title="Log stream class that you can use with virtually any stream(as long as you handle the multithreading ...">LogStream</a>. </p>
@@ -354,7 +354,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="class_a_d_l_1_1_streams_1_1_log_text_stream.html#a8c260f4ee543ccda2e98a8f480ba584d">ADL.Streams.LogTextStream</a>.</p>
+<p>Reimplemented in <a class="el" href="class_a_d_l_1_1_network_1_1_streams_1_1_net_log_stream.html#a69df053cb9a333c8c74ffe239b5584be">ADL.Network.Streams.NetLogStream</a>, and <a class="el" href="class_a_d_l_1_1_streams_1_1_log_text_stream.html#a8c260f4ee543ccda2e98a8f480ba584d">ADL.Streams.LogTextStream</a>.</p>
 
 </div>
 </div>
@@ -407,30 +407,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a635f94985015ba00f409229b71a9ac5b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a635f94985015ba00f409229b71a9ac5b">&#9670;&nbsp;</a></span>_streamClosed</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool ADL.Streams.LogStream._streamClosed</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Is the stream closed? </p>
-
-</div>
-</div>
 <a id="a04bd13a1e1b5abd588a5d585ef9df31d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a04bd13a1e1b5abd588a5d585ef9df31d">&#9670;&nbsp;</a></span>BaseStream</h2>
 
@@ -477,6 +453,30 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Put a timestamp infront of the log. </p>
+
+</div>
+</div>
+<a id="ad6c6eb547d1c7fa87807a514a7337e32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6c6eb547d1c7fa87807a514a7337e32">&#9670;&nbsp;</a></span>IsClosed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ADL.Streams.LogStream.IsClosed</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Is the stream closed? </p>
 
 </div>
 </div>

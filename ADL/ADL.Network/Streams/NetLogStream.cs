@@ -68,8 +68,25 @@ namespace ADL.Network.Streams
         public static NetLogStream CreateNetLogStream(int id, Version assemblyVersion, string hostname, int port,
             int mask, MatchType mt, bool hasTimestamp)
         {
-            var ls = NetUtils.CreateNetworkTextStream(id, assemblyVersion, hostname, port, mask, mt, hasTimestamp);
+            var ls = NetUtils.CreateNetworkStream(id, assemblyVersion, hostname, port, mask, mt, hasTimestamp);
             return ls;
         }
+
+
+        public override void Write(Log log)
+        {
+            if (IsClosed) return;
+            if (AddTimeStamp) log.Message = Utils.TimeStamp + log.Message;
+            var buffer = log.Serialize();
+            try
+            {
+                BaseStream.Write(buffer, 0, buffer.Length);
+                Flush();
+            }
+            catch (Exception)
+            {
+                Close();
+            }
+}
     }
 }

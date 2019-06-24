@@ -4,7 +4,7 @@ var hierarchy =
     [ "ADL.BitMask", "class_a_d_l_1_1_bit_mask.html", [
       [ "ADL.BitMask< T >", "class_a_d_l_1_1_bit_mask.html", null ]
     ] ],
-    [ "ADL.Network.ClientSession", "class_a_d_l_1_1_network_1_1_client_session.html", null ],
+    [ "ADL.Network.Server.ClientSession", "class_a_d_l_1_1_network_1_1_server_1_1_client_session.html", null ],
     [ "ADL.CustomCMD.CmdUtils", "class_a_d_l_1_1_custom_c_m_d_1_1_cmd_utils.html", null ],
     [ "ADL.Configs.ConfigManager", "class_a_d_l_1_1_configs_1_1_config_manager.html", null ],
     [ "ADL.Debug", "class_a_d_l_1_1_debug.html", null ],
@@ -12,7 +12,10 @@ var hierarchy =
     [ "Editor", null, [
       [ "ADL.Unity.DebugEditorWindow", "class_a_d_l_1_1_unity_1_1_debug_editor_window.html", null ]
     ] ],
-    [ "ADL.Streams.GenPipeStream< ADL.Network.ClientSession >", "class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html", null ],
+    [ "Form", null, [
+      [ "ADL.CustomCMD.CustomCmdForm", "class_a_d_l_1_1_custom_c_m_d_1_1_custom_cmd_form.html", null ]
+    ] ],
+    [ "ADL.Streams.GenPipeStream< ADL.Network.Server.ClientSession >", "class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html", null ],
     [ "ADL.Streams.GenPipeStream< byte >", "class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html", [
       [ "ADL.Streams.PipeStream", "class_a_d_l_1_1_streams_1_1_pipe_stream.html", null ]
     ] ],
@@ -33,7 +36,7 @@ var hierarchy =
     ] ],
     [ "ADL.Network.NetUtils", "class_a_d_l_1_1_network_1_1_net_utils.html", null ],
     [ "ADL.Configs.NetworkConfig", "class_a_d_l_1_1_configs_1_1_network_config.html", null ],
-    [ "ADL.Network.NetworkListener", "class_a_d_l_1_1_network_1_1_network_listener.html", null ],
+    [ "ADL.Network.Server.NetworkListener", "class_a_d_l_1_1_network_1_1_server_1_1_network_listener.html", null ],
     [ "PropertyAttribute", null, [
       [ "ADL.Unity.EnumFlagsAttribute", "class_a_d_l_1_1_unity_1_1_enum_flags_attribute.html", null ]
     ] ],
@@ -50,6 +53,7 @@ var hierarchy =
     [ "ADL.Configs.SerializableDictionary< int, string >", "class_a_d_l_1_1_configs_1_1_serializable_dictionary.html", [
       [ "ADL.Unity.UnityConfig.SerializableDictionaryIntString", "class_a_d_l_1_1_unity_1_1_unity_config_1_1_serializable_dictionary_int_string.html", null ]
     ] ],
+    [ "ADL.Network.Server.ServerConsole", "class_a_d_l_1_1_network_1_1_server_1_1_server_console.html", null ],
     [ "Stream", null, [
       [ "ADL.Streams.GenPipeStream< T >", "class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html", null ],
       [ "ADL.Streams.LogStream", "class_a_d_l_1_1_streams_1_1_log_stream.html", [

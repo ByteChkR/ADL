@@ -1,6 +1,6 @@
 ﻿namespace ADL.CustomCMD
 {
-    internal partial class CustomCmdForm
+    public partial class CustomCmdForm
     {
         /// <summary>
         /// Required designer variable.

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace ADL.Configs
 {
@@ -36,6 +37,7 @@ namespace ADL.Configs
         /// </summary>
         public bool SendWarnings;
 
+        [XmlIgnore]
         public Encoding TextEncoding;
 
         /// <summary>

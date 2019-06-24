@@ -355,11 +355,19 @@ namespace ADL
 
             lock (Streams)
             {
+                for (int i = Streams.Count-1; i >= 0; i--)
+                {
+                    if (Streams[i].IsClosed)
+                        Streams.RemoveAt(i);
+                }
                 foreach (var logs in Streams)
+                {
+                    
                     if (logs.IsContainedInMask(mask))
                     {
                         logs.Write(logs.OverrideChannelTag ? new Log(mask, messg) : new Log(mask, mesg));
                     }
+                }
             }
         }
 

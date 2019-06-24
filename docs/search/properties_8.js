@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['updatemask',['UpdateMask',['../class_a_d_l_1_1_debug.html#a9d11059758029ae7f2509463e65930e1',1,'ADL::Debug']]]
+  ['refreshmillis',['RefreshMillis',['../class_a_d_l_1_1_network_1_1_server_1_1_network_listener.html#a23a7aa3f1d054e02ebf29b68b983d6b6',1,'ADL::Network::Server::NetworkListener']]]
 ];

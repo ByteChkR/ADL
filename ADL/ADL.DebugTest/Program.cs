@@ -11,6 +11,7 @@ using ADL.CustomCMD;
 using ADL.Network;
 using ADL.Network.Streams;
 using ADL.Streams;
+using ADL;
 
 namespace ADL.DebugTest
 {
@@ -50,13 +51,13 @@ namespace ADL.DebugTest
 
 
             //This is a test.
-            for (var i = 1;
-                i < 64;
-                i++) //63 because its the highest value the current enum can take(every bit beeing 1)
-            {
-                var mask = i;
-                //Debug.Log(mask, "Test with mask " + mask);
-            }
+            //for (var i = 1;
+            //    i < 64;
+            //    i++) //63 because its the highest value the current enum can take(every bit beeing 1)
+            //{
+            //    var mask = i;
+            //    //Debug.Log(mask, "Test with mask " + mask);
+            //}
 
             Debug.LogGen(LoggingTypes.Log, "Finished the Console Out Test.");
 
@@ -104,16 +105,10 @@ namespace ADL.DebugTest
                 = //ADL.CustomCMD.CMDUtils.CreateCustomConsole(pipeStream); //Creates a basic Custom cmd with no visual adjustments
                 CmdUtils.CreateCustomConsole(pipeStream); //Creates a custom cmd with color coding and custom font size.
 
-            //This is a test.
-            for (var i = 1;
-                i < 64;
-                i++) //63 because its the highest value the current enum can take(every bit beeing 1)
-            {
-                var mask = i;
-                //Debug.Log(mask, "Test with mask " + mask);
-            }
+            (ccmd as ADL.CustomCMD.CustomCmdForm).FontColor = Color.White;
 
-            Debug.LogGen(LoggingTypes.Log, "Finished the CustomConsole Out Test.");
+
+            Debug.LogGen(LoggingTypes.Log, "Finished adding the CustomConsole.");
 
             //Now we want to remove the stream from the system.
             //Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
@@ -136,29 +131,23 @@ namespace ADL.DebugTest
 
             //But you can do masks easier now.
             //This bitmask only lets through logs and errors
-            var bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.Csvlogging);
+            var bMaskGenericCustom = new BitMask<LoggingTypes>(LoggingTypes.Fatal);
 
 
             //Then we want to create a LogStream that receives the Messages
             //Important: Its much easier to use CreateLogStreamFromFile than setting everything manually
             LogStream logStream = new LogTextStream(new FileStream("test.log", FileMode.OpenOrCreate),
-                bMaskGenericCustom //Get that fancy timestamp infront of the log.
+                bMaskGenericWildcard,
+                MatchType.MatchAll,
+                true//Get that fancy timestamp infront of the log.
             );
             //logStream.OverrideChannelTag = true; //Forces the LogStream to discard all Tag and timestamps and ONLY save the actual log.
 
             Debug.AddOutputStream(logStream); //Now we have Created the stream, just add it to the system.
 
-            //This is a test.
-            for (var i = 1;
-                i < 64;
-                i++) //63 because its the highest value the current enum can take(every bit beeing 1)
-            {
-                var mask = i;
-                //Debug.Log(mask, "Test with mask " + mask);
-            }
 
-            Debug.LogGen(LoggingTypes.Log, "Finished the Logfile Out Test.");
-            Console.WriteLine("Finished the Logfile Out Test.");
+
+            Debug.LogGen(LoggingTypes.Log, "Finished adding the File Out.");
 
             //Now we want to remove the stream from the system.
             //Debug.RemoveOutputStream(logStream, true); //We want to remove a single one.
@@ -169,97 +158,54 @@ namespace ADL.DebugTest
             //System.IO.File.Delete("test.log");
         }
 
-        //Server
-        private static void TestNetworkListen(bool mt)
-        {
-            //NetworkConfig.Save("adl_network_config.xml", new NetworkConfig());
-            var nwl = new NetworkListener(100, "adl_network_config.xml", mt);
-            nwl.Start();
-        }
 
 
         private static void TestNetworkOut()
         {
+
+            BitMask<LoggingTypes> mask = new BitMask<LoggingTypes>(true);
             var nc = NetworkConfig.Load("adl_network_config.xml");
-            var lts = NetLogStream.CreateNetLogStream(nc, 1, Assembly.GetExecutingAssembly().GetName().Version);
+            var lts = NetLogStream.CreateNetLogStream(nc, 1, Assembly.GetExecutingAssembly().GetName().Version, mask, MatchType.MatchAll, true);
 
             if (lts == null)
             {
-                Debug.Log(-1, "No Server found on that port");
+                Debug.Log(Debug.AdlWarningMask, "No Server found on that port");
                 return;
             }
 
-            Debug.Log(-1, "Adding Stream.");
+            Debug.LogGen(LoggingTypes.Log, "Adding Network Stream.");
             Debug.AddOutputStream(lts);
 
-            for (var i = 0; i < 100; i++)
-            for (var j = 1;
-                j < 64;
-                j++) //63 because its the highest value the current enum can take(every bit beeing 1)
-                Debug.Log(j, "Net Test with mask " + j);
         }
 
 
         private static void Main(string[] args)
         {
-            //CreateADLConfig();
-            //CreateADLCustomCMDConfig();
+            CreateAdlConfig();
+            CreateAdlCustomCmdConfig();
             Debug.LoadConfig(); //Using the standard path
             //Runtime Config Changes(not Getting saved):
+            Debug.AddPrefixForMask(-1, "[GLOBAL]");
             Debug.SendWarnings = true;
             Debug.SendUpdateMessageOnFirstLog = true;
-
             Debug.AdlEnabled = true;
             Debug.PrefixLookupMode = PrefixLookupSettings.Addprefixifavailable |
                                      PrefixLookupSettings.Deconstructmasktofind |
-                                     PrefixLookupSettings
-                                         .Bakeprefixes; //If you have int.minvalue to int.maxvalue channels this is not really advisable. (Config files can be bloated by baked prefixes thus getting a huge size.)
-
-            //DataObject<float> testf = new DataObject<float>(1, MatchType.MATCH_ONE);
-            //DataObject<string> tests = new DataObject<string>(1, MatchType.MATCH_ONE);
-            //testf.Add(1.234f);
-            //tests.Add("Hwllo");
+                                     PrefixLookupSettings.Bakeprefixes; //If you have int.minvalue to int.maxvalue channels this is not really advisable. (Config files can be bloated by baked prefixes thus getting a huge size.)
 
 
-            //DataObject obj = testf.Cast();
-
-            //byte[] buf = DataObject.Serialize(obj);
-
-            //DataObject<float> r = DataObject.Deserialize<float>(buf);
-            //buf = DataObject.Serialize(tests.Cast());
-            //DataObject<string> r1 = DataObject.Deserialize(buf).Cast<string>();
-
-            //TestCustomConsoleOut();
-
-            //TestConsoleOut();
-            if (args.Length > 0)
-            {
-                if (args[0] == "-local")
-                {
-                    TestNetworkListen(true);
-                    while (true)
-                    {
-                        Console.ReadLine();
-                        TestNetworkOut();
-                    }
-                }
-
-                if (args[0] == "-server")
-                    TestNetworkListen(false);
-                else if (args.Length > 1 && args[0] == "-client")
-                    TestNetworkOut();
-                else
-                    while (true)
-                    {
-                        Console.ReadLine();
-                        TestNetworkOut();
-                    }
-            }
-
-            Console.Read();
 
 
-            //TestLogFileOut();
+            Console.WriteLine("Press Enter to start...");
+            Console.ReadLine();
+
+            TestCustomConsoleOut();
+            TestConsoleOut();
+            TestNetworkOut();
+            TestLogFileOut();
+
+
+
 
             var rnd = new Random();
             float avg = 0;
@@ -269,7 +215,7 @@ namespace ADL.DebugTest
             {
                 Thread.Sleep(50);
                 sw.Start();
-                Debug.LogGen(LoggingTypes.Log, rnd.NextDouble().ToString(CultureInfo.CurrentCulture));
+                Debug.LogGen(rnd.Next(1, 63), avg.ToString());
                 sw.Stop();
                 var msLastTime = sw.ElapsedTicks;
                 avg = (avg + msLastTime) / 2;
@@ -277,7 +223,7 @@ namespace ADL.DebugTest
             }
 
 
-            //System.Windows.Forms.Application.Exit(); //Forces the custom console to close.
+            System.Windows.Forms.Application.Exit(); //Forces the custom console to close.
         }
 
         /// <summary>
@@ -288,7 +234,6 @@ namespace ADL.DebugTest
             Debug.SetAllPrefixes("[General]", "[Log]", "[Warning]", "[Error]", "[Fatal]", "[ADL]");
             Debug.SendWarnings = false;
             Debug.AdlWarningMask = 4;
-            Debug.AddPrefixForMask(new BitMask(true), "[GLOBAL]");
             Debug.AdlEnabled = false;
             Debug.SendUpdateMessageOnFirstLog = true;
             Debug.UpdateMask = 32;
@@ -309,6 +254,7 @@ namespace ADL.DebugTest
             var config = AdlCustomConsoleConfig.Standard;
             config.FontSize = 13;
             config.FrameTime = 50;
+            config.FontColor = Color.White;
             config.ColorCoding = colorCoding;
             CmdUtils.SaveConfig(config);
         }
@@ -320,8 +266,7 @@ namespace ADL.DebugTest
             Warning = 4,
             Error = 8,
             Fatal = 16,
-            Adl = 32,
-            Csvlogging = 64
+            Adl = 32
         }
     }
 }

@@ -18,13 +18,23 @@ namespace ADL.Network
         /// <param name="id"></param>
         /// <param name="asmVersion"></param>
         /// <returns></returns>
-        public static NetworkStream GetNetworkStream(string ip, int port, int id, Version asmVersion)
+        private static NetworkStream GetNetworkStream(string ip, int port, int id, Version asmVersion)
         {
-            var tcpC = new TcpClient(ip, port);
+            TcpClient tcpC;
+            try
+            {
+                tcpC = new TcpClient(ip, port);
 
-            Debug.Log(-1, "Connecting to Network Listener");
-            if (!tcpC.Connected) return null;
-            Debug.Log(-1, "Connected.");
+                Debug.Log(-1, "Connecting to Network Listener");
+                if (!tcpC.Connected) return null;
+                Debug.Log(-1, "Connected.");
+            }
+            catch (Exception)
+            {
+                Debug.Log(Debug.AdlWarningMask, "Could not connect to server.");
+                return null;
+            }
+            
 
             //Authentication
             Stream str = tcpC.GetStream();
@@ -48,17 +58,19 @@ namespace ADL.Network
         /// <param name="matchType">Match Type</param>
         /// <param name="setTimestamp">Timestamp</param>
         /// <returns></returns>
-        public static NetLogStream CreateNetworkTextStream(int id, Version asmVersion, string ip, int port, int mask,
+        public static NetLogStream CreateNetworkStream(int id, Version asmVersion, string ip, int port, int mask,
             MatchType matchType, bool setTimestamp = false)
         {
             var str = GetNetworkStream(ip, port, id, asmVersion);
+
+            if (str == null) return null;
 
             var ls = new NetLogStream(
                 str,
                 mask,
                 matchType,
                 setTimestamp
-            ) {OverrideChannelTag = true};
+            ) {OverrideChannelTag = false};
 
 
 

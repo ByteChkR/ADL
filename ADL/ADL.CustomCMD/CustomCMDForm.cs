@@ -12,7 +12,7 @@ namespace ADL.CustomCMD
     ///     Form to Display the Content of a LogStream.
     ///     Color coding supported.
     /// </summary>
-    internal partial class CustomCmdForm : Form
+    public partial class CustomCmdForm : Form
     {
         /// <summary>
         ///     The Tags and their corresponding colors
@@ -63,6 +63,12 @@ namespace ADL.CustomCMD
         {
             InitializeComponent();
             _ps = ps;
+
+            
+
+            
+
+
             foreach (var kvp in Debug.GetAllPrefixes()) //Copy all tags to the form. To Mitigate some access violation.
             {
                 clb_TagFilter.Items.Add(kvp.Value);
@@ -244,7 +250,7 @@ namespace ADL.CustomCMD
                     var containsOne = false;
                     for (var j = 0; j < clb_TagFilter.CheckedItems.Count; j++)
                     {
-                        if (!Debug.GetPrefixMask(j.ToString(), out var mask)) continue;
+                        if (!Debug.GetPrefixMask(clb_TagFilter.CheckedItems[j].ToString(), out var mask)) continue;
                         if (BitMask.IsContainedInMask(mask, l.Mask, false)) containsOne = true;
                     }
 

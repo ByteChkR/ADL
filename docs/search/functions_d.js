@@ -1,7 +1,19 @@
 var searchData=
 [
-  ['tocolor',['ToColor',['../struct_a_d_l_1_1_configs_1_1_serializable_color.html#a66d8990761f72f71b9bd7974583e0970',1,'ADL::Configs::SerializableColor']]],
-  ['todictionary',['ToDictionary',['../class_a_d_l_1_1_configs_1_1_serializable_dictionary.html#a1d1147dd654195e85548ba7db1c38a46',1,'ADL::Configs::SerializableDictionary']]],
-  ['tologstream',['ToLogStream',['../class_a_d_l_1_1_unity_1_1_log_stream_params.html#a511976146d776a6e618baf1e47c99f34',1,'ADL.Unity.LogStreamParams.ToLogStream()'],['../class_a_d_l_1_1_unity_1_1_log_stream_params.html#a87996e4714e90331204a473f3ba97a16',1,'ADL.Unity.LogStreamParams.ToLogStream(Stream stream)']]],
-  ['tounityconsolelogstream',['ToUnityConsoleLogStream',['../class_a_d_l_1_1_unity_1_1_unity_utils.html#a2d9a234cdee1d96c7ef8ff9e547118c3',1,'ADL::Unity::UnityUtils']]]
+  ['save',['Save',['../class_a_d_l_1_1_configs_1_1_network_config.html#a9023a1d87e44c1d6469d203b6aa0a12a',1,'ADL::Configs::NetworkConfig']]],
+  ['saveconfig',['SaveConfig',['../class_a_d_l_1_1_debug.html#a3e2b51e8f58e3df200d22a78cf1806c5',1,'ADL.Debug.SaveConfig(AdlConfig config, string path=&quot;adl_config.xml&quot;)'],['../class_a_d_l_1_1_debug.html#a97509c5ce2e79d902d388bea0854a382',1,'ADL.Debug.SaveConfig(string path=&quot;adl_config.xml&quot;)'],['../class_a_d_l_1_1_custom_c_m_d_1_1_cmd_utils.html#a53969b6bc0be164547bc198228dc0d8e',1,'ADL.CustomCMD.CmdUtils.SaveConfig(AdlCustomConsoleConfig config, string path=&quot;adl_customcmd_config.xml&quot;)'],['../class_a_d_l_1_1_custom_c_m_d_1_1_cmd_utils.html#aadeb1ddd1b8b69ee31f6ed1621bc977f',1,'ADL.CustomCMD.CmdUtils.SaveConfig(Color background, Color fontColor, float fontSize, Dictionary&lt; int, SerializableColor &gt; colorCoding, string path=&quot;adl_customcmd_config.xml&quot;)']]],
+  ['savetofile_3c_20t_20_3e',['SaveToFile&lt; T &gt;',['../class_a_d_l_1_1_configs_1_1_config_manager.html#a6b904fb26f8cf01f1192a801590f2796',1,'ADL::Configs::ConfigManager']]],
+  ['scrolltobottom',['ScrollToBottom',['../class_a_d_l_1_1_custom_c_m_d_1_1_rich_text_box_extensions.html#a095b66f980833aed876bc583744b36fb',1,'ADL::CustomCMD::RichTextBoxExtensions']]],
+  ['scrolltobtm',['ScrollToBtm',['../class_a_d_l_1_1_custom_c_m_d_1_1_rich_text_box_extensions.html#a4bf8ddd6a7ed74d113bd572e5da6df78',1,'ADL::CustomCMD::RichTextBoxExtensions']]],
+  ['seek',['Seek',['../class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a42d3e7ccffd52b77aa18f003bbbb357f',1,'ADL.Streams.GenPipeStream.Seek()'],['../class_a_d_l_1_1_unity_1_1_unity_text_writer.html#ac1433e1a8fea0b44cbc90d1250c5cad3',1,'ADL.Unity.UnityTextWriter.Seek()']]],
+  ['serializablecolor',['SerializableColor',['../struct_a_d_l_1_1_configs_1_1_serializable_color.html#a6781a7c00531579ef8db6236bfc1af6a',1,'ADL::Configs::SerializableColor']]],
+  ['serializabledictionary',['SerializableDictionary',['../class_a_d_l_1_1_configs_1_1_serializable_dictionary.html#ad96efae4a2992e72e47e5eb5ed4125b7',1,'ADL::Configs::SerializableDictionary']]],
+  ['serialize',['Serialize',['../struct_a_d_l_1_1_streams_1_1_log.html#ab1c919b25b86148564ff5440ae608205',1,'ADL.Streams.Log.Serialize()'],['../struct_a_d_l_1_1_network_1_1_auth_packet.html#a12379e8a38dfd3873576c0b43f40b957',1,'ADL.Network.AuthPacket.Serialize()']]],
+  ['setallflags',['SetAllFlags',['../class_a_d_l_1_1_bit_mask.html#a025f039a81b7439fcc85a0ddff1a7502',1,'ADL.BitMask.SetAllFlags(int newMask)'],['../class_a_d_l_1_1_bit_mask.html#adbdf89842cde61d787eddde9f1699eec',1,'ADL.BitMask.SetAllFlags(T newFlags)']]],
+  ['setallprefixes',['SetAllPrefixes',['../class_a_d_l_1_1_debug.html#aeee052b6bc6759222ce6ed32dd9763a1',1,'ADL::Debug']]],
+  ['setflag',['SetFlag',['../class_a_d_l_1_1_bit_mask.html#a85429d752e2d22b949c9efa0f9b3763e',1,'ADL.BitMask.SetFlag(int flag, bool yes)'],['../class_a_d_l_1_1_bit_mask.html#aa33bac6ce0fc1a3615f3b5ca4f942b58',1,'ADL.BitMask.SetFlag(T flag, bool yes)']]],
+  ['setlength',['SetLength',['../class_a_d_l_1_1_streams_1_1_gen_pipe_stream.html#a9d192544501da7ead52ccffaed327427',1,'ADL.Streams.GenPipeStream.SetLength()'],['../class_a_d_l_1_1_unity_1_1_unity_text_writer.html#a04ec5542e040a8601dc860b34dad5e13',1,'ADL.Unity.UnityTextWriter.SetLength()']]],
+  ['showinconsole',['ShowInConsole',['../class_a_d_l_1_1_custom_c_m_d_1_1_custom_cmd_form.html#a38b4fd0017730ee1b5be6fa7af05dc52',1,'ADL::CustomCMD::CustomCmdForm']]],
+  ['start',['Start',['../class_a_d_l_1_1_network_1_1_server_1_1_network_listener.html#ab44dd5c7b9b9c874dd70f36c6dd1dfbb',1,'ADL::Network::Server::NetworkListener']]],
+  ['stop',['Stop',['../class_a_d_l_1_1_network_1_1_server_1_1_network_listener.html#a3a794be02fe1ff4733bbb65b83b7bd13',1,'ADL::Network::Server::NetworkListener']]]
 ];

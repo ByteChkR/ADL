@@ -32,7 +32,9 @@ namespace ADL.Streams
         /// <summary>
         ///     Is the stream closed?
         /// </summary>
-        private bool _streamClosed;
+        public bool IsClosed
+        { get; protected set; }
+        
 
 
         /// <summary>
@@ -57,7 +59,7 @@ namespace ADL.Streams
         /// <param name="log">the log to send</param>
         public virtual void Write(Log log)
         {
-            if (_streamClosed) return;
+            if (IsClosed) return;
             if (AddTimeStamp) log.Message = Utils.TimeStamp + log.Message;
             var buffer = log.Serialize();
             BaseStream.Write(buffer, 0, buffer.Length);
@@ -131,7 +133,7 @@ namespace ADL.Streams
 
         public override void Close()
         {
-            _streamClosed = true;
+            IsClosed = true;
             BaseStream.Close();
         }
 

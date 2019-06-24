@@ -3,7 +3,7 @@ using System.IO;
 using System.Net.Sockets;
 using ADL.Streams;
 
-namespace ADL.Network
+namespace ADL.Network.Server
 {
     /// <summary>
     ///     Client session that the server maintains and gets the data from.
@@ -40,15 +40,19 @@ namespace ADL.Network
         /// </summary>
         public string Version;
 
+        private NetworkListener parent;
+
         /// <summary>
         /// </summary>
         /// <param name="client"></param>
-        public ClientSession(TcpClient client)
+        public ClientSession(TcpClient client, NetworkListener parent)
         {
             InstanceId = _instanceCount;
+            this.parent = parent;
             _instanceCount++;
             Authenticated = false;
             _client = client;
+
         }
 
         /// <summary>
@@ -73,10 +77,10 @@ namespace ADL.Network
         private string GetLogPath()
         {
             const string path = "logs/";
-            var id = NetworkListener.Config.Id2NameMap.Length >= Id
-                ? NetworkListener.Config.Id2NameMap[Id - 1]
+            var id = parent.Config.Id2NameMap.Length >= Id
+                ? parent.Config.Id2NameMap[Id - 1]
                 : "ID" + (Id - 1);
-            return path + id + "_" + Version + "_" + DateTime.UtcNow.ToString(NetworkListener.Config.TimeFormatString) +
+            return path + id + "_" + Version + "_" + DateTime.UtcNow.ToString(parent.Config.TimeFormatString) +
                    ".log";
         }
 

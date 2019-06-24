@@ -7,17 +7,25 @@ using System.Threading;
 using ADL.Configs;
 using ADL.Streams;
 
-namespace ADL.Network
+namespace ADL.Network.Server
 {
     /// <summary>
     ///     Network Listener is acting as the server that receives logs from a client
     /// </summary>
     public class NetworkListener
     {
+
+        /// <summary>
+        /// Flag indicating if the Server is running
+        /// Can be accessed without lock
+        /// </summary>
+        public bool isStarted
+        { get; private set; }
+
         /// <summary>
         ///     Client/Server Config
         /// </summary>
-        public static NetworkConfig Config;
+        public NetworkConfig Config;
 
         /// <summary>
         ///     List of all active and connected clients
@@ -38,7 +46,58 @@ namespace ADL.Network
         /// <summary>
         ///     Main Loop Slowdown
         /// </summary>
-        private readonly int _refreshMillis;
+        public int RefreshMillis
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Wrapper for the time format string
+        /// </summary>
+        public string TimeFormatString
+        {
+            get { return Config.TimeFormatString; }
+            set { Config.TimeFormatString = value; }
+        }
+
+
+        /// <summary>
+        /// Wrapper for the port
+        /// </summary>
+        public int Port
+        {
+            get { return Config.Port; }
+            set { Config.Port = value; }
+        }
+
+
+        /// <summary>
+        /// lock obj for setting debug mode.
+        /// </summary>
+        private object dbgFlagLock = new object();
+
+        /// <summary>
+        /// The flag that indicates if the debug mode is active.
+        /// </summary>
+        bool _dbgNetwork = false;
+
+        /// <summary>
+        /// This flag is indicating that the Network listener should send the logs
+        /// also on mask 0(that can only be seen when specifically creating an log stream for it.
+        /// </summary>
+        public bool DebugNetworking
+        {
+            get
+            {
+                lock (dbgFlagLock) return _dbgNetwork;
+            }
+            set
+            {
+                lock (dbgFlagLock) _dbgNetwork = value;
+            }
+        }
+
 
         /// <summary>
         ///     Thread lock object
@@ -55,10 +114,6 @@ namespace ADL.Network
         /// </summary>
         private Thread _listenerThread;
 
-        /// <summary>
-        ///     Stream that will save all the incoming logs from one client into a file.
-        /// </summary>
-        private LogTextStream _lts;
 
         /// <summary>
         ///     Flag that indicates if the Network listener should search the Github pages for the version
@@ -91,19 +146,25 @@ namespace ADL.Network
             bool noUpdateCheck = false)
         {
             _noUpdateCheck = noUpdateCheck;
-            Config = NetworkConfig.Load(config);
+            LoadConfig(NetworkConfig.Load(config));
             _multiThread = multiThread;
-            _refreshMillis = refreshMillis;
+            RefreshMillis = refreshMillis;
+            DebugNetworking = false;
         }
 
+
+        private void LoadConfig(NetworkConfig conf)
+        {
+            Config = conf;
+        }
 
         /// <summary>
         ///     Starts the Server threads
         /// </summary>
         public void Start()
         {
-            _lts = new LogTextStream(Console.OpenStandardOutput(), 0);
-            Debug.AddOutputStream(_lts);
+            //_lts = new LogTextStream(Console.OpenStandardOutput(), 0);
+            //Debug.AddOutputStream(_lts);
 
 
             if (!_noUpdateCheck)
@@ -114,13 +175,13 @@ namespace ADL.Network
                 Debug.Log(0, msg);
             }
 
-            Debug.Log(0, "Starting Network Listener...");
+            Debug.Log(0, "Starting Network Listener on port: " + Port + "...");
             lock (_stopListenLock)
             {
                 if (_stopListen)
                 {
                     _stopListen = false;
-                    _listenerThread = new Thread(ListenerThread) {IsBackground = true};
+                    _listenerThread = new Thread(ListenerThread) { IsBackground = true };
                     _listenerThread.Start();
                 }
             }
@@ -133,7 +194,7 @@ namespace ADL.Network
                 _stop = false;
                 if (_multiThread)
                 {
-                    _serverThread = new Thread(Run) {IsBackground = true};
+                    _serverThread = new Thread(Run) { IsBackground = true };
                     _serverThread.Start();
                 }
                 else
@@ -141,6 +202,7 @@ namespace ADL.Network
                     Run();
                 }
             }
+            isStarted = true;
         }
 
         /// <summary>
@@ -158,7 +220,8 @@ namespace ADL.Network
                 if (!_stopListen) _stopListen = true;
             }
 
-            Debug.RemoveOutputStream(_lts);
+            isStarted = false;
+            Debug.Log(0, "Server Stopped.");
         }
 
         /// <summary>
@@ -167,7 +230,7 @@ namespace ADL.Network
         /// </summary>
         private void ListenerThread()
         {
-            var tcpL = new TcpListener(IPAddress.Any, Config.Port);
+            var tcpL = new TcpListener(IPAddress.Any, Port);
 
             tcpL.Start();
 
@@ -178,13 +241,14 @@ namespace ADL.Network
                     if (_stopListen) break;
                 }
 
-                var cs = new ClientSession(tcpL.AcceptTcpClient());
+                if (!tcpL.Pending()) continue;
+                var cs = new ClientSession(tcpL.AcceptTcpClient(), this);
                 if (cs.Authenticate())
                 {
                     cs.Initialize();
 
 
-                    ClientSession[] cla = {cs};
+                    ClientSession[] cla = { cs };
                     _pendingClients.WriteGen(cla, 0, 1);
                 }
                 else
@@ -194,6 +258,8 @@ namespace ADL.Network
             }
 
             tcpL.Stop();
+
+            isStarted = false;
         }
 
         /// <summary>
@@ -204,7 +270,7 @@ namespace ADL.Network
         {
             while (true)
             {
-                Thread.Sleep(_refreshMillis);
+                Thread.Sleep(RefreshMillis);
                 lock (_stopLock)
                 {
                     if (_stop)
@@ -215,7 +281,7 @@ namespace ADL.Network
                     }
                 }
 
-                var pendingClientsCount = (int) _pendingClients.Length;
+                var pendingClientsCount = (int)_pendingClients.Length;
                 if (pendingClientsCount > 0)
                 {
                     Debug.Log(0, "Accepting " + pendingClientsCount + " Clients");
@@ -245,7 +311,10 @@ namespace ADL.Network
                         {
                             if (lp.Logs.Count <= 0) continue;
                             for (var j = 0; j < lp.Logs.Count; j++)
+                            {
+                                if (DebugNetworking) Debug.Log(0, lp.Logs[j].Message.Trim());
                                 Debug.Log(clientSession.InstanceId, lp.Logs[j].Message.Trim());
+                            }
                         }
                         else
                         {

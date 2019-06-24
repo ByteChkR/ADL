@@ -87,6 +87,7 @@ $(document).ready(function(){initNavTree('class_a_d_l_1_1_network_1_1_net_utils.
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="class_a_d_l_1_1_network_1_1_net_utils-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ADL.Network.NetUtils Class Reference</div>  </div>
@@ -98,18 +99,21 @@ $(document).ready(function(){initNavTree('class_a_d_l_1_1_network_1_1_net_utils.
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
+<tr class="memitem:abef1c72f5db333b33781629394e532d2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_a_d_l_1_1_network_1_1_streams_1_1_net_log_stream.html">NetLogStream</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_net_utils.html#abef1c72f5db333b33781629394e532d2">CreateNetworkStream</a> (int id, Version asmVersion, string ip, int port, int mask, <a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bdde">MatchType</a> matchType, bool setTimestamp=false)</td></tr>
+<tr class="memdesc:abef1c72f5db333b33781629394e532d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper to create a network log stream.  <a href="#abef1c72f5db333b33781629394e532d2">More...</a><br /></td></tr>
+<tr class="separator:abef1c72f5db333b33781629394e532d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
 <tr class="memitem:a8c0ff816964daf51e08a885f3f9843a6"><td class="memItemLeft" align="right" valign="top">static NetworkStream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_net_utils.html#a8c0ff816964daf51e08a885f3f9843a6">GetNetworkStream</a> (string ip, int port, int id, Version asmVersion)</td></tr>
 <tr class="memdesc:a8c0ff816964daf51e08a885f3f9843a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper function that creates a NetworkStream that is already authenticated with the server.  <a href="#a8c0ff816964daf51e08a885f3f9843a6">More...</a><br /></td></tr>
 <tr class="separator:a8c0ff816964daf51e08a885f3f9843a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05b57c77227becf103d0ff6ca3103b5d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_a_d_l_1_1_network_1_1_streams_1_1_net_log_stream.html">NetLogStream</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_d_l_1_1_network_1_1_net_utils.html#a05b57c77227becf103d0ff6ca3103b5d">CreateNetworkTextStream</a> (int id, Version asmVersion, string ip, int port, int mask, <a class="el" href="namespace_a_d_l.html#aa3d2a408e3189a4080566c282d09bdde">MatchType</a> matchType, bool setTimestamp=false)</td></tr>
-<tr class="memdesc:a05b57c77227becf103d0ff6ca3103b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper to create a network log stream.  <a href="#a05b57c77227becf103d0ff6ca3103b5d">More...</a><br /></td></tr>
-<tr class="separator:a05b57c77227becf103d0ff6ca3103b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides wrapper functions to easyliy create a NetWorkStream or directly a NetLogStream </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a05b57c77227becf103d0ff6ca3103b5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05b57c77227becf103d0ff6ca3103b5d">&#9670;&nbsp;</a></span>CreateNetworkTextStream()</h2>
+<a id="abef1c72f5db333b33781629394e532d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abef1c72f5db333b33781629394e532d2">&#9670;&nbsp;</a></span>CreateNetworkStream()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -118,7 +122,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="class_a_d_l_1_1_network_1_1_streams_1_1_net_log_stream.html">NetLogStream</a> ADL.Network.NetUtils.CreateNetworkTextStream </td>
+          <td class="memname">static <a class="el" href="class_a_d_l_1_1_network_1_1_streams_1_1_net_log_stream.html">NetLogStream</a> ADL.Network.NetUtils.CreateNetworkStream </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>id</em>, </td>
@@ -230,7 +234,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
