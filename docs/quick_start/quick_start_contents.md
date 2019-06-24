@@ -1,7 +1,6 @@
 # Quick Start Contents:
 
 ## <a href="https://bytechkr.github.io/ADL/README.md" target="_blank">Back to Landing Page</a>
-
 ## <a href="https://bytechkr.github.io/ADL/quick_start/adl_def_outline.html" target="_blank">General Definition Outline</a>
 ## <a href="https://bytechkr.github.io/ADL/quick_start/adl_functionality.html" target="_blank">General Functionality</a>
 
