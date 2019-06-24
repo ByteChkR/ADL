@@ -1,10 +1,10 @@
 # Quick Start Contents:
+## <a href="https://bytechkr.github.io/ADL/quick_start/adl_def_outline.html" target="_blank">General Definition Outline</a>
+## <a href="https://bytechkr.github.io/ADL/quick_start/adl_def_outline.html" target="_blank">General Functionality</a>
 
-## [General Definition Outline](https://bytechkr.github.io/ADL/quick_start/adl_def_outline.md)
-## [General Functionality](https://bytechkr.github.io/ADL/quick_start/adl_def_outline.md)
 ## Explanations/Info:
-### [ADL]()
-### [ADL.CustomCMD](https://bytechkr.github.io/ADL/quick_start/adl_def_outline.md)
-### [ADL.Network.Client](https://bytechkr.github.io/ADL/quick_start/adl_def_outline.md)
-### [ADL.Network.Server](https://bytechkr.github.io/ADL/quick_start/adl_def_outline.md)
-### [ADL.Unity](https://bytechkr.github.io/ADL/quick_start/adl_def_outline.md)
+### <a href="https://bytechkr.github.io/ADL/quick_start/adl_def_outline.html" target="_blank">ADL</a>
+### <a href="https://bytechkr.github.io/ADL/quick_start/adl_def_outline.html" target="_blank">ADL.CustomCMD</a>
+### <a href="https://bytechkr.github.io/ADL/quick_start/adl_def_outline.html" target="_blank">ADL.Network.Client</a>
+### <a href="https://bytechkr.github.io/ADL/quick_start/adl_def_outline.html" target="_blank">ADL.Network.Server</a>
+### <a href="https://bytechkr.github.io/ADL/quick_start/adl_def_outline.html" target="_blank">ADL.Unity</a>
