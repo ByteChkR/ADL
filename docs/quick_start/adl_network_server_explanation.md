@@ -1,14 +1,14 @@
 # ADL.Network.Server Class Explanations/Information:  
 Contains a Standalone Commandline Server and the functionality to use it as a libary
 
-## ServerConsole
+## ADL.Network.Server.ServerConsole
 The Standalone Console.
 
 ### Functions:
 * Run(command)
 	- runs the specified command.
 
-## NetworkServerConfig
+## ADL.Configs.NetworkServerConfig
 
 ### Settings:
 * Id2NameMap
@@ -24,7 +24,7 @@ The Standalone Console.
 * Save(path, config)
 	- Saves the config to a file.
 
-## ClientSession
+## ADL.Network.Server.ClientSession
 
 ### Functions:
 * GetLogPath()
@@ -40,7 +40,7 @@ The Standalone Console.
 	- tries to get the package from the client session
 	- returns empty log package if client got disconnected.
 
-## NetworkListener
+## ADL.Network.Server.NetworkListener
 
 ### Settings:
 * RefreshMillis:int

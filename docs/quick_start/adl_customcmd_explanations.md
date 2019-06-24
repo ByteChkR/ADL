@@ -1,7 +1,7 @@
 # ADL.CustomCMD Class Explanations/Information:  
 ADL.CustomCMD is an ADL extension that implements a colored custom command shell.  
 
-## ADL.CMDUtils
+## ADL.CustomCMD.CMDUtils
 
 ### Functions:
 
@@ -27,7 +27,7 @@ ADL.CustomCMD is an ADL extension that implements a colored custom command shell
 * CreateCustomConsoleNoReturn(stream, configPath)
 	- wrapper that will read the config from a file directly
 
-## RichTextBoxExtensions
+## ADL.CustomCMDRichTextBoxExtensions
 
 * AppendText(Textbox, string, color)
 	- Appends colored text to a text box without destroying the color information of the previous text.
@@ -49,10 +49,10 @@ ADL.CustomCMD is an ADL extension that implements a colored custom command shell
 
 * ColorCoding:Dictionary<int, SerializableColor> Specifies what mask has which color.
 
-## SerializableColor
+## ADL.Configs.SerializableColor
 Implements a Color Struct that can be serialized with XML
 
-## CustomCMDForm
+## ADL.CustomCMDCustomCMDForm
 The Main form of the extension
 
 ### Settings:

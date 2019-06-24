@@ -1,7 +1,7 @@
 # ADL.Network.Client Class Explanations/Information:  
 ADL.Network.Client is the Client side libary for the Network Project.
 
-## NetUtils
+## ADL.Network.Client.NetUtils
 
 ### Functions:
 * CreateNetworkStream(id, version, ip, port, mask, matchtype, settimestamp)
@@ -25,13 +25,13 @@ ADL.Network.Client is the Client side libary for the Network Project.
 	- matchtype: the same as normal logstream
 	- settimestamp: the same as normal logstream
 
-## NetLogStream
+## ADL.Network.Client.Streams.NetLogStream
 
 ### Functions:
 * Write(Log)
 	- additional try catch in case the server goes down or sudden sunwinds. whatever.
 
-## NetworkConfig
+## ADL.Configs.NetworkConfig
 
 ### Settings:
 * IP:string
