@@ -6,7 +6,7 @@ namespace ADL.Configs
     /// <summary>
     ///     Config Object for the Network Extensions of ADL
     /// </summary>
-    public class NetworkConfig
+    public class NetworkServerConfig
     {
         /// <summary>
         ///     The map that maps the ids the clients send to names that make sense.
@@ -16,10 +16,6 @@ namespace ADL.Configs
             "Test"
         };
 
-        /// <summary>
-        ///     IP where the Client Connects to
-        /// </summary>
-        public string Ip = "localhost";
 
         /// <summary>
         ///     Port for server and client.
@@ -31,23 +27,19 @@ namespace ADL.Configs
         /// </summary>
         public string TimeFormatString = "MM-dd-yyyy-H-mm-ss";
 
-        /// <summary>
-        ///     Flag that can be used to skip checking for updates.
-        /// </summary>
-        public bool UseNetwork = true;
 
         /// <summary>
         ///     Loads the Network Config from the specified path.
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static NetworkConfig Load(string path = "")
+        public static NetworkServerConfig Load(string path = "")
         {
-            var ret = new NetworkConfig();
+            var ret = new NetworkServerConfig();
             if (!File.Exists(path)) return ret;
-            var cs = new XmlSerializer(typeof(NetworkConfig));
+            var cs = new XmlSerializer(typeof(NetworkServerConfig));
             var fs = new FileStream(path, FileMode.Open);
-            ret = (NetworkConfig) cs.Deserialize(fs);
+            ret = (NetworkServerConfig) cs.Deserialize(fs);
 
             return ret;
         }
@@ -57,11 +49,11 @@ namespace ADL.Configs
         /// </summary>
         /// <param name="path"></param>
         /// <param name="conf"></param>
-        public static void Save(string path, NetworkConfig conf)
+        public static void Save(string path, NetworkServerConfig conf)
         {
             if (File.Exists(path))
                 File.Delete(path);
-            var cs = new XmlSerializer(typeof(NetworkConfig));
+            var cs = new XmlSerializer(typeof(NetworkServerConfig));
             var fs = new FileStream(path, FileMode.Create);
             cs.Serialize(fs, conf);
         }

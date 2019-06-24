@@ -25,7 +25,7 @@ namespace ADL.Network.Server
         /// <summary>
         ///     Client/Server Config
         /// </summary>
-        public NetworkConfig Config;
+        public NetworkServerConfig Config;
 
         /// <summary>
         ///     List of all active and connected clients
@@ -146,14 +146,14 @@ namespace ADL.Network.Server
             bool noUpdateCheck = false)
         {
             _noUpdateCheck = noUpdateCheck;
-            LoadConfig(NetworkConfig.Load(config));
+            LoadConfig(NetworkServerConfig.Load(config));
             _multiThread = multiThread;
             RefreshMillis = refreshMillis;
             DebugNetworking = false;
         }
 
 
-        private void LoadConfig(NetworkConfig conf)
+        private void LoadConfig(NetworkServerConfig conf)
         {
             Config = conf;
         }

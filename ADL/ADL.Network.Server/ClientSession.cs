@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Sockets;
+using ADL.Network.Shared;
 using ADL.Streams;
 
 namespace ADL.Network.Server

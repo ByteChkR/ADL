@@ -7,8 +7,8 @@
     <ProjectGuid>{C13C9D27-8221-42F8-8EC9-86869DCCCE0A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ADL.Network</RootNamespace>
-    <AssemblyName>ADL.Network</AssemblyName>
+    <RootNamespace>ADL.Network.Client</RootNamespace>
+    <AssemblyName>ADL.Network.Client</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -40,13 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthPacket.cs" />
     <Compile Include="Configs\NetworkConfig.cs" />
     <Compile Include="NetUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Streams\NetLogStream.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ADL.Network.Shared\ADL.Network.Shared.csproj">
+      <Project>{05a80488-b438-4404-a6e6-40a602580c90}</Project>
+      <Name>ADL.Network.Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ADL\ADL.csproj">
       <Project>{a6217f9e-bb25-4acc-8c90-209d3af80dc4}</Project>
       <Name>ADL</Name>

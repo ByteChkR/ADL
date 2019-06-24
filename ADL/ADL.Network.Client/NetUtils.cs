@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net.Sockets;
 using ADL.Network.Streams;
+using ADL.Network.Shared;
 
 namespace ADL.Network
 {

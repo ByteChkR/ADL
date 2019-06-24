@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace ADL.Network
+namespace ADL.Network.Shared
 {
     /// <summary>
     ///     Authentication Packet containing
