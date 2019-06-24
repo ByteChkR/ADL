@@ -19,12 +19,6 @@ namespace ADL.Configs
         /// </summary>
         public int Port = 1337;
 
-
-        /// <summary>
-        ///     Flag that can be used to skip checking for updates.
-        /// </summary>
-        public bool UseNetwork = true;
-
         /// <summary>
         ///     Loads the Network Config from the specified path.
         /// </summary>

@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Threading;
 using ADL.Configs;
 using ADL.CustomCMD;
-using ADL.Network;
+using ADL.Network.Client;
 using ADL.Network.Streams;
 using ADL.Streams;
 using ADL;
@@ -165,7 +165,7 @@ namespace ADL.DebugTest
 
             BitMask<LoggingTypes> mask = new BitMask<LoggingTypes>(true);
             var nc = NetworkConfig.Load("adl_network_config.xml");
-            var lts = NetLogStream.CreateNetLogStream(nc, 1, Assembly.GetExecutingAssembly().GetName().Version, mask, MatchType.MatchAll, true);
+            var lts = NetUtils.CreateNetworkStream(nc, 1, Assembly.GetExecutingAssembly().GetName().Version, mask, MatchType.MatchAll, true);
 
             if (lts == null)
             {

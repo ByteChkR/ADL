@@ -236,6 +236,7 @@ namespace ADL.Network.Server
 
             while (true)
             {
+                Thread.Sleep(RefreshMillis);
                 lock (_stopListenLock)
                 {
                     if (_stopListen) break;

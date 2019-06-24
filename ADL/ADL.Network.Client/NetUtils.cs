@@ -3,8 +3,9 @@ using System.IO;
 using System.Net.Sockets;
 using ADL.Network.Streams;
 using ADL.Network.Shared;
+using ADL.Configs;
 
-namespace ADL.Network
+namespace ADL.Network.Client
 {
     /// <summary>
     ///     Provides wrapper functions to easyliy create a NetWorkStream or directly a NetLogStream
@@ -35,7 +36,7 @@ namespace ADL.Network
                 Debug.Log(Debug.AdlWarningMask, "Could not connect to server.");
                 return null;
             }
-            
+
 
             //Authentication
             Stream str = tcpC.GetStream();
@@ -71,11 +72,48 @@ namespace ADL.Network
                 mask,
                 matchType,
                 setTimestamp
-            ) {OverrideChannelTag = false};
+            )
+            { OverrideChannelTag = false };
 
 
 
             return ls;
         }
+
+
+        /// <summary>
+        ///     Wrapper that skips the most unchanged values
+        ///     mask: -1
+        ///     MatchType: Match_ALL
+        ///     SetTimestamp: true
+        /// </summary>
+        /// <param name="nc"></param>
+        /// <param name="id"></param>
+        /// <param name="assemblyVersion"></param>
+        /// <returns></returns>
+        public static NetLogStream CreateNetworkStream(NetworkConfig nc, int id, Version assemblyVersion)
+        {
+            return CreateNetworkStream(nc, id, assemblyVersion, -1, MatchType.MatchAll, true);
+        }
+
+        /// <summary>
+        ///     Wrapper that uses the network config to obtain the IP/Port
+        ///     mask: -1
+        ///     MatchType: Match_ALL
+        ///     SetTimestamp: true
+        /// </summary>
+        /// <param name="nc"></param>
+        /// <param name="id"></param>
+        /// <param name="assemblyVersion"></param>
+        /// <param name="mask"></param>
+        /// <param name="mt"></param>
+        /// <param name="setTimestamp"></param>
+        /// <returns></returns>
+        public static NetLogStream CreateNetworkStream(NetworkConfig nc, int id, Version assemblyVersion, int mask,
+            MatchType mt, bool setTimestamp)
+        {
+            return CreateNetworkStream(id, assemblyVersion, nc.Ip, nc.Port, mask, mt, setTimestamp);
+        }
+
     }
 }

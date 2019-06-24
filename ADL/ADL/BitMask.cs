@@ -52,7 +52,7 @@ namespace ADL
         {
             Mask = FlipMask(Mask);
         }
-
+        
         #region MaskOperations
 
         /// <summary>

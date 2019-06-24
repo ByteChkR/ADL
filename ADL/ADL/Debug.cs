@@ -77,14 +77,16 @@ namespace ADL
         /// </summary>
         private static bool _bakePrefixes;
 
+
+        #endregion
+
+        #region Public Properties
+
         /// <summary>
         ///     The Encoding that is going to be used by all text in ADL.
         /// </summary>
         public static Encoding TextEncoding = Encoding.ASCII;
 
-        #endregion
-
-        #region Public Properties
 
         /// <summary>
         ///     Public property, used to disable ADl
