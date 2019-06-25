@@ -1,14 +1,13 @@
 ﻿using System.IO;
 using ADL.Configs;
 using ADL.Streams;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using NUnit.Framework;
 namespace ADL.UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class DebugOperations
     {
-        [TestMethod]
+        [Test]
         public void Test_AddOutputStream()
         {
             Debug.SendUpdateMessageOnFirstLog = true;
@@ -33,7 +32,7 @@ namespace ADL.UnitTests
         }
 
 
-        [TestMethod]
+        [Test]
         public void Test_AddPrefixForMask()
         {
             //Flag is required to find tags made up of unique masks(example: 2|8)
@@ -54,7 +53,7 @@ namespace ADL.UnitTests
             Assert.IsTrue(ret);
         }
 
-        [TestMethod]
+        [Test]
         public void Test_RemovePrefixForMask()
         {
             var bm = new BitMask(2 | 8);
@@ -73,7 +72,7 @@ namespace ADL.UnitTests
             Assert.IsTrue(Debug.GetAllPrefixes().Count == 0);
         }
 
-        [TestMethod]
+        [Test]
         public void Test_RemoveAllPrefixes()
         {
             var bm = new BitMask(2 | 8);
@@ -82,7 +81,7 @@ namespace ADL.UnitTests
             Assert.IsTrue(Debug.GetAllPrefixes().Count == 0);
         }
 
-        [TestMethod]
+        [Test]
         public void Test_SetAllPrefixes()
         {
             //Flag is required to find tags made up of unique masks(example: 2|8)
@@ -106,7 +105,7 @@ namespace ADL.UnitTests
             Debug.AdlEnabled = true;
         }
 
-        [TestMethod]
+        [Test]
         public void Test_GetAllPrefixes()
         {
             //Flag is required to find tags made up of unique masks(example: 2|8)
@@ -127,7 +126,7 @@ namespace ADL.UnitTests
         }
 
 
-        [TestMethod]
+        [Test]
         public void Test_GetPrefixMask()
         {
             Debug.SetAllPrefixes("Hello", "HELLO1", "HOLA2");
@@ -136,7 +135,7 @@ namespace ADL.UnitTests
             if (Debug.GetPrefixMask("HOLA2", out bm)) Assert.IsTrue(bm == 4);
         }
 
-        [TestMethod]
+        [Test]
         public void Test_GetMaskPrefix()
         {
             //Flag is required to find tags made up of unique masks(example: 2|8)
@@ -158,7 +157,7 @@ namespace ADL.UnitTests
             Assert.IsFalse(Debug.GetMaskPrefix(bm) == "HELLO1");
         }
 
-        [TestMethod]
+        [Test]
         public void Test_LogSerialization()
         {
             var l = new Log(-1, "Hello");
@@ -175,7 +174,7 @@ namespace ADL.UnitTests
         }
 
 
-        [TestMethod]
+        [Test]
         public void Test_Log()
         {
             Debug.SendUpdateMessageOnFirstLog = false;
@@ -218,7 +217,7 @@ namespace ADL.UnitTests
             Debug.SendUpdateMessageOnFirstLog = true;
         }
 
-        [TestMethod]
+        [Test]
         public void Test_RemoveOutputStream()
         {
             var lts = new LogTextStream(new PipeStream());
@@ -235,7 +234,7 @@ namespace ADL.UnitTests
             Assert.IsTrue(Debug.LogStreamCount == newCount - 1);
         }
 
-        [TestMethod]
+        [Test]
         public void Test_LoadConfig()
         {
             Debug.LoadConfig(AdlConfig.Standard);
