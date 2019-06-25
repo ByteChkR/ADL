@@ -9,5 +9,5 @@ install:
 - mono ./nuget.exe install NUnit.Runners -Version 3.0.1 -OutputDirectory testrunner
 - travis_retry nuget restore -source "https://www.nuget.org/api/v2" ./ADL/ADL.sln
 script:
-- xbuild ./ADL/ADL.sln
+- msbuild ./ADL/ADL.sln
 - mono ./ADL/packages/xunit.runner.console*/tools/xunit.console.exe ./ADL/ADL.UnitTests/bin/Debug/Fibonacci.Tests.dll
