@@ -4,9 +4,8 @@ solution: ADL/ADL.sln
 language: csharp
 solution: solution-name.sln
 install:
-  - curl -L -o nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-  - nuget restore solution-name.sln
-  - nuget install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner
+  - dotnet restore solution-name.sln
+  - dotnet install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner
 script:
   - msbuild /p:Configuration=Release ADL/ADL.sln
   - mono ./testrunner/NUnit.ConsoleRunner.3.9.0/tools/nunit3-console.exe ./ADL/ADL.UnitTests/bin/Release/ADL.UnitTests.dll
