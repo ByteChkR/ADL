@@ -1,17 +1,8 @@
 language: csharp
-solution: "./ADL/ADL.sln"
-sudo: required
-
-branches:
-  only:
-    - master
-
+solution: ADL/ADL.sln
 before_install:
-- wget --no-check-certificate https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-
-install:
-- mono ./nuget.exe install NUnit.Runners -Version 3.10.0
-- travis_retry nuget restore -source "https://www.nuget.org/api/v2" ./ADL/ADL.sln
-script:
-- msbuild /p:Configuration=Release ./ADL/ADL.sln
-- mono ./testrunner/NUnit.ConsoleRunner.3.10.0/tools/nunit3-console.exe ./ADL/ADL.UnitTests/bin/Release/ADL.UnitTests.dll
+  - sudo apt-get install nunit-console
+before_script:
+  - nuget restore ADL/ADL.sln
+after_script:
+  - nunit-console ADL/ADL.UnitTests/bin/Release/ADL.UnitTests.dll
