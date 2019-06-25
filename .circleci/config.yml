@@ -6,11 +6,18 @@ jobs:
 
     steps:
       - checkout
-
       - run:
-          name: Greeting
-          command: echo Hello, world.
-
+          name: Installing MONO
+          command: sudo apt-get install mono-complete
       - run:
-          name: Print the Current Time
-          command: date
+          name: Installing MONO
+          command: sudo apt-get install nunit-console
+      - run:
+          name: Installing NuGet
+          command: curl https://api.nuget.org/downloads/nuget.exe -o nuget.exe
+      - run:
+          name: Building Solution
+          command: xbuild ADL/ADL.sln
+      - run:
+          name: Running Unit Tests
+          command: nunit-console ADL/ADL.UnitTests/ADL.UnitTests.csproj
