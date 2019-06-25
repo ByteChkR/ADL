@@ -1,13 +1,14 @@
 ﻿using System;
 using ADL;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace ADL.UnitTests
 {
-    [TestFixture]
+    [TestClass]
     public class MaskOperations
     {
-        [Test]
+        [TestMethod]
         public void Test_IsContainedInMask()
         {
             var bm1 = new BitMask<char>(1 | 4 | 16);
@@ -20,7 +21,7 @@ namespace ADL.UnitTests
             Assert.IsFalse(BitMask.IsContainedInMask(bm1, bm2 | bm3, true)); //False
         }
 
-        [Test]
+        [TestMethod]
         public void Test_GetUniqueMaskSet()
         {
             var bm = new BitMask<char>(1 | 2 | 8 | 16 | 64);
@@ -34,7 +35,7 @@ namespace ADL.UnitTests
             Assert.IsTrue(ret.Contains(64));
         }
 
-        [Test]
+        [TestMethod]
         public void Test_IsUniqueMask()
         {
             var bm = new BitMask<char>(2 | 4);
@@ -44,7 +45,7 @@ namespace ADL.UnitTests
             Assert.IsFalse(BitMask.IsUniqueMask(bm));
         }
 
-        [Test]
+        [TestMethod]
         public void Test_CombineMasks()
         {
             var bm1 = new BitMask<TestEnum>(TestEnum.B | TestEnum.D | TestEnum.F);
@@ -56,7 +57,7 @@ namespace ADL.UnitTests
             Assert.IsTrue(BitMask.IsContainedInMask(ret, 2, false));
         }
 
-        [Test]
+        [TestMethod]
         public void Test_RemoveFlags()
         {
             var bm1 = new BitMask<char>(2 | 8 | 16);
@@ -65,7 +66,7 @@ namespace ADL.UnitTests
             Assert.IsTrue(BitMask.IsContainedInMask(bm1, 2, true));
         }
 
-        [Test]
+        [TestMethod]
         public void Test_Constructors()
         {
             var bm = new BitMask(2, 8, 16);
@@ -75,7 +76,7 @@ namespace ADL.UnitTests
             Assert.AreEqual((int) bm, (int) bm1);
         }
 
-        [Test]
+        [TestMethod]
         public void Test_FlagOperations()
         {
             var bm = new BitMask(true);
