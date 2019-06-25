@@ -10,4 +10,4 @@ install:
 - travis_retry nuget restore -source "https://www.nuget.org/api/v2" ./ADL/ADL.sln
 script:
 - msbuild ./ADL/ADL.sln
-- mono ./ADL/packages/xunit.runner.console*/tools/xunit.console.exe ./ADL/ADL.UnitTests/bin/Debug/Fibonacci.Tests.dll
+- mono ./ADL/packages/xunit.runner.console*/tools/xunit.console.exe ./ADL/ADL.UnitTests/bin/Debug/ADL.UnitTests.dll
