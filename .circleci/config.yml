@@ -8,10 +8,10 @@ jobs:
       - checkout
       - run:
           name: Installing MONO
-          command: sudo apt-get install mono-complete
+          command: apt-get install mono-complete
       - run:
           name: Installing MONO
-          command: sudo apt-get install nunit-console
+          command: apt-get install nunit-console
       - run:
           name: Installing NuGet
           command: curl https://api.nuget.org/downloads/nuget.exe -o nuget.exe
