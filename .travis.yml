@@ -1,16 +1,7 @@
 language: csharp
-solution: ADL/ADL.sln
-
+solution: "./ADL/ADL.sln"
 install:
-  - dotnet restore ADL/ADL.sln
-  - dotnet install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner
+- travis_retry nuget restore -source "https://www.nuget.org/api/v2" ./ADL/ADL.sln
 script:
-  - msbuild /p:Configuration=Release ADL/ADL.sln
-  - mono ./testrunner/NUnit.ConsoleRunner.3.9.0/tools/nunit3-console.exe ./ADL/ADL.UnitTests/bin/Release/ADL.UnitTests.dll
-
-matrix:
-    include:
-      - dotnet: 2.1.502
-        mono: none
-        env: DOTNETCORE=2
-      - mono: latest
+- xbuild ./ADL/ADL.sln
+- mono ./ADL/packages/xunit.runner.console*/tools/xunit.console.exe ./ADL/ADL.UnitTests/bin/Debug/Fibonacci.Tests.dll
