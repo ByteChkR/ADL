@@ -1,3 +1,5 @@
+
+[![Build Status](https://travis-ci.com/ByteChkR/ADL.svg?branch=master)](https://travis-ci.com/ByteChkR/ADL)
 # ADL(Advanced Debug Logging)
 ___
 

@@ -52,11 +52,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:\UnityHub\2018.2.17f1\Editor\Data\Managed\UnityEditor.dll</HintPath>
+      <HintPath>.\UnityRuntime\UnityEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>D:\UnityHub\2018.2.17f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>.\UnityRuntime\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
