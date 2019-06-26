@@ -137,10 +137,10 @@ namespace ADL.Streams
             BaseStream.Close();
         }
 
-        public override ObjRef CreateObjRef(Type requestedType)
-        {
-            return BaseStream.CreateObjRef(requestedType);
-        }
+        //public override ObjRef CreateObjRef(Type requestedType)
+        //{
+        //    return BaseStream.CreateObjRef(requestedType);
+        //}
 
         [Obsolete]
         protected override WaitHandle CreateWaitHandle()

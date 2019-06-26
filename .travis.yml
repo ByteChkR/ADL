@@ -5,4 +5,4 @@ before_install:
 before_script:
   - nuget restore ADL/ADL.sln
 after_script:
-  - nunit-console ADL/ADL.UnitTests/ADL.UnitTests.csproj
+  - nunit-console ADL/ADL.UnitTests/bin/Release/ADL.UnitTests.dll
