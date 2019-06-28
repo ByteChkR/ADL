@@ -1,5 +1,6 @@
 language: csharp
 solution: ADL/ADL.sln
+dotnet: 2.1.502
 before_install:
   - sudo apt-get install nunit-console
 before_script:
