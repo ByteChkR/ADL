@@ -5,4 +5,5 @@ before_install:
 before_script:
   - nuget restore ADL/ADL.sln
 after_script:
-  - nunit-console ADL/ADL.UnitTests/bin/Release/netcoreapp2.1/ADL.UnitTests.dll
+  - dotnet publish ADL/ADL.UnitTests/ /p:Configuration=Release
+  - nunit-console ADL/ADL.UnitTests/bin/Release/netcoreapp2.1/publish/ADL.UnitTests.dll
