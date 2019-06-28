@@ -1,59 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C13C9D27-8221-42F8-8EC9-86869DCCCE0A}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ADL.Network.Client</RootNamespace>
-    <AssemblyName>ADL.Network.Client</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.0.3</Version>
+    <Authors>Tim Akermann(Byt3)</Authors>
+    <PackageProjectUrl>https://bytechkr.github.io/ADL/quick_start/quick_start_contents.html</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ByteChkR/ADL</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
+    <Product>Advanced Debug Logging Network Client Library</Product>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <ProjectReference Include="..\ADL.Network.Shared\ADL.Network.Shared.csproj" />
+    <ProjectReference Include="..\ADL\ADL.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Configs\NetworkConfig.cs" />
-    <Compile Include="NetUtils.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Streams\NetLogStream.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ADL.Network.Shared\ADL.Network.Shared.csproj">
-      <Project>{05a80488-b438-4404-a6e6-40a602580c90}</Project>
-      <Name>ADL.Network.Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ADL\ADL.csproj">
-      <Project>{a6217f9e-bb25-4acc-8c90-209d3af80dc4}</Project>
-      <Name>ADL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>
