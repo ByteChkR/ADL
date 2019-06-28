@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using ADL.Configs;
 using ADL.Streams;
-
 using NUnit.Framework;
 
 namespace ADL.UnitTests
