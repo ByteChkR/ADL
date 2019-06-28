@@ -1,10 +1,41 @@
 language: csharp
-solution: ADL/ADL.sln
-dotnet: 2.1.502
-before_install:
-  - sudo apt-get install nunit-console
-before_script:
-  - nuget restore ADL/ADL.sln
-after_script:
-  - dotnet publish ADL/ADL.UnitTests/ /p:Configuration=Release
-  - nunit-console ADL/ADL.UnitTests/bin/Release/netcoreapp2.1/publish/ADL.UnitTests.dll
+solution: $SOLUTION_DIR
+
+install:
+  - $PACKAGE_MANAGER restore $SOLUTION_DIR
+
+script:
+  - $BUILD_SYSTEM /p:Configuration=$BUILD_CONFIG $SOLUTION_DIR
+  - dotnet publish $TEST_PROJECT /p:Configuration=$BUILD_CONFIG
+
+branches:
+  except:
+  - master
+  
+matrix:
+  include:
+  - dotnet: 2.1.502
+    mono: none
+    after_script:
+      - $TESTING_SYSTEM $TEST_PROJECT
+    env:
+      - SOLUTION_DIR="ADL/ADL.sln"
+      - TEST_PROJECT="ADL/ADL.UnitTests/ADL.UnitTests.csproj"
+      - BUILD_CONFIG="Release"
+      - BUILD_SYSTEM="dotnet build"
+      - PACKAGE_MANAGER="dotnet"
+      - TESTING_SYSTEM="dotnet test"
+  - mono: latest
+    dotnet: 2.1.502
+    before_install:
+      - sudo apt-get install nunit-console
+    after_script:
+      - $TESTING_SYSTEM $TEST_BUILD_PATH
+    env:
+      - SOLUTION_DIR="ADL/ADL.sln"
+      - TEST_PROJECT="ADL/ADL.UnitTests/ADL.UnitTests.csproj"
+      - TEST_BUILD_PATH="ADL/ADL.UnitTests/bin/Release/netcoreapp2.1/publish/ADL.UnitTests.dll"
+      - BUILD_CONFIG="Release"
+      - BUILD_SYSTEM="msbuild"
+      - PACKAGE_MANAGER="nuget"
+      - TESTING_SYSTEM="nunit-console"
