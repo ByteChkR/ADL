@@ -9,7 +9,7 @@ script:
   - dotnet publish $TEST_PROJECT /p:Configuration=$BUILD_CONFIG
 
 branches:
-  except:
+  only:
   - master
   
 matrix:
