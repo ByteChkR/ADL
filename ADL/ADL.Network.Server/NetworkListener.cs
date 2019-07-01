@@ -52,15 +52,6 @@ namespace ADL.Network.Server
             set;
         }
 
-        /// <summary>
-        /// Wrapper for the time format string
-        /// </summary>
-        public string TimeFormatString
-        {
-            get { return Config.TimeFormatString; }
-            set { Config.TimeFormatString = value; }
-        }
-
 
         /// <summary>
         /// Wrapper for the port

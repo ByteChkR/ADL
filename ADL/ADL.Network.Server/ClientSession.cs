@@ -81,7 +81,7 @@ namespace ADL.Network.Server
             var id = parent.Config.Id2NameMap.Length >= Id
                 ? parent.Config.Id2NameMap[Id - 1]
                 : "ID" + (Id - 1);
-            return path + id + "_" + Version + "_" + DateTime.UtcNow.ToString(parent.Config.TimeFormatString) +
+            return path + id + "_" + Version + "_" + DateTime.UtcNow.ToString(Debug.TimeFormatString) +
                    ".log";
         }
 

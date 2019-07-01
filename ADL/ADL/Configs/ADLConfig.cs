@@ -51,6 +51,11 @@ namespace ADL.Configs
         public int WarningMask;
 
         /// <summary>
+        /// The format ADL uses to convert a Time to a string representation
+        /// </summary>
+        public string TimeFormatString;
+
+        /// <summary>
         ///     The standard configuration of ADL
         /// </summary>
         public static AdlConfig Standard
@@ -67,7 +72,8 @@ namespace ADL.Configs
                     Prefixes = new SerializableDictionary<int, string>(new Dictionary<int, string>()),
                     PrefixLookupMode = PrefixLookupSettings.Addprefixifavailable |
                                        PrefixLookupSettings.Deconstructmasktofind,
-                    TextEncoding = Encoding.ASCII
+                    TextEncoding = Encoding.ASCII,
+                    TimeFormatString = "MM-dd-yyyy-H-mm-ss"
                 };
                 return std;
             }

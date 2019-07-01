@@ -87,6 +87,10 @@ namespace ADL
         /// </summary>
         public static Encoding TextEncoding = Encoding.ASCII;
 
+        /// <summary>
+        /// The format ADL uses to convert a Time to a string representation
+        /// </summary>
+        public static string TimeFormatString;
 
         /// <summary>
         ///     Public property, used to disable ADl
@@ -473,6 +477,7 @@ namespace ADL
             UpdateMask = config.UpdateMask;
             AdlWarningMask = config.WarningMask;
             SendWarnings = config.SendWarnings;
+            TimeFormatString = config.TimeFormatString;
             lock (_prefixes) _prefixes = config.Prefixes.ToDictionary();
             PrefixLookupMode = config.PrefixLookupMode;
         }
@@ -510,6 +515,7 @@ namespace ADL
             config.UpdateMask = UpdateMask;
             config.WarningMask = AdlWarningMask;
             config.SendWarnings = SendWarnings;
+            config.TimeFormatString = TimeFormatString;
             lock (_prefixes) config.Prefixes = new SerializableDictionary<int, string>(_prefixes);
             config.PrefixLookupMode = PrefixLookupMode;
             SaveConfig(config, path);

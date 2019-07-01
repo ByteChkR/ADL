@@ -185,10 +185,10 @@ namespace ADL.Network.Server
                 if (nl.isStarted)
                 {
                     CMD_Stop(0, cmds);
-                    nl.TimeFormatString = cmds[1];
+                    Debug.TimeFormatString = cmds[1];
                     CMD_Start(0, cmds);
                 }
-                else nl.TimeFormatString = cmds[1];
+                else Debug.TimeFormatString = cmds[1];
 
                 Debug.Log(0, "Set RefreshMillis to: " + cmds[1]);
             }

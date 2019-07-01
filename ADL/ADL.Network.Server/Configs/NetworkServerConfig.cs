@@ -22,10 +22,7 @@ namespace ADL.Configs
         /// </summary>
         public int Port = 1337;
 
-        /// <summary>
-        ///     Determines how the time stamp in the log files looks like.
-        /// </summary>
-        public string TimeFormatString = "MM-dd-yyyy-H-mm-ss";
+
 
 
         /// <summary>

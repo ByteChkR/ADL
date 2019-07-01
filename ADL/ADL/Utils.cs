@@ -73,7 +73,7 @@ namespace ADL
             };
 
             for (int x = 0, i = 0; i < hex.Length; i += 2, x += 1)
-                bytes[x] = (byte) ((hexValue[char.ToUpper(hex[i + 0]) - '0'] << 4) |
+                bytes[x] = (byte)((hexValue[char.ToUpper(hex[i + 0]) - '0'] << 4) |
                                    hexValue[char.ToUpper(hex[i + 1]) - '0']);
 
             return bytes;
@@ -87,6 +87,11 @@ namespace ADL
         public static string TimeStamp => "[" + NumToTimeFormat(DateTime.Now.Hour) + ":" +
                                           NumToTimeFormat(DateTime.Now.Minute) + ":" +
                                           NumToTimeFormat(DateTime.Now.Second) + "]";
+
+        public static string GetTimeFormat(string format)
+        {
+            return "[" + DateTime.Now.ToString(format) + "]";
+        }
 
         /// <summary>
         ///     Makes 1-9 => 01-09
