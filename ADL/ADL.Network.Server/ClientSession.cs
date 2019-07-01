@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Sockets;
+using System.Reflection;
 using ADL.Network.Shared;
 using ADL.Streams;
 
@@ -78,8 +79,8 @@ namespace ADL.Network.Server
         private string GetLogPath()
         {
             const string path = "logs/";
-            var id = parent.Config.Id2NameMap.Length >= Id
-                ? parent.Config.Id2NameMap[Id - 1]
+            var id = parent.Config.Id2NameMap.Keys.Count >= Id
+                ? parent.Config.Id2NameMap.Keys[Id - 1]
                 : "ID" + (Id - 1);
             return path + id + "_" + Version + "_" + DateTime.UtcNow.ToString(Debug.TimeFormatString) +
                    ".log";
@@ -93,7 +94,7 @@ namespace ADL.Network.Server
         {
             var str = GetLogPath();
             _fileStream = File.Open(str, FileMode.Create);
-            _lts = new LogTextStream(_fileStream, InstanceId) {OverrideChannelTag = true};
+            _lts = new LogTextStream(_fileStream, InstanceId) { OverrideChannelTag = true };
             Debug.AddOutputStream(_lts);
         }
 
@@ -131,7 +132,32 @@ namespace ADL.Network.Server
                 if (i != 3) Version += '.';
             }
 
-            return true; //Really strict security settings ;)
+            string mver = parent.Config.Id2NameMap.Values[id - 1];
+
+
+
+            System.Version v;
+            System.Version minVer;
+            if (System.Version.TryParse(Version, out v) && System.Version.TryParse(mver, out minVer))
+            {
+                if (minVer <= v)
+                {
+
+                    Debug.Log(0, "Program: " + parent.Config.Id2NameMap.Keys[id - 1] + " : " + Version + " got accepted");
+                    return true;
+                }
+                else
+                {
+
+                    Debug.Log(0, "Program: " + parent.Config.Id2NameMap.Keys[id - 1] + " : " + Version + " is outdated");
+                    return false;
+                }
+
+
+            }
+            Debug.Log(0, "Program: " + parent.Config.Id2NameMap.Keys[id - 1] + " : " + Version + " is invalid");
+
+            return false; //Really strict security settings ;)
         }
 
 
@@ -141,8 +167,8 @@ namespace ADL.Network.Server
         public void CloseSession()
         {
             _client.Close();
-            _fileStream.Close();
-            Debug.RemoveOutputStream(_lts);
+            _fileStream?.Close();
+            if(_lts!=null)Debug.RemoveOutputStream(_lts);
         }
 
 

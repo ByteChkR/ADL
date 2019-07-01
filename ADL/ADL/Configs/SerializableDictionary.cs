@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ADL.Configs
 {
@@ -39,6 +40,15 @@ namespace ADL.Configs
         {
             Keys = new List<T1>();
             Values = new List<T2>();
+        }
+
+        public T2 GetValue(T1 key)
+        {
+            for (int i = 0; i < Values.Count; i++)
+            {
+                if (Keys[i].Equals(key)) return Values[i];
+            }
+            throw new Exception("Thats fucked up");
         }
 
         /// <summary>

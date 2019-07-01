@@ -12,6 +12,7 @@ using ADL.Network.Client;
 using ADL.Network.Streams;
 using ADL.Streams;
 using ADL;
+using ADL.Network.Server;
 
 namespace ADL.DebugTest
 {
@@ -197,7 +198,13 @@ namespace ADL.DebugTest
 
 
             Console.WriteLine("Press Enter to start...");
-            Console.ReadLine();
+            string s = Console.ReadLine();
+            if (s == "server")
+            {
+                new ServerConsole();
+                return;
+            }
+
 
             TestCustomConsoleOut();
             TestConsoleOut();

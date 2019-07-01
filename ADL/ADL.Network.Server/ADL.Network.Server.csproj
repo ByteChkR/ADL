@@ -9,6 +9,9 @@
     <PackageProjectUrl>https://bytechkr.github.io/ADL/quick_start/quick_start_contents.html</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ByteChkR/ADL</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject>ADL.Network.Server.ServerConsole</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

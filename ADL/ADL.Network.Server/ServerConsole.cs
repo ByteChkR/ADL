@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using ADL;
+using ADL.Configs;
 
 namespace ADL.Network.Server
 {
@@ -11,12 +13,14 @@ namespace ADL.Network.Server
     /// </summary>
     public class ServerConsole
     {
+
+        private static bool dontsearchUpdates = false;
         /// <summary>
         /// The Delegate used to create the different commands.
         /// </summary>
         /// <param name="start"></param>
         /// <param name="cmds"></param>
-        public delegate void Command(int start, params string[] cmds);
+        public delegate int Command(int start, params string[] cmds);
 
         /// <summary>
         /// The network listener that gets manipulated.
@@ -37,27 +41,64 @@ namespace ADL.Network.Server
             { "settimeformat",  CMD_SetTimeFormat},
             { "setdebug", CMD_SetDebugMode },
             { "init",  CMD_Init},
+            { "saveconfig" , CMD_SaveConfig},
 
         };
+
+        static int CMD_SaveConfig(int start, params string[] cmds)
+        {
+            if (cmds.Length > start + 1 && nl != null && cmds[start + 1].StartsWith("c:"))
+            {
+
+                string confPath = cmds[start + 1].Substring(2);
+
+                Debug.Log(0, "Saving Server config to path: " + confPath);
+                try
+                {
+                    NetworkServerConfig.Save(confPath, nl.Config);
+
+                }
+                catch (Exception e)
+                {
+
+                    Debug.Log(0, "Invalid path: " + confPath + "\n" + e.ToString());
+
+                }
+                return 2;
+            }
+            else
+            {
+
+                Debug.Log(0, "Server not initialized or invalid path");
+                return 1;
+            }
+        }
+
 
         /// <summary>
         /// type "setdebug" to call this function
         /// </summary>
         /// <param name="start"></param>
         /// <param name="cmds"></param>
-        static void CMD_SetDebugMode(int start, params string[] cmds)
+        static int CMD_SetDebugMode(int start, params string[] cmds)
         {
-            if (cmds.Length > 1 && nl != null)
+            if (cmds.Length > start + 1 && nl != null)
             {
-                nl.DebugNetworking = cmds[1] == "true" || cmds[1] == "1";
+                nl.DebugNetworking = cmds[start + 1] == "true" || cmds[start + 1] == "1";
                 Debug.Log(0, "Set Debug Mode to: " + nl.DebugNetworking);
+                return 2;
             }
-            else if (cmds.Length > 1 && nl == null)
+            else if (cmds.Length > start + 1 && nl == null)
             {
-                CMD_Init(0, cmds);
-                CMD_SetDebugMode(0, cmds);
+                CMD_Init(start, cmds);
+                CMD_SetDebugMode(start, cmds);
+                return 2;
             }
-            else CMD_Help(0, cmds);
+            else
+            {
+                CMD_Help(start, cmds);
+                return 1;
+            }
         }
 
         /// <summary>
@@ -65,15 +106,39 @@ namespace ADL.Network.Server
         /// </summary>
         /// <param name="start"></param>
         /// <param name="cmds"></param>
-        static void CMD_Init(int start, params string[] cmds)
+        static int CMD_Init(int start, params string[] cmds)
         {
-            if (nl == null || nl != null && !nl.isStarted)
+            int cmdsConsumed = 1;
+            string configPath = "";
+            if (cmds.Length > start + 1 && cmds[start + 1].StartsWith("c:"))
             {
-                nl = new NetworkListener(50);
-                Debug.Log(0, "Initialized Sucessfully.");
+                cmdsConsumed++;
+                if (nl == null || nl != null && !nl.isStarted)
+                {
+                    configPath = cmds[start + 1].Substring(2);
+                    nl = new NetworkListener(50, configPath, true, dontsearchUpdates);
+                    dontsearchUpdates = true;
+                    Debug.Log(0, "Initialized Sucessfully.");
+                }
+                else
+                    Debug.Log(0, "Server is started. can not initialize while the server is running.");
+
+
+
             }
             else
-                Debug.Log(0, "Server is started. can not initialize while the server is running.");
+            {
+                if (nl == null || nl != null && !nl.isStarted)
+                {
+                    nl = new NetworkListener(50, "", true, dontsearchUpdates);
+                    dontsearchUpdates = true;
+                    Debug.Log(0, "Initialized Sucessfully.");
+                }
+                else
+                    Debug.Log(0, "Server is started. can not initialize while the server is running.");
+            }
+            return cmdsConsumed;
+
         }
 
 
@@ -82,18 +147,20 @@ namespace ADL.Network.Server
         /// </summary>
         /// <param name="start"></param>
         /// <param name="cmds"></param>
-        static void CMD_Start(int start, params string[] cmds)
+        static int CMD_Start(int start, params string[] cmds)
         {
             if (nl != null && !nl.isStarted) nl.Start();
             else if (nl == null)
             {
-                CMD_Init(0, cmds);
-                CMD_Start(0, cmds);
+                CMD_Init(start, cmds);
+                CMD_Start(start, cmds);
             }
             else
             {
                 Debug.Log(0, "Server Already Started.");
             }
+            Thread.Sleep(100);
+            return 1;
 
         }
 
@@ -102,11 +169,14 @@ namespace ADL.Network.Server
         /// </summary>
         /// <param name="start"></param>
         /// <param name="cmds"></param>
-        static void CMD_Stop(int start, params string[] cmds)
+        static int CMD_Stop(int start, params string[] cmds)
         {
             if (nl != null && nl.isStarted) nl.Stop();
             else
                 Debug.Log(0, "Server Already Stopped.");
+
+            Thread.Sleep(100);
+            return 1;
         }
 
 
@@ -115,9 +185,10 @@ namespace ADL.Network.Server
         /// </summary>
         /// <param name="start"></param>
         /// <param name="cmds"></param>
-        static void CMD_Exit(int start, params string[] cmds)
+        static int CMD_Exit(int start, params string[] cmds)
         {
             run = false;
+            return 1;
         }
 
         /// <summary>
@@ -125,25 +196,31 @@ namespace ADL.Network.Server
         /// </summary>
         /// <param name="start"></param>
         /// <param name="cmds"></param>
-        static void CMD_SetMillis(int start, params string[] cmds)
+        static int CMD_SetMillis(int start, params string[] cmds)
         {
-            if (cmds.Length > 1 && nl != null && uint.TryParse(cmds[1], out uint val))
+            if (cmds.Length > start + 1 && nl != null && uint.TryParse(cmds[start + 1], out uint val))
             {
                 if (nl.isStarted)
                 {
-                    CMD_Stop(0, cmds);
+                    CMD_Stop(start, cmds);
                     nl.RefreshMillis = (int)val;
-                    CMD_Start(0, cmds);
+                    CMD_Start(start, cmds);
                 }
                 else nl.RefreshMillis = (int)val;
                 Debug.Log(0, "Set RefreshMillis to: " + val);
+                return 2;
             }
-            else if(cmds.Length>1 && nl == null)
+            else if (cmds.Length > start + 1 && nl == null)
             {
-                CMD_Init(0, cmds);
-                CMD_SetMillis(0, cmds);
+                CMD_Init(start, cmds);
+                CMD_SetMillis(start, cmds);
+                return 2;
             }
-            else CMD_Help(0, cmds);
+            else
+            {
+                CMD_Help(start, cmds);
+                return 1;
+            }
         }
 
         /// <summary>
@@ -151,26 +228,32 @@ namespace ADL.Network.Server
         /// </summary>
         /// <param name="start"></param>
         /// <param name="cmds"></param>
-        static void CMD_SetPort(int start, params string[] cmds)
+        static int CMD_SetPort(int start, params string[] cmds)
         {
-            if (cmds.Length > 1 && nl != null && uint.TryParse(cmds[1], out uint val))
+            if (cmds.Length > start + 1 && nl != null && uint.TryParse(cmds[start + 1], out uint val))
             {
                 if (nl.isStarted)
                 {
-                    CMD_Stop(0, cmds);
+                    CMD_Stop(start, cmds);
                     nl.Port = (int)val;
-                    CMD_Start(0, cmds);
+                    CMD_Start(start, cmds);
                 }
                 else nl.Port = (int)val;
 
                 Debug.Log(0, "Set Port to: " + val);
+                return 2;
             }
-            else if (cmds.Length > 1 && nl == null)
+            else if (cmds.Length > start + 1 && nl == null)
             {
-                CMD_Init(0, cmds);
-                CMD_SetPort(0, cmds);
+                CMD_Init(start, cmds);
+                CMD_SetPort(start, cmds);
+                return 2;
             }
-            else CMD_Help(0, cmds);
+            else
+            {
+                CMD_Help(start, cmds);
+                return 1;
+            }
         }
 
         /// <summary>
@@ -178,26 +261,32 @@ namespace ADL.Network.Server
         /// </summary>
         /// <param name="start"></param>
         /// <param name="cmds"></param>
-        static void CMD_SetTimeFormat(int start, params string[] cmds)
+        static int CMD_SetTimeFormat(int start, params string[] cmds)
         {
-            if (cmds.Length > 1 && nl != null)
+            if (cmds.Length > start + 1 && nl != null)
             {
                 if (nl.isStarted)
                 {
-                    CMD_Stop(0, cmds);
-                    Debug.TimeFormatString = cmds[1];
-                    CMD_Start(0, cmds);
+                    CMD_Stop(start, cmds);
+                    Debug.TimeFormatString = cmds[start + 1];
+                    CMD_Start(start, cmds);
                 }
-                else Debug.TimeFormatString = cmds[1];
+                else Debug.TimeFormatString = cmds[start + 1];
 
                 Debug.Log(0, "Set RefreshMillis to: " + cmds[1]);
+                return 2;
             }
-            else if (cmds.Length > 1 && nl == null)
+            else if (cmds.Length > start + 1 && nl == null)
             {
-                CMD_Init(0, cmds);
-                CMD_SetTimeFormat(0, cmds);
+                CMD_Init(start, cmds);
+                CMD_SetTimeFormat(start, cmds);
+                return 2;
             }
-            else CMD_Help(0, cmds);
+            else
+            {
+                CMD_Help(start, cmds);
+                return 1;
+            }
         }
 
         /// <summary>
@@ -205,8 +294,9 @@ namespace ADL.Network.Server
         /// </summary>
         /// <param name="start"></param>
         /// <param name="cmds"></param>
-        static void CMD_Help(int start, params string[] cmds)
+        static int CMD_Help(int start, params string[] cmds)
         {
+            Debug.Log(0, "init <c:configpath> - initialize server with optional settings.");
             Debug.Log(0, "start - start listener");
             Debug.Log(0, "stop - stop listener");
             Debug.Log(0, "help - display this text");
@@ -215,6 +305,8 @@ namespace ADL.Network.Server
             Debug.Log(0, "setport <port> - set port of listener");
             Debug.Log(0, "timeformat <format> - sets the time format string");
             Debug.Log(0, "setdebug <true|false>");
+            Debug.Log(0, "saveconf <c:configpath> - saves the config of the server to the specified path");
+            return 1;
         }
 
         /// <summary>
@@ -224,15 +316,29 @@ namespace ADL.Network.Server
         public static void RunCommand(string cmd)
         {
             string[] cmds = cmd.Split(' ');
-            if (Commands.ContainsKey(cmds[0]))
+
+
+            for (int i = 0; i < cmds.Length;)
             {
-                Commands[cmds[0]](0, cmds);
+                if (!Commands.ContainsKey(cmds[i]))
+                {
+                    Debug.Log(0, "Invalid Command: " + cmds[i]);
+                    CMD_Help(0, null);
+                    i++;
+                    continue;
+                }
+                i += Commands[cmds[i]](i, cmds);
             }
-            else
-            {
-                Debug.Log(0, "Command not recognized.");
-                CMD_Help(0, cmds);
-            }
+
+            //if (Commands.ContainsKey(cmds[0]))
+            //{
+            //    Commands[cmds[0]](0, cmds);
+            //}
+            //else
+            //{
+            //    Debug.Log(0, "Command not recognized.");
+            //    CMD_Help(0, cmds);
+            //}
         }
 
 
@@ -260,6 +366,11 @@ namespace ADL.Network.Server
         }
 
 
+        public ServerConsole()
+        {
+            RunServer();
+        }
+
 
         /// <summary>
         /// Entry point for the Server Executable
@@ -267,7 +378,7 @@ namespace ADL.Network.Server
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            RunServer();
+            ServerConsole sc = new ServerConsole();
         }
     }
 }

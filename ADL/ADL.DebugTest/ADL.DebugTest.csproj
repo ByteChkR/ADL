@@ -60,6 +60,10 @@
       <Project>{00af691c-bb86-44f8-b506-7c370e4a6bb5}</Project>
       <Name>ADL.Network.Client</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ADL.Network.Server\ADL.Network.Server.csproj">
+      <Project>{9a6cafce-7cd1-4f85-9c67-8cdd5f91ff91}</Project>
+      <Name>ADL.Network.Server</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ADL\ADL.csproj">
       <Project>{8f26a0d6-277d-4b69-b173-cf9b13d425ef}</Project>
       <Name>ADL</Name>

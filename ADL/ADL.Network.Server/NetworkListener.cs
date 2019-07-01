@@ -109,7 +109,7 @@ namespace ADL.Network.Server
         /// <summary>
         ///     Flag that indicates if the Network listener should search the Github pages for the version
         /// </summary>
-        private readonly bool _noUpdateCheck;
+        private bool _noUpdateCheck;
 
         /// <summary>
         ///     Thread of the main server loop
@@ -149,6 +149,8 @@ namespace ADL.Network.Server
             Config = conf;
         }
 
+
+
         /// <summary>
         ///     Starts the Server threads
         /// </summary>
@@ -164,6 +166,7 @@ namespace ADL.Network.Server
                     Assembly.GetExecutingAssembly().GetName().Version);
 
                 Debug.Log(0, msg);
+                _noUpdateCheck = true;
             }
 
             Debug.Log(0, "Starting Network Listener on port: " + Port + "...");
@@ -193,7 +196,6 @@ namespace ADL.Network.Server
                     Run();
                 }
             }
-            isStarted = true;
         }
 
         /// <summary>
@@ -211,9 +213,12 @@ namespace ADL.Network.Server
                 if (!_stopListen) _stopListen = true;
             }
 
-            isStarted = false;
             Debug.Log(0, "Server Stopped.");
         }
+
+
+        private TcpListener tcpL;
+
 
         /// <summary>
         ///     Listener thread
@@ -221,13 +226,14 @@ namespace ADL.Network.Server
         /// </summary>
         private void ListenerThread()
         {
-            var tcpL = new TcpListener(IPAddress.Any, Port);
-
+            tcpL = new TcpListener(IPAddress.Any, Port);
             tcpL.Start();
+
+            isStarted = true;
 
             while (true)
             {
-                Thread.Sleep(RefreshMillis);
+                //Thread.Sleep(RefreshMillis);
                 lock (_stopListenLock)
                 {
                     if (_stopListen) break;
@@ -250,6 +256,9 @@ namespace ADL.Network.Server
             }
 
             tcpL.Stop();
+            tcpL = null;
+
+            Debug.Log(0, "Stopped");
 
             isStarted = false;
         }
@@ -304,8 +313,8 @@ namespace ADL.Network.Server
                             if (lp.Logs.Count <= 0) continue;
                             for (var j = 0; j < lp.Logs.Count; j++)
                             {
-                                if (DebugNetworking) Debug.Log(0, lp.Logs[j].Message.Trim());
                                 Debug.Log(clientSession.InstanceId, lp.Logs[j].Message.Trim());
+                                if (DebugNetworking) Debug.Log(0, lp.Logs[j].Message.Trim());
                             }
                         }
                         else
