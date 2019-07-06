@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Reflection;
 using System.Text;
 
 namespace ADL.Crash
@@ -8,9 +9,18 @@ namespace ADL.Crash
     {
         private static bool initialized = false;
         private static BitMask CrashMask;
-        public static void Initialize(BitMask crashMask)
+        public static void Initialize(BitMask crashMask, bool CheckUpdates = true)
         {
             CrashMask = crashMask;
+
+            if (CheckUpdates)
+            {
+                var msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name,
+                    Assembly.GetExecutingAssembly().GetName().Version);
+                Debug.Log(Debug.UpdateMask, msg);
+            }
+
+
             initialized = true;
         }
 
@@ -34,6 +44,11 @@ namespace ADL.Crash
             StringBuilder sb = new StringBuilder();
             sb.Append("\nException Logged: ");
             sb.Append(exception.GetType().FullName);
+            if (exception.Message != null)
+            {
+                sb.Append("\nException Message: ");
+                sb.Append(exception.Message);
+            }
             if (exception.Source != null)
             {
                 sb.Append("\nException Source: ");
@@ -47,6 +62,11 @@ namespace ADL.Crash
             StringBuilder sb = new StringBuilder();
             sb.Append("\nException Type: ");
             sb.Append(exception.GetType().FullName);
+            if (exception.Message != null)
+            {
+                sb.Append("\nException Message: ");
+                sb.Append(exception.Message);
+            }
             if (exception.Source != null)
             {
                 sb.Append("\nException Source: ");
