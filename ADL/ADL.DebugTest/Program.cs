@@ -12,6 +12,7 @@ using ADL.Network.Client;
 using ADL.Network.Streams;
 using ADL.Streams;
 using ADL;
+using ADL.Crash;
 using ADL.Network.Server;
 
 namespace ADL.DebugTest
@@ -21,6 +22,9 @@ namespace ADL.DebugTest
     /// </summary>
     internal class Program
     {
+
+
+
         private static void TestConsoleOut()
         {
             //First we want to Specify what Messages we want to let trough the LogStream we are creating in a minute.
@@ -120,7 +124,7 @@ namespace ADL.DebugTest
         private static void TestLogFileOut()
         {
             //First we want to Specify what Messages we want to let trough the LogStream we are creating in a minute.
-
+            
             //You have multiple ways to create a Bitmask without getting cancer from bitwise operations
             var bMaskWildCard = new BitMask(true); //Creates a Wildcard(Everything will be let through)
             var bMaskNone = new BitMask(); //Creates the opposite of Wildcard(Nothing will be let through)
@@ -163,7 +167,6 @@ namespace ADL.DebugTest
 
         private static void TestNetworkOut()
         {
-
             BitMask<LoggingTypes> mask = new BitMask<LoggingTypes>(true);
             var nc = NetworkConfig.Load("adl_network_config.xml");
             var lts = NetUtils.CreateNetworkStream(nc, 1, Assembly.GetExecutingAssembly().GetName().Version, mask, MatchType.MatchAll, true);
@@ -171,12 +174,32 @@ namespace ADL.DebugTest
             if (lts == null)
             {
                 Debug.Log(Debug.AdlWarningMask, "No Server found on that port");
-                return;
+                
             }
 
             Debug.LogGen(LoggingTypes.Log, "Adding Network Stream.");
             Debug.AddOutputStream(lts);
 
+        }
+
+
+        private static void TestCrashLog()
+        {
+            
+            BitMask<LoggingTypes> mask = new BitMask<LoggingTypes>(LoggingTypes.Error);
+            BitMask<LoggingTypes> noteMask = new BitMask<LoggingTypes>(LoggingTypes.Log);
+            CrashHandler.Initialize(mask);
+            Exception ex = new Exception();
+            CrashHandler.Log(ex, noteMask);
+
+            try
+            {
+                File.Open("notexistingfileofdoom", FileMode.Open);
+            }
+            catch (Exception e)
+            {
+                CrashHandler.Log(new Exception("U suck", e), noteMask);
+            }
         }
 
 
@@ -208,6 +231,7 @@ namespace ADL.DebugTest
 
             TestCustomConsoleOut();
             TestConsoleOut();
+            TestCrashLog();
             TestNetworkOut();
             TestLogFileOut();
 

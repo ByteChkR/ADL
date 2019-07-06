@@ -7,17 +7,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.Unity", "ADL.Unity\ADL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.CustomCMD", "ADL.CustomCMD\ADL.CustomCMD.csproj", "{7E8C8892-86A6-46AF-AC32-BC632613B288}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.UnitTests", "ADL.UnitTests\ADL.UnitTests.csproj", "{F3634205-A012-4445-99E1-F0BB5602782B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADL.UnitTests", "ADL.UnitTests\ADL.UnitTests.csproj", "{F3634205-A012-4445-99E1-F0BB5602782B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.DebugTest", "ADL.DebugTest\ADL.DebugTest.csproj", "{43AEF18E-04E5-4A18-BBBD-953FF770595F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL", "ADL\ADL.csproj", "{8F26A0D6-277D-4B69-B173-CF9B13D425EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADL", "ADL\ADL.csproj", "{8F26A0D6-277D-4B69-B173-CF9B13D425EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.Network.Server", "ADL.Network.Server\ADL.Network.Server.csproj", "{9A6CAFCE-7CD1-4F85-9C67-8CDD5F91FF91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADL.Network.Server", "ADL.Network.Server\ADL.Network.Server.csproj", "{9A6CAFCE-7CD1-4F85-9C67-8CDD5F91FF91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.Network.Shared", "ADL.Network.Shared\ADL.Network.Shared.csproj", "{CAA06CCD-43D4-4B2A-810C-A6962DED22B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADL.Network.Shared", "ADL.Network.Shared\ADL.Network.Shared.csproj", "{CAA06CCD-43D4-4B2A-810C-A6962DED22B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.Network.Client", "ADL.Network.Client\ADL.Network.Client.csproj", "{00AF691C-BB86-44F8-B506-7C370E4A6BB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ADL.Network.Client", "ADL.Network.Client\ADL.Network.Client.csproj", "{00AF691C-BB86-44F8-B506-7C370E4A6BB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADL.Crash", "ADL.Crash\ADL.Crash.csproj", "{5A2FE738-26A3-4E8B-8314-31522B64906D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{00AF691C-BB86-44F8-B506-7C370E4A6BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00AF691C-BB86-44F8-B506-7C370E4A6BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00AF691C-BB86-44F8-B506-7C370E4A6BB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A2FE738-26A3-4E8B-8314-31522B64906D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A2FE738-26A3-4E8B-8314-31522B64906D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A2FE738-26A3-4E8B-8314-31522B64906D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A2FE738-26A3-4E8B-8314-31522B64906D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
