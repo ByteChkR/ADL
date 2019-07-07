@@ -58,7 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configs\ADLCustomConsoleConfig.cs" />
+    <Compile Include="Configs\AdlCustomConsoleConfig.cs" />
     <Compile Include="CustomCMDForm.cs">
       <SubType>Form</SubType>
     </Compile>

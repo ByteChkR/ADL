@@ -8,7 +8,7 @@ namespace ADL.Configs
     ///     Contains all fields that are configurable in the component CustomCMD
     /// </summary>
     [Serializable]
-    public class AdlCustomConsoleConfig : IAdlConfig
+    public class AdlCustomConsoleConfig : AbstractAdlConfig
     {
         /// <summary>
         ///     The background color of the log window
@@ -35,34 +35,23 @@ namespace ADL.Configs
         /// </summary>
         public int FrameTime;
 
-        /// <summary>
-        ///     The standard configuration of ADLCustomConsoleConfig
-        /// </summary>
-        public static AdlCustomConsoleConfig Standard
-        {
-            get
-            {
-                var config = new AdlCustomConsoleConfig
-                {
-                    BackgroundColor = Color.Black,
-                    FontColor = Color.White,
-                    FontSize = 8.5f,
-                    FrameTime = 250,
-                    ColorCoding =
-                        new SerializableDictionary<int, SerializableColor>(new Dictionary<int, SerializableColor>())
-                };
-                return config;
-            }
-        }
 
 
         /// <summary>
         ///     Returns the standard configuration
         /// </summary>
         /// <returns></returns>
-        public IAdlConfig GetStandard()
+        public override AbstractAdlConfig GetStandard()
         {
-            return Standard;
+            return new AdlCustomConsoleConfig
+            {
+                BackgroundColor = Color.Black,
+                FontColor = Color.White,
+                FontSize = 8.5f,
+                FrameTime = 250,
+                ColorCoding =
+                    new SerializableDictionary<int, SerializableColor>(new Dictionary<int, SerializableColor>())
+            };
         }
     }
 }

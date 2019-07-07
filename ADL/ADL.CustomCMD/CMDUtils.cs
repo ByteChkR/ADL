@@ -100,12 +100,11 @@ namespace ADL.CustomCMD
         /// <param name="colorCoding">Color Coding for the Tags</param>
         /// <returns>Reference to the Created Console.(Not Thread Save)</returns>
         public static Form CreateCustomConsole(PipeStream ps, Color background, Color fontColor, float fontSize = 8.25f,
-            int frameTime = 250, Dictionary<int, SerializableColor> colorCoding = null)
+            int frameTime = 250, Dictionary<int, SerializableColor> colorCoding = null, bool CheckForUpdates = true)
         {
-            if (Debug.SendUpdateMessageOnFirstLog)
+            if (CheckForUpdates)
             {
-                var msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name,
-                    Assembly.GetExecutingAssembly().GetName().Version);
+                var msg = UpdateDataObject.CheckUpdate(typeof(CmdUtils));
                 Debug.Log(Debug.UpdateMask, msg);
             }
 
@@ -127,7 +126,7 @@ namespace ADL.CustomCMD
         public static Form CreateCustomConsole(PipeStream ps, AdlCustomConsoleConfig config)
         {
             return CreateCustomConsole(ps, config.BackgroundColor, config.FontColor, config.FontSize, config.FrameTime,
-                config.ColorCoding.ToDictionary());
+                config.ColorCoding.ToDictionary(), config.CheckForUpdates);
         }
 
         /// <summary>
@@ -152,7 +151,7 @@ namespace ADL.CustomCMD
             //Fix readability later
 
             CreateCustomConsole(CreateCustomConsole(ps, config.BackgroundColor, config.FontColor, config.FontSize,
-                config.FrameTime, config.ColorCoding.ToDictionary()));
+                config.FrameTime, config.ColorCoding.ToDictionary(), config.CheckForUpdates));
         }
 
         /// <summary>

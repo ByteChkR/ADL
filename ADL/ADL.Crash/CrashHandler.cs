@@ -2,21 +2,49 @@
 using System.Collections;
 using System.Reflection;
 using System.Text;
+using ADL.Configs;
 
 namespace ADL.Crash
 {
+    [Serializable]
+    public class CrashConfig : AbstractAdlConfig
+    {
+        public int CrashMask;
+        public override AbstractAdlConfig GetStandard()
+        {
+            return new CrashConfig()
+            {
+                CheckForUpdates = true
+            };
+        }
+    }
+
     public static class CrashHandler
     {
         private static bool initialized = false;
-        private static BitMask CrashMask;
+
+        private static CrashConfig config = ConfigManager.GetDefault<CrashConfig>();
+
+        public static void SaveCurrentConfig(string configPath = "adl_crash.xml")
+        {
+            ConfigManager.SaveToFile(configPath, config);
+        }
+        public static void Initialize(string configPath = "adl_crash.xml")
+        {
+            Initialize(ConfigManager.ReadFromFile<CrashConfig>(configPath));
+        }
+        public static void Initialize(CrashConfig config)
+        {
+            Initialize(config.CrashMask, config.CheckForUpdates);
+        }
         public static void Initialize(BitMask crashMask, bool CheckUpdates = true)
         {
-            CrashMask = crashMask;
+            config.CheckForUpdates = CheckUpdates;
+            config.CrashMask = crashMask;
 
             if (CheckUpdates)
             {
-                var msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name,
-                    Assembly.GetExecutingAssembly().GetName().Version);
+                var msg = UpdateDataObject.CheckUpdate(typeof(CrashHandler));
                 Debug.Log(Debug.UpdateMask, msg);
             }
 
@@ -36,7 +64,7 @@ namespace ADL.Crash
                 Debug.Log(crashNotes, ExceptionHeader(exception));
             }
 
-            Debug.Log(CrashMask, ExceptionToString(exception, includeInner));
+            Debug.Log(config.CrashMask, ExceptionToString(exception, includeInner));
         }
 
         private static string ExceptionHeader(Exception exception)
@@ -107,6 +135,9 @@ namespace ADL.Crash
             return sb.ToString();
 
         }
+
+
+
 
     }
 }

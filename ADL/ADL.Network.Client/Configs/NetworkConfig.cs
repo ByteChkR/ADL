@@ -6,7 +6,7 @@ namespace ADL.Configs
     /// <summary>
     ///     Config Object for the Network Extensions of ADL
     /// </summary>
-    public class NetworkConfig
+    public class NetworkConfig : AbstractAdlConfig
     {
 
         /// <summary>
@@ -47,6 +47,11 @@ namespace ADL.Configs
             var cs = new XmlSerializer(typeof(NetworkConfig));
             var fs = new FileStream(path, FileMode.Create);
             cs.Serialize(fs, conf);
+        }
+
+        public override AbstractAdlConfig GetStandard()
+        {
+            return new NetworkConfig();
         }
     }
 }

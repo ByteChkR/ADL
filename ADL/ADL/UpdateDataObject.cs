@@ -26,8 +26,12 @@ namespace ADL
         /// <param name="packageName">Package name to search for</param>
         /// <param name="currentVer">The current assembly version of the package</param>
         /// <returns></returns>
-        public static string CheckUpdate(string packageName, Version currentVer)
+        public static string CheckUpdate(Type type)
         {
+            string packageName=type.Assembly.GetName().Name;
+            Version currentVer=type.Assembly.GetName().Version;
+
+
             var url = GenerateLink(packageName);
             var webCli = new WebClient();
 

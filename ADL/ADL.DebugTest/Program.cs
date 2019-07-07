@@ -47,7 +47,7 @@ namespace ADL.DebugTest
             //Important: Its much easier to use CreateLogStreamFromStream than setting everything manually
             LogStream logStream = new LogTextStream(
                 Console.OpenStandardOutput(),
-                bMaskGenericCustom, //Lets use the generic custom 
+                bMaskWildCard,  
                 MatchType.MatchOne, //We want to make the logs pass when there is at least one tag that is included in the filter.
                 true //Get that fancy timestamp infront of the log.
             );
@@ -183,35 +183,15 @@ namespace ADL.DebugTest
         }
 
 
-        private static void TestCrashLog()
-        {
-            
-            BitMask<LoggingTypes> mask = new BitMask<LoggingTypes>(LoggingTypes.Error);
-            BitMask<LoggingTypes> noteMask = new BitMask<LoggingTypes>(LoggingTypes.Log);
-            CrashHandler.Initialize(mask);
-            Exception ex = new Exception();
-            CrashHandler.Log(ex, noteMask);
-
-            try
-            {
-                File.Open("notexistingfileofdoom", FileMode.Open);
-            }
-            catch (Exception e)
-            {
-                CrashHandler.Log(new Exception("U suck", e), noteMask);
-            }
-        }
-
-
         private static void Main(string[] args)
         {
-            CreateAdlConfig();
-            CreateAdlCustomCmdConfig();
+            //CreateAdlConfig();
+            //CreateAdlCustomCmdConfig();
             Debug.LoadConfig(); //Using the standard path
             //Runtime Config Changes(not Getting saved):
             Debug.AddPrefixForMask(-1, "[GLOBAL]");
             Debug.SendWarnings = true;
-            Debug.SendUpdateMessageOnFirstLog = true;
+            Debug.CheckForUpdates = true;
             Debug.AdlEnabled = true;
             Debug.PrefixLookupMode = PrefixLookupSettings.Addprefixifavailable |
                                      PrefixLookupSettings.Deconstructmasktofind |
@@ -229,11 +209,10 @@ namespace ADL.DebugTest
             }
 
 
-            TestCustomConsoleOut();
-            TestConsoleOut();
-            TestCrashLog();
-            TestNetworkOut();
             TestLogFileOut();
+            TestConsoleOut();
+            TestCustomConsoleOut();
+            TestNetworkOut();
 
 
 
@@ -242,7 +221,7 @@ namespace ADL.DebugTest
             float avg = 0;
             var sw = new Stopwatch();
 
-            for (var i = 0; i < 100000; i++)
+            for (var i = 0; i < 500; i++)
             {
                 Thread.Sleep(50);
                 sw.Start();
@@ -253,7 +232,8 @@ namespace ADL.DebugTest
                 sw.Reset();
             }
 
-
+            Debug.Log(-1, "Press enter in text console to exit");
+            Console.ReadLine();
             System.Windows.Forms.Application.Exit(); //Forces the custom console to close.
         }
 
@@ -266,7 +246,7 @@ namespace ADL.DebugTest
             Debug.SendWarnings = false;
             Debug.AdlWarningMask = 4;
             Debug.AdlEnabled = false;
-            Debug.SendUpdateMessageOnFirstLog = true;
+            Debug.CheckForUpdates = true;
             Debug.UpdateMask = 32;
             Debug.PrefixLookupMode = PrefixLookupSettings.Addprefixifavailable;
             Debug.SaveConfig(); //Not Needed to work, but for the next time we can just load the config
@@ -282,7 +262,7 @@ namespace ADL.DebugTest
                         {4, Color.Orange}, //Every warning is painted in orange
                         {32, Color.Green}
                     });
-            var config = AdlCustomConsoleConfig.Standard;
+            var config = ConfigManager.GetDefault<AdlCustomConsoleConfig>();
             config.FontSize = 13;
             config.FrameTime = 50;
             config.FontColor = Color.White;

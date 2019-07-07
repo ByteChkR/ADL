@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
@@ -162,8 +163,7 @@ namespace ADL.Network.Server
 
             if (!_noUpdateCheck)
             {
-                var msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name,
-                    Assembly.GetExecutingAssembly().GetName().Version);
+                var msg = UpdateDataObject.CheckUpdate(typeof(NetworkListener));
 
                 Debug.Log(0, msg);
                 _noUpdateCheck = true;

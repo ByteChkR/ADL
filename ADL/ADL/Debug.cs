@@ -100,7 +100,7 @@ namespace ADL
         /// <summary>
         ///     Public property, used to disable update check.(Saves ~500ms)
         /// </summary>
-        public static bool SendUpdateMessageOnFirstLog { get; set; } = true;
+        public static bool CheckForUpdates { get; set; } = true;
 
         /// <summary>
         ///     Determines if ADL should send warnings about potential wrong use to the log streams
@@ -347,10 +347,9 @@ namespace ADL
             {
                 _firstLog = false;
 
-                if (SendUpdateMessageOnFirstLog)
+                if (CheckForUpdates)
                 {
-                    var msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name,
-                        Assembly.GetExecutingAssembly().GetName().Version);
+                    var msg = UpdateDataObject.CheckUpdate(typeof(Debug));
 
                     Log(UpdateMask, msg);
                 }
@@ -473,7 +472,7 @@ namespace ADL
         public static void LoadConfig(AdlConfig config)
         {
             AdlEnabled = config.AdlEnabled;
-            SendUpdateMessageOnFirstLog = config.SendUpdateMessageOnFirstLog;
+            CheckForUpdates = config.CheckForUpdates;
             UpdateMask = config.UpdateMask;
             AdlWarningMask = config.WarningMask;
             SendWarnings = config.SendWarnings;
@@ -509,9 +508,9 @@ namespace ADL
         /// <param name="path">File path.</param>
         public static void SaveConfig(string path = "adl_config.xml")
         {
-            var config = AdlConfig.Standard;
+            AdlConfig config = ConfigManager.GetDefault<AdlConfig>();
             config.AdlEnabled = AdlEnabled;
-            config.SendUpdateMessageOnFirstLog = SendUpdateMessageOnFirstLog;
+            config.CheckForUpdates = CheckForUpdates;
             config.UpdateMask = UpdateMask;
             config.WarningMask = AdlWarningMask;
             config.SendWarnings = SendWarnings;

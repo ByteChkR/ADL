@@ -7,7 +7,7 @@ namespace ADL.Configs
     /// <summary>
     ///     Config Object for the Network Extensions of ADL
     /// </summary>
-    public class NetworkServerConfig : IAdlConfig
+    public class NetworkServerConfig : AbstractAdlConfig
     {
 
 
@@ -36,7 +36,7 @@ namespace ADL.Configs
         /// <returns></returns>
         public static NetworkServerConfig Load(string path = "")
         {
-            var ret = Standard;
+            var ret = ConfigManager.GetDefault<NetworkServerConfig>();
             if (!File.Exists(path)) return ret;
             var cs = new XmlSerializer(typeof(NetworkServerConfig));
             var fs = new FileStream(path, FileMode.Open);
@@ -62,26 +62,16 @@ namespace ADL.Configs
             fs.Close();
         }
 
-
-        public static NetworkServerConfig Standard
+        public override AbstractAdlConfig GetStandard()
         {
-            get
+            return new NetworkServerConfig
             {
-                NetworkServerConfig nws = new NetworkServerConfig();
-                nws.Port = 1337;
-                nws.Id2NameMap = new SerializableDictionary<string, string>(new Dictionary<string, string>()
+                Port = 1337,
+                Id2NameMap = new SerializableDictionary<string, string>(new Dictionary<string, string>()
                 {
-                    {"YEET", "0.0.0.0" },
-                    {"YEETus", "0.0.0.0" },
-                    {"YEETing", "0.0.0.0" },
-                });
-                return nws;
-            }
-        }
-
-        public IAdlConfig GetStandard()
-        {
-            return Standard;
+                    {"YEET", "0.0.0.0"}, {"YEETus", "0.0.0.0"}, {"YEETing", "0.0.0.0"},
+                })
+            };
         }
     }
 }

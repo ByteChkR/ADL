@@ -13,7 +13,7 @@ namespace ADL.Unity
     {
         public static string[] DebugLevel = new string[0];
 
-        [Tooltip("Configuration of ADL")] public UnityAdlConfig Configuration = new UnityAdlConfig();
+        [Tooltip("Configuration of ADL")] public UnityAAdlConfig Configuration = new UnityAAdlConfig();
 
         [Tooltip("On What prefixes should the unity console log an Error")] [EnumFlagsAttribute]
         public int ConsoleErrorMask = 0;
@@ -76,7 +76,7 @@ namespace ADL.Unity
                 }
             }
 
-            if (Debug.SendUpdateMessageOnFirstLog) CheckForUpdates();
+            if (Debug.CheckForUpdates) CheckForUpdates();
         }
 
         private void OnDestroy()
@@ -87,8 +87,7 @@ namespace ADL.Unity
 
         public void CheckForUpdates()
         {
-            var msg = UpdateDataObject.CheckUpdate(Assembly.GetExecutingAssembly().GetName().Name,
-                Assembly.GetExecutingAssembly().GetName().Version);
+            var msg = UpdateDataObject.CheckUpdate(typeof(DebugComponent));
             Debug.Log(Debug.UpdateMask, msg);
         }
     }

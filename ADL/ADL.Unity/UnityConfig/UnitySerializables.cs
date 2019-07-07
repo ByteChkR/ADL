@@ -29,7 +29,7 @@ namespace ADL.Unity.UnityConfig
     }
 
     [Serializable]
-    public class UnityAdlConfig : AdlConfig
+    public class UnityAAdlConfig : AdlConfig
     {
         public SerializableDictionaryIntString MaskPrefix;
 

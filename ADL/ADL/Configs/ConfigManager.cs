@@ -14,20 +14,25 @@ namespace ADL.Configs
         /// </summary>
         private static XmlSerializer _serializer;
 
+        public static T GetDefault<T>() where T : AbstractAdlConfig
+        {
+            return (T)Activator.CreateInstance<T>().GetStandard();
+        }
+
         /// <summary>
         ///     Reads a config of type T from file.
         /// </summary>
         /// <typeparam name="T">Type of Config</typeparam>
         /// <param name="path">Path to config</param>
         /// <returns>Deserialized Config File.</returns>
-        public static T ReadFromFile<T>(string path) where T : IAdlConfig
+        public static T ReadFromFile<T>(string path) where T : AbstractAdlConfig
         {
             T ret;
             _serializer = new XmlSerializer(typeof(T));
             if (!File.Exists(path))
             {
                 Debug.Log(BitMask.WildCard, "Config Manager: File" + path + "does not exist");
-                return (T) Activator.CreateInstance<T>().GetStandard();
+                return GetDefault<T>();
             }
 
             try
@@ -38,7 +43,7 @@ namespace ADL.Configs
             }
             catch (Exception)
             {
-                ret = (T) Activator.CreateInstance<T>().GetStandard();
+                ret = GetDefault<T>();
                 Debug.Log(BitMask.WildCard,
                     "Config Manager: Failed to deserialize XML file. Either XML file is corrupted or file access is denied.");
             }
@@ -52,12 +57,16 @@ namespace ADL.Configs
         /// <typeparam name="T">Type of config</typeparam>
         /// <param name="path">path to config file.</param>
         /// <param name="data">config object></param>
-        public static void SaveToFile<T>(string path, T data) where T : IAdlConfig
+        public static void SaveToFile<T>(string path, T data) where T : AbstractAdlConfig
         {
             try
             {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
                 _serializer = new XmlSerializer(typeof(T));
-                var fs = File.Open(path, FileMode.OpenOrCreate, FileAccess.Write);
+                var fs = File.Open(path, FileMode.Create, FileAccess.Write);
                 _serializer.Serialize(fs, data);
                 fs.Close();
             }

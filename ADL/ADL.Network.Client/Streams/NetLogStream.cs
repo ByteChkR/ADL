@@ -7,6 +7,7 @@ namespace ADL.Network.Streams
 {
     public class NetLogStream : LogStream
     {
+
         /// <summary>
         ///     Creates a NetworkLogStream that uses TCP Clients as input
         /// </summary>
@@ -17,6 +18,9 @@ namespace ADL.Network.Streams
         public NetLogStream(Stream s, int mask, MatchType mt, bool hasTimestamp) :
             base(s, mask, mt, hasTimestamp)
         {
+
+
+
         }
 
 

@@ -113,6 +113,11 @@ namespace ADL.Network.Client
         public static NetLogStream CreateNetworkStream(NetworkConfig nc, int id, Version assemblyVersion, int mask,
             MatchType mt, bool setTimestamp)
         {
+            if (nc.CheckForUpdates)
+            {
+               Debug.Log(Debug.UpdateMask, UpdateDataObject.CheckUpdate(typeof(NetUtils)));
+            }
+
             return CreateNetworkStream(id, assemblyVersion, nc.Ip, nc.Port, mask, mt, setTimestamp);
         }
 

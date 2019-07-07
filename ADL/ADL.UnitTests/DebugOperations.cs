@@ -11,7 +11,7 @@ namespace ADL.UnitTests
         [Test]
         public void Test_AddOutputStream()
         {
-            Debug.SendUpdateMessageOnFirstLog = true;
+            Debug.CheckForUpdates = true;
             Debug.SendWarnings = false;
             Debug.AdlEnabled = false;
 
@@ -58,7 +58,7 @@ namespace ADL.UnitTests
         public void Test_RemovePrefixForMask()
         {
             var bm = new BitMask(2 | 8);
-            Debug.SendUpdateMessageOnFirstLog = false;
+            Debug.CheckForUpdates = false;
             Debug.AddPrefixForMask(bm, "HELLO");
             Debug.RemovePrefixForMask(bm);
 
@@ -69,7 +69,7 @@ namespace ADL.UnitTests
             Debug.RemovePrefixForMask(bm);
             Debug.AdlEnabled = true;
 
-            Debug.SendUpdateMessageOnFirstLog = true;
+            Debug.CheckForUpdates = true;
             Assert.IsTrue(Debug.GetAllPrefixes().Count == 0);
         }
 
@@ -178,7 +178,7 @@ namespace ADL.UnitTests
         [Test]
         public void Test_Log()
         {
-            Debug.SendUpdateMessageOnFirstLog = false;
+            Debug.CheckForUpdates = false;
             var lts = new LogTextStream(new PipeStream())
             {
                 AddTimeStamp = false
@@ -186,9 +186,9 @@ namespace ADL.UnitTests
 
 
             Debug.PrefixLookupMode = PrefixLookupSettings.Noprefix;
-            Debug.SendUpdateMessageOnFirstLog = false;
+            Debug.CheckForUpdates = false;
             Assert.IsTrue(Debug.PrefixLookupMode == PrefixLookupSettings.Noprefix);
-            Assert.IsFalse(Debug.SendUpdateMessageOnFirstLog);
+            Assert.IsFalse(Debug.CheckForUpdates);
             
             Debug.AddOutputStream(lts);
             Debug.Log(1, "ffffffffff");
@@ -215,7 +215,7 @@ namespace ADL.UnitTests
 
             Debug.Log(2 | 4, "CODE COVERAGE");
             Debug.Log(2 | 4, "CODE COVERAGE");
-            Debug.SendUpdateMessageOnFirstLog = true;
+            Debug.CheckForUpdates = true;
         }
 
         [Test]
@@ -238,12 +238,13 @@ namespace ADL.UnitTests
         [Test]
         public void Test_LoadConfig()
         {
-            Debug.LoadConfig(AdlConfig.Standard);
-            Assert.IsTrue(Debug.AdlEnabled == AdlConfig.Standard.AdlEnabled);
-            Assert.IsTrue(Debug.AdlWarningMask == AdlConfig.Standard.WarningMask);
-            Assert.IsTrue(Debug.UpdateMask == AdlConfig.Standard.UpdateMask);
-            Assert.IsTrue(Debug.SendWarnings == AdlConfig.Standard.SendWarnings);
-            Assert.IsTrue(Debug.GetAllPrefixes().Count == AdlConfig.Standard.Prefixes.Keys.Count);
+            AdlConfig config = ConfigManager.GetDefault<AdlConfig>();
+            Debug.LoadConfig(config);
+            Assert.IsTrue(Debug.AdlEnabled == config.AdlEnabled);
+            Assert.IsTrue(Debug.AdlWarningMask == config.WarningMask);
+            Assert.IsTrue(Debug.UpdateMask == config.UpdateMask);
+            Assert.IsTrue(Debug.SendWarnings == config.SendWarnings);
+            Assert.IsTrue(Debug.GetAllPrefixes().Count == config.Prefixes.Keys.Count);
         }
     }
 }
