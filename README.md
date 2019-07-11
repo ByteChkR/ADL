@@ -2,8 +2,8 @@
 ___
 
 ## Status:
-Master: [![Build Status](https://travis-ci.com/ByteChkR/ADL.svg?branch=master)](https://travis-ci.com/ByteChkR/ADL)
-Develop: [![Build Status](https://travis-ci.com/ByteChkR/ADL.svg?branch=develop)](https://travis-ci.com/ByteChkR/ADL)
+Master: [![Build Status](https://travis-ci.com/ByteChkR/ADL.svg?branch=master)](https://travis-ci.com/ByteChkR/ADL)  
+Develop: [![Build Status](https://travis-ci.com/ByteChkR/ADL.svg?branch=develop)](https://travis-ci.com/ByteChkR/ADL)  
 
 ## License [here](LICENSE)
 
