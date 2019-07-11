@@ -1,7 +1,9 @@
-
-[![Build Status](https://travis-ci.com/ByteChkR/ADL.svg?branch=master)](https://travis-ci.com/ByteChkR/ADL)
 # ADL(Advanced Debug Logging)
 ___
+
+## Status:
+Master: [![Build Status](https://travis-ci.com/ByteChkR/ADL.svg?branch=master)](https://travis-ci.com/ByteChkR/ADL)
+Develop: [![Build Status](https://travis-ci.com/ByteChkR/ADL.svg?branch=develop)](https://travis-ci.com/ByteChkR/ADL)
 
 ## License [here](LICENSE)
 
