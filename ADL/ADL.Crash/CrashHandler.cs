@@ -122,7 +122,12 @@ namespace ADL.Crash
                     sb.Append("\n");
                     sb.Append(dictionaryEntry.Key);
                     sb.Append(":");
-                    sb.Append(dictionaryEntry.Value.ToString());
+                    if (!dictionaryEntry.Value.GetType().IsArray)
+                        sb.Append(dictionaryEntry.Value.ToString());
+                    else
+                    {
+                        sb.Append(UnpackToString(dictionaryEntry.Value));
+                    }
                 }
             }
 
@@ -137,7 +142,29 @@ namespace ADL.Crash
         }
 
 
+        public static string UnpackToString(object obj, int depth = 0)
+        {
+            string ret = "";
+            if (obj.GetType().IsArray)
+            {
+                IEnumerable o = (IEnumerable)obj;
+                foreach (var entry in o)
+                {
+                    ret += UnpackToString(entry, depth + 1) + "\n";
+                }
+            }
+            else
+            {
+                string ind = "";
+                for (int i = 0; i < depth; i++)
+                {
+                    ind += "\t";
+                }
+                ret = ind + obj.ToString();
+            }
 
+            return ret;
+        }
 
     }
 }
