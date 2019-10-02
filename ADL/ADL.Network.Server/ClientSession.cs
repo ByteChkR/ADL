@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Threading;
 using ADL.Network.Shared;
 using ADL.Streams;
 
@@ -72,6 +74,26 @@ namespace ADL.Network.Server
         /// </summary>
         public bool Authenticated { get; }
 
+        private void CreateDirs(string path)
+        {
+            List<string> dirs = new List<string>();
+            string p = Path.GetDirectoryName(path); 
+            while (!string.IsNullOrEmpty(p))
+            {
+                dirs.Add(p);
+                p = Path.GetDirectoryName(p);
+            }
+
+            for (int i = dirs.Count - 1; i >= 0; i--)
+            {
+                if (!Directory.Exists(dirs[i]))
+                {
+                    Debug.Log(0, "Creating Directory: "+ dirs[i]);
+                    Directory.CreateDirectory(dirs[i]);
+                }
+            }
+        }
+
         /// <summary>
         ///     Returns the path of the log file for this Client Session
         /// </summary>
@@ -82,7 +104,7 @@ namespace ADL.Network.Server
             var id = parent.Config.Id2NameMap.Keys.Count >= Id
                 ? parent.Config.Id2NameMap.Keys[Id - 1]
                 : "ID" + (Id - 1);
-            return path + id + "_" + Version + "_" + DateTime.UtcNow.ToString(Debug.TimeFormatString) +
+            return path + id + "/" + Version + "/" + DateTime.UtcNow.ToString(Debug.TimeFormatString) +
                    ".log";
         }
 
@@ -93,6 +115,7 @@ namespace ADL.Network.Server
         public void Initialize()
         {
             var str = GetLogPath();
+            CreateDirs(str);
             _fileStream = File.Open(str, FileMode.Create);
             _lts = new LogTextStream(_fileStream, InstanceId) { OverrideChannelTag = true };
             Debug.AddOutputStream(_lts);

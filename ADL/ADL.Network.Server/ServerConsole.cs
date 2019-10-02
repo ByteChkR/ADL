@@ -118,6 +118,7 @@ namespace ADL.Network.Server
                     configPath = cmds[start + 1].Substring(2);
                     nl = new NetworkListener(50, configPath, true, dontsearchUpdates);
                     dontsearchUpdates = true;
+                    Debug.TimeFormatString = "MM-dd-yyyy-H-mm-ss";
                     Debug.Log(0, "Initialized Sucessfully.");
                 }
                 else
